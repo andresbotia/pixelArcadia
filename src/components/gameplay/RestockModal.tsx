@@ -9,7 +9,8 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { ITEM_DISPLAY_NAMES, M6_ECONOMY, type GameplayItemId } from '@/game/economy/config';
+import { itemCoinPrice } from '@/game/economy/catalog';
+import { ITEM_DISPLAY_NAMES, type GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
 import { shake, usePressDepth } from '@/components/gameplay/motionKit';
 import { GP, GP_DISPLAY_FONT, GP_RADIUS, GP_TYPE, gpAlpha } from '@/theme/gameplayUi';
@@ -66,15 +67,9 @@ export const RestockModal = memo(function RestockModal({
     setBusy(true);
     setErrorNotice(null);
 
-    const price = M6_ECONOMY.itemPrices[itemId];
-    if (coins < price) {
-      feedback.emit('denied');
-      setErrorNotice('Not enough coins');
-      if (!reducedMotion) shake(shakeX, GP_MOTION.shakeSoft);
-      setBusy(false);
-      return;
-    }
-
+    // Affordability is decided by the economy behind `onBuy`, never here: the
+    // campaign purchase refuses without mutating, while the dev sandbox
+    // restock is free — a UI-side coin check would wrongly refuse it.
     const res = await onBuy(itemId);
     if (res.success) {
       feedback.emit('reward');
@@ -85,7 +80,7 @@ export const RestockModal = memo(function RestockModal({
       if (!reducedMotion) shake(shakeX, GP_MOTION.shakeSoft);
     }
     setBusy(false);
-  }, [itemId, busy, coins, onBuy, onClose, reducedMotion, shakeX]);
+  }, [itemId, busy, onBuy, onClose, reducedMotion, shakeX]);
 
   const containerAnimatedStyle = useAnimatedStyle(() => ({
     opacity: modalOpacity.value,
@@ -94,7 +89,7 @@ export const RestockModal = memo(function RestockModal({
 
   if (!visible || !itemId) return null;
 
-  const price = M6_ECONOMY.itemPrices[itemId];
+  const price = itemCoinPrice(itemId);
   const displayName = ITEM_DISPLAY_NAMES[itemId];
 
   return (

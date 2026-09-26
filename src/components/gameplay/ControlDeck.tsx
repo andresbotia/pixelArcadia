@@ -129,7 +129,7 @@ export const ControlDeck = memo(function ControlDeck({
   const holding: Charge[] = state.holding;
   const { width } = useWindowDimensions();
   const slot = holdingSlotSize(width, state.holdingCapacity, activeCapacity);
-  const pal = Math.round(slot * 0.8);
+  const pal = Math.round(slot * 0.85);
 
   return (
     <View style={styles.deck}>

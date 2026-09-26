@@ -31,8 +31,9 @@ import type { LevelDefinition } from '@/game/engine/types';
 import { type GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
 import { useColorAssist } from '@/hooks/useColorAssist';
-import { useEconomy } from '@/hooks/useEconomy';
 import { useGameSession } from '@/hooks/useGameSession';
+import { usePlayEconomy } from '@/hooks/usePlayEconomy';
+import { playPolicy, progressResetFor, type PlayMode } from '@/game/playMode';
 import { useTutorialCompletion } from '@/hooks/useTutorialCompletion';
 import { GAMEPLAY } from '@/theme/gameplayLayout';
 import { GP, GP_TYPE } from '@/theme/gameplayUi';
@@ -43,12 +44,18 @@ interface GameScreenProps {
   onWin: (levelId: number) => void;
   onAdvance: (nextLevelId: number) => void;
   onExit: () => void;
-  onResetProgress: () => void;
+  /** Real campaign reset for the debug overlay; dropped when `playPolicy(mode)` forbids it. */
+  onResetProgress?: () => void;
   /**
    * Explicit level to run instead of the campaign lookup for `levelId`. Only the
    * dev-only Level Studio playtest passes this; normal play leaves it undefined.
    */
   level?: LevelDefinition;
+  /**
+   * `campaign` (default) is the real game. `dev` is the dev-only Level Browser:
+   * real gameplay, but {@link playPolicy} keeps every save write out of the run.
+   */
+  mode?: PlayMode;
 }
 
 const EMPTY_USEFUL_IDS = new Set<string>();
@@ -69,7 +76,9 @@ export function GameScreen({
   onExit,
   onResetProgress,
   level: levelOverride,
+  mode = 'campaign',
 }: GameScreenProps) {
+  const policy = playPolicy(mode);
   const [boardBox, setBoardBox] = useState({ width: 0, height: 0 });
   const boardSize = Math.max(boardBox.width, boardBox.height);
   const boardWrap = useRef<View>(null);
@@ -100,25 +109,27 @@ export function GameScreen({
     return { worldTitle: world.title, tier: isFinale ? 'finale' : isCapstone ? 'capstone' : 'normal' };
   }, [level.id]);
 
-  const economyApi = useEconomy();
+  const economyApi = usePlayEconomy(mode);
   const [earnedCoins, setEarnedCoins] = useState<number | undefined>(undefined);
   const [restockItem, setRestockItem] = useState<GameplayItemId | null>(null);
   const [bombFlash, setBombFlash] = useState<{ point: Point; size: number } | null>(null);
 
   const handleWin = useCallback(async () => {
-    const res = await economyApi.settleFirstClear(levelId);
-    if (res.awarded) {
-      setEarnedCoins(res.reward);
+    if (policy.awardRewards) {
+      const res = await economyApi.settleFirstClear(levelId);
+      if (res.awarded) {
+        setEarnedCoins(res.reward);
+      }
     }
-    onWin(levelId);
-  }, [levelId, onWin, economyApi]);
+    if (policy.persistProgress) onWin(levelId);
+  }, [levelId, onWin, economyApi, policy]);
 
   const tutorials = useTutorialCompletion();
   const session = useGameSession(levelId, {
     onWin: handleWin,
     level: levelOverride,
     completedTutorials: tutorials.ready ? tutorials.completed : null,
-    onTutorialComplete: tutorials.markComplete,
+    onTutorialComplete: policy.persistTutorials ? tutorials.markComplete : undefined,
   });
   const { state, launch, launchHeld } = session;
   const won = state.status === 'won';
@@ -554,7 +565,7 @@ export function GameScreen({
       <DebugOverlay
         state={session.engineState}
         locked={session.locked}
-        onResetProgress={onResetProgress}
+        onResetProgress={progressResetFor(mode, onResetProgress)}
       />
 
       {introVisible ? (

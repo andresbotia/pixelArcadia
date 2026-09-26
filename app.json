@@ -16,6 +16,9 @@
       "bundleIdentifier": "com.andresbotia.orbitide",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
+      },
+      "entitlements": {
+        "com.apple.developer.game-center": true
       }
     },
     "android": {

@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import { StyleSheet, useWindowDimensions, View } from 'react-native';
+import { Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useReducedMotion } from 'react-native-reanimated';
 
@@ -14,7 +14,7 @@ import { HomeSkyBackdrop, HomeSkyline } from '@/components/home/HomeSkyBackdrop'
 import { M6_ECONOMY } from '@/game/economy/config';
 import { getLevel, nextLevelId, requireLevel } from '@/game/levels/levels';
 import { useAmbientActive } from '@/hooks/useAmbientActive';
-import { AV } from '@/theme/arcadiaV2';
+import { AV, AV_FONT } from '@/theme/arcadiaV2';
 import { HOME_COINS_PLACEHOLDER, HOME_HEARTS_PLACEHOLDER } from '@/theme/homeV2';
 
 interface HomeScreenProps {
@@ -27,6 +27,8 @@ interface HomeScreenProps {
   onSettings: () => void;
   /** Dev-only: hidden long-press affordance on the marquee. */
   onSecretReset?: () => void;
+  /** Dev-only: opens the Level Browser. The Home route passes it only when `__DEV__`. */
+  onDevLevels?: () => void;
 }
 
 /** How far the mascot's podium sits above the skyline's horizon line (pt). */
@@ -49,6 +51,7 @@ export function HomeScreen({
   onLeaderboard,
   onSettings,
   onSecretReset,
+  onDevLevels,
 }: HomeScreenProps) {
   const window = useWindowDimensions();
   const reducedMotion = useReducedMotion();
@@ -102,6 +105,18 @@ export function HomeScreen({
           />
         </View>
 
+        {__DEV__ && onDevLevels ? (
+          <Pressable
+            onPress={onDevLevels}
+            hitSlop={8}
+            accessibilityRole="button"
+            accessibilityLabel="Dev level browser"
+            style={styles.devLevels}
+          >
+            <Text style={styles.devLevelsText}>DEV LEVELS</Text>
+          </Pressable>
+        ) : null}
+
         <View style={[styles.playWrap, { marginTop: layout.compact ? 12 : 18 }]}>
           <HomePlayButton
             onPress={onPlay}
@@ -134,4 +149,18 @@ const styles = StyleSheet.create({
   mascot: { position: 'absolute', alignSelf: 'center' },
   progress: { alignItems: 'center', flexShrink: 0 },
   playWrap: { alignItems: 'center', flexShrink: 0 },
+  // Dev-only affordance: floats top-left under the HUD, outside the layout flow.
+  devLevels: {
+    position: 'absolute',
+    top: 64,
+    left: 12,
+    paddingHorizontal: 10,
+    height: 26,
+    borderRadius: 8,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(10,20,50,0.72)',
+    borderWidth: 1,
+    borderColor: AV.gold,
+  },
+  devLevelsText: { fontFamily: AV_FONT.extraBold, fontSize: 11, color: AV.gold, letterSpacing: 0.5 },
 });

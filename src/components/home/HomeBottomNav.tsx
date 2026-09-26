@@ -38,7 +38,7 @@ export const HomeBottomNav = memo(function HomeBottomNav({
   return (
     <View style={[styles.outer, { marginBottom: Math.max(12, insets.bottom - 6) }]}>
       <View style={styles.tray}>
-        <NavItem label="Shop" icon="shop" active={active === 'shop'} onPress={onShop} />
+        <NavItem label="Store" icon="shop" active={active === 'shop'} onPress={onShop} />
         <NavItem label="Home" icon="home" active={active === 'home'} onPress={onHome} />
         <NavItem label="Trophies" icon="trophy" active={active === 'leaderboard'} onPress={onLeaderboard} />
       </View>

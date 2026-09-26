@@ -31,6 +31,7 @@ export default function HomeRoute() {
       onLeaderboard={() => router.replace('/leaderboard' as Href)}
       onSettings={() => router.push('/settings' as Href)}
       onSecretReset={() => void reset()}
+      onDevLevels={__DEV__ ? () => router.push('/dev/levels' as Href) : undefined}
     />
   );
 }

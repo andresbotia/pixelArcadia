@@ -21,9 +21,9 @@ export const GAMEPLAY = {
   orbitingPalMin: 32,
   orbitingPalMax: 38,
 
-  // v2 Holding: 40pt recessed slots, 32pt Pal, 48pt tap target.
+  // v2 Holding: 40pt recessed slots, 34pt Pal, 48pt tap target.
   holdingWell: 40,
-  holdingPal: 32,
+  holdingPal: 34,
 
   // Legacy queue ladder — locked by `gameplayLayout.test.ts`. The v2 tunnel
   // column sizes itself from `AV_SIZE` (Ready 56 · Next 38 · Next+1 30).

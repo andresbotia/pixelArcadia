@@ -22,7 +22,7 @@ import type { TutorialView } from '@/game/tutorial';
 import { markContrast } from '@/theme/colorAssist';
 import { orbColors, orbGlow, orbLabel } from '@/theme/colors';
 import { flash, kick, shake, usePressDepth } from '@/components/gameplay/motionKit';
-import { AV, AV_SIZE } from '@/theme/arcadiaV2';
+import { AV, AV_FONT, AV_SIZE } from '@/theme/arcadiaV2';
 import { GAMEPLAY } from '@/theme/gameplayLayout';
 import { GP, GP_TYPE, gpAlpha } from '@/theme/gameplayUi';
 import { GP_MOTION } from '@/theme/gameplayMotion';
@@ -199,7 +199,7 @@ export const HoldingTray = memo(function HoldingTray({
   && prev.palSize === next.palSize
 ));
 
-/** v2: 40pt recessed slots, 32pt Pal inside. */
+/** v2: 40pt recessed slots, 34pt Pal inside. */
 const SLOT = GAMEPLAY.holdingWell;
 const PAL = GAMEPLAY.holdingPal;
 /** Tap target is 48pt: the slop around each 40pt well. */
@@ -211,6 +211,36 @@ const WELL_GAP = 6;
 const RESHUFFLE_MS = 160;
 
 interface WellGeom { slot: number; pal: number }
+
+/*
+ * M9A — Holding count plate. The remaining count is the one thing a player
+ * reads off a held Pal, so it gets a dedicated plate centred under the visor
+ * instead of the tiny corner numeral resting Pals use elsewhere. Sized from
+ * the well (not the Pal) so it steps down with the Extra Slot geometry and
+ * still holds two digits inside the well's width.
+ */
+/** TUNABLE — numeral size as a fraction of the well edge, clamped (pt). */
+const PLATE_FONT_RATIO = 0.36;
+const PLATE_FONT_MIN = 11;
+const PLATE_FONT_MAX = 15;
+/** How far the plate hangs below the well (pt) — inside the tray's 9pt margin. */
+const PLATE_DROP = 5;
+/** Lift the Pal inside its well so the plate sits on its lower body, clear of the eyes. */
+const PAL_LIFT_RATIO = 0.08;
+/** Near-black navy: white digits stay ≥ 12:1 on it whatever the Pal's colour. */
+const PLATE_FILL = '#001742';
+
+function plateMetrics(slot: number, digits: number): { fontSize: number; height: number; width: number } {
+  const fontSize = Math.round(Math.min(PLATE_FONT_MAX, Math.max(PLATE_FONT_MIN, slot * PLATE_FONT_RATIO)));
+  const height = fontSize + 5;
+  const width = Math.max(height, Math.ceil(fontSize * 0.64 * Math.max(1, digits)) + 8);
+  return { fontSize, height, width };
+}
+
+/** Held Pal's top inside the well: centred, then lifted to make room for the plate. */
+function palTop(g: WellGeom): number {
+  return Math.max(0, (g.slot - g.pal) / 2 - Math.round(g.slot * PAL_LIFT_RATIO));
+}
 
 /** Held Pal's top-left inside the wells row, centred in well `index`. */
 function palX(index: number, g: WellGeom): number {
@@ -361,7 +391,7 @@ const HeldPal = memo(function HeldPal({
   geom: WellGeom;
 }) {
   const PAL_SIZE = geom.pal;
-  const palY = (geom.slot - geom.pal) / 2;
+  const palY = palTop(geom);
   const x = useSharedValue(palX(index, geom));
   const placedAt = useRef(index);
   const placedGeom = useRef(geom.slot);
@@ -417,10 +447,10 @@ const HeldPal = memo(function HeldPal({
             size={PAL_SIZE}
             colorAssist={colorAssist}
             mood="calm"
-            capacity={charge.capacity}
             selected={useful}
             animate={false}
           />
+          <HeldCountPlate capacity={charge.capacity} color={charge.color} geom={geom} palY={palY} />
         </View>
       ) : (
         <View
@@ -453,6 +483,46 @@ const HeldPal = memo(function HeldPal({
         </View>
       )}
     </Animated.View>
+  );
+});
+
+/**
+ * The held Pal's remaining count: white on a near-black plate, centred on the
+ * Pal's lower body. Drawn inside {@link HeldPal}'s animated view, so it rides
+ * every slide, arrival bounce and refusal shake with its own Pal.
+ */
+const HeldCountPlate = memo(function HeldCountPlate({ capacity, color, geom, palY }: {
+  capacity: number;
+  color: Charge['color'];
+  geom: WellGeom;
+  palY: number;
+}) {
+  const text = String(capacity);
+  const { fontSize, height, width } = plateMetrics(geom.slot, text.length);
+  // Plate bottom sits PLATE_DROP below the well; convert to the Pal's frame.
+  const top = geom.slot + PLATE_DROP - height - palY;
+  const radius = Math.min(7, height * 0.32);
+  return (
+    <View
+      pointerEvents="none"
+      style={[
+        styles.plate,
+        {
+          top,
+          left: (geom.pal - width) / 2,
+          width,
+          height,
+          borderRadius: radius,
+          borderColor: orbColors[color],
+        },
+      ]}
+    >
+      {/* Dark keyline so the plate never melts into the Pal's own shell colour. */}
+      <View pointerEvents="none" style={[styles.plateKeyline, { borderRadius: radius + 2 }]} />
+      <Text allowFontScaling={false} numberOfLines={1} style={[styles.plateNumeral, { fontSize, lineHeight: fontSize + 2 }]}>
+        {text}
+      </Text>
+    </View>
   );
 });
 
@@ -529,4 +599,28 @@ const styles = StyleSheet.create({
   boosterSlot: { borderWidth: 1, borderStyle: 'dashed', borderColor: GP.textFaint, opacity: 0.5 },
   boosterMark: { color: GP.textMuted, fontSize: 22, fontWeight: '700' },
   count: { fontSize: 13, fontWeight: '800' },
+  plate: {
+    position: 'absolute',
+    backgroundColor: PLATE_FILL,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  plateKeyline: {
+    position: 'absolute',
+    top: -3,
+    left: -3,
+    right: -3,
+    bottom: -3,
+    borderWidth: 1.5,
+    borderColor: gpAlpha(PLATE_FILL, 0.85),
+  },
+  plateNumeral: {
+    fontFamily: AV_FONT.extraBold,
+    color: '#FFFFFF',
+    textAlign: 'center',
+    fontVariant: ['tabular-nums'],
+    includeFontPadding: false,
+    padding: 0,
+  },
 });

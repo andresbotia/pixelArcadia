@@ -1,14 +1,10 @@
 import { router, type Href } from 'expo-router';
 
-import { HomePlaceholderScreen } from '@/screens/HomePlaceholderScreen';
+import { StoreScreen } from '@/screens/StoreScreen';
 
 export default function ShopRoute() {
   return (
-    <HomePlaceholderScreen
-      title="Shop"
-      body="The shop isn’t open yet. Nothing to buy, and no currency is spent here."
-      tab="shop"
-      onShop={() => undefined}
+    <StoreScreen
       onHome={() => router.replace('/')}
       onLeaderboard={() => router.replace('/leaderboard' as Href)}
     />

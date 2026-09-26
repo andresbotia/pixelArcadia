@@ -11,8 +11,8 @@ import { FIRST_LEVEL } from '@/game/levels/levels';
 export interface ProgressApi {
   progress: Progress;
   loading: boolean;
-  /** Persist that `levelId` was completed; unlocks the next level. */
-  completeLevel: (levelId: number) => Promise<void>;
+  /** Persist that `levelId` was completed; unlocks the next level. Resolves with the saved progress. */
+  completeLevel: (levelId: number) => Promise<Progress>;
   /** Dev-only: wipe progress back to level 1. */
   reset: () => Promise<void>;
   reload: () => Promise<void>;
@@ -50,6 +50,7 @@ export function useProgress(): ProgressApi {
   const completeLevel = useCallback(async (levelId: number) => {
     const updated = await unlockNext(levelId);
     setProgress(updated);
+    return updated;
   }, []);
 
   const reset = useCallback(async () => {

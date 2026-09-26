@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { itemCoinPrice, itemProductId } from '@/game/economy/catalog';
 import { M6_ECONOMY, type GameplayItemId } from '@/game/economy/config';
+import { applyCoinPurchase, type PurchaseStatus } from '@/game/economy/purchase';
 
 const STORAGE_KEY = 'orbitide/economy/v1';
 
@@ -185,6 +187,40 @@ export async function settleFirstClear(levelId: number): Promise<SettlementResul
   });
 }
 
+export interface StorePurchaseResult {
+  status: PurchaseStatus;
+  /** Coins charged (0 unless `success`). */
+  charged: number;
+  /** Economy after the attempt — unchanged unless `success`. */
+  state: EconomyState;
+}
+
+/**
+ * THE purchase operation. Settles one catalog product against the saved
+ * economy inside the mutation queue: the coin charge and the reward are one
+ * state transition ({@link applyCoinPurchase}) and one persist, so a purchase
+ * either fully happens or leaves the save untouched. Every buy path (Store,
+ * gameplay restock) goes through here.
+ */
+export async function purchaseProduct(productId: string): Promise<StorePurchaseResult> {
+  return queueMutation<StorePurchaseResult>((current) => {
+    const outcome = applyCoinPurchase(current, productId);
+    return {
+      next: outcome.state,
+      result: { status: outcome.status, charged: outcome.charged, state: outcome.state },
+    };
+  });
+}
+
+export type ItemPurchaseStatus = 'success' | 'insufficientFunds' | 'invalidItem';
+
+/** Buy one unit of a gameplay item for coins (Store V1's only product kind). */
+export async function purchaseItem(itemId: GameplayItemId): Promise<{ status: ItemPurchaseStatus; charged: number; state: EconomyState }> {
+  const res = await purchaseProduct(itemProductId(itemId));
+  const status: ItemPurchaseStatus = res.status === 'success' || res.status === 'insufficientFunds' ? res.status : 'invalidItem';
+  return { status, charged: res.charged, state: res.state };
+}
+
 export interface PurchaseResult {
   success: boolean;
   reason?: 'insufficientCoins' | 'unknownItem';
@@ -194,36 +230,15 @@ export interface PurchaseResult {
 
 /**
  * Purchases exactly 1 unit of `itemId` if player has sufficient coins.
+ * Legacy result shape for the gameplay restock prompt; delegates to
+ * {@link purchaseItem}, so there is one purchase implementation.
  */
 export async function buyItem(itemId: GameplayItemId): Promise<PurchaseResult> {
-  const price = M6_ECONOMY.itemPrices[itemId];
-  if (price === undefined) {
-    const current = await loadEconomy();
-    return { success: false, reason: 'unknownItem', state: current };
-  }
-
-  return queueMutation<PurchaseResult>((current) => {
-    if (current.coins < price) {
-      return {
-        next: current,
-        result: { success: false, reason: 'insufficientCoins', price, state: current },
-      };
-    }
-
-    const next: EconomyState = {
-      ...current,
-      coins: current.coins - price,
-      inventory: {
-        ...current.inventory,
-        [itemId]: current.inventory[itemId] + 1,
-      },
-    };
-
-    return {
-      next,
-      result: { success: true, price, state: next },
-    };
-  });
+  const res = await purchaseItem(itemId);
+  if (res.status === 'invalidItem') return { success: false, reason: 'unknownItem', state: res.state };
+  const price = itemCoinPrice(itemId);
+  if (res.status === 'insufficientFunds') return { success: false, reason: 'insufficientCoins', price, state: res.state };
+  return { success: true, price, state: res.state };
 }
 
 export interface ConsumeResult {

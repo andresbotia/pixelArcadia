@@ -15,6 +15,7 @@ import { PixelifySans_600SemiBold } from '@expo-google-fonts/pixelify-sans';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { gameCenter } from '@/services/gameCenter';
 import { AV } from '@/theme/arcadiaV2';
 
 void SplashScreen.preventAutoHideAsync();
@@ -38,6 +39,10 @@ export default function RootLayout() {
   useEffect(() => {
     if (fontsLoaded || fontError) void SplashScreen.hideAsync();
   }, [fontsLoaded, fontError]);
+
+  // Game Center is additive: sign-in runs in the background (GameKit shows
+  // its own sheet if needed) and never gates the app. iOS only; no-op elsewhere.
+  useEffect(() => { gameCenter.start(); }, []);
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>

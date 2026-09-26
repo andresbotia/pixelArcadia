@@ -4,6 +4,7 @@ import {
   consumeItem,
   DEFAULT_ECONOMY_STATE,
   loadEconomy,
+  purchaseItem,
   resetEconomy,
   settleFirstClear,
   subscribeEconomy,
@@ -11,13 +12,16 @@ import {
   type PurchaseResult,
   type SettlementResult,
 } from '@/storage/economy';
-import { M6_ECONOMY, type GameplayItemId } from '@/game/economy/config';
+import { itemCoinPrice } from '@/game/economy/catalog';
+import type { GameplayItemId } from '@/game/economy/config';
 
 export interface EconomyApi {
   economy: EconomyState;
   loading: boolean;
   settleFirstClear: (levelId: number) => Promise<SettlementResult>;
   buyItem: (itemId: GameplayItemId) => Promise<PurchaseResult>;
+  /** Store purchase: one unit of `itemId` for its catalog coin price. */
+  purchaseItem: (itemId: GameplayItemId) => ReturnType<typeof purchaseItem>;
   consumeItem: (itemId: GameplayItemId) => Promise<boolean>;
   canAfford: (itemId: GameplayItemId) => boolean;
   hasItem: (itemId: GameplayItemId) => boolean;
@@ -73,10 +77,7 @@ export function useEconomy(): EconomyApi {
     return res.success;
   }, []);
 
-  const canAfford = useCallback((itemId: GameplayItemId) => {
-    const price = M6_ECONOMY.itemPrices[itemId];
-    return price !== undefined && economy.coins >= price;
-  }, [economy.coins]);
+  const canAfford = useCallback((itemId: GameplayItemId) => economy.coins >= itemCoinPrice(itemId), [economy.coins]);
 
   const hasItem = useCallback((itemId: GameplayItemId) => {
     return (economy.inventory[itemId] ?? 0) > 0;
@@ -92,6 +93,7 @@ export function useEconomy(): EconomyApi {
     loading,
     settleFirstClear: handleSettleFirstClear,
     buyItem: handleBuyItem,
+    purchaseItem,
     consumeItem: handleConsumeItem,
     canAfford,
     hasItem,

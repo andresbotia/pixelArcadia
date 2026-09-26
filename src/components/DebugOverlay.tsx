@@ -12,7 +12,8 @@ import { radius, spacing } from '@/theme/spacing';
 interface DebugOverlayProps {
   state: GameState;
   locked: boolean;
-  onResetProgress: () => void;
+  /** Omitted when the run's play policy forbids a real progress reset (dev test mode). */
+  onResetProgress?: () => void;
 }
 
 /**
@@ -109,9 +110,11 @@ export const DebugOverlay = memo(function DebugOverlay({ state, locked, onResetP
         <Pressable style={styles.btn} onPress={colorAssist.toggle}>
           <Text style={styles.btnText}>assist: {colorAssist.enabled ? 'on' : 'off'}</Text>
         </Pressable>
-        <Pressable style={styles.btn} onPress={onResetProgress}>
-          <Text style={styles.btnText}>reset progress</Text>
-        </Pressable>
+        {onResetProgress ? (
+          <Pressable style={styles.btn} onPress={onResetProgress}>
+            <Text style={styles.btnText}>reset progress</Text>
+          </Pressable>
+        ) : null}
       </View>
     </View>
   );
