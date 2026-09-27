@@ -16,6 +16,13 @@ import { cloneGameState, restoreSnapshot } from '@/game/engine/undo';
 import { buildLaunchScript } from '@/game/presentation/buildScript';
 import type { FlightPass, Point } from '@/game/presentation/events';
 import { HOLDING_HANDOFF_MS } from '@/game/presentation/constants';
+import {
+  createTimebase,
+  presentationSpeedFor,
+  presentationTime,
+  retime,
+  type PresentationTimebase,
+} from '@/game/presentation/endgame';
 import { commitLandings, holdingSlotFor, terminalProblem } from '@/game/presentation/holdingSlot';
 import { assignResult, reconcileFlights } from '@/game/presentation/reconcile';
 import {
@@ -45,6 +52,11 @@ interface Options {
    */
   completedTutorials?: Iterable<string> | null;
   onTutorialComplete?: (id: string) => void;
+  /**
+   * M11.5 endgame fast-forward (default on). `false` pins the presentation
+   * clock at 1× — used by tests to compare against normal speed.
+   */
+  endgameFastForward?: boolean;
 }
 
 /**
@@ -89,6 +101,11 @@ export interface GameSession {
   activeCount: number;
   /** Engine concurrent-pass capacity (for ACTIVE X/Y). */
   activeCapacity: number;
+  /**
+   * Wall → presentation time map every flight is scripted against. The board
+   * clock advances at `timebase.rate` (1×, or the endgame fast-forward rate).
+   */
+  timebase: PresentationTimebase;
   message: string;
   /** The most recent refused tap and why (`null` until one happens). */
   lastDenial: LaunchDenial | null;
@@ -131,6 +148,11 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
   const landedIds = useRef(new Set<string>());
   const optionsRef = useRef(options);
   const reported = useRef(false);
+  // Presentation clock (M11.5). Identity with wall time until the tunnels run
+  // dry; then it runs at the endgame rate. Only `syncSpeed` changes it.
+  const [initialTimebase] = useState(() => createTimebase(Date.now()));
+  const timebaseRef = useRef(initialTimebase);
+  const [timebase, setTimebase] = useState(initialTimebase);
   const [canUndo, setCanUndo] = useState(false);
   const undoSnapshotRef = useRef<GameState | null>(null);
   const [extraSlotActive, setExtraSlotActive] = useState(false);
@@ -141,6 +163,22 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
   const tutorialRef = useRef(tutorial);
   tutorialRef.current = tutorial;
   useEffect(() => { optionsRef.current = options; });
+
+  /** Presentation-time "now" — what every pass timestamp is measured against. */
+  const presentationNow = useCallback(() => presentationTime(timebaseRef.current, Date.now()), []);
+
+  /**
+   * Match the clock rate to engine truth. Called wherever truth's tunnels can
+   * change (launch, undo, restart); re-anchors so presentation time stays
+   * continuous and nothing already on screen jumps.
+   */
+  const syncSpeed = useCallback((next: GameState) => {
+    const rate = presentationSpeedFor(next, optionsRef.current.endgameFastForward !== false);
+    const tb = retime(timebaseRef.current, rate, Date.now());
+    if (tb === timebaseRef.current) return;
+    timebaseRef.current = tb;
+    setTimebase(tb);
+  }, []);
 
   const commitTutorial = useCallback((next: TutorialState) => {
     const prev = tutorialRef.current;
@@ -287,6 +325,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     feedback.emit(action.kind === 'holding' ? 'heldRelaunch' : 'tunnelLaunch');
     feedback.emit('launch', { haptic: false });
     truth.current = outcome.state;
+    syncSpeed(outcome.state);
     if (holdingSlots) holdingSlotsRef.current = holdingSlots;
     if (outcome.launchedCharge) {
       advanceTutorial({
@@ -304,7 +343,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
       // tray twin (or would duplicate the Pal being relaunched).
       clearLanding();
     }
-    const now = Date.now();
+    const now = presentationNow();
     const fresh: FlightPass = { ...buildLaunchScript(outcome, before, ++serial.current, from).pass, launchedAtMs: now };
     // Reconcile every flight with the new truth: unplayed tails, terminals and
     // slots follow the latest resolution; presented prefixes never change.
@@ -340,7 +379,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     setState(view.current);
     publishFlights();
     return true;
-  }, [publishFlights, advanceTutorial, commitHolding, clearLanding, deny]);
+  }, [publishFlights, advanceTutorial, commitHolding, clearLanding, deny, syncSpeed, presentationNow]);
 
   /**
    * Re-derive every live flight from `next` truth. Used when truth changes
@@ -419,7 +458,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
         truth.current = outcome.state;
         setEngineState(outcome.state);
         feedback.emit('gateIntro', { haptic: false });
-        resyncFlights(outcome.state, Date.now());
+        resyncFlights(outcome.state, presentationNow());
         // The re-script replaced this pass: replay it from the same cursor so
         // its real terminal beats (landing, or burst + result) are presented.
         queueViewFlush();
@@ -450,7 +489,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
         // Logically done; keep drawing it at its slot through the handoff unless
         // its clock already ran out (the end-of-clock call presents everything).
         if (flight.pass.terminal.kind === 'toHolding' && count !== Number.MAX_SAFE_INTEGER) {
-          const now = Date.now();
+          const now = presentationNow();
           for (const [lingerId, pass] of landing.current) {
             // Safety net for a clock that never reported its end.
             if (now - pass.launchedAtMs > pass.landingAt + HOLDING_HANDOFF_MS + 1000) landing.current.delete(lingerId);
@@ -496,7 +535,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
       view.current = { ...view.current, pixels: nextPixels };
     }
     queueViewFlush();
-  }, [reportResult, settleAll, publishFlights, publishLanding, advanceTutorial, queueViewFlush, commitHolding, resyncFlights]);
+  }, [reportResult, settleAll, publishFlights, publishLanding, advanceTutorial, queueViewFlush, commitHolding, resyncFlights, presentationNow]);
 
   const restart = useCallback(() => {
     active.current.clear();
@@ -511,13 +550,14 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     setBombTargeting(false);
     const fresh = createGame(level);
     truth.current = fresh; view.current = fresh; reported.current = false;
+    syncSpeed(fresh);
     setState(fresh); setEngineState(fresh); setFlights([]); setMessage('');
     commitTutorial(
       tutorialRef.current.completed
         ? tutorialRef.current
         : createTutorial(level, optionsRef.current.completedTutorials),
     );
-  }, [level, commitTutorial, clearLanding]);
+  }, [level, commitTutorial, clearLanding, syncSpeed]);
 
   const undo = useCallback((): boolean => {
     if (truth.current.status !== 'playing' || !undoSnapshotRef.current) {
@@ -538,6 +578,8 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     truth.current = restored;
     view.current = restored;
     reported.current = false;
+    // Undo can put a Pal back in a tunnel: back to normal speed if so.
+    syncSpeed(restored);
 
     setState(restored);
     setEngineState(restored);
@@ -546,7 +588,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
 
     feedback.emit('select');
     return true;
-  }, [clearLanding]);
+  }, [clearLanding, syncSpeed]);
 
   const activateExtraSlot = useCallback((): boolean => {
     if (truth.current.status !== 'playing' || extraSlotActiveRef.current || truth.current.holdingCapacity >= 4) {
@@ -560,10 +602,10 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     setState(view.current);
     setEngineState(truth.current);
 
-    resyncFlights(truth.current, Date.now());
+    resyncFlights(truth.current, presentationNow());
     feedback.emit('reward');
     return true;
-  }, [resyncFlights]);
+  }, [resyncFlights, presentationNow]);
 
   const armBomb = useCallback(() => {
     if (truth.current.status !== 'playing') return;
@@ -629,6 +671,7 @@ export function useGameSession(levelId: number, options: Options = {}): GameSess
     canLaunch: state.status === 'playing' && truth.current.status === 'playing' && flights.length < cap && !bombTargeting,
     activeCount: flights.length,
     activeCapacity: cap,
+    timebase,
     message,
     lastDenial,
     tutorial: tutorialView,

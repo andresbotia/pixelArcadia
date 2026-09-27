@@ -12,6 +12,7 @@ import { act, createElement, useEffect, type ReactElement } from 'react';
 import { useGameSession, type GameSession } from '@/hooks/useGameSession';
 import type { ActiveCharge, Charge, GameState, LevelDefinition } from '@/game/engine/types';
 import type { FlightPass, Point } from '../events';
+import { presentationTime } from '../endgame';
 import { eventCountAt, progressAt } from '../motion';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -49,15 +50,15 @@ export function terminalOf(pass: FlightPass): TerminalView {
 }
 
 let current: GameSession | null = null;
-function Probe({ id, level }: { id: number; level?: LevelDefinition }) {
-  const s = useGameSession(id, { level });
+function Probe({ id, level, endgameFastForward }: { id: number; level?: LevelDefinition; endgameFastForward?: boolean }) {
+  const s = useGameSession(id, { level, endgameFastForward });
   useEffect(() => { current = s; });
   return null;
 }
 
-export function mountSession(level: LevelDefinition): { get: () => GameSession; unmount: () => void } {
+export function mountSession(level: LevelDefinition, opts: { endgameFastForward?: boolean } = {}): { get: () => GameSession; unmount: () => void } {
   let root!: ReturnType<typeof renderer.create>;
-  act(() => { root = renderer.create(createElement(Probe, { id: level.id, level })); });
+  act(() => { root = renderer.create(createElement(Probe, { id: level.id, level, endgameFastForward: opts.endgameFastForward })); });
   return { get: () => current!, unmount: () => act(() => root.unmount()) };
 }
 
@@ -125,8 +126,19 @@ export function auditPresentedHistory(pass: FlightPass, t: number, resolution: A
  * flight has completed. Records terminals, invariant violations, the
  * observable-history audit and the pre-settle snapshot.
  */
-export function drive(get: () => GameSession, launches: DriveLaunch[], opts: { stepMs?: number; maxMs?: number } = {}): DriveLog {
+export function drive(get: () => GameSession, launches: DriveLaunch[], opts: {
+  stepMs?: number;
+  maxMs?: number;
+  /**
+   * M11.5: present each pass on the session's presentation timebase (as the
+   * rate-aware board clock does) instead of raw wall time, and schedule
+   * `DriveLaunch.at` in presentation ms — so the same schedule yields the same
+   * action/event interleaving at any clock rate.
+   */
+  followTimebase?: boolean;
+} = {}): DriveLog {
   const stepMs = opts.stepMs ?? 16;
+  const followTimebase = opts.followTimebase ?? false;
   const maxMs = opts.maxMs ?? 120_000;
   const log: DriveLog = {
     terminals: new Map(), launched: [], divergences: [], violations: [], holdingTimeline: [],
@@ -161,6 +173,10 @@ export function drive(get: () => GameSession, launches: DriveLaunch[], opts: { s
   };
   let lastHolding = '';
   let started = false;
+  const clockAt = (wall: number) => (followTimebase ? presentationTime(get().timebase, wall) : wall);
+  const passTimeAt = (pass: FlightPass, wall: number) => (followTimebase
+    ? clockAt(wall) - pass.launchedAtMs
+    : wall - launchedAt.get(pass.passId)!);
 
   const record = (now: number) => {
     const s = get();
@@ -212,10 +228,10 @@ export function drive(get: () => GameSession, launches: DriveLaunch[], opts: { s
 
   for (let now = 0; now <= maxMs; now += stepMs) {
     jest.setSystemTime(now);
-    while (pending.length && pending[0]!.at <= now) {
+    while (pending.length && pending[0]!.at <= clockAt(now)) {
       const next = pending.shift()!;
       const s = get();
-      const before = s.flights.map((p) => ({ pass: p, t: now - launchedAt.get(p.passId)! }));
+      const before = s.flights.map((p) => ({ pass: p, t: passTimeAt(p, now) }));
       let ok = false;
       act(() => {
         ok = next.held ? s.launchHeld(next.held, undefined, SLOT_POINTS) : s.launch(next.tunnel!, undefined, SLOT_POINTS);
@@ -236,7 +252,7 @@ export function drive(get: () => GameSession, launches: DriveLaunch[], opts: { s
     if (!started) continue;
     const s = get();
     for (const pass of [...s.flights]) {
-      const t = now - launchedAt.get(pass.passId)!;
+      const t = passTimeAt(pass, now);
       const count = eventCountAt(pass, t);
       const live = get();
       const passNow = live.flights.find((f) => f.passId === pass.passId);

@@ -15,12 +15,18 @@ import { M6_ECONOMY } from '@/game/economy/config';
 import { getLevel, nextLevelId, requireLevel } from '@/game/levels/levels';
 import { useAmbientActive } from '@/hooks/useAmbientActive';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
-import { HOME_COINS_PLACEHOLDER, HOME_HEARTS_PLACEHOLDER } from '@/theme/homeV2';
 
 interface HomeScreenProps {
   highestUnlockedLevel: number;
   loading: boolean;
-  coins?: number;
+  coins: number;
+  hearts: number;
+  /** Epoch ms of the next heart, `null` when full. */
+  nextHeartAt: number | null;
+  /**
+   * PLAY. At 0 hearts the route's heart gate turns this into the Out of
+   * Hearts prompt — the button itself stays live and prominent.
+   */
   onPlay: () => void;
   onShop: () => void;
   onLeaderboard: () => void;
@@ -46,6 +52,8 @@ export function HomeScreen({
   highestUnlockedLevel,
   loading,
   coins,
+  hearts,
+  nextHeartAt,
   onPlay,
   onShop,
   onLeaderboard,
@@ -74,8 +82,10 @@ export function HomeScreen({
 
       <SafeAreaView style={styles.safe} edges={['top']}>
         <HomeHud
-          hearts={HOME_HEARTS_PLACEHOLDER}
-          coins={coins ?? HOME_COINS_PLACEHOLDER}
+          hearts={hearts}
+          nextHeartAt={nextHeartAt}
+          live={active}
+          coins={coins}
           onAddCoins={onShop}
           onSettings={onSettings}
         />

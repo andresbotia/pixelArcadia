@@ -7,6 +7,7 @@ import { BombGlyph, SlotGlyph, UndoGlyph } from '@/components/gameplay/glyphs';
 import { HomeBottomNav } from '@/components/home/HomeBottomNav';
 import { CoinMedallion } from '@/components/v2/primitives';
 import { productsInSection, type StoreProduct } from '@/game/economy/catalog';
+import { coinsAccessibilityLabel, formatCurrency } from '@/game/economy/formatCurrency';
 import type { GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
 import { useEconomy } from '@/hooks/useEconomy';
@@ -36,9 +37,9 @@ export function StoreScreen({ onHome, onLeaderboard }: StoreScreenProps) {
       <SafeAreaView style={styles.safe} edges={['top']}>
         <View style={styles.header}>
           <Text style={styles.title} accessibilityRole="header">STORE</Text>
-          <View style={styles.balance} accessible accessibilityLabel={`${economy.coins} coins`}>
+          <View style={styles.balance} accessible accessibilityLabel={coinsAccessibilityLabel(economy.coins)}>
             <CoinMedallion size={24} />
-            <Text style={styles.balanceText}>{loading ? '—' : economy.coins}</Text>
+            <Text style={styles.balanceText}>{loading ? '—' : formatCurrency(economy.coins)}</Text>
           </View>
         </View>
 

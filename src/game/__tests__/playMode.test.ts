@@ -6,6 +6,7 @@ describe('play mode policy', () => {
     expect(playPolicy('campaign')).toEqual({
       persistProgress: true, awardRewards: true, persistEconomy: true, persistTutorials: true,
       allowProgressReset: true, allowGameCenterSubmission: true,
+      spendHeartOnLoss: true, enforceHeartGate: true,
     });
   });
 
@@ -13,6 +14,7 @@ describe('play mode policy', () => {
     expect(playPolicy('dev')).toEqual({
       persistProgress: false, awardRewards: false, persistEconomy: false, persistTutorials: false,
       allowProgressReset: false, allowGameCenterSubmission: false,
+      spendHeartOnLoss: false, enforceHeartGate: false,
     });
   });
 });

@@ -15,6 +15,7 @@ import { LEVEL_INTRO_MIN_MS, LevelIntro } from '@/components/gameplay/LevelIntro
 import { GameplayEnvironment } from '@/components/gameplay/GameplayEnvironment';
 import { DebugOverlay } from '@/components/DebugOverlay';
 import { DiscoveryOverlay } from '@/components/DiscoveryOverlay';
+import { OutOfHeartsModal } from '@/components/hearts/OutOfHeartsModal';
 import { Hud } from '@/components/Hud';
 import { RESULT_BEAT_MS, ResultOverlay } from '@/components/ResultOverlay';
 import { TutorialCoach } from '@/components/TutorialCoach';
@@ -30,11 +31,14 @@ import { isCoreV2 } from '@/game/engine/ruleset';
 import type { LevelDefinition } from '@/game/engine/types';
 import { type GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
+import { heartCostFor } from '@/game/hearts/gate';
 import { useColorAssist } from '@/hooks/useColorAssist';
 import { useGameSession } from '@/hooks/useGameSession';
+import { useHeartGate } from '@/hooks/useHeartGate';
 import { usePlayEconomy } from '@/hooks/usePlayEconomy';
 import { playPolicy, progressResetFor, type PlayMode } from '@/game/playMode';
 import { useTutorialCompletion } from '@/hooks/useTutorialCompletion';
+import { spendHeartForLoss } from '@/storage/hearts';
 import { GAMEPLAY } from '@/theme/gameplayLayout';
 import { GP, GP_TYPE } from '@/theme/gameplayUi';
 import { GP_MOTION } from '@/theme/gameplayMotion';
@@ -124,9 +128,23 @@ export function GameScreen({
     if (policy.persistProgress) onWin(levelId);
   }, [levelId, onWin, economyApi, policy]);
 
+  // Hearts (M11). One id per run — minted lazily at the loss, cleared by any
+  // restart — so the charge is idempotent per run: the session reports a
+  // result once (`reportResult`), and the store refuses a second charge for
+  // the same id even if a loss were ever reported twice. A win, a quit, or a
+  // dev run costs nothing (`heartCostFor`).
+  const runId = useRef<string | null>(null);
+  const handleLose = useCallback(() => {
+    if (heartCostFor(mode, 'lost') === 0) return;
+    runId.current ??= `${levelId}:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 8)}`;
+    void spendHeartForLoss(runId.current);
+  }, [mode, levelId]);
+  const heartGate = useHeartGate(mode);
+
   const tutorials = useTutorialCompletion();
   const session = useGameSession(levelId, {
     onWin: handleWin,
+    onLose: handleLose,
     level: levelOverride,
     completedTutorials: tutorials.ready ? tutorials.completed : null,
     onTutorialComplete: policy.persistTutorials ? tutorials.markComplete : undefined,
@@ -231,6 +249,7 @@ export function GameScreen({
   const boardEntryStyle = useAnimatedStyle(() => ({ opacity: 0.45 + boardEntry.value * 0.55 }));
   const { restart } = session;
   const handleRestart = useCallback(() => {
+    runId.current = null;
     setEarnedCoins(undefined);
     setBombFlash(null);
     restart();
@@ -462,6 +481,7 @@ export function GameScreen({
                   presentThrough={session.presentThrough}
                   colorAssist={colorAssist}
                   reducedMotion={reducedMotion}
+                  timebase={session.timebase}
                 />
               ) : (
                 <OrbitBoard
@@ -472,6 +492,7 @@ export function GameScreen({
                   presentThrough={session.presentThrough}
                   colorAssist={colorAssist}
                   reducedMotion={reducedMotion}
+                  timebase={session.timebase}
                 />
               )}
               {won ? (
@@ -558,9 +579,20 @@ export function GameScreen({
       <ResultOverlay
         visible={lost}
         reason={state.holding.length >= state.holdingCapacity ? 'holdingFull' : 'noMoves'}
-        onRetry={handleRestart}
+        // Retry is free; only the next loss costs a heart. At 0 hearts the
+        // gate raises Out of Hearts instead of restarting (never in dev).
+        onRetry={() => heartGate.guard(handleRestart)}
         onHome={onExit}
       />
+
+      {/* Not mounted in dev: a dev run never even reads the hearts save. */}
+      {policy.enforceHeartGate ? (
+        <OutOfHeartsModal
+          visible={heartGate.blocked}
+          onClose={heartGate.dismiss}
+          onPlay={() => heartGate.guard(handleRestart)}
+        />
+      ) : null}
 
       <DebugOverlay
         state={session.engineState}

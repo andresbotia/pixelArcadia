@@ -295,6 +295,14 @@ export async function resetEconomy(): Promise<EconomyState> {
   });
 }
 
+/** DEV-ONLY tooling: force the coin balance (the Level Browser's save tools). */
+export async function _devSetCoins(coins: number): Promise<EconomyState> {
+  return queueMutation((current) => {
+    const next = sanitizeEconomy({ ...current, coins });
+    return { next, result: next };
+  });
+}
+
 /** Dev-only test helper to clear in-memory cache between tests. */
 export function _clearEconomyCache(): void {
   cachedState = null;

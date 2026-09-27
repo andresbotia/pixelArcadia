@@ -17,6 +17,7 @@ import { EnergyShot } from './EnergyShot';
 import { cellCenter, computeBoardGeometry, type BoardGeometry } from './boardGeometry';
 import { assignLaneSlots, laneOffset } from './laneAssignment';
 import { RejectPulse } from './RejectPulse';
+import type { PresentationTimebase } from '@/game/presentation/endgame';
 import { usePassClock, usePresentationClock, type PresentationClock } from './usePresentationClock';
 import { RoundedLauncherGate, RoundedRail, RoundedTrack, trackOuterRadius } from './RoundedRail';
 import { Pixel } from './Pixel';
@@ -45,6 +46,8 @@ interface CoreV2BoardProps {
   presentThrough: (passId: number, count: number) => void;
   colorAssist?: boolean;
   reducedMotion?: boolean;
+  /** Session presentation timebase (M11.5 endgame fast-forward). Omitted → 1× wall clock. */
+  timebase?: PresentationTimebase;
   modifiers?: Record<string, ModifierInstance>;
 }
 
@@ -57,7 +60,7 @@ interface CoreV2BoardProps {
  * since neither depends on the rail's shape; only the rail paint and the
  * traveling character are new.
  */
-export const CoreV2Board = memo(function CoreV2Board({ size, width, height, state, flights, landingFlights, presentThrough, colorAssist, reducedMotion, modifiers }: CoreV2BoardProps) {
+export const CoreV2Board = memo(function CoreV2Board({ size, width, height, state, flights, landingFlights, presentThrough, colorAssist, reducedMotion, modifiers, timebase }: CoreV2BoardProps) {
   const availW = width ?? size;
   const availH = height ?? size;
   const geo = useMemo(
@@ -95,7 +98,7 @@ export const CoreV2Board = memo(function CoreV2Board({ size, width, height, stat
     return laneSlots.current;
   }, [actors]);
   // One UI-thread time source for every Pal; runs only while a Pal is shown.
-  const boardClock = usePresentationClock(actors.length > 0);
+  const boardClock = usePresentationClock(actors.length > 0, timebase);
 
   return (
     <View style={{ width: canvasW, height: canvasH, overflow: 'visible' }}>

@@ -237,8 +237,3 @@ export const PIXEL_STEP_POLYGON: readonly (readonly [number, number])[] = [
   [0.12, 0.94], [0.06, 0.94], [0.06, 0.88], [0, 0.88], [0, 0.12], [0.06, 0.12],
   [0.06, 0.06], [0.12, 0.06],
 ];
-
-/** `1350` → `"1,350"`. Plain string work — no Intl dependency. */
-export function formatCount(n: number): string {
-  return String(Math.trunc(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-}

@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "scheme": "orbitide",
     "userInterfaceStyle": "dark",
-    "backgroundColor": "#0E1442",
+    "backgroundColor": "#3B63E8",
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -44,9 +44,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/splash-icon.png",
+          "image": "./assets/splash-logo.png",
+          "imageWidth": 280,
           "resizeMode": "contain",
-          "backgroundColor": "#0E1442"
+          "backgroundColor": "#3B63E8"
         }
       ],
       [

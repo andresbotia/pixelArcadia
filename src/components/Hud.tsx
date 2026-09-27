@@ -8,7 +8,8 @@ import { usePressDepth } from '@/components/gameplay/motionKit';
 import { AvIcon, type AvIconName } from '@/components/v2/AvIcon';
 import { CoinMedallion, DifficultyMeter, LipSurface, PixelCaption } from '@/components/v2/primitives';
 import type { LevelDifficulty } from '@/game/engine/types';
-import { AV, AV_DEPTH, AV_FONT, AV_SIZE, AV_TYPE, formatCount } from '@/theme/arcadiaV2';
+import { coinsAccessibilityLabel, formatCurrency } from '@/game/economy/formatCurrency';
+import { AV, AV_DEPTH, AV_FONT, AV_SIZE, AV_TYPE } from '@/theme/arcadiaV2';
 import { GAMEPLAY } from '@/theme/gameplayLayout';
 import { GP } from '@/theme/gameplayUi';
 
@@ -149,9 +150,9 @@ const SheetButton = memo(function SheetButton({ icon, label, accessibilityLabel,
 
 const CoinChip = memo(function CoinChip({ coins }: { coins: number }) {
   return (
-    <View accessible accessibilityRole="text" accessibilityLabel={`${coins} coins`} style={styles.coinChip}>
+    <View accessible accessibilityRole="text" accessibilityLabel={coinsAccessibilityLabel(coins)} style={styles.coinChip}>
       <CoinMedallion size={22} />
-      <Text style={styles.coinNum}>{formatCount(coins)}</Text>
+      <Text style={styles.coinNum} numberOfLines={1}>{formatCurrency(coins)}</Text>
     </View>
   );
 });

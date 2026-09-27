@@ -2,53 +2,71 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { HeartCountdown } from '@/components/hearts/HeartCountdown';
 import { AvHeartIcon, AvIcon } from '@/components/v2/AvIcon';
 import { CoinMedallion } from '@/components/v2/primitives';
-import { AV, AV_FONT, AV_TYPE, formatCount } from '@/theme/arcadiaV2';
-import { HOME_COINS_PLACEHOLDER, HOME_HEARTS_PLACEHOLDER } from '@/theme/homeV2';
+import { coinsAccessibilityLabel, formatCurrency } from '@/game/economy/formatCurrency';
+import { MAX_HEARTS } from '@/game/hearts/config';
+import { AV, AV_FONT, AV_TYPE } from '@/theme/arcadiaV2';
 
 interface HomeHudProps {
-  hearts?: number;
-  coins?: number;
+  hearts: number;
+  /** Epoch ms of the next heart; `null` when full (no countdown is drawn). */
+  nextHeartAt: number | null;
+  /** Screen focused + app foregrounded — the countdown only ticks while true. */
+  live: boolean;
+  coins: number;
   /** Mint "+" on the coin pill. Omitted → the "+" is not drawn. */
   onAddCoins?: () => void;
   onSettings?: () => void;
 }
 
-/** Lives are presentation placeholders (no heart-loss logic yet); 5 reads as full. */
-const HEARTS_MAX = 5;
-
 /**
  * M7A — v2 Home resource bar: white 92% pills, 36pt tall, each led by a 28pt
- * medallion with a 2pt inner lip. Lives left; coins (+ mint "+") and a glass
- * settings button right. Accessibility labels sit on the counters.
+ * medallion with a 2pt inner lip. Lives left (count over FULL, or over the
+ * MM:SS to the next heart); coins (+ mint "+") and a glass settings button
+ * right. Both pills size to their content — the balance is pre-compacted by
+ * `formatCurrency` (≤ 5 glyphs up to 99.9K), so the row never overflows a
+ * 375pt screen. Accessibility labels carry the exact values.
  */
 export const HomeHud = memo(function HomeHud({
-  hearts = HOME_HEARTS_PLACEHOLDER,
-  coins = HOME_COINS_PLACEHOLDER,
+  hearts,
+  nextHeartAt,
+  live,
+  coins,
   onAddCoins,
   onSettings,
 }: HomeHudProps) {
-  const full = hearts >= HEARTS_MAX;
+  const full = hearts >= MAX_HEARTS || nextHeartAt === null;
   return (
     <View style={styles.row}>
-      <View style={[styles.pill, styles.heartPill]} accessible accessibilityLabel={`${hearts} lives${full ? ', full' : ''}`}>
+      <View
+        style={[styles.pill, styles.heartPill]}
+        accessible
+        accessibilityLabel={full ? `${hearts} lives, full` : `${hearts} of ${MAX_HEARTS} lives, next life soon`}
+      >
         <LinearGradient colors={[AV.heartTop, AV.heartBottom]} style={[styles.medallion, styles.heartMedallion]}>
           <View style={[styles.innerLip, { backgroundColor: AV.heartLip }]} />
           <AvHeartIcon size={15} />
         </LinearGradient>
         <View style={styles.stack}>
           <Text style={styles.count}>{hearts}</Text>
-          {full ? <Text style={styles.sub}>FULL</Text> : null}
+          {full ? (
+            <Text style={styles.sub}>FULL</Text>
+          ) : (
+            <HeartCountdown until={nextHeartAt} live={live} style={[styles.sub, styles.timer]} />
+          )}
         </View>
       </View>
 
       <View style={styles.spacer} />
 
       <View style={[styles.pill, styles.coinPill, !onAddCoins && styles.coinPillBare]}>
-        <View style={styles.coinValue} accessible accessibilityLabel={`${coins} coins`}>
+        <View style={styles.coinValue} accessible accessibilityLabel={coinsAccessibilityLabel(coins)}>
           <CoinMedallion size={28} />
-          <Text style={[styles.count, styles.coinCount]}>{formatCount(coins)}</Text>
+          <Text style={[styles.count, styles.coinCount]} numberOfLines={1}>
+            {formatCurrency(coins)}
+          </Text>
         </View>
         {onAddCoins ? (
           <Pressable
@@ -105,9 +123,10 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   heartPill: { paddingLeft: 4, paddingRight: 12 },
-  coinPill: { paddingHorizontal: 4 },
-  coinPillBare: { paddingRight: 8 },
-  coinValue: { flexDirection: 'row', alignItems: 'center', gap: 8 },
+  // 4pt around the medallion and the "+", 10pt clear between number and "+".
+  coinPill: { paddingHorizontal: 4, gap: 10 },
+  coinPillBare: { paddingRight: 12 },
+  coinValue: { flexDirection: 'row', alignItems: 'center', gap: 7 },
   medallion: {
     width: 28,
     height: 28,
@@ -119,8 +138,11 @@ const styles = StyleSheet.create({
   innerLip: { position: 'absolute', left: 0, right: 0, bottom: 0, height: 2 },
   stack: { justifyContent: 'center' },
   count: { ...AV_TYPE.counter, color: AV.ink, lineHeight: 17 },
-  coinCount: { minWidth: 44 },
+  // Floor only, so "0" and "50" don't collapse the pill; wider balances grow it.
+  coinCount: { minWidth: 28, textAlign: 'center' },
   sub: { fontFamily: AV_FONT.bold, fontSize: 9, lineHeight: 10, letterSpacing: 0.5, color: AV.inkMuted },
+  // Fixed-width digits so the pill doesn't twitch every second.
+  timer: { color: AV.heartLip, fontVariant: ['tabular-nums'], letterSpacing: 0.2, minWidth: 27 },
   plus: {
     width: 26,
     height: 26,

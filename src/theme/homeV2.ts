@@ -18,10 +18,6 @@ export const homeV2 = {
 
 export type HomeV2Token = keyof typeof homeV2;
 
-/** Presentation-only placeholders — no economy / heart-loss logic. */
-export const HOME_HEARTS_PLACEHOLDER = 5;
-export const HOME_COINS_PLACEHOLDER = 0;
-
 export function homeAlpha(hex: string, alpha: number): string {
   const n = parseInt(hex.slice(1), 16);
   const r = (n >> 16) & 255;

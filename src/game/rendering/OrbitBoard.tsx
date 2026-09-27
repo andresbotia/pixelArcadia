@@ -12,6 +12,7 @@ import { EnergyShot } from './EnergyShot';
 import { cellCenter, computeBoardGeometry, type BoardGeometry } from './boardGeometry';
 import { assignLaneSlots, laneOffset } from './laneAssignment';
 import { RejectPulse } from './RejectPulse';
+import type { PresentationTimebase } from '@/game/presentation/endgame';
 import { usePassClock, usePresentationClock, type PresentationClock } from './usePresentationClock';
 import { OrbitingCharge } from './OrbitingCharge';
 import { OrbitRail, LaunchHubMarker } from './OrbitRail';
@@ -32,6 +33,8 @@ interface OrbitBoardProps {
   presentThrough: (passId: number, count: number) => void;
   colorAssist?: boolean;
   reducedMotion?: boolean;
+  /** Session presentation timebase (M11.5 endgame fast-forward). Omitted → 1× wall clock. */
+  timebase?: PresentationTimebase;
   modifiers?: Record<string, ModifierInstance>;
 }
 
@@ -44,7 +47,7 @@ interface OrbitBoardProps {
  * clock, so up to five charges animate independently off one shared board
  * without a singleton anywhere.
  */
-export const OrbitBoard = memo(function OrbitBoard({ size, state, flights, landingFlights, presentThrough, colorAssist, reducedMotion, modifiers }: OrbitBoardProps) {
+export const OrbitBoard = memo(function OrbitBoard({ size, state, flights, landingFlights, presentThrough, colorAssist, reducedMotion, modifiers, timebase }: OrbitBoardProps) {
   const geo = useMemo(
     () => computeBoardGeometry(size, state.width, state.height),
     [size, state.width, state.height],
@@ -74,7 +77,7 @@ export const OrbitBoard = memo(function OrbitBoard({ size, state, flights, landi
     return laneSlots.current;
   }, [actors]);
   // One UI-thread time source for every Pal; runs only while a Pal is shown.
-  const boardClock = usePresentationClock(actors.length > 0);
+  const boardClock = usePresentationClock(actors.length > 0, timebase);
 
   return (
     <View style={{ width: size, height: size, overflow: 'visible' }}>

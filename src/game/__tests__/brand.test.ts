@@ -10,6 +10,7 @@ import {
   WORDMARK_LABEL,
   wordmark,
 } from '@/theme/brand';
+import { BOOT_SPLASH, SPLASH_LOGO_PATH } from '@/theme/bootSplash';
 import { orbColors } from '@/theme/colors';
 
 const repoRoot = resolve(__dirname, '../../..');
@@ -164,15 +165,22 @@ describe('app config — display name over untouched technical identifiers', () 
     expect(cfg.expo.updates.url).toContain('07cb395c-b299-49d3-9100-f360874eaea5');
   });
 
-  it('wires the approved icon / splash / adaptive-icon brand colours', () => {
-    expect(cfg.expo.backgroundColor).toBe('#0E1442');
+  it('wires the approved icon / adaptive-icon brand colours', () => {
     expect(cfg.expo.icon).toBe('./assets/icon.png');
     expect(cfg.expo.android.adaptiveIcon.backgroundColor).toBe('#182055');
+  });
+
+  it('pins the native splash to the in-app boot loader (M10 seamless hand-off)', () => {
     const splash = cfg.expo.plugins.find(
-      (p): p is [string, { backgroundColor: string }] =>
+      (p): p is [string, { image: string; imageWidth: number; backgroundColor: string }] =>
         Array.isArray(p) && p[0] === 'expo-splash-screen',
     );
-    expect(splash?.[1].backgroundColor).toBe('#0E1442');
+    expect(splash?.[1].image).toBe(SPLASH_LOGO_PATH);
+    expect(splash?.[1].imageWidth).toBe(BOOT_SPLASH.logoWidth);
+    expect(splash?.[1].backgroundColor).toBe(BOOT_SPLASH.background);
+    // Root view colour too, so nothing between native and JS can flash another colour.
+    expect(cfg.expo.backgroundColor).toBe(BOOT_SPLASH.background);
+    expect(existsSync(join(repoRoot, SPLASH_LOGO_PATH))).toBe(true);
   });
 });
 

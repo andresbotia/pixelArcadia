@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -15,16 +15,18 @@ import { PixelifySans_600SemiBold } from '@expo-google-fonts/pixelify-sans';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { BootSplash } from '@/components/boot/BootSplash';
 import { gameCenter } from '@/services/gameCenter';
+import { preloadSaveData } from '@/storage/boot';
 import { AV } from '@/theme/arcadiaV2';
+import { BOOT_SPLASH } from '@/theme/bootSplash';
 
 void SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   // Live wordmark font + the v2 UI faces (Rubik for all UI and numbers,
-  // Pixelify Sans for tiny brand captions). The UI never blocks on them —
-  // text falls back to the system face until they resolve — but we hold the
-  // native splash a beat so the first frame is already branded.
+  // Pixelify Sans for tiny brand captions). Home mounts underneath the boot
+  // loader immediately; the loader lifts once these AND the saves are ready.
   const [fontsLoaded, fontError] = useFonts({
     SpaceGrotesk_700Bold,
     Rubik_400Regular,
@@ -36,9 +38,22 @@ export default function RootLayout() {
     PixelifySans_600SemiBold,
   });
 
+  // M10 launch: native splash (static, same colour + logo) → `BootSplash`
+  // (hides the native one on its first matching frame) → Home. Nothing here
+  // waits on a timer except the safety cap for a storage call that never
+  // answers; a fast boot goes straight through.
+  const [savesReady, setSavesReady] = useState(false);
+  const [bootVisible, setBootVisible] = useState(true);
   useEffect(() => {
-    if (fontsLoaded || fontError) void SplashScreen.hideAsync();
-  }, [fontsLoaded, fontError]);
+    let alive = true;
+    const settle = () => { if (alive) setSavesReady(true); };
+    const cap = setTimeout(settle, BOOT_SPLASH.bootTimeoutMs);
+    void preloadSaveData().then(settle);
+    return () => { alive = false; clearTimeout(cap); };
+  }, []);
+  const bootReady = savesReady && (fontsLoaded || !!fontError);
+  const hideNativeSplash = useCallback(() => { void SplashScreen.hideAsync(); }, []);
+  const finishBoot = useCallback(() => setBootVisible(false), []);
 
   // Game Center is additive: sign-in runs in the background (GameKit shows
   // its own sheet if needed) and never gates the app. iOS only; no-op elsewhere.
@@ -78,6 +93,9 @@ export default function RootLayout() {
           <Stack.Screen name="world/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="game" options={{ animation: 'fade_from_bottom', animationDuration: 280 }} />
         </Stack>
+        {bootVisible ? (
+          <BootSplash ready={bootReady} onHandoff={hideNativeSplash} onDone={finishBoot} />
+        ) : null}
       </SafeAreaProvider>
     </GestureHandlerRootView>
   );

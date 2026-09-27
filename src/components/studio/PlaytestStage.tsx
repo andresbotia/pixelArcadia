@@ -33,6 +33,9 @@ export default function PlaytestStage({ level, onExit }: PlaytestStageProps) {
           key={`${level.id}-${runId}`}
           level={level}
           levelId={level.id}
+          // Developer tooling: sandboxed like the dev Level Browser — never
+          // touches hearts, coins, progress or Game Center.
+          mode="dev"
           onWin={() => undefined}
           onAdvance={reset}
           onExit={onExit}

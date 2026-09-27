@@ -47,6 +47,16 @@ export const FEEL = {
 } as const;
 
 /**
+ * M11.5 — endgame fast-forward. Once every tunnel queue is permanently empty
+ * (`isEndgameFastForwardEligible`), the board's presentation clock runs this
+ * many times faster than wall time. It scales the CLOCK, never a script, so
+ * every Pal timestamp — lift, lap, shots, convoy holds, Holding travel, Gate
+ * burst, result beat — speeds up together and keeps its order and spacing.
+ * The engine never sees it.
+ */
+export const ENDGAME_SPEED_MULTIPLIER = 2.5;
+
+/**
  * Single tunable multiplier for the per-encounter presentation (anticipation +
  * projectile + impact). Kept at 1 for M1 parity; wiring it below 1 tightens
  * dense sweeps without touching engine truth.

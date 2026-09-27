@@ -23,11 +23,21 @@ export interface PlayPolicy {
   readonly allowProgressReset: boolean;
   /** Leaderboard scores / achievements may be sent to Game Center. */
   readonly allowGameCenterSubmission: boolean;
+  /** A loss costs one saved heart. */
+  readonly spendHeartOnLoss: boolean;
+  /** Starting a run requires a heart (0 hearts → Out of Hearts instead of play). */
+  readonly enforceHeartGate: boolean;
 }
 
 const POLICIES: Record<PlayMode, PlayPolicy> = {
-  campaign: { persistProgress: true, awardRewards: true, persistEconomy: true, persistTutorials: true, allowProgressReset: true, allowGameCenterSubmission: true },
-  dev: { persistProgress: false, awardRewards: false, persistEconomy: false, persistTutorials: false, allowProgressReset: false, allowGameCenterSubmission: false },
+  campaign: {
+    persistProgress: true, awardRewards: true, persistEconomy: true, persistTutorials: true,
+    allowProgressReset: true, allowGameCenterSubmission: true, spendHeartOnLoss: true, enforceHeartGate: true,
+  },
+  dev: {
+    persistProgress: false, awardRewards: false, persistEconomy: false, persistTutorials: false,
+    allowProgressReset: false, allowGameCenterSubmission: false, spendHeartOnLoss: false, enforceHeartGate: false,
+  },
 };
 
 export function playPolicy(mode: PlayMode): PlayPolicy {

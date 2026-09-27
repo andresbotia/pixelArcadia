@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import type { LevelDifficulty } from '@/game/engine/types';
 import { devLevelIndex, filterDevLevels, type DevLevelFilter, type DevLevelRow } from '@/game/levels/devLevelIndex';
+import { DevSaveTools } from '@/screens/dev/DevSaveTools';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
 
 interface DevLevelBrowserScreenProps {
@@ -45,7 +46,8 @@ export function DevLevelBrowserScreen({ onPlay, onClose }: DevLevelBrowserScreen
         <Text style={styles.title}>DEV LEVELS</Text>
         <Text style={styles.count}>{visible.length}/{rows.length}</Text>
       </View>
-      <Text style={styles.notice}>Dev test mode — no progress, rewards or item use is saved.</Text>
+      <Text style={styles.notice}>Dev test mode — no progress, rewards, item use or hearts are saved.</Text>
+      <DevSaveTools />
 
       <TextInput
         style={styles.search}
