@@ -6,7 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { HomeBottomNav } from '@/components/home/HomeBottomNav';
 import { feedback } from '@/game/feedback';
 import type { GameCenterState } from '@/game/gameCenter/service';
-import { highestClearedLevel } from '@/game/gameCenter/plan';
+import { publishedHighestCompleted } from '@/game/levels/publishedCampaign';
 import { useGameCenter } from '@/hooks/useGameCenter';
 import { useProgress } from '@/hooks/useProgress';
 import { gameCenter } from '@/services/gameCenter';
@@ -51,7 +51,7 @@ export function LeaderboardScreen({ onShop, onHome }: LeaderboardScreenProps) {
         <View style={styles.card}>
           <Text style={styles.kicker}>CAMPAIGN PROGRESS</Text>
           <Text style={styles.cleared}>
-            {loading ? '—' : highestClearedLevel(progress.highestUnlockedLevel)}
+            {loading ? '—' : publishedHighestCompleted(progress.highestUnlockedLevel)}
           </Text>
           <Text style={styles.caption}>levels cleared</Text>
         </View>

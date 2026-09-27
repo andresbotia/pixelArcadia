@@ -1,6 +1,8 @@
 import { memo } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text } from 'react-native';
+import { Alert, Pressable, ScrollView, StyleSheet, Text } from 'react-native';
 
+import { ads } from '@/ads/service';
+import type { AdPlacement } from '@/ads/types';
 import { formatCurrency } from '@/game/economy/formatCurrency';
 import { _devSetCoins } from '@/storage/economy';
 import { _devSetHearts } from '@/storage/hearts';
@@ -8,6 +10,17 @@ import { AV, AV_FONT } from '@/theme/arcadiaV2';
 
 const HEART_PRESETS = [0, 1, 4, 5] as const;
 const COIN_PRESETS = [1_300, 9_999, 12_500, 125_000, 1_200_000] as const;
+
+/**
+ * Show a TEST ad straight from the controller (dev builds only ever resolve
+ * Google's test units) and report the result. Grants nothing and never
+ * touches the cadence — it bypasses the product flows on purpose.
+ */
+async function showTestAd(placement: AdPlacement): Promise<void> {
+  const state = ads.getState(placement);
+  const res = await ads.show(placement);
+  Alert.alert('Test ad', `${placement}\nwas: ${state}\n${JSON.stringify(res)}`);
+}
 
 /**
  * DEV-ONLY: presets that write the REAL save, for checking the Home heart/coin
@@ -25,6 +38,8 @@ export const DevSaveTools = memo(function DevSaveTools() {
       {COIN_PRESETS.map((n) => (
         <Tool key={`c${n}`} label={`◈ ${formatCurrency(n)}`} onPress={() => void _devSetCoins(n)} />
       ))}
+      <Tool label="AD ▶ INT" onPress={() => void showTestAd('INTERSTITIAL_CAMPAIGN')} />
+      <Tool label="AD ▶ RWD" onPress={() => void showTestAd('REWARDED_HEART')} />
     </ScrollView>
   );
 });

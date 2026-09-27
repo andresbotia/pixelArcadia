@@ -27,16 +27,20 @@ export interface PlayPolicy {
   readonly spendHeartOnLoss: boolean;
   /** Starting a run requires a heart (0 hearts → Out of Hearts instead of play). */
   readonly enforceHeartGate: boolean;
+  /** Interstitial cadence, rewarded retry and rewarded heart (M12). Dev play shows no ads and moves no ad state. */
+  readonly allowAds: boolean;
 }
 
 const POLICIES: Record<PlayMode, PlayPolicy> = {
   campaign: {
     persistProgress: true, awardRewards: true, persistEconomy: true, persistTutorials: true,
     allowProgressReset: true, allowGameCenterSubmission: true, spendHeartOnLoss: true, enforceHeartGate: true,
+    allowAds: true,
   },
   dev: {
     persistProgress: false, awardRewards: false, persistEconomy: false, persistTutorials: false,
     allowProgressReset: false, allowGameCenterSubmission: false, spendHeartOnLoss: false, enforceHeartGate: false,
+    allowAds: false,
   },
 };
 

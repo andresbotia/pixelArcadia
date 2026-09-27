@@ -9,7 +9,9 @@ module.exports = {
   // `src/theme` added in the Pixel Arcadia redesign (Milestone 1): the new
   // material/motion/world-skin foundations are pure TS (no React Native
   // imports), same as `src/game`, and need their own unit tests discovered.
-  roots: ['<rootDir>/src/game', '<rootDir>/src/theme'],
+  // `src/ads` (M12): the ad policy/cadence/controller layer is pure TS behind an
+  // injected SDK adapter, tested with a fake SDK.
+  roots: ['<rootDir>/src/game', '<rootDir>/src/theme', '<rootDir>/src/ads', '<rootDir>/src/iap', '<rootDir>/src/analytics'],
   testMatch: ['**/__tests__/**/*.test.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

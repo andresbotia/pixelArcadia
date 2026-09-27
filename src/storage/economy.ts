@@ -1,7 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { itemCoinPrice, itemProductId } from '@/game/economy/catalog';
 import { M6_ECONOMY, type GameplayItemId } from '@/game/economy/config';
-import { applyCoinPurchase, type PurchaseStatus } from '@/game/economy/purchase';
+import {
+  applyCoinPurchase,
+  reconcileIapTransactions,
+  type IapLedger,
+  type PurchaseStatus,
+  type StoreTransactionRecord,
+} from '@/game/economy/purchase';
 
 const STORAGE_KEY = 'orbitide/economy/v1';
 
@@ -15,6 +21,8 @@ export interface EconomyState {
   coins: number;
   inventory: EconomyInventory;
   rewardedLevelIds: number[];
+  /** Real-money consumable grants already applied (M13). Same save as coins → one atomic write. */
+  iapLedger: IapLedger;
 }
 
 export const DEFAULT_ECONOMY_STATE: EconomyState = {
@@ -25,15 +33,32 @@ export const DEFAULT_ECONOMY_STATE: EconomyState = {
     bomb: M6_ECONOMY.startingInventory.bomb,
   },
   rewardedLevelIds: [],
+  iapLedger: { startedAt: 0, processed: [] },
 };
 
-export function sanitizeEconomy(raw: unknown): EconomyState {
+function freshEconomy(now: number): EconomyState {
+  return {
+    coins: DEFAULT_ECONOMY_STATE.coins,
+    inventory: { ...DEFAULT_ECONOMY_STATE.inventory },
+    rewardedLevelIds: [],
+    iapLedger: { startedAt: now, processed: [] },
+  };
+}
+
+function sanitizeLedger(raw: unknown, now: number): IapLedger {
+  if (!raw || typeof raw !== 'object') return { startedAt: now, processed: [] };
+  const r = raw as Record<string, unknown>;
+  const startedAt = typeof r.startedAt === 'number' && Number.isFinite(r.startedAt) && r.startedAt > 0 ? r.startedAt : now;
+  const processed = Array.isArray(r.processed)
+    ? [...new Set(r.processed.filter((id): id is string => typeof id === 'string' && id.length > 0))]
+    : [];
+  return { startedAt, processed };
+}
+
+/** `now` only seeds a missing IAP ledger (a fresh install, or a pre-M13 save). */
+export function sanitizeEconomy(raw: unknown, now: number = Date.now()): EconomyState {
   if (!raw || typeof raw !== 'object') {
-    return {
-      coins: DEFAULT_ECONOMY_STATE.coins,
-      inventory: { ...DEFAULT_ECONOMY_STATE.inventory },
-      rewardedLevelIds: [],
-    };
+    return freshEconomy(now);
   }
 
   const r = raw as Record<string, unknown>;
@@ -72,6 +97,7 @@ export function sanitizeEconomy(raw: unknown): EconomyState {
     coins,
     inventory,
     rewardedLevelIds,
+    iapLedger: sanitizeLedger(r.iapLedger, now),
   };
 }
 
@@ -101,28 +127,40 @@ function notifyListeners(state: EconomyState): void {
   }
 }
 
+/** Synchronous read of the loaded economy (boot preloads it); null before the first load. */
+export function peekEconomy(): EconomyState | null {
+  return cachedState;
+}
+
 /** Load persisted economy state from storage. */
 export async function loadEconomy(): Promise<EconomyState> {
   if (cachedState) {
     return cachedState;
   }
+  let ledgerIsNew = false;
   try {
     const stored = await AsyncStorage.getItem(STORAGE_KEY);
     if (!stored) {
-      cachedState = {
-        coins: DEFAULT_ECONOMY_STATE.coins,
-        inventory: { ...DEFAULT_ECONOMY_STATE.inventory },
-        rewardedLevelIds: [],
-      };
+      cachedState = freshEconomy(Date.now());
+      ledgerIsNew = true;
     } else {
-      cachedState = sanitizeEconomy(JSON.parse(stored));
+      const parsed = JSON.parse(stored) as Record<string, unknown> | null;
+      ledgerIsNew = !parsed || typeof parsed !== 'object' || !parsed.iapLedger;
+      cachedState = sanitizeEconomy(parsed);
     }
   } catch {
-    cachedState = {
-      coins: DEFAULT_ECONOMY_STATE.coins,
-      inventory: { ...DEFAULT_ECONOMY_STATE.inventory },
-      rewardedLevelIds: [],
-    };
+    cachedState = freshEconomy(Date.now());
+    ledgerIsNew = true;
+  }
+  // Persist a newly started IAP ledger at once: if it only lived in memory, a
+  // crash after a purchase but before any other write would restart it LATER
+  // than that purchase, and crash recovery would skip it.
+  if (ledgerIsNew) {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(cachedState));
+    } catch {
+      // Non-fatal.
+    }
   }
   return cachedState;
 }
@@ -278,7 +316,7 @@ export async function consumeItem(itemId: GameplayItemId): Promise<ConsumeResult
  * Reset economy to initial test configuration.
  */
 export async function resetEconomy(): Promise<EconomyState> {
-  return queueMutation(() => {
+  return queueMutation((current) => {
     const next: EconomyState = {
       coins: M6_ECONOMY.startingCoins,
       inventory: {
@@ -287,11 +325,33 @@ export async function resetEconomy(): Promise<EconomyState> {
         bomb: M6_ECONOMY.startingInventory.bomb,
       },
       rewardedLevelIds: [],
+      // The purchase ledger survives a reset: already-granted transactions
+      // must never grant again.
+      iapLedger: current.iapLedger,
     };
     return {
       next,
       result: next,
     };
+  });
+}
+
+/**
+ * THE real-money consumable grant (M13). For every CONFIRMED account
+ * transaction (RevenueCat's list, keyed by RevenueCat's transaction id) that
+ * this install has not processed and that is newer than its ledger: apply the
+ * catalog reward and mark the id processed — all in one state, one persist.
+ * Serialized with every other economy write, so the purchase result, the
+ * CustomerInfo listener and startup refreshes can race freely: whoever runs
+ * second finds the ids already processed and grants nothing.
+ */
+export async function reconcileIapPurchases(
+  transactions: readonly StoreTransactionRecord[], opts: { confirmedPurchaseOf?: string } = {},
+): Promise<StoreTransactionRecord[]> {
+  if (transactions.length === 0) return [];
+  return queueMutation((current) => {
+    const res = reconcileIapTransactions(current, transactions, opts);
+    return { next: res.state, result: res.granted };
   });
 }
 

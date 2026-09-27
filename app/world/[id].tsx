@@ -4,6 +4,7 @@ import { router, useFocusEffect, useLocalSearchParams } from 'expo-router';
 import { OutOfHeartsModal } from '@/components/hearts/OutOfHeartsModal';
 import { WorldLevelsScreen } from '@/screens/WorldLevelsScreen';
 import { CAMPAIGN_MANIFEST } from '@/game/levels/campaign';
+import { isPublishedCampaignLevel, publishedManifest } from '@/game/levels/publishedCampaign';
 import { useHeartGate } from '@/hooks/useHeartGate';
 import { useProgress } from '@/hooks/useProgress';
 
@@ -21,8 +22,11 @@ export default function WorldLevelsRoute() {
     }, [reload]),
   );
 
-  const index = CAMPAIGN_MANIFEST.worlds.findIndex((w) => w.id === params.id);
-  const world = index >= 0 ? CAMPAIGN_MANIFEST.worlds[index] : undefined;
+  // Published levels only: an unpublished world (or a stale/deep link to one)
+  // is unknown here and bounces back to the map.
+  const manifest = publishedManifest(CAMPAIGN_MANIFEST);
+  const index = manifest.worlds.findIndex((w) => w.id === params.id);
+  const world = index >= 0 ? manifest.worlds[index] : undefined;
 
   // Unknown/stale world id — bounce back to the map rather than render nothing.
   useEffect(() => {
@@ -34,8 +38,9 @@ export default function WorldLevelsRoute() {
   }, []);
 
   const selectLevel = useCallback((levelId: number) => {
+    if (!isPublishedCampaignLevel(levelId)) return;
     pendingLevel.current = levelId;
-    guard(() => startLevel(levelId));
+    guard(() => startLevel(levelId), levelId);
   }, [guard, startLevel]);
 
   const retryPending = useCallback(() => {
@@ -54,7 +59,7 @@ export default function WorldLevelsRoute() {
         onSelectLevel={selectLevel}
         onBack={() => (router.canGoBack() ? router.back() : router.replace('/worlds'))}
       />
-      <OutOfHeartsModal visible={gate.blocked} onClose={gate.dismiss} onPlay={retryPending} />
+      <OutOfHeartsModal visible={gate.blocked} onClose={gate.dismiss} onPlay={retryPending} source="world_levels" />
     </>
   );
 }

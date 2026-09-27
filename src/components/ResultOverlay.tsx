@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useEffect, type ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Animated, {
   Easing, useAnimatedStyle, useReducedMotion, useSharedValue, withDelay, withTiming,
@@ -27,6 +27,8 @@ interface ResultOverlayProps {
   reason?: FailureReason;
   onRetry: () => void;
   onHome: () => void;
+  /** Optional rewarded action under TRY AGAIN (M12 WATCH AD & RETRY; campaign only). */
+  rewardedAction?: ReactNode;
 }
 
 const COPY: Record<FailureReason, { chip: string; sub: string }> = {
@@ -41,12 +43,12 @@ const COPY: Record<FailureReason, { chip: string; sub: string }> = {
  * calm light text and the Pal looks down, not dead: failing is a retry beat,
  * not a punishment. TRY AGAIN is the one dominant action.
  */
-export const ResultOverlay = memo(function ResultOverlay({ visible, reason = 'holdingFull', onRetry, onHome }: ResultOverlayProps) {
+export const ResultOverlay = memo(function ResultOverlay({ visible, reason = 'holdingFull', onRetry, onHome, rewardedAction }: ResultOverlayProps) {
   if (!visible) return null;
-  return <FailCard reason={reason} onRetry={onRetry} onHome={onHome} />;
+  return <FailCard reason={reason} onRetry={onRetry} onHome={onHome} rewardedAction={rewardedAction} />;
 });
 
-function FailCard({ reason, onRetry, onHome }: { reason: FailureReason; onRetry: () => void; onHome: () => void }) {
+function FailCard({ reason, onRetry, onHome, rewardedAction }: { reason: FailureReason; onRetry: () => void; onHome: () => void; rewardedAction?: ReactNode }) {
   const reducedMotion = useReducedMotion();
   const shown = useSharedValue(0);
   useEffect(() => {
@@ -82,6 +84,8 @@ function FailCard({ reason, onRetry, onHome }: { reason: FailureReason; onRetry:
           fullWidth
           style={styles.cta}
         />
+
+        {rewardedAction}
 
         <Pressable onPress={onHome} hitSlop={12} accessibilityRole="button">
           <Text style={styles.secondary}>Home</Text>

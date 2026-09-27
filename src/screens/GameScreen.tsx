@@ -14,6 +14,10 @@ import { ControlDeck } from '@/components/gameplay/ControlDeck';
 import { LEVEL_INTRO_MIN_MS, LevelIntro } from '@/components/gameplay/LevelIntro';
 import { GameplayEnvironment } from '@/components/gameplay/GameplayEnvironment';
 import { DebugOverlay } from '@/components/DebugOverlay';
+import { adFlows } from '@/ads/service';
+import { heartLossFigures, type FailureReason, type RetryType, type RunHandle } from '@/analytics/api';
+import { analytics } from '@/analytics/service';
+import { RewardedRetryAction } from '@/components/ads/RewardedRetryAction';
 import { DiscoveryOverlay } from '@/components/DiscoveryOverlay';
 import { OutOfHeartsModal } from '@/components/hearts/OutOfHeartsModal';
 import { Hud } from '@/components/Hud';
@@ -27,8 +31,9 @@ import { OrbitBoard } from '@/game/rendering/OrbitBoard';
 import { resolveReveal, revealTimeline, type CelebrationTier } from '@/game/rendering/revealGeometry';
 import { CAMPAIGN_MANIFEST } from '@/game/levels/campaign';
 import { nextLevelId, requireLevel } from '@/game/levels/levels';
+import { nextPublishedLevelId, publishedManifest } from '@/game/levels/publishedCampaign';
 import { isCoreV2 } from '@/game/engine/ruleset';
-import type { LevelDefinition } from '@/game/engine/types';
+import type { GameState, LevelDefinition } from '@/game/engine/types';
 import { type GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
 import { heartCostFor } from '@/game/hearts/gate';
@@ -38,7 +43,8 @@ import { useHeartGate } from '@/hooks/useHeartGate';
 import { usePlayEconomy } from '@/hooks/usePlayEconomy';
 import { playPolicy, progressResetFor, type PlayMode } from '@/game/playMode';
 import { useTutorialCompletion } from '@/hooks/useTutorialCompletion';
-import { spendHeartForLoss } from '@/storage/hearts';
+import { peekEconomy } from '@/storage/economy';
+import { peekHearts, spendHeartForLoss } from '@/storage/hearts';
 import { GAMEPLAY } from '@/theme/gameplayLayout';
 import { GP, GP_TYPE } from '@/theme/gameplayUi';
 import { GP_MOTION } from '@/theme/gameplayMotion';
@@ -102,31 +108,62 @@ export function GameScreen({
 
   // UI-R6 celebration tier — derived from the same campaign manifest World
   // Select/World Levels already use, not a new progression rule: a capstone
-  // is simply the last level in its world's `levelIds`; the finale is World
-  // 10's capstone. Presentation-only, computed fresh from `level.id`.
-  const { worldTitle, tier } = useMemo<{ worldTitle: string; tier: CelebrationTier }>(() => {
-    const order = CAMPAIGN_MANIFEST.worlds.findIndex((w) => w.levelIds.includes(level.id));
-    const world = CAMPAIGN_MANIFEST.worlds[order];
-    if (!world) return { worldTitle: '', tier: 'normal' };
+  // is simply the last level in its world's `levelIds`; the finale is the
+  // last world's capstone. Presentation-only, computed fresh from `level.id`.
+  const { worldTitle, worldNumber, tier } = useMemo<{ worldTitle: string; worldNumber: number; tier: CelebrationTier }>(() => {
+    // Campaign celebrates against the PUBLISHED campaign, so its last published
+    // level is the finale; dev play keeps the full registry.
+    const manifest = mode === 'campaign' ? publishedManifest(CAMPAIGN_MANIFEST) : CAMPAIGN_MANIFEST;
+    const order = manifest.worlds.findIndex((w) => w.levelIds.includes(level.id));
+    const world = manifest.worlds[order];
+    if (!world) return { worldTitle: '', worldNumber: 0, tier: 'normal' };
     const isCapstone = world.levelIds[world.levelIds.length - 1] === level.id;
-    const isFinale = isCapstone && order === CAMPAIGN_MANIFEST.worlds.length - 1;
-    return { worldTitle: world.title, tier: isFinale ? 'finale' : isCapstone ? 'capstone' : 'normal' };
-  }, [level.id]);
+    const isFinale = isCapstone && order === manifest.worlds.length - 1;
+    return { worldTitle: world.title, worldNumber: order + 1, tier: isFinale ? 'finale' : isCapstone ? 'capstone' : 'normal' };
+  }, [level.id, mode]);
 
   const economyApi = usePlayEconomy(mode);
   const [earnedCoins, setEarnedCoins] = useState<number | undefined>(undefined);
   const [restockItem, setRestockItem] = useState<GameplayItemId | null>(null);
   const [bombFlash, setBombFlash] = useState<{ point: Point; size: number } | null>(null);
 
+  // Analytics (M14): one tracked run per campaign attempt (a no-op in dev).
+  // Reads the boot-loaded caches (`peekEconomy` / `peekHearts`) — the hook
+  // state still holds defaults on the first render.
+  const run = useRef<RunHandle | null>(null);
+  const beginRun = useCallback((retryType?: RetryType) => {
+    const economy = peekEconomy();
+    const inv = economy?.inventory ?? { undo: 0, extraSlot: 0, bomb: 0 };
+    run.current = analytics.startRun(mode, {
+      levelId,
+      world: worldNumber,
+      worldTitle,
+      difficulty: level.difficulty,
+      isReplay: economy?.rewardedLevelIds.includes(levelId) ?? false,
+      hearts: peekHearts()?.hearts ?? 0,
+      coins: economy?.coins ?? 0,
+      inventory: { undo: inv.undo, extraSlot: inv.extraSlot, bomb: inv.bomb },
+    }, retryType ? { type: retryType, previous: run.current } : undefined);
+  }, [mode, levelId, worldNumber, worldTitle, level.difficulty]);
+
   const handleWin = useCallback(async () => {
+    let firstClear = false;
+    let reward = 0;
+    let coinsAfter = peekEconomy()?.coins ?? 0;
     if (policy.awardRewards) {
       const res = await economyApi.settleFirstClear(levelId);
       if (res.awarded) {
         setEarnedCoins(res.reward);
       }
+      firstClear = res.awarded;
+      reward = res.reward;
+      coinsAfter = res.state.coins;
+      // Interstitial cadence counts NEW first clears only (`awarded` is false on replays).
+      adFlows.recordLevelClear(mode, res.awarded);
     }
+    run.current?.won({ isFirstClear: firstClear, firstClearReward: reward, heartsAfter: peekHearts()?.hearts ?? null, coinsAfter });
     if (policy.persistProgress) onWin(levelId);
-  }, [levelId, onWin, economyApi, policy]);
+  }, [levelId, onWin, economyApi, policy, mode]);
 
   // Hearts (M11). One id per run — minted lazily at the loss, cleared by any
   // restart — so the charge is idempotent per run: the session reports a
@@ -134,10 +171,25 @@ export function GameScreen({
   // the same id even if a loss were ever reported twice. A win, a quit, or a
   // dev run costs nothing (`heartCostFor`).
   const runId = useRef<string | null>(null);
+  /** Latest engine truth, for the loss's analytics context (reason / pending). */
+  const engineRef = useRef<GameState | null>(null);
   const handleLose = useCallback(() => {
-    if (heartCostFor(mode, 'lost') === 0) return;
+    const engine = engineRef.current;
+    const reason: FailureReason = engine && engine.holding.length >= engine.holdingCapacity ? 'holding_overflow' : 'no_moves';
+    const pendingCount = engine?.pendingHolding.length ?? 0;
+    const lostRun = run.current;
+    const coins = peekEconomy()?.coins ?? 0;
+    if (heartCostFor(mode, 'lost') === 0) {
+      lostRun?.lost({ reason, heartsBefore: null, heartsAfter: null, coins, pendingCount });
+      return;
+    }
     runId.current ??= `${levelId}:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 8)}`;
-    void spendHeartForLoss(runId.current);
+    void spendHeartForLoss(runId.current).then((res) => {
+      // A duplicate report or an empty bar is `spent: false` → never a second heart_spent.
+      const hearts = heartLossFigures(res);
+      if (hearts.emitSpent) analytics.heartSpent({ levelId, heartsAfter: hearts.after });
+      lostRun?.lost({ reason, heartsBefore: hearts.before, heartsAfter: hearts.after, coins, pendingCount });
+    }).catch(() => {});
   }, [mode, levelId]);
   const heartGate = useHeartGate(mode);
 
@@ -150,7 +202,25 @@ export function GameScreen({
     onTutorialComplete: policy.persistTutorials ? tutorials.markComplete : undefined,
   });
   const { state, launch, launchHeld } = session;
+  useEffect(() => { engineRef.current = session.engineState; }, [session.engineState]);
   const won = state.status === 'won';
+
+  // Run lifecycle: start once on mount; leaving with the run still open
+  // (Home button, back navigation) is an intentional abandon. Backgrounding
+  // never unmounts, so it never counts; ended runs ignore `abandon()`.
+  const runStarted = useRef(false);
+  useEffect(() => {
+    if (runStarted.current) return;
+    runStarted.current = true;
+    beginRun();
+  }, [beginRun]);
+  useEffect(() => () => run.current?.abandon(), []);
+  useEffect(() => { run.current?.observeHolding(state.holding.length); }, [state.holding.length]);
+  useEffect(() => {
+    if (session.timebase.rate > 1) {
+      run.current?.fastForward({ activeCount: session.activeCount, holdingCount: state.holding.length });
+    }
+  }, [session.timebase.rate, session.activeCount, state.holding.length]);
   const holdingCapacity = state.holdingCapacity;
   const holding = state.holding;
 
@@ -161,11 +231,13 @@ export function GameScreen({
 
   const launchHeldPal = useCallback((id: string) => {
     const slots = Array.from({ length: holdingCapacity }, (_, index) => boardPoint(`holding-${index}`));
-    return launchHeld(
+    const accepted = launchHeld(
       id,
       boardPoint(`holding-${holding.findIndex((c) => c.id === id)}`),
       slots,
     );
+    if (accepted) run.current?.relaunched();
+    return accepted;
   }, [launchHeld, holding, holdingCapacity]);
 
   // Lightweight, non-modal teaching cue (Level 21's Frozen intro). Shows while
@@ -248,13 +320,18 @@ export function GameScreen({
   }, [boardEntry, reducedMotion]);
   const boardEntryStyle = useAnimatedStyle(() => ({ opacity: 0.45 + boardEntry.value * 0.55 }));
   const { restart } = session;
+  /** How the NEXT restart was paid for (analytics `level_retried.retry_type`). */
+  const nextRetryType = useRef<RetryType>('normal');
   const handleRestart = useCallback(() => {
     runId.current = null;
     setEarnedCoins(undefined);
     setBombFlash(null);
     restart();
     armBoard();
-  }, [restart, armBoard]);
+    // A retry is a new run: `level_retried` (with how the last one ended), then `level_started`.
+    beginRun(nextRetryType.current);
+    nextRetryType.current = 'normal';
+  }, [restart, armBoard, beginRun]);
 
   const controlsLocked = state.status !== 'playing';
 
@@ -266,7 +343,7 @@ export function GameScreen({
         if (session.canUndo) {
           const success = session.undo();
           if (success) {
-            await economyApi.consumeItem('undo');
+            if (await economyApi.consumeItem('undo')) run.current?.itemUsed('undo', peekEconomy()?.inventory.undo ?? 0);
           } else {
             feedback.emit('denied');
           }
@@ -283,7 +360,7 @@ export function GameScreen({
         } else {
           const success = session.activateExtraSlot();
           if (success) {
-            await economyApi.consumeItem('extraSlot');
+            if (await economyApi.consumeItem('extraSlot')) run.current?.itemUsed('extraSlot', peekEconomy()?.inventory.extraSlot ?? 0);
           } else {
             feedback.emit('denied');
           }
@@ -309,7 +386,7 @@ export function GameScreen({
 
     const outcome = session.triggerBomb(target);
     if (outcome.accepted) {
-      await economyApi.consumeItem('bomb');
+      if (await economyApi.consumeItem('bomb')) run.current?.itemUsed('bomb', peekEconomy()?.inventory.bomb ?? 0);
 
       const availW = boardBox.width;
       const availH = boardBox.height;
@@ -399,7 +476,9 @@ export function GameScreen({
   // Truth's pixels/holding are the inputs that matter; the object identity changes per launch.
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [truthState.pixels, holding, truthState.width, truthState.height, truthState.ruleset]);
-  const next = nextLevelId(levelId);
+  // NEXT never crosses the published ceiling in campaign play (the last published
+  // level's win offers Home only). Dev play may continue into unpublished levels.
+  const next = mode === 'campaign' ? nextPublishedLevelId(levelId) : nextLevelId(levelId);
   const gameplayReady = (
     boardPainted && boardBox.width > 0 && boardSize > 0 && tutorials.ready
   ) || readyTimedOut;
@@ -419,6 +498,43 @@ export function GameScreen({
       if (finished) runOnJS(onAdvance)(next);
     }));
   }, [next, onAdvance, exitFade, reducedMotion]);
+  // M12 between-levels break: leaving a won level (NEXT or HOME on the win
+  // card — reveal, coins and banners already done) first gives a due
+  // interstitial its chance, then continues. Never mid-level, never on a loss,
+  // never in dev (`postWinBreak` checks the play policy). One break per exit.
+  const winExitPending = useRef(false);
+  const leaveWonLevel = useCallback((go: () => void) => {
+    if (winExitPending.current) return;
+    winExitPending.current = true;
+    void adFlows.postWinBreak(mode, { levelId })
+      .catch(() => 'skipped')
+      .then(() => {
+        winExitPending.current = false;
+        go();
+      });
+  }, [mode, levelId]);
+  const handleWinNext = useCallback(() => leaveWonLevel(handleNext), [leaveWonLevel, handleNext]);
+  const handleWinHome = useCallback(() => leaveWonLevel(onExit), [leaveWonLevel, onExit]);
+
+  // Rewarded retry: the reward is saved as a one-use pass for this level; the
+  // gate consumes it and starts the run even at 0 hearts. No heart refund.
+  const heartGuard = heartGate.guard;
+  const retryThroughGate = useCallback(() => heartGuard(handleRestart, levelId), [heartGuard, handleRestart, levelId]);
+  const rewardedRetryThroughGate = useCallback(() => {
+    nextRetryType.current = 'rewarded_ad';
+    heartGuard(handleRestart, levelId);
+    nextRetryType.current = 'normal';
+  }, [heartGuard, handleRestart, levelId]);
+  /** Mid-run Home: an intentional exit before a result → `level_abandoned`. */
+  const handleExitMidRun = useCallback(() => {
+    run.current?.abandon();
+    onExit();
+  }, [onExit]);
+  const rewardedRetry = useMemo(
+    () => (policy.allowAds ? <RewardedRetryAction levelId={levelId} onRewarded={rewardedRetryThroughGate} /> : undefined),
+    [policy.allowAds, levelId, rewardedRetryThroughGate],
+  );
+
   const total = state.pixels.length;
   const cleared = total - remainingPixelCount(state);
   // M2B: launching is allowed while charges orbit. Controls are disabled only
@@ -451,7 +567,7 @@ export function GameScreen({
         total={total}
         coins={economyApi.economy.coins}
         onRestart={handleRestart}
-        onHome={onExit}
+        onHome={handleExitMidRun}
       />
 
       <View collapsable={false} style={styles.boardArea} onLayout={onBoardArea}>
@@ -571,8 +687,8 @@ export function GameScreen({
           earnedCoins={earnedCoins}
           progress={revealProgress}
           reducedMotion={reducedMotion}
-          onNext={handleNext}
-          onHome={onExit}
+          onNext={handleWinNext}
+          onHome={handleWinHome}
         />
       ) : null}
 
@@ -581,8 +697,9 @@ export function GameScreen({
         reason={state.holding.length >= state.holdingCapacity ? 'holdingFull' : 'noMoves'}
         // Retry is free; only the next loss costs a heart. At 0 hearts the
         // gate raises Out of Hearts instead of restarting (never in dev).
-        onRetry={() => heartGate.guard(handleRestart)}
+        onRetry={retryThroughGate}
         onHome={onExit}
+        rewardedAction={rewardedRetry}
       />
 
       {/* Not mounted in dev: a dev run never even reads the hearts save. */}
@@ -590,7 +707,8 @@ export function GameScreen({
         <OutOfHeartsModal
           visible={heartGate.blocked}
           onClose={heartGate.dismiss}
-          onPlay={() => heartGate.guard(handleRestart)}
+          onPlay={retryThroughGate}
+          source="retry"
         />
       ) : null}
 

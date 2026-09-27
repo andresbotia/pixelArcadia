@@ -34,14 +34,22 @@ describe('Store catalog', () => {
     }
   });
 
-  it('V1 lists only the three coin-priced item products, each granting one unit', () => {
-    expect(STORE_CATALOG.map((p) => p.id)).toEqual(['item_undo', 'item_extraSlot', 'item_bomb']);
-    expect(productsInSection('coins')).toEqual([]);
-    expect(productsInSection('bundles')).toEqual([]);
-    for (const p of STORE_CATALOG) {
+  it('the ITEMS section is exactly the three coin-priced items, each granting one unit', () => {
+    const items = productsInSection('items');
+    expect(items.map((p) => p.id)).toEqual(['item_undo', 'item_extraSlot', 'item_bomb']);
+    for (const p of items) {
       expect(p.price.kind).toBe('coins');
-      expect(p.icon.kind).toBe('item');
+      if (p.icon.kind !== 'item') throw new Error('item product without item icon');
       expect(p.reward).toEqual({ items: { [p.icon.itemId]: 1 } });
+    }
+  });
+
+  it('M13: every other product is real-money (iap) and can never be bought with coins', () => {
+    const iap = STORE_CATALOG.filter((p) => p.section !== 'items');
+    expect(iap.length).toBeGreaterThan(0);
+    for (const p of iap) {
+      expect(p.price.kind).toBe('iap');
+      expect(applyCoinPurchase({ coins: 1_000_000, inventory: { undo: 0, extraSlot: 0, bomb: 0 } }, p.id).status).toBe('unsupportedPayment');
     }
   });
 });
@@ -130,7 +138,8 @@ describe('purchaseItem (persisted)', () => {
     const res = await purchaseProduct('coins_500');
     expect(res.status).toBe('invalidProduct');
     expect(await loadEconomy()).toEqual(before);
-    expect(await saved()).toBeNull();
+    // Only the first load's own persist (M13: a new IAP ledger is saved at once) — no purchase applied.
+    expect(await saved()).toEqual(before);
   });
 });
 
@@ -216,6 +225,7 @@ describe('Restock with 0 real coins', () => {
   });
 
   it('campaign: the same restock is refused as insufficient funds, nothing changes', async () => {
+    await loadEconomy(); // settle the load-time IAP-ledger upgrade of the seeded save first
     const disk = await saved();
     expect((await purchaseItem('bomb')).status).toBe('insufficientFunds');
     const legacy = await buyItem('bomb');

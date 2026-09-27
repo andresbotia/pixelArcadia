@@ -47,6 +47,12 @@ export interface GameCenterDeps {
   manifest: CampaignManifest;
   /** Saved local progress — authoritative. */
   loadHighestUnlocked: () => Promise<number>;
+  /**
+   * The published campaign ceiling (`PUBLISHED_MAX_LEVEL`). Scores never exceed
+   * it, so historical/legacy progress past the published campaign is never
+   * submitted. Omitted → no clamp.
+   */
+  publishedMax?: number;
   log?: (message: string, error?: unknown) => void;
 }
 
@@ -99,7 +105,8 @@ export function createGameCenterService(deps: GameCenterDeps): GameCenterService
 
   const playerKey = () => state.player?.gamePlayerId ?? state.player?.displayName ?? 'local';
 
-  const sync = (highestCleared: number) => {
+  const sync = (rawHighestCleared: number) => {
+    const highestCleared = Math.min(rawHighestCleared, deps.publishedMax ?? Number.POSITIVE_INFINITY);
     const run = async () => {
       if (!bridge || state.status !== 'authenticated') return;
       const key = playerKey();

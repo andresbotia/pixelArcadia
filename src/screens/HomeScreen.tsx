@@ -12,7 +12,8 @@ import { HomeMascot, mascotMetrics } from '@/components/home/HomeMascot';
 import { HomePlayButton } from '@/components/home/HomePlayButton';
 import { HomeSkyBackdrop, HomeSkyline } from '@/components/home/HomeSkyBackdrop';
 import { M6_ECONOMY } from '@/game/economy/config';
-import { getLevel, nextLevelId, requireLevel } from '@/game/levels/levels';
+import { getLevel, requireLevel } from '@/game/levels/levels';
+import { nextPublishedLevelId } from '@/game/levels/publishedCampaign';
 import { useAmbientActive } from '@/hooks/useAmbientActive';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
 
@@ -109,7 +110,7 @@ export function HomeScreen({
             levelId={level.id}
             title={level.title}
             difficulty={level.difficulty}
-            nextLevelId={nextLevelId(level.id)}
+            nextLevelId={nextPublishedLevelId(level.id)}
             clearReward={M6_ECONOMY.firstClearReward}
             compact={layout.compact}
           />

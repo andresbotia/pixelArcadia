@@ -3,6 +3,8 @@ import { Platform } from 'react-native';
 import { GameCenterNative } from '../../modules/game-center';
 import { createGameCenterService } from '@/game/gameCenter/service';
 import { CAMPAIGN_MANIFEST } from '@/game/levels/campaign';
+import { publishedManifest } from '@/game/levels/publishedCampaign';
+import { PUBLISHED_MAX_LEVEL } from '@/game/levels/publishing';
 import { gameCenterSubmissionStore } from '@/storage/gameCenter';
 import { loadProgress } from '@/storage/progress';
 
@@ -10,7 +12,9 @@ import { loadProgress } from '@/storage/progress';
 export const gameCenter = createGameCenterService({
   bridge: Platform.OS === 'ios' ? GameCenterNative : null,
   store: gameCenterSubmissionStore,
-  manifest: CAMPAIGN_MANIFEST,
+  // Published campaign only: no unpublished score or world achievement.
+  manifest: publishedManifest(CAMPAIGN_MANIFEST),
+  publishedMax: PUBLISHED_MAX_LEVEL,
   loadHighestUnlocked: async () => (await loadProgress()).highestUnlockedLevel,
   log: (message, error) => {
     if (__DEV__) console.warn(message, error);

@@ -88,8 +88,36 @@ function queueMutation<T>(mutator: (current: HeartState, now: number) => { next:
 export function refreshHearts(): Promise<HeartState> {
   return queueMutation((current, now) => {
     const next = reconcileHeartState(current, now);
+    if (next.hearts > current.hearts) {
+      emitRegenerated({
+        amount: next.hearts - current.hearts,
+        heartsAfter: next.hearts,
+        elapsedMs: current.lastHeartRegenAt === null ? null : Math.max(0, now - current.lastHeartRegenAt),
+      });
+    }
     return { next, result: next };
   });
+}
+
+export interface HeartsRegenerated {
+  amount: number;
+  heartsAfter: number;
+  /** Since the regen anchor the hearts accrued from (≈ time away). */
+  elapsedMs: number | null;
+}
+type RegenListener = (e: HeartsRegenerated) => void;
+const regenListeners = new Set<RegenListener>();
+
+/** Observe time-based regeneration (analytics). Fires once per persisted regen, never per tick. */
+export function onHeartsRegenerated(listener: RegenListener): () => void {
+  regenListeners.add(listener);
+  return () => { regenListeners.delete(listener); };
+}
+
+function emitRegenerated(e: HeartsRegenerated): void {
+  for (const l of regenListeners) {
+    try { l(e); } catch { /* observers never break hearts */ }
+  }
 }
 
 /** Alias kept parallel to `loadEconomy` / `loadProgress` for boot preloading. */
@@ -127,6 +155,7 @@ export function _clearHeartsCache(): void {
   cachedState = null;
   mutationQueue = Promise.resolve();
   listeners.clear();
+  regenListeners.clear();
 }
 
 export function _setHeartsClock(next: () => number): void {
