@@ -15,7 +15,7 @@
  *
  * Architecture rule this file exists to enforce: components look up a skin by
  * `themeId` through {@link worldSkin} — they never branch on a specific world
- * id/name. Adding an eleventh world (not in scope for this redesign) should
+ * id/name. Adding another world should
  * only ever require one new entry here, never a new `if`/`switch` in a
  * component.
  */
@@ -56,7 +56,7 @@ type SkinEntry = Omit<WorldSkin, 'themeId'>;
  * One entry per real campaign world (`content/levels/world-0N.json` /
  * `levelDefinitions.ts`'s `themeId`s). Colours are a first pass for the
  * world-select redesign (Milestone 3) to tune against real screens — chosen
- * to be distinct from each other and from the 20 `orbColors` gameplay values
+ * to be distinct from each other and from the 34 `orbColors` gameplay values
  * (`theme/colors.ts`), never reused from that set.
  *
  * `cosmic-frontier` deliberately owns the `starfield` treatment: the old
@@ -74,6 +74,8 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'mythic-realm': { accent: '#B15CC4', secondaryAccent: '#F0A8FF', ambientId: 'arcaneParticles', intensity: 'high' },
   'prehistoric-titans': { accent: '#B8703F', secondaryAccent: '#E3B27A', ambientId: 'duskAsh', intensity: 'medium' },
   'masterpiece-gallery': { accent: '#D4AF6A', secondaryAccent: '#F5E6C8', ambientId: 'galleryDust', intensity: 'low' },
+  'ancient-empires': { accent: '#BD9860', secondaryAccent: '#E9D7B5', ambientId: 'galleryDust', intensity: 'medium' },
+  'enchanted-forest': { accent: '#77AF88', secondaryAccent: '#CCB4E3', ambientId: 'foliage', intensity: 'medium' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

@@ -61,6 +61,33 @@ export interface ValidationDiagnostic {
   field?: string;
 }
 
+export type SolvabilityEvidence =
+  | 'NOT_CHECKED'
+  | 'UNPROVEN'
+  | 'PROVEN_BY_WITNESS'
+  | 'PROVEN_BY_SOLVER'
+  | 'PROVEN_BY_WITNESS_AND_SOLVER';
+
+export interface WitnessReplayEvidence {
+  valid: boolean;
+  steps: number;
+  rejected: number;
+  pixelsRemaining: number;
+  holdingRemaining: number;
+  tunnelsRemaining: number;
+  pendingRemaining: number;
+  failure?: string;
+}
+
+export interface SolverEvidence {
+  status: 'NOT_RUN' | 'SOLVED' | 'INCONCLUSIVE' | 'EXHAUSTED' | 'ERROR';
+  nodes?: number;
+  timeMs?: number;
+  nodeCapHit?: boolean;
+  timeCapHit?: boolean;
+  witnessLength?: number;
+}
+
 export interface LevelValidationResult {
   levelId: number;
   title: string;
@@ -68,6 +95,10 @@ export interface LevelValidationResult {
   diagnostics: ValidationDiagnostic[];
   definition: LevelDefinition | null;
   witnessLength?: number;
+  structuralValidity?: 'VALID' | 'INVALID';
+  solvability?: SolvabilityEvidence;
+  witnessReplay?: WitnessReplayEvidence;
+  solver?: SolverEvidence;
   width?: number;
   height?: number;
 }

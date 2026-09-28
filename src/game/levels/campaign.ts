@@ -4,7 +4,7 @@ import type { CampaignManifest, CampaignWorld } from '@/game/studio/campaign/typ
 import { worldSkin } from '@/theme/worldSkins';
 // Intentionally NOT `./levelDefinitions` — that is the pre-authoring-pipeline
 // legacy list. This manifest must group by each level's REAL, currently-
-// shipped themeId, which for worlds 3-10 comes from the JSON authoring
+// shipped themeId, which for worlds 3–12 comes from the JSON authoring
 // pipeline's `replacesLegacy` overrides (see `./levels`, `./compiledLevels`).
 // Grouping by the legacy file here was M4C.11-era stale campaign metadata
 // (redesign audit finding B.6): it showed old placeholder world names
@@ -13,7 +13,7 @@ import { worldSkin } from '@/theme/worldSkins';
 import { LEVEL_DEFINITIONS } from './levels';
 
 /**
- * The Pixel Arcadia campaign manifest: ten themed worlds of ten levels each.
+ * The Pixel Arcadia campaign manifest: twelve themed worlds of ten levels each.
  * Authoring / campaign-organisation data only — it is NOT read by the engine and
  * carries no solver output. Each world's `levelIds` is filtered to the levels
  * that actually exist, so the manifest stays valid while a world is still being
@@ -22,7 +22,7 @@ import { LEVEL_DEFINITIONS } from './levels';
 // `display.accent` is per-world identity colour for the world-select screen,
 // sourced from `theme/worldSkins.ts` so there is exactly one authored accent
 // value per world (not a second, hand-duplicated one here). Content data,
-// like `orbColors`, never reused as chrome and never drawn from the 20
+// like `orbColors`, never reused as chrome and never drawn from the 34
 // gameplay colours (brand <-> gameplay separation).
 const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'first-light', title: 'First Light', themeId: 'first-light', display: { subtitle: 'Learn the light', accent: worldSkin('first-light').accent } },
@@ -34,7 +34,9 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'ocean-depths', title: 'Ocean Depths', themeId: 'ocean-depths', display: { subtitle: 'Into the deep blue', accent: worldSkin('ocean-depths').accent } },
   { id: 'mythic-realm', title: 'Mythic Realm', themeId: 'mythic-realm', display: { subtitle: 'Where legends stir', accent: worldSkin('mythic-realm').accent } },
   { id: 'prehistoric-titans', title: 'Prehistoric Titans', themeId: 'prehistoric-titans', display: { subtitle: 'Giants of a lost age', accent: worldSkin('prehistoric-titans').accent } },
-  { id: 'masterpiece-gallery', title: 'Masterpiece Gallery', themeId: 'masterpiece-gallery', display: { subtitle: 'The final gallery', accent: worldSkin('masterpiece-gallery').accent } },
+  { id: 'masterpiece-gallery', title: 'Masterpiece Gallery', themeId: 'masterpiece-gallery', display: { subtitle: 'Art comes alive', accent: worldSkin('masterpiece-gallery').accent } },
+  { id: 'ancient-empires', title: 'Ancient Empires', themeId: 'ancient-empires', display: { subtitle: 'Echoes of civilizations', accent: worldSkin('ancient-empires').accent } },
+  { id: 'enchanted-forest', title: 'Enchanted Forest', themeId: 'enchanted-forest', display: { subtitle: 'Magic beneath the canopy', accent: worldSkin('enchanted-forest').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

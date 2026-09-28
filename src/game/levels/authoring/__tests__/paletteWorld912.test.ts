@@ -10,14 +10,31 @@ import { orbColors, orbGlow, orbLabel } from '@/theme/colors';
 import { VALID_ORB_COLORS, validateLevelStructure } from '../validate';
 
 const APPROVED = {
-  navy: '#244A73', seafoam: '#B8E8C6', slate: '#4F7282',
-  ivory: '#FFF0C2', ice: '#AAD6FF', amethyst: '#793F98',
+  "olive": "#8C9A2B",
+  "umber": "#5E3B25",
+  "lavender": "#CDB6F7",
+  "blush": "#F7B8C8",
+  "bronze": "#9C7A3C",
+  "ultramarine": "#3A2FD6",
+  "pine": "#1E5A45",
+  "mauve": "#A5708F"
+} as const;
+const RIMS = {
+  "olive": "#CBD19F",
+  "umber": "#B6A69C",
+  "lavender": "#E8DEFB",
+  "blush": "#FBDFE6",
+  "bronze": "#D2C3A7",
+  "ultramarine": "#A6A1EC",
+  "pine": "#99B4AB",
+  "mauve": "#D6BECC"
 } as const;
 const EXISTING = {
   white: '#EEF3FF', yellow: '#FFD23F', gold: '#F2A93B', orange: '#FF8A3C', red: '#FF4D4D',
   coral: '#FF6F7D', pink: '#FF7BC5', magenta: '#E85CD8', purple: '#B07CFF', indigo: '#6E6BF0',
   blue: '#3E7BFF', cyan: '#3BE1F0', teal: '#2FD3B4', green: '#3FDD9B', lime: '#9BE84A',
   sand: '#E4CB98', brown: '#A0623A', stone: '#8E97A8', forest: '#2F8A57', maroon: '#B03A52',
+  navy: '#244A73', seafoam: '#B8E8C6', slate: '#4F7282', ivory: '#FFF0C2', ice: '#AAD6FF', amethyst: '#793F98',
 } as const;
 
 test.each(Object.keys(APPROVED) as (keyof typeof APPROVED)[])('%s validates, renders and round-trips through Studio', (color) => {
@@ -29,6 +46,7 @@ test.each(Object.keys(APPROVED) as (keyof typeof APPROVED)[])('%s validates, ren
   expect(orbColors[color]).toBe(APPROVED[color]);
   expect(pixelMaterial(color).base).toBe(APPROVED[color]);
   expect(pixelMaterial(color).rim).toBe(orbGlow[color]);
+  expect(orbGlow[color]).toBe(RIMS[color]);
   expect(orbGlow[color]).toMatch(/^#[0-9A-F]{6}$/);
   expect(orbLabel[color]).toBe(color.toUpperCase());
   expect(markContrast(color).fill).toMatch(/^#/);
@@ -38,9 +56,9 @@ test.each(Object.keys(APPROVED) as (keyof typeof APPROVED)[])('%s validates, ren
     .toEqual(createGame(def).pixels.map(p => p.color));
 });
 
-test('preserves all existing fills and positions, appending exactly six approved IDs', () => {
-  expect(ORB_COLOR_IDS.slice(0, 20)).toEqual(Object.keys(EXISTING));
-  expect(ORB_COLOR_IDS.slice(20, 26)).toEqual(Object.keys(APPROVED));
+test('preserves all existing fills and positions, appending exactly eight approved IDs', () => {
+  expect(ORB_COLOR_IDS.slice(0, 26)).toEqual(Object.keys(EXISTING));
+  expect(ORB_COLOR_IDS.slice(26)).toEqual(Object.keys(APPROVED));
   for (const [color, hex] of Object.entries(EXISTING)) expect(orbColors[color as OrbColor]).toBe(hex);
   expect(ORB_COLOR_IDS).toHaveLength(34);
   expect(new Set(ORB_COLOR_IDS).size).toBe(34);

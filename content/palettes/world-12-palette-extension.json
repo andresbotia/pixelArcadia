@@ -1,0 +1,108 @@
+{
+ "world": 12,
+ "title": "Enchanted Forest",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "pine",
+  "mauve"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "olive",
+  "umber",
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine"
+ ],
+ "globalVocabularyAfterWorld": 34,
+ "colors": [
+  {
+   "id": "pine",
+   "hex": "#1E5A45",
+   "labL": 34.0,
+   "nearestExisting": "forest",
+   "nearestDeltaE00": 17.7,
+   "secondNearest": "slate",
+   "secondDeltaE00": 21.8,
+   "visualDistinction": "Very dark blue-green; darker than forest",
+   "primaryUse": "Conifer forests, deep foliage, canopy frames",
+   "contrastConcern": "Dark; keep rim; adjacent forest should have a lighter contour",
+   "suggestedGlowRim": "#99B4AB",
+   "suggestedAssistGlyph": "tree: filled up-triangle over a short vertical trunk bar",
+   "worldsUsing": [
+    12,
+    13,
+    16,
+    18,
+    23
+   ],
+   "levelsUsing": [
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    124,
+    129,
+    152,
+    153,
+    154,
+    157,
+    159,
+    172,
+    228
+   ],
+   "levelCount": 19,
+   "permanentRecommendation": "yes"
+  },
+  {
+   "id": "mauve",
+   "hex": "#A5708F",
+   "labL": 53.6,
+   "nearestExisting": "magenta",
+   "nearestDeltaE00": 17.2,
+   "secondNearest": "pink",
+   "secondDeltaE00": 17.5,
+   "visualDistinction": "Muted grey-pink-violet between magenta and maroon",
+   "primaryUse": "Dusky roofs, twilight, dried flowers, muted magic",
+   "contrastConcern": "Mid-luminance neutral; relies on glyph near stone/maroon",
+   "suggestedGlowRim": "#D6BECC",
+   "suggestedAssistGlyph": "square-plus: outline square with inner plus bars",
+   "worldsUsing": [
+    12,
+    20,
+    25
+   ],
+   "levelsUsing": [
+    111,
+    112,
+    113,
+    114,
+    115,
+    116,
+    117,
+    118,
+    119,
+    120,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    241,
+    247
+   ],
+   "levelCount": 21,
+   "permanentRecommendation": "yes"
+  }
+ ]
+}

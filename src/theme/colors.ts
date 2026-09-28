@@ -28,7 +28,7 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 26 gameplay colors (pixels and charges), in
+ * Primary fill for each of the 34 gameplay colors (pixels and charges), in
  * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
  * give every one of these a unique non-color identifier.
  */
@@ -60,6 +60,14 @@ export const orbColors: Record<OrbColor, string> = {
   ivory: '#FFF0C2',
   ice: '#AAD6FF',
   amethyst: '#793F98',
+  olive: '#8C9A2B',
+  umber: '#5E3B25',
+  lavender: '#CDB6F7',
+  blush: '#F7B8C8',
+  bronze: '#9C7A3C',
+  ultramarine: '#3A2FD6',
+  pine: '#1E5A45',
+  mauve: '#A5708F',
 };
 
 /**
@@ -95,6 +103,14 @@ export const orbGlow: Record<OrbColor, string> = {
   ivory: '#FFFFEA',
   ice: '#E7F5FF',
   amethyst: '#D5ADF0',
+  olive: '#CBD19F',
+  umber: '#B6A69C',
+  lavender: '#E8DEFB',
+  blush: '#FBDFE6',
+  bronze: '#D2C3A7',
+  ultramarine: '#A6A1EC',
+  pine: '#99B4AB',
+  mauve: '#D6BECC',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -125,4 +141,12 @@ export const orbLabel: Record<OrbColor, string> = {
   ivory: 'IVORY',
   ice: 'ICE',
   amethyst: 'AMETHYST',
+  olive: 'OLIVE',
+  umber: 'UMBER',
+  lavender: 'LAVENDER',
+  blush: 'BLUSH',
+  bronze: 'BRONZE',
+  ultramarine: 'ULTRAMARINE',
+  pine: 'PINE',
+  mauve: 'MAUVE',
 };

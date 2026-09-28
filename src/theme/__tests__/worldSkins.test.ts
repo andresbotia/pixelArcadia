@@ -3,7 +3,7 @@ import { WORLD_SKIN_THEME_IDS, worldSkin } from '../worldSkins';
 
 const REAL_CAMPAIGN_THEME_IDS = [
   'first-light', 'wild-garden', 'neon-nights', 'mechanical-city', 'cosmic-frontier',
-  'world-landmarks', 'ocean-depths', 'mythic-realm', 'prehistoric-titans', 'masterpiece-gallery',
+  'world-landmarks', 'ocean-depths', 'mythic-realm', 'prehistoric-titans', 'masterpiece-gallery', 'ancient-empires', 'enchanted-forest',
 ];
 
 test('every real campaign world has a skin entry', () => {

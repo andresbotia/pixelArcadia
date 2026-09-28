@@ -2,10 +2,10 @@ import { DEFAULT_ART_LEGEND } from '@/game/engine/art';
 import { MAX_BOARD_DIMENSION, MIN_BOARD_DIMENSION } from '@/game/engine/boardLimits';
 import { createGame } from '@/game/engine/createGame';
 import { defaultHoldingCapacity, expectedTunnelCount } from '@/game/engine/ruleset';
-import { applyActionWithArrivals } from '@/game/engine/holdingArrival';
 import { findFirstWinningWitness } from '@/game/engine/solver';
 import { ORB_COLOR_IDS, type LevelDefinition, type OrbColor } from '@/game/engine/types';
-import type { LevelValidationResult, ValidationDiagnostic } from './types';
+import type { LevelValidationResult, ValidationDiagnostic, SolvabilityEvidence, SolverEvidence } from './types';
+import { replayAuthoredWitness, replaySolverWitness, WITNESS_ACTION } from './witness';
 
 export const VALID_ORB_COLORS: ReadonlySet<OrbColor> = new Set<OrbColor>(ORB_COLOR_IDS);
 
@@ -18,6 +18,8 @@ export const MAX_BOARD_HEIGHT = MAX_BOARD_DIMENSION;
 export interface ValidationOptions {
   /** Skip solving and replaying (for rapid structural/syntactic linting). Default: false */
   skipSolvability?: boolean;
+  /** Disable diagnostic search only when an authored witness proves solvability. */
+  runSolver?: boolean;
   /** Maximum node expansion cap for solver. Default: 100,000 */
   nodeCap?: number;
   /** Maximum elapsed time in milliseconds before capping search. Default: 30,000 */
@@ -82,6 +84,12 @@ export function validateLevelStructure(
         'holdingCapacity',
       );
     }
+  }
+
+  if (def.winningWitness !== undefined && (!Array.isArray(def.winningWitness)
+    || def.winningWitness.length === 0
+    || !def.winningWitness.every(move => typeof move === 'string' && WITNESS_ACTION.test(move)))) {
+    err('INVALID_WINNING_WITNESS', `${levelTag} winningWitness must be a nonempty array of T1/H1 slot actions`, 'winningWitness');
   }
 
   // ── 2. Grid Dimensions & Character Integrity ─────────────────────────────
@@ -271,6 +279,9 @@ export function validateLevelStructure(
     levelId: def.id,
     title: def.title,
     valid,
+    structuralValidity: valid ? 'VALID' : 'INVALID',
+    solvability: 'NOT_CHECKED',
+    solver: { status: 'NOT_RUN' },
     diagnostics,
     definition: valid ? def : null,
     width: valid ? inferredWidth : undefined,
@@ -278,100 +289,58 @@ export function validateLevelStructure(
   };
 }
 
-/**
- * Validates an authored level definition: first runs fast structural validation,
- * and if valid and solvability is not skipped, runs solver solvability and
- * runtime replay verification.
- */
+/** Structure precedes constructive proof; bounded search remains mandatory without a witness. */
 export function validateLevelPacket(
   def: LevelDefinition,
   options: ValidationOptions = {},
 ): LevelValidationResult {
-  const structResult = validateLevelStructure(def, options);
-  if (!structResult.valid || options.skipSolvability) {
-    return structResult;
-  }
-
-  const diagnostics: ValidationDiagnostic[] = [...structResult.diagnostics];
-  const err = (code: string, message: string, field?: string) => {
-    diagnostics.push({ code, severity: 'error', message, field });
-  };
-  const levelTag = `[Level ${def.id} "${def.title ?? 'Untitled'}"]`;
-
-  // ── 5. Solvability & Runtime Replay Verification ──────────────────────────
-  const nodeCap = options.nodeCap ?? 100_000;
-  const timeCapMs = options.timeCapMs ?? 30_000;
-  let solveResult: ReturnType<typeof findFirstWinningWitness> | undefined;
-  try {
-    solveResult = findFirstWinningWitness(def, {
-      nodeCap,
-      timeCapMs,
-    });
-
-    if (!solveResult.solved) {
-      if (solveResult.nodeCapHit || solveResult.timeCapHit) {
-        err(
-          'SOLVER_NODE_CAP_EXCEEDED',
-          `${levelTag} Level could not be verified within ${nodeCap} solver states / ${timeCapMs}ms (UNVERIFIED / NODE CAP)`,
-        );
+  const structure = validateLevelStructure(def, options);
+  if (!structure.valid || options.skipSolvability) return structure;
+  const diagnostics = [...structure.diagnostics];
+  const err = (code: string, message: string) => diagnostics.push({ code, severity: 'error' as const, message });
+  const witnessReplay = def.winningWitness !== undefined ? replayAuthoredWitness(def) : undefined;
+  let solvability: SolvabilityEvidence = witnessReplay?.valid ? 'PROVEN_BY_WITNESS' : 'UNPROVEN';
+  let solver: SolverEvidence = { status: 'NOT_RUN' };
+  let witnessLength = witnessReplay?.valid ? witnessReplay.steps : undefined;
+  if (witnessReplay && !witnessReplay.valid) {
+    err('INVALID_WINNING_WITNESS', witnessReplay.failure ?? 'Authored witness failed production replay');
+  } else if (!witnessReplay || options.runSolver !== false) {
+    const start = performance.now();
+    try {
+      const result = findFirstWinningWitness(def, {
+        nodeCap: options.nodeCap ?? 100_000, timeCapMs: options.timeCapMs ?? 30_000,
+      });
+      solver = { status: result.solved ? 'SOLVED' : result.nodeCapHit || result.timeCapHit ? 'INCONCLUSIVE' : 'EXHAUSTED',
+        nodes: result.nodes, timeMs: performance.now() - start,
+        nodeCapHit: result.nodeCapHit, timeCapHit: result.timeCapHit,
+        witnessLength: result.solved ? result.moves.length : undefined };
+      if (result.solved) {
+        const replay = replaySolverWitness(def, result.moves);
+        if (!replay.valid) {
+          solver.status = 'ERROR';
+          err('SOLVER_REPLAY_INVALID', replay.failure ?? 'Solver witness failed production replay');
+        } else {
+          solvability = witnessReplay ? 'PROVEN_BY_WITNESS_AND_SOLVER' : 'PROVEN_BY_SOLVER';
+          witnessLength ??= result.moves.length;
+        }
+      } else if (solver.status === 'INCONCLUSIVE') {
+        if (witnessReplay?.valid) {
+          diagnostics.push({ code: 'SOLVER_INCONCLUSIVE', severity: 'info',
+            message: `Witness proven; bounded solver inconclusive (${result.nodes} states, node cap=${result.nodeCapHit}, time cap=${result.timeCapHit})` });
+        } else {
+          err('SOLVER_NODE_CAP_EXCEEDED', 'Bounded solver inconclusive; no solvability proof');
+        }
+      } else if (witnessReplay?.valid) {
+        err('SOLVER_WITNESS_CONTRADICTION', `Investigate: solver exhausted ${result.nodes} states despite a valid production witness`);
       } else {
-        err(
-          'LEVEL_UNSOLVABLE',
-          `${levelTag} Level has no winning sequence! Exhausted all ${solveResult.nodes} reachable states without reaching a win`,
-        );
+        err('LEVEL_UNSOLVABLE', `Exhausted all ${result.nodes} reachable states without a win`);
       }
-    } else {
-      // Replay solver witness actions through actual runtime resolveAction
-      let replayState = createGame(def);
-      let moveIndex = 0;
-      for (const action of solveResult.moves) {
-        const outcome = applyActionWithArrivals(replayState, action);
-        if (!outcome.accepted) {
-          err(
-            'REPLAY_ACTION_REJECTED',
-            `${levelTag} Solver witness action #${moveIndex} (${JSON.stringify(action)}) was rejected by runtime: ${outcome.rejection ?? 'unknown'}`,
-          );
-          break;
-        }
-        if (outcome.state.holding.length > def.holdingCapacity) {
-          err(
-            'REPLAY_HOLDING_OVERFLOW',
-            `${levelTag} Solver witness action #${moveIndex} overflowed holding bay (${outcome.state.holding.length} > ${def.holdingCapacity})`,
-          );
-          break;
-        }
-        replayState = outcome.state;
-        moveIndex += 1;
-      }
-
-      if (replayState.status !== 'won') {
-        err(
-          'REPLAY_DID_NOT_WIN',
-          `${levelTag} Solver witness finished ${solveResult.moves.length} moves, but end status is '${replayState.status}' instead of 'won'`,
-        );
-      } else if (!replayState.pixels.every((p) => p.cleared)) {
-        const remaining = replayState.pixels.filter((p) => !p.cleared).length;
-        err(
-          'REPLAY_UNCLEARED_PIXELS',
-          `${levelTag} End status is 'won', but ${remaining} pixels remain uncleared on the board`,
-        );
-      }
+    } catch (error) {
+      solver = { status: 'ERROR', timeMs: performance.now() - start };
+      err('SOLVER_EXCEPTION', `Solver crashed during verification: ${(error as Error).message}`);
     }
-  } catch (e) {
-    err('SOLVER_EXCEPTION', `${levelTag} Solver crashed during verification: ${(e as Error).message}`);
   }
-
-  const valid = diagnostics.every((d) => d.severity !== 'error');
-
-  return {
-    levelId: def.id,
-    title: def.title,
-    valid,
-    diagnostics,
-    definition: valid ? def : null,
-    witnessLength: solveResult?.solved ? solveResult.moves.length : undefined,
-    width: structResult.width,
-    height: structResult.height,
-  };
+  const valid = diagnostics.every(d => d.severity !== 'error');
+  return { ...structure, valid, definition: valid ? def : null, diagnostics,
+    solvability, witnessReplay, solver, witnessLength };
 }
-

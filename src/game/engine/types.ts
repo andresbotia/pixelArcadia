@@ -2,7 +2,7 @@
  * actions.ts/pass.ts; rendering and clocks never determine outcomes. */
 
 /**
- * The authoritative gameplay colour registry (26). The original 15 are ordered
+ * The authoritative gameplay colour registry (34). The original 15 are ordered
  * around the hue wheel; the World 6 landmark extension (sand, brown, stone,
  * forest, maroon) follows so existing indices never shift. Every palette map,
  * validator set, Color Assist mark and Studio list derives from this array.
@@ -34,6 +34,14 @@ export const ORB_COLOR_IDS = [
   'ivory',
   'ice',
   'amethyst',
+  'olive',
+  'umber',
+  'lavender',
+  'blush',
+  'bronze',
+  'ultramarine',
+  'pine',
+  'mauve',
 ] as const;
 
 export type OrbColor = (typeof ORB_COLOR_IDS)[number];

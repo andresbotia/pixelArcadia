@@ -74,8 +74,12 @@ export function normalizeAuthoredLevel(
     def.activeCapacity = authored.activeCapacity;
   }
 
-  if (authored.winningWitness && authored.winningWitness.length > 0) {
-    def.winningWitness = [...authored.winningWitness];
+  // Preserve supplied evidence, including malformed/empty input, so validation
+  // rejects it rather than silently treating it as a missing witness.
+  if (authored.winningWitness !== undefined) {
+    def.winningWitness = Array.isArray(authored.winningWitness)
+      ? [...authored.winningWitness]
+      : authored.winningWitness;
   }
 
   return def;

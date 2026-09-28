@@ -208,7 +208,7 @@ async function handleValidate(flags: Record<string, string | boolean>) {
   console.log('Orbitide Level Validator');
   console.log(`Scope: ${selection.scopeLabel}`);
   console.log(`Levels: ${selection.levels.length}`);
-  console.log(`Solver: ${skipSolvability ? 'disabled (structural only)' : 'enabled'}\n`);
+  console.log(`Solver: ${skipSolvability ? 'disabled (structural only)' : flags['witness-only'] ? 'optional diagnostics disabled; required without authored witness' : 'enabled'}\n`);
 
   let validCount = 0;
   let invalidCount = 0;
@@ -219,7 +219,7 @@ async function handleValidate(flags: Record<string, string | boolean>) {
     const t0 = performance.now();
     const result = skipSolvability
       ? validateLevelStructure(lvl)
-      : validateLevelPacket(lvl, { nodeCap, timeCapMs });
+      : validateLevelPacket(lvl, { nodeCap, timeCapMs, runSolver: !flags['witness-only'] });
     const dt = performance.now() - t0;
     const timeStr = formatDuration(dt);
 
@@ -231,16 +231,26 @@ async function handleValidate(flags: Record<string, string | boolean>) {
     const errors = result.diagnostics.filter((d) => d.severity === 'error');
     const warnings = result.diagnostics.filter((d) => d.severity === 'warning');
 
-    if (errors.length === 0) {
+    if (result.valid) {
       validCount += 1;
       const warnSuffix = warnings.length > 0 ? ` (${warnings.length} warnings)` : '';
       const witnessSuffix = result.witnessLength !== undefined ? ` [witness: ${result.witnessLength} moves]` : '';
+      const proof = result.solvability === 'PROVEN_BY_WITNESS_AND_SOLVER' ? 'witness + solver'
+        : result.solvability === 'PROVEN_BY_WITNESS' ? `witness proven, solver ${result.solver?.status.toLowerCase().replace('_', ' ')}`
+          : result.solvability === 'PROVEN_BY_SOLVER' ? 'solver' : 'structural validation only';
+      console.log(`  PASS — ${proof}`);
+      result.diagnostics.filter(d => d.severity === 'info').forEach(d => console.log(`      [${d.code}] ${d.message}`));
       console.log(`  ✓ L${String(lvl.id).padEnd(3)} "${lvl.title}" [${lvl.difficulty}]${witnessSuffix}${warnSuffix}`);
       warnings.forEach((w) => console.log(`      ⚠️ [${w.code}] ${w.message}`));
       warningCount += warnings.length;
     } else {
       invalidCount += 1;
-      console.log(`  ✗ L${String(lvl.id).padEnd(3)} "${lvl.title}" [${lvl.difficulty}] FAILED:`);
+      const failure = errors.some(d => d.code === 'INVALID_WINNING_WITNESS') ? 'invalid witness'
+        : result.structuralValidity === 'INVALID' ? 'structural validation'
+          : errors.some(d => d.code === 'SOLVER_WITNESS_CONTRADICTION') ? 'solver/witness contradiction'
+            : 'unsolved / no proof';
+      console.log(`  FAIL — ${failure}`);
+      console.log(`  ✗ L${String(lvl.id).padEnd(3)} "${lvl.title}" [${lvl.difficulty}] FAIL:`);
       errors.forEach((e) => console.log(`      ⛔ [${e.code}] ${e.message}`));
       warnings.forEach((w) => console.log(`      ⚠️ [${w.code}] ${w.message}`));
     }
@@ -379,6 +389,7 @@ Options:
   --from <N> --to <N> Select an explicit level range
   --world <N>         Select a specific world by index or theme slug
   --file <path>       Load directly from an authored JSON file
+  --witness-only      Replay authored witness; skip optional diagnostic solver
   --fast              Skip solver in validate (structural checks only)
   --node-cap <N>      Cap maximum solver search states (default: 100k/150k)
   --force             Allow batch sizes greater than 50 levels

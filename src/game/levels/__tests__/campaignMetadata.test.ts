@@ -20,10 +20,12 @@ const EXPECTED_WORLDS = [
   { id: 'mythic-realm', title: 'Mythic Realm', themeId: 'mythic-realm' },
   { id: 'prehistoric-titans', title: 'Prehistoric Titans', themeId: 'prehistoric-titans' },
   { id: 'masterpiece-gallery', title: 'Masterpiece Gallery', themeId: 'masterpiece-gallery' },
+  { id: 'ancient-empires', title: 'Ancient Empires', themeId: 'ancient-empires' },
+  { id: 'enchanted-forest', title: 'Enchanted Forest', themeId: 'enchanted-forest' },
 ] as const;
 
-test('the campaign manifest exposes exactly the ten current world names/ids, in order', () => {
-  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(10);
+test('the campaign manifest exposes exactly the twelve current world names/ids, in order', () => {
+  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(12);
   expect(CAMPAIGN_MANIFEST.worlds.map((w) => ({ id: w.id, title: w.title, themeId: w.themeId }))).toEqual(
     EXPECTED_WORLDS.map((w) => ({ ...w })),
   );
@@ -47,9 +49,9 @@ test('every world groups exactly ten levels, and its levels each carry the match
   for (const world of CAMPAIGN_MANIFEST.worlds) {
     expect(world.levelIds).toHaveLength(10);
   }
-  // Levels are globally unique across worlds and cover 1-100 with no gaps.
+  // Levels are globally unique across worlds and cover 1-120 with no gaps.
   const allIds = CAMPAIGN_MANIFEST.worlds.flatMap((w) => w.levelIds).sort((a, b) => a - b);
-  expect(allIds).toEqual(Array.from({ length: 100 }, (_, i) => i + 1));
+  expect(allIds).toEqual(Array.from({ length: 120 }, (_, i) => i + 1));
 });
 
 test('each world has a non-empty subtitle and a real (non-gameplay) accent colour', () => {
