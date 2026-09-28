@@ -1,0 +1,70 @@
+{
+ "world": 16,
+ "title": "Lantern Dynasty",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "verdigris"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "pine"
+ ],
+ "globalVocabularyAfterWorld": 36,
+ "colors": [
+  {
+   "id": "verdigris",
+   "hex": "#1B8C8C",
+   "labL": 52.8,
+   "nearestExisting": "slate",
+   "nearestDeltaE00": 15.7,
+   "secondNearest": "forest",
+   "secondDeltaE00": 17.8,
+   "visualDistinction": "Deep blue-green between teal and slate",
+   "primaryUse": "Patinated bronze, jade roofs, aged copper",
+   "contrastConcern": "Near slate/teal in grayscale; glyph required",
+   "suggestedGlowRim": "#98CBCB",
+   "suggestedAssistGlyph": "barred down-triangle: filled down-triangle under a horizontal bar",
+   "worldsUsing": [
+    16,
+    17,
+    25
+   ],
+   "levelsUsing": [
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    169,
+    170,
+    241,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    250
+   ],
+   "levelCount": 28,
+   "permanentRecommendation": "yes"
+  }
+ ]
+}

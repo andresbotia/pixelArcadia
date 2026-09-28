@@ -1,0 +1,16 @@
+{
+ "world": 15,
+ "title": "Carnival of Wonders",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "olive",
+  "umber",
+  "blush",
+  "lavender",
+  "ultramarine"
+ ],
+ "globalVocabularyAfterWorld": 35,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

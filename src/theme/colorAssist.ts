@@ -2,7 +2,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 34-color Color Assist system: one unique, machine-language mark per
+ * Full 36-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -10,7 +10,7 @@ import { orbColors } from './colors';
  * orbit charge, tunnel front charge, Holding charge.
  */
 
-/** Registry order — the canonical gameplay palette (hue wheel, then the World 6–12 extensions). */
+/** Registry order — the canonical gameplay palette (hue wheel, then the World 6–16 extensions). */
 export const GAMEPLAY_COLORS: OrbColor[] = [...ORB_COLOR_IDS];
 
 /**
@@ -39,8 +39,8 @@ export interface ColorMark {
 }
 
 /**
- * 34 marks. Related within families (ring-, triangle-, bar- and square-based)
- * but each topologically unique. Only one pure rotation pair (orange↔red), and
+ * 36 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * but each topologically unique. The bar pair (orange↔red) and split-ring pair (green↔garnet) use rotation, and
  * the triangle pair also differs by fill. The World 6 marks avoid echoing their
  * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
  * purple/indigo's single triangles) is the double-triangle star.
@@ -114,6 +114,8 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
   ultramarine: { name: 'underlined-triangle', parts: [{ p: 'tri', dir: 'up', fill: false }, { p: 'bar', angle: 0, len: 0.62, offset: [0, 0.43] }] },
   pine: { name: 'tree', parts: [{ p: 'tri', dir: 'up', fill: true }, { p: 'bar', angle: 90, len: 0.25, offset: [0, 0.36] }] },
   mauve: { name: 'square-cross', parts: [{ p: 'sq', angle: 0, fill: false }, { p: 'bar', angle: 0, len: 0.76 }, { p: 'bar', angle: 90, len: 0.76 }] },
+  garnet: { name: 'theta', parts: [{ p: 'ring' }, { p: 'bar', angle: 0, len: 0.56 }] },
+  verdigris: { name: 'lidded-triangle', parts: [{ p: 'tri', dir: 'down', fill: true }, { p: 'bar', angle: 0, len: 0.62, offset: [0, -0.44] }] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(

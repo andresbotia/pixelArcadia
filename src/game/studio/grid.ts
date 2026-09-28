@@ -17,7 +17,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
  * (`largeBoards.test.ts`); 41–{@link MAX_BOARD_DIMENSION} are legal but warn
  * until device testing confirms they stay readable.
  */
-export const TUNED_GRID_SIZES = [7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 28, 30, 32, 34, 36, 38, 40] as const;
+export const TUNED_GRID_SIZES = [7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 28, 30, 32, 36, 36, 38, 40] as const;
 export const GRID_RANGE = { min: 4, max: MAX_BOARD_DIMENSION } as const;
 
 export function cellKey(x: number, y: number): string {
@@ -32,7 +32,7 @@ export function parseCellKey(key: string): { x: number; y: number } {
 /**
  * Canonical colour → art-character mapping. The nine colours in the shared
  * default legend keep their historical characters (so Levels 1–10 re-serialise
- * byte-for-byte); the remaining twenty-five get stable extra characters and force an
+ * byte-for-byte); the remaining twenty-seven get stable extra characters and force an
  * explicit `legend` entry on export.
  */
 export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
@@ -73,6 +73,8 @@ export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
     ultramarine: 'a',
     pine: 'p',
     mauve: 'm',
+    garnet: 'g',
+    verdigris: 'v',
   };
 })();
 
@@ -83,5 +85,5 @@ export function isDefaultLegendColor(color: OrbColor): boolean {
 
 export const EMPTY_CELL_CHAR = '.';
 
-/** All 34 gameplay colours, in registry order — the real palette, no invention. */
+/** All 36 gameplay colours, in registry order — the real palette, no invention. */
 export const ORB_COLORS: OrbColor[] = [...ORB_COLOR_IDS];

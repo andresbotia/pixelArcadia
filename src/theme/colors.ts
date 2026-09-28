@@ -28,7 +28,7 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 34 gameplay colors (pixels and charges), in
+ * Primary fill for each of the 36 gameplay colors (pixels and charges), in
  * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
  * give every one of these a unique non-color identifier.
  */
@@ -68,6 +68,8 @@ export const orbColors: Record<OrbColor, string> = {
   ultramarine: '#3A2FD6',
   pine: '#1E5A45',
   mauve: '#A5708F',
+  garnet: '#8E1B1B',
+  verdigris: '#1B8C8C',
 };
 
 /**
@@ -111,6 +113,8 @@ export const orbGlow: Record<OrbColor, string> = {
   ultramarine: '#A6A1EC',
   pine: '#99B4AB',
   mauve: '#D6BECC',
+  garnet: '#CC9898',
+  verdigris: '#98CBCB',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -149,4 +153,6 @@ export const orbLabel: Record<OrbColor, string> = {
   ultramarine: 'ULTRAMARINE',
   pine: 'PINE',
   mauve: 'MAUVE',
+  garnet: 'GARNET',
+  verdigris: 'VERDIGRIS',
 };

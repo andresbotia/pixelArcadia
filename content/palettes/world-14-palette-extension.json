@@ -1,0 +1,63 @@
+{
+ "world": 14,
+ "title": "Volcanic Forge",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "garnet"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "blush"
+ ],
+ "globalVocabularyAfterWorld": 35,
+ "colors": [
+  {
+   "id": "garnet",
+   "hex": "#8E1B1B",
+   "labL": 30.9,
+   "nearestExisting": "maroon",
+   "nearestDeltaE00": 14.3,
+   "secondNearest": "umber",
+   "secondDeltaE00": 15.9,
+   "visualDistinction": "Dark red; much darker than red and more saturated than maroon",
+   "primaryUse": "Magma crust, blood-red gems, lacquer frames, deep embers",
+   "contrastConcern": "Close to maroon (\u0394E00 14.3) and umber in dark scenes",
+   "suggestedGlowRim": "#CC9898",
+   "suggestedAssistGlyph": "gem ring: filled 45\u00b0 diamond inside a ring",
+   "worldsUsing": [
+    14,
+    23,
+    24,
+    25
+   ],
+   "levelsUsing": [
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    137,
+    138,
+    139,
+    140,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    232,
+    236,
+    240,
+    246
+   ],
+   "levelCount": 24,
+   "permanentRecommendation": "yes"
+  }
+ ]
+}

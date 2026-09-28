@@ -1,0 +1,15 @@
+{
+ "world": 13,
+ "title": "Frozen North",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "lavender",
+  "ultramarine",
+  "pine"
+ ],
+ "globalVocabularyAfterWorld": 34,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

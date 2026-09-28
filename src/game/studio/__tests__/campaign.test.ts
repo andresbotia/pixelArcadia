@@ -1,5 +1,5 @@
 import { CAMPAIGN_MANIFEST } from '../../levels/campaign';
-import { LEVEL_DEFINITIONS } from '../../levels/levelDefinitions';
+import { LEVEL_DEFINITIONS } from '../../levels/levels';
 import { CAMPAIGN_SCHEMA_VERSION } from '../constants';
 import {
   addWorld, assignLevel, createManifest, moveLevelBetweenWorlds, normalizeManifest,
