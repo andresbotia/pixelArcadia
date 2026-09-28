@@ -28,9 +28,9 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 15 gameplay colors (pixels and charges), in
- * hue-wheel order. Color Assist marks (theme/colorAssist.ts) give every one of
- * these a unique non-color identifier.
+ * Primary fill for each of the 20 gameplay colors (pixels and charges), in
+ * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
+ * give every one of these a unique non-color identifier.
  */
 export const orbColors: Record<OrbColor, string> = {
   white: '#EEF3FF',
@@ -48,9 +48,20 @@ export const orbColors: Record<OrbColor, string> = {
   teal: '#2FD3B4',
   green: '#3FDD9B',
   lime: '#9BE84A',
+  // World 6 landmark extension.
+  sand: '#E4CB98',
+  brown: '#A0623A',
+  stone: '#8E97A8',
+  forest: '#2F8A57',
+  maroon: '#B03A52',
 };
 
-/** Lighter glow/halo tint for each color. */
+/**
+ * Lighter glow/halo tint for each color. This is also the light rim on pixels
+ * (`pixelMaterial().rim`) and the border on tunnel / Holding Pal chips, so the
+ * low-contrast bodies (brown, maroon) get deliberately pale tints to keep their
+ * edge readable against the dark board.
+ */
 export const orbGlow: Record<OrbColor, string> = {
   white: '#FFFFFF',
   yellow: '#FFE79A',
@@ -67,6 +78,11 @@ export const orbGlow: Record<OrbColor, string> = {
   teal: '#9BEEDD',
   green: '#93F0CC',
   lime: '#D0F79E',
+  sand: '#F7EBD0',
+  brown: '#E2B48F',
+  stone: '#D0D6E2',
+  forest: '#8FD8AE',
+  maroon: '#F0A2B2',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -86,4 +102,9 @@ export const orbLabel: Record<OrbColor, string> = {
   teal: 'TEAL',
   green: 'GREEN',
   lime: 'LIME',
+  sand: 'SAND',
+  brown: 'BROWN',
+  stone: 'STONE',
+  forest: 'FOREST',
+  maroon: 'MAROON',
 };

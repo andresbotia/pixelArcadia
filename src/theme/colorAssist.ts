@@ -1,8 +1,8 @@
-import type { OrbColor } from '@/game/engine/types';
+import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 15-color Color Assist system: one unique, machine-language mark per
+ * Full 20-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -10,11 +10,8 @@ import { orbColors } from './colors';
  * orbit charge, tunnel front charge, Holding charge.
  */
 
-/** Hue-wheel order — the canonical gameplay palette. */
-export const GAMEPLAY_COLORS: OrbColor[] = [
-  'white', 'yellow', 'gold', 'orange', 'red', 'coral', 'pink', 'magenta',
-  'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime',
-];
+/** Registry order — the canonical gameplay palette (hue wheel, then the World 6 extension). */
+export const GAMEPLAY_COLORS: OrbColor[] = [...ORB_COLOR_IDS];
 
 /**
  * A mark is composed from a tiny primitive vocabulary so the set reads as one
@@ -42,9 +39,11 @@ export interface ColorMark {
 }
 
 /**
- * 15 marks. Related within families (three ring-based, two triangle-based, three
- * bar-based) but each topologically unique. Only one pure rotation pair
- * (orange↔red), and the triangle pair also differs by fill.
+ * 20 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * but each topologically unique. Only one pure rotation pair (orange↔red), and
+ * the triangle pair also differs by fill. The World 6 marks avoid echoing their
+ * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
+ * purple/indigo's single triangles) is the double-triangle star.
  */
 const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
   white: { name: 'dot', parts: [{ p: 'dot' }] },
@@ -71,6 +70,14 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
     { p: 'bar', angle: 0, offset: [0, -0.18] },
     { p: 'bar', angle: 0, offset: [0, 0.18] },
   ] },
+  sand: { name: 'square', parts: [{ p: 'sq', angle: 0, fill: false }] },
+  brown: { name: 'bowl', parts: [{ p: 'arc', dir: 'down' }, { p: 'dot', scale: 0.45 }] },
+  stone: { name: 'star', parts: [{ p: 'tri', dir: 'up', fill: false }, { p: 'tri', dir: 'down', fill: false }] },
+  forest: { name: 'tee', parts: [
+    { p: 'bar', angle: 0, offset: [0, -0.2] },
+    { p: 'bar', angle: 90, len: 0.5, offset: [0, 0.08] },
+  ] },
+  maroon: { name: 'diamond-dot', parts: [{ p: 'sq', angle: 45, fill: false }, { p: 'dot', scale: 0.4 }] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(

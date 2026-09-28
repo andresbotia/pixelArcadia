@@ -4,13 +4,10 @@ import { createGame } from '@/game/engine/createGame';
 import { defaultHoldingCapacity, expectedTunnelCount } from '@/game/engine/ruleset';
 import { applyActionWithArrivals } from '@/game/engine/holdingArrival';
 import { findFirstWinningWitness } from '@/game/engine/solver';
-import type { LevelDefinition, OrbColor } from '@/game/engine/types';
+import { ORB_COLOR_IDS, type LevelDefinition, type OrbColor } from '@/game/engine/types';
 import type { LevelValidationResult, ValidationDiagnostic } from './types';
 
-export const VALID_ORB_COLORS = new Set<OrbColor>([
-  'blue', 'cyan', 'white', 'purple', 'pink', 'yellow', 'orange', 'red',
-  'green', 'gold', 'coral', 'magenta', 'indigo', 'teal', 'lime',
-]);
+export const VALID_ORB_COLORS: ReadonlySet<OrbColor> = new Set<OrbColor>(ORB_COLOR_IDS);
 
 export const VALID_DIFFICULTIES = new Set(['easy', 'medium', 'hard', 'super-hard', 'extreme']);
 

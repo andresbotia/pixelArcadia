@@ -2,26 +2,35 @@
  * actions.ts/pass.ts; rendering and clocks never determine outcomes. */
 
 /**
- * The full gameplay colour vocabulary (15). Ordered around the hue wheel.
- * Levels 1-10 use a subset; the rest are reserved for later campaign content
- * and are already covered by the palette tokens and the Color Assist marks.
+ * The authoritative gameplay colour registry (20). The original 15 are ordered
+ * around the hue wheel; the World 6 landmark extension (sand, brown, stone,
+ * forest, maroon) follows so existing indices never shift. Every palette map,
+ * validator set, Color Assist mark and Studio list derives from this array.
  */
-export type OrbColor =
-  | 'white'
-  | 'yellow'
-  | 'gold'
-  | 'orange'
-  | 'red'
-  | 'coral'
-  | 'pink'
-  | 'magenta'
-  | 'purple'
-  | 'indigo'
-  | 'blue'
-  | 'cyan'
-  | 'teal'
-  | 'green'
-  | 'lime';
+export const ORB_COLOR_IDS = [
+  'white',
+  'yellow',
+  'gold',
+  'orange',
+  'red',
+  'coral',
+  'pink',
+  'magenta',
+  'purple',
+  'indigo',
+  'blue',
+  'cyan',
+  'teal',
+  'green',
+  'lime',
+  'sand',
+  'brown',
+  'stone',
+  'forest',
+  'maroon',
+] as const;
+
+export type OrbColor = (typeof ORB_COLOR_IDS)[number];
 
 /**
  * Special-pixel modifier. Serializable, cell-authored.

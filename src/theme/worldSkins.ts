@@ -56,7 +56,7 @@ type SkinEntry = Omit<WorldSkin, 'themeId'>;
  * One entry per real campaign world (`content/levels/world-0N.json` /
  * `levelDefinitions.ts`'s `themeId`s). Colours are a first pass for the
  * world-select redesign (Milestone 3) to tune against real screens — chosen
- * to be distinct from each other and from the 15 `orbColors` gameplay values
+ * to be distinct from each other and from the 20 `orbColors` gameplay values
  * (`theme/colors.ts`), never reused from that set.
  *
  * `cosmic-frontier` deliberately owns the `starfield` treatment: the old

@@ -22,7 +22,7 @@ import { LEVEL_DEFINITIONS } from './levels';
 // `display.accent` is per-world identity colour for the world-select screen,
 // sourced from `theme/worldSkins.ts` so there is exactly one authored accent
 // value per world (not a second, hand-duplicated one here). Content data,
-// like `orbColors`, never reused as chrome and never drawn from the 15
+// like `orbColors`, never reused as chrome and never drawn from the 20
 // gameplay colours (brand <-> gameplay separation).
 const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'first-light', title: 'First Light', themeId: 'first-light', display: { subtitle: 'Learn the light', accent: worldSkin('first-light').accent } },

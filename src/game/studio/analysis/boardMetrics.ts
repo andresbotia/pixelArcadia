@@ -3,14 +3,11 @@
  * definition (pixel-art + legend) — no solver, no runtime.
  */
 import { DEFAULT_ART_LEGEND } from '@/game/engine/art';
-import type { LevelDefinition, OrbColor } from '@/game/engine/types';
+import { ORB_COLOR_IDS, type LevelDefinition, type OrbColor } from '@/game/engine/types';
 import type { BoardMetrics, PaletteSnapshot } from './types';
 
 /** Stable palette order matching `OrbColor` in `engine/types.ts`. */
-export const ORB_COLOR_ORDER: readonly OrbColor[] = [
-  'white', 'yellow', 'gold', 'orange', 'red', 'coral', 'pink', 'magenta',
-  'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime',
-];
+export const ORB_COLOR_ORDER: readonly OrbColor[] = ORB_COLOR_IDS;
 
 const EMPTY_CHARS = new Set(['.', ' ', '']);
 

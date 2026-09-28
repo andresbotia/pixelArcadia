@@ -5,7 +5,7 @@
  */
 import { DEFAULT_ART_LEGEND } from '@/game/engine/art';
 import { MAX_BOARD_DIMENSION } from '@/game/engine/boardLimits';
-import type { OrbColor } from '@/game/engine/types';
+import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 
 /**
  * Grid sizes the production renderer is tuned for. The schema itself imposes no
@@ -32,7 +32,7 @@ export function parseCellKey(key: string): { x: number; y: number } {
 /**
  * Canonical colour → art-character mapping. The nine colours in the shared
  * default legend keep their historical characters (so Levels 1–10 re-serialise
- * byte-for-byte); the remaining six get stable extra characters and force an
+ * byte-for-byte); the remaining eleven get stable extra characters and force an
  * explicit `legend` entry on export.
  */
 export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
@@ -54,6 +54,11 @@ export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
     teal: 'T',
     green: fromDefault.green ?? 'G',
     lime: 'L',
+    sand: 'S',
+    brown: 'U',
+    stone: 'E',
+    forest: 'F',
+    maroon: 'V',
   };
 })();
 
@@ -64,8 +69,5 @@ export function isDefaultLegendColor(color: OrbColor): boolean {
 
 export const EMPTY_CELL_CHAR = '.';
 
-/** All 15 gameplay colours, in hue-wheel order — the real palette, no invention. */
-export const ORB_COLORS: OrbColor[] = [
-  'white', 'yellow', 'gold', 'orange', 'red', 'coral', 'pink', 'magenta',
-  'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime',
-];
+/** All 20 gameplay colours, in registry order — the real palette, no invention. */
+export const ORB_COLORS: OrbColor[] = [...ORB_COLOR_IDS];

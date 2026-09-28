@@ -6,7 +6,7 @@
  * app icon, splash, logo/wordmark, primary CTA, loading + empty moments and the
  * Home brand pass. They are deliberately kept SEPARATE from:
  *
- *   - the 15 functional gameplay colours (`theme/colors.ts` — `orbColors` etc.)
+ *   - the 20 functional gameplay colours (`theme/colors.ts` — `orbColors` etc.)
  *   - the in-game surface/material language (`theme/arcade.ts` — `arcade.*`)
  *
  * A gameplay colour is never reused as a brand colour and a brand colour never

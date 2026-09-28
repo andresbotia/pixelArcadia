@@ -13,7 +13,7 @@ interface PalettePanelProps {
 }
 
 /**
- * The real 15-colour gameplay palette (`OrbColor`) — no second palette. Colours
+ * The real 20-colour gameplay palette (`OrbColor`) — no second palette. Colours
  * outside the shared default art legend are marked so the author knows the
  * export will carry an explicit `legend`.
  */
