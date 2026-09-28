@@ -154,8 +154,9 @@ function Part({ part, size, stroke, color, scale }: {
       );
     }
     case 'arc': {
-      const w = s * 0.62;
-      const h = s * 0.36;
+      const w = s * 0.62 * (part.scale ?? 1);
+      const h = s * 0.36 * (part.scale ?? 1);
+      const [ox, oy] = part.offset ?? [0, 0];
       const down = part.dir === 'down';
       return (
         <View
@@ -171,6 +172,7 @@ function Part({ part, size, stroke, color, scale }: {
               borderBottomRightRadius: down ? 0 : w,
               borderTopLeftRadius: down ? w : 0,
               borderTopRightRadius: down ? w : 0,
+              transform: [{ translateX: ox * s }, { translateY: oy * s }],
             },
           ]}
         />

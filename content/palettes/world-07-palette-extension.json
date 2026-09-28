@@ -1,0 +1,80 @@
+{
+  "world": 7,
+  "requiresPaletteExtension": true,
+  "existingPermanentPaletteSize": 20,
+  "proposedPermanentPaletteSize": 23,
+  "colors": [
+    {
+      "id": "navy",
+      "name": "Navy",
+      "hex": "#244A73",
+      "nearestExistingGameplayColor": "stone",
+      "distinction": "A dark blue water body and distant masonry shadow, with substantially lower luminance and less saturation than electric blue.",
+      "contrastAndReadabilityConcerns": "Dark fill can merge with the void; use the pale rim and avoid adjacent navy/slate without boundaries.",
+      "primaryUseCases": [
+        "Deep water",
+        "night sky",
+        "distant ruins",
+        "cold shadow"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "two vertically stacked curved arcs, each with a short end tick; distinct from lime straight stacked bars and teal single arc",
+      "suggestedGlowAndLightRim": "#A8C8E8",
+      "introducedWorld": 7,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "blue",
+      "nearestExistingDeltaE76": 36.15,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    },
+    {
+      "id": "seafoam",
+      "name": "Seafoam",
+      "hex": "#B8E8C6",
+      "nearestExistingGameplayColor": "teal",
+      "distinction": "A pale, low-saturation mint highlight; substantially lighter and less saturated than green or teal.",
+      "contrastAndReadabilityConcerns": "White and ivory are nearby in luminance; pair with dark outlines and its distinct assist mark.",
+      "primaryUseCases": [
+        "Underwater light shafts",
+        "pale marine anatomy",
+        "jade highlights",
+        "aged magical patina"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "three-lobed wave crest",
+      "suggestedGlowAndLightRim": "#E6FFF1",
+      "introducedWorld": 7,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "green",
+      "nearestExistingDeltaE76": 29.29,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    },
+    {
+      "id": "slate",
+      "name": "Slate",
+      "hex": "#4F7282",
+      "nearestExistingGameplayColor": "stone",
+      "distinction": "A dark blue-gray material tone, darker and bluer than stone.",
+      "contrastAndReadabilityConcerns": "Navy is the nearest new neighbor; retain a rim, glyph and a separating light contour.",
+      "primaryUseCases": [
+        "Wet rock",
+        "deep-sea fauna",
+        "submerged masonry",
+        "armor shadows"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "diagonal stratum with two short ticks",
+      "suggestedGlowAndLightRim": "#BDD5DE",
+      "introducedWorld": 7,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "stone",
+      "nearestExistingDeltaE76": 18.5,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    }
+  ],
+  "validationContract": "External authoring harness adds only these color IDs to the validator allowlist in memory. Production engine rules and repository files are unchanged. Vanilla repository schema validation requires implementing the palette registry extension before import.",
+  "glyphContract": "Concepts only: implementation must assign six unused, unique non-color identifiers and verify them against the existing 20 marks.",
+  "crossWorldReview": "Navy/seafoam/slate separate deep water, pale biological light and wet rock. Ivory/ice/amethyst separate warm bone, cool moonlight and violet magic. World 8 reuses Ocean materials instead of proposing duplicate dark blues or mint greens."
+}

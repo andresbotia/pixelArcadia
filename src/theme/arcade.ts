@@ -133,6 +133,6 @@ export function pixelMaterial(color: OrbColor): PixelMaterial {
 }
 
 /**
- * The full 20-mark Color Assist system now lives in `theme/colorAssist.ts`
+ * The full 26-mark Color Assist system now lives in `theme/colorAssist.ts`
  * (pure model) + `components/ColorAssistMark.tsx` (renderer).
  */

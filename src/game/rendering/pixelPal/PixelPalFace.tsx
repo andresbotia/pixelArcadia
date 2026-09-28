@@ -15,7 +15,7 @@ import Animated, {
 
 import { ColorAssistMark } from '@/components/ColorAssistMark';
 import type { OrbColor } from '@/game/engine/types';
-import { orbColors } from '@/theme/colors';
+import { orbColors, orbGlow } from '@/theme/colors';
 import { activePalBadge } from '@/theme/gameplayLayout';
 
 /** North-star character pass — a Pixel Pal's momentary expression. Kept to
@@ -120,6 +120,8 @@ export const PixelPalShell = memo(function PixelPalShell({ color, size, colorAss
         style={{
           width: size, height: size, borderRadius: size * 0.32,
           backgroundColor: shell,
+          borderWidth: 1,
+          borderColor: orbGlow[color],
           overflow: 'hidden',
         }}
       >

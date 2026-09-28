@@ -11,29 +11,30 @@ import {
 import { orbColors, orbGlow, orbLabel } from '@/theme/colors';
 import type { OrbColor } from '@/game/engine/types';
 
-test('the gameplay palette is exactly the 20 approved colours: hue wheel, then the World 6 extension', () => {
+test('the gameplay palette is exactly the 26 approved colours: hue wheel, then the World 6–8 extensions', () => {
   expect(GAMEPLAY_COLORS).toEqual([
     'white', 'yellow', 'gold', 'orange', 'red', 'coral', 'pink', 'magenta',
     'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime',
     'sand', 'brown', 'stone', 'forest', 'maroon',
+    'navy', 'seafoam', 'slate', 'ivory', 'ice', 'amethyst',
   ]);
-  // Every palette token map covers all 20 with no extras.
+  // Every palette token map covers all 26 with no extras.
   for (const map of [orbColors, orbGlow, orbLabel]) {
     expect(Object.keys(map).sort()).toEqual([...GAMEPLAY_COLORS].sort());
   }
 });
 
-test('20/20 colour coverage: one mark per colour, every mark name unique', () => {
+test('26/26 colour coverage: one mark per colour, every mark name unique', () => {
   expect(Object.keys(COLOR_MARKS).sort()).toEqual([...GAMEPLAY_COLORS].sort());
   const names = GAMEPLAY_COLORS.map((c) => colorMark(c).name);
-  expect(new Set(names).size).toBe(20);
+  expect(new Set(names).size).toBe(26);
 });
 
 test('every mark is topologically unique (not just colour or rotation)', () => {
   const signature = (c: OrbColor) =>
     JSON.stringify(colorMark(c).parts.map((p) => ({ ...p, offset: undefined })));
   const sigs = GAMEPLAY_COLORS.map(signature);
-  expect(new Set(sigs).size).toBe(20);
+  expect(new Set(sigs).size).toBe(26);
 
   // At most one pure single-bar rotation pair in the whole set.
   const singleBars = GAMEPLAY_COLORS.filter((c) => {

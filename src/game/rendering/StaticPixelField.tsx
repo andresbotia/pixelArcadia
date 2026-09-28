@@ -153,9 +153,10 @@ function addMark(stroke: SkPath, fill: SkPath, parts: readonly MarkPart[], cx: n
       case 'arc': {
         // The view renderer draws a half-capsule: the lower half for `up`
         // (bottom borders + bottom radii), the upper half for `down`.
-        const w = s * 0.62;
-        const h = s * 0.36;
-        stroke.arcToOval(rect(cx - w / 2, cy - h / 2, w, h), part.dir === 'down' ? 180 : 0, 180, true);
+        const w = s * 0.62 * (part.scale ?? 1);
+        const h = s * 0.36 * (part.scale ?? 1);
+        const [ox, oy] = part.offset ?? [0, 0];
+        stroke.arcToOval(rect(cx + ox * s - w / 2, cy + oy * s - h / 2, w, h), part.dir === 'down' ? 180 : 0, 180, true);
         break;
       }
     }

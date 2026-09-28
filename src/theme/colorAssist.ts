@@ -2,7 +2,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 20-color Color Assist system: one unique, machine-language mark per
+ * Full 26-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -10,7 +10,7 @@ import { orbColors } from './colors';
  * orbit charge, tunnel front charge, Holding charge.
  */
 
-/** Registry order — the canonical gameplay palette (hue wheel, then the World 6 extension). */
+/** Registry order — the canonical gameplay palette (hue wheel, then the World 6–8 extensions). */
 export const GAMEPLAY_COLORS: OrbColor[] = [...ORB_COLOR_IDS];
 
 /**
@@ -29,7 +29,7 @@ export type MarkPart =
   | { p: 'bar'; angle: number; len?: number; offset?: [number, number] }
   | { p: 'tri'; dir: 'up' | 'down'; fill: boolean }
   | { p: 'sq'; angle: number; fill: boolean }
-  | { p: 'arc'; dir: 'up' | 'down' };
+  | { p: 'arc'; dir: 'up' | 'down'; scale?: number; offset?: [number, number] };
 
 export interface ColorMark {
   color: OrbColor;
@@ -39,7 +39,7 @@ export interface ColorMark {
 }
 
 /**
- * 20 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * 26 marks. Related within families (ring-, triangle-, bar- and square-based)
  * but each topologically unique. Only one pure rotation pair (orange↔red), and
  * the triangle pair also differs by fill. The World 6 marks avoid echoing their
  * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
@@ -78,6 +78,34 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
     { p: 'bar', angle: 90, len: 0.5, offset: [0, 0.08] },
   ] },
   maroon: { name: 'diamond-dot', parts: [{ p: 'sq', angle: 45, fill: false }, { p: 'dot', scale: 0.4 }] },
+  navy: { name: 'double-arc', parts: [
+    { p: 'arc', dir: 'up', scale: 0.9, offset: [0, -0.22] },
+    { p: 'arc', dir: 'up', scale: 0.9, offset: [0, 0.22] },
+  ] },
+  seafoam: { name: 'wave', parts: [
+    { p: 'arc', dir: 'down', scale: 0.45, offset: [-0.28, 0] },
+    { p: 'arc', dir: 'up', scale: 0.45 },
+    { p: 'arc', dir: 'down', scale: 0.45, offset: [0.28, 0] },
+  ] },
+  slate: { name: 'stratum', parts: [
+    { p: 'bar', angle: -45 },
+    { p: 'bar', angle: 45, len: 0.24, offset: [-0.2, 0.05] },
+    { p: 'bar', angle: 45, len: 0.24, offset: [0.2, -0.05] },
+  ] },
+  ivory: { name: 'hook', parts: [
+    { p: 'arc', dir: 'down' },
+    { p: 'bar', angle: 90, len: 0.22, offset: [-0.28, 0.22] },
+    { p: 'bar', angle: 90, len: 0.22, offset: [0.28, 0.22] },
+  ] },
+  ice: { name: 'snowflake', parts: [
+    { p: 'bar', angle: 0 },
+    { p: 'bar', angle: 60 },
+    { p: 'bar', angle: -60 },
+  ] },
+  amethyst: { name: 'capped-diamond', parts: [
+    { p: 'sq', angle: 45, fill: true },
+    { p: 'bar', angle: 0, len: 0.5, offset: [0, -0.43] },
+  ] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(
@@ -136,16 +164,16 @@ export function markDetail(density: number): MarkDetail {
 }
 
 /**
- * At high density, drop the secondary part of composed marks (keep the ring,
- * drop the inner dot / divider) and raise the minimum relative stroke width so
- * the mark never disappears.
+ * At high density, preserve every distinguishing primitive. Dropping secondary
+ * parts collapses target/ring, split-ring/ring and several new marks. Raise the
+ * minimum relative stroke width without losing the semantic shape.
  */
 export function simplifiedMark(color: OrbColor, detail: MarkDetail): { parts: MarkPart[]; minStroke: number } {
   const mark = colorMark(color);
   if (detail === 'full') return { parts: mark.parts, minStroke: 0.08 };
   if (detail === 'compact') return { parts: mark.parts, minStroke: 0.12 };
-  // minimal: single dominant part, heavier stroke.
-  return { parts: [mark.parts[0]!], minStroke: 0.18 };
+  // Minimal detail keeps the semantic silhouette in both RN and Skia.
+  return { parts: mark.parts, minStroke: 0.18 };
 }
 
 /**

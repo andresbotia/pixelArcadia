@@ -1,0 +1,82 @@
+{
+  "world": 8,
+  "requiresPaletteExtension": true,
+  "existingPermanentPaletteSize": 23,
+  "proposedPermanentPaletteSize": 26,
+  "colors": [
+    {
+      "id": "ivory",
+      "name": "Ivory",
+      "hex": "#FFF0C2",
+      "nearestExistingGameplayColor": "sand",
+      "distinction": "A cream highlight, visibly lighter and warmer than sand while retaining a yellow cast unlike blue-white.",
+      "contrastAndReadabilityConcerns": "Close to white, seafoam and ice at small sizes; use the unique assist mark and maintain material outlines.",
+      "primaryUseCases": [
+        "Bone",
+        "horns",
+        "beaks",
+        "parchment",
+        "feathers",
+        "sunlit mythic faces"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "hook shape with two outward tip ticks; avoid the existing teal arc and brown arc-plus-dot",
+      "suggestedGlowAndLightRim": "#FFFFEA",
+      "introducedWorld": 8,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "sand",
+      "nearestExistingDeltaE76": 13.56,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    },
+    {
+      "id": "ice",
+      "name": "Ice",
+      "hex": "#AAD6FF",
+      "nearestExistingGameplayColor": "white",
+      "distinction": "A pale, desaturated blue, much lighter and less saturated than blue or cyan; distinctly colder than seafoam.",
+      "contrastAndReadabilityConcerns": "White is close in luminance; its cool hue needs the assist glyph for color vision differences.",
+      "primaryUseCases": [
+        "Moonlight",
+        "cool feathers",
+        "stone light",
+        "frost and enchanted armor"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "six-spoke snowflake",
+      "suggestedGlowAndLightRim": "#E7F5FF",
+      "introducedWorld": 8,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "cyan",
+      "nearestExistingDeltaE76": 22.48,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    },
+    {
+      "id": "amethyst",
+      "name": "Amethyst",
+      "hex": "#793F98",
+      "nearestExistingGameplayColor": "indigo",
+      "distinction": "A dark violet material/shadow, much darker than purple and more violet than maroon; not the blue of navy or gray of slate.",
+      "contrastAndReadabilityConcerns": "Dark regions need the pale rim; avoid touching maroon without a contour.",
+      "primaryUseCases": [
+        "Mythic twilight",
+        "crystal magic",
+        "magical shadows",
+        "enchanted stone"
+      ],
+      "permanentCampaignColor": true,
+      "suggestedColorAssistGlyph": "filled diamond with a short horizontal bar above; avoid existing blue outlined diamond and maroon outlined diamond-dot",
+      "suggestedGlowAndLightRim": "#D5ADF0",
+      "introducedWorld": 8,
+      "runtimeImplemented": false,
+      "nearestHueFamily": "purple",
+      "nearestExistingDeltaE76": 31.71,
+      "nearestColorMethod": "CIE76 distance in D65 CIELAB from the repo sRGB hexes; not a phone-scale color vision simulation.",
+      "assistImplementationConcern": "Keep the complete distinguishing shape at minimal detail. The current first-part-only simplification must not collapse a proposed mark onto an existing one."
+    }
+  ],
+  "validationContract": "External authoring harness adds only these color IDs to the validator allowlist in memory. Production engine rules and repository files are unchanged. Vanilla repository schema validation requires implementing the palette registry extension before import.",
+  "glyphContract": "Concepts only: implementation must assign six unused, unique non-color identifiers and verify them against the existing 20 marks.",
+  "crossWorldReview": "Navy/seafoam/slate separate deep water, pale biological light and wet rock. Ivory/ice/amethyst separate warm bone, cool moonlight and violet magic. World 8 reuses Ocean materials instead of proposing duplicate dark blues or mint greens."
+}

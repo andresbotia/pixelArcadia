@@ -6,6 +6,8 @@ import { COMPILED_LEVELS as CORE_V2_WORLD_3 } from './compiledWorld3';
 import { COMPILED_LEVELS as CORE_V2_WORLD_4 } from './compiledWorld4';
 import { COMPILED_LEVELS as CORE_V2_WORLD_5 } from './compiledWorld5';
 import { COMPILED_LEVELS as CORE_V2_WORLD_6 } from './compiledWorld6';
+import { COMPILED_LEVELS as CORE_V2_WORLD_7 } from './compiledWorld7';
+import { COMPILED_LEVELS as CORE_V2_WORLD_8 } from './compiledWorld8';
 import { LEVEL_DEFINITIONS as LEGACY_LEVEL_DEFINITIONS } from './levelDefinitions';
 
 /**
@@ -91,7 +93,9 @@ export const LEVEL_DEFINITIONS: LevelDefinition[] = combineLevelDefinitions(
     ...CORE_V2_WORLD_4,
     ...CORE_V2_WORLD_5,
     ...CORE_V2_WORLD_6,
-    ...COMPILED_LEVELS.filter((l) => l.id > 60),
+    ...CORE_V2_WORLD_7,
+    ...CORE_V2_WORLD_8,
+    ...COMPILED_LEVELS.filter((l) => l.id > 80),
   ],
 );
 

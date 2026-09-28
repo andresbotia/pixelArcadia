@@ -28,7 +28,7 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 20 gameplay colors (pixels and charges), in
+ * Primary fill for each of the 26 gameplay colors (pixels and charges), in
  * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
  * give every one of these a unique non-color identifier.
  */
@@ -54,6 +54,12 @@ export const orbColors: Record<OrbColor, string> = {
   stone: '#8E97A8',
   forest: '#2F8A57',
   maroon: '#B03A52',
+  navy: '#244A73',
+  seafoam: '#B8E8C6',
+  slate: '#4F7282',
+  ivory: '#FFF0C2',
+  ice: '#AAD6FF',
+  amethyst: '#793F98',
 };
 
 /**
@@ -83,6 +89,12 @@ export const orbGlow: Record<OrbColor, string> = {
   stone: '#D0D6E2',
   forest: '#8FD8AE',
   maroon: '#F0A2B2',
+  navy: '#A8C8E8',
+  seafoam: '#E6FFF1',
+  slate: '#BDD5DE',
+  ivory: '#FFFFEA',
+  ice: '#E7F5FF',
+  amethyst: '#D5ADF0',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -107,4 +119,10 @@ export const orbLabel: Record<OrbColor, string> = {
   stone: 'STONE',
   forest: 'FOREST',
   maroon: 'MAROON',
+  navy: 'NAVY',
+  seafoam: 'SEAFOAM',
+  slate: 'SLATE',
+  ivory: 'IVORY',
+  ice: 'ICE',
+  amethyst: 'AMETHYST',
 };
