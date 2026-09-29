@@ -1,0 +1,72 @@
+{
+ "world": 23,
+ "title": "Gothic Kingdom",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "rose"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "lavender",
+  "ultramarine",
+  "pine",
+  "garnet",
+  "graphite"
+ ],
+ "globalVocabularyAfterWorld": 41,
+ "colors": [
+  {
+   "id": "rose",
+   "hex": "#E0457B",
+   "labL": 53.5,
+   "nearestExisting": "maroon",
+   "nearestDeltaE00": 12.5,
+   "secondNearest": "coral",
+   "secondDeltaE00": 13.3,
+   "visualDistinction": "Saturated pink-red between coral and maroon",
+   "primaryUse": "Stained glass, roses, heraldry, dusk light",
+   "contrastConcern": "Closest to maroon (\u0394E00 12.5) and coral (13.3); glyph and rim mandatory",
+   "suggestedGlowRim": "#F1ABC3",
+   "suggestedAssistGlyph": "cross-ring: 45\u00b0 cross with a small ring at centre",
+   "worldsUsing": [
+    23,
+    24,
+    25
+   ],
+   "levelsUsing": [
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247,
+    248,
+    249,
+    250
+   ],
+   "levelCount": 30,
+   "permanentRecommendation": "yes, conditional on rim + unique glyph passing minimum-detail review"
+  }
+ ]
+}

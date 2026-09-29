@@ -1,0 +1,18 @@
+{
+ "world": 21,
+ "title": "Storm Elementals",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "olive",
+  "umber",
+  "lavender",
+  "ultramarine",
+  "cerulean",
+  "graphite",
+  "sage"
+ ],
+ "globalVocabularyAfterWorld": 39,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

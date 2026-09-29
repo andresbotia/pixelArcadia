@@ -56,7 +56,7 @@ type SkinEntry = Omit<WorldSkin, 'themeId'>;
  * One entry per real campaign world (`content/levels/world-0N.json` /
  * `levelDefinitions.ts`'s `themeId`s). Colours are a first pass for the
  * world-select redesign (Milestone 3) to tune against real screens — chosen
- * to be distinct from each other and from the 39 `orbColors` gameplay values
+ * to be distinct from each other and from the 41 `orbColors` gameplay values
  * (`theme/colors.ts`), never reused from that set.
  *
  * `cosmic-frontier` deliberately owns the `starfield` treatment: the old
@@ -84,6 +84,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'crystal-caverns': { accent: '#6FB7E8', secondaryAccent: '#D7B8F5', ambientId: 'arcaneParticles', intensity: 'medium' },
   'neon-megacity': { accent: '#FF3FA8', secondaryAccent: '#39D7F2', ambientId: 'neonSignage', intensity: 'high' },
   'dreamscapes': { accent: '#B79AE6', secondaryAccent: '#F4CFE0', ambientId: 'starfield', intensity: 'medium' },
+  'storm-elementals': { accent: '#7FA6C9', secondaryAccent: '#E8F0A0', ambientId: 'duskAsh', intensity: 'high' },
+  'galactic-odyssey': { accent: '#8A5BD6', secondaryAccent: '#FFB3E6', ambientId: 'starfield', intensity: 'high' },
+  'gothic-kingdom': { accent: '#A8323E', secondaryAccent: '#D9C7A3', ambientId: 'galleryDust', intensity: 'medium' },
+  'celestial-zodiac': { accent: '#E6C35C', secondaryAccent: '#9FB4F2', ambientId: 'arcaneParticles', intensity: 'medium' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

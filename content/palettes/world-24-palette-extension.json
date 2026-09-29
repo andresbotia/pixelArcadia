@@ -1,0 +1,21 @@
+{
+ "world": 24,
+ "title": "Celestial Zodiac",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "garnet",
+  "cerulean",
+  "sage",
+  "plum",
+  "rose"
+ ],
+ "globalVocabularyAfterWorld": 41,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

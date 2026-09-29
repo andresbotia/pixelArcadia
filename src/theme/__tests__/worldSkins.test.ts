@@ -5,6 +5,7 @@ const REAL_CAMPAIGN_THEME_IDS = [
   'first-light', 'wild-garden', 'neon-nights', 'mechanical-city', 'cosmic-frontier',
   'world-landmarks', 'ocean-depths', 'mythic-realm', 'prehistoric-titans', 'masterpiece-gallery', 'ancient-empires', 'enchanted-forest', 'frozen-north', 'volcanic-forge', 'carnival-of-wonders', 'lantern-dynasty',
   'steam-skyways', 'crystal-caverns', 'neon-megacity', 'dreamscapes',
+  'storm-elementals', 'galactic-odyssey', 'gothic-kingdom', 'celestial-zodiac',
 ];
 
 test('every real campaign world has a skin entry', () => {

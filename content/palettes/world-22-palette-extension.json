@@ -1,0 +1,63 @@
+{
+ "world": 22,
+ "title": "Galactic Odyssey",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "plum"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "cerulean",
+  "graphite"
+ ],
+ "globalVocabularyAfterWorld": 40,
+ "colors": [
+  {
+   "id": "plum",
+   "hex": "#5A2248",
+   "labL": 22.9,
+   "nearestExisting": "amethyst",
+   "nearestDeltaE00": 16.9,
+   "secondNearest": "maroon",
+   "secondDeltaE00": 21.4,
+   "visualDistinction": "Very dark red-violet; darker than amethyst",
+   "primaryUse": "Nebula shadow, space depth, dark velvet",
+   "contrastConcern": "Darkest proposal (L*23); strong pale rim required against the void",
+   "suggestedGlowRim": "#B49BAC",
+   "suggestedAssistGlyph": "ringed diamond: outline 45\u00b0 diamond inside a ring",
+   "worldsUsing": [
+    22,
+    24,
+    25
+   ],
+   "levelsUsing": [
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    231,
+    232,
+    233,
+    234,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    249
+   ],
+   "levelCount": 21,
+   "permanentRecommendation": "yes"
+  }
+ ]
+}

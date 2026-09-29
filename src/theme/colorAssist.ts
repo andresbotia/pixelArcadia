@@ -2,7 +2,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 39-color Color Assist system: one unique, machine-language mark per
+ * Full 41-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -10,7 +10,7 @@ import { orbColors } from './colors';
  * orbit charge, tunnel front charge, Holding charge.
  */
 
-/** Registry order — the canonical gameplay palette (hue wheel, then the World 6–20 extensions). */
+/** Registry order — the canonical gameplay palette (hue wheel, then the World 6–24 extensions). */
 export const GAMEPLAY_COLORS: OrbColor[] = [...ORB_COLOR_IDS];
 
 /**
@@ -39,7 +39,7 @@ export interface ColorMark {
 }
 
 /**
- * 39 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * 41 marks. Related within families (ring-, triangle-, bar- and square-based)
  * but each topologically unique. The bar pair (orange↔red) and split-ring pair (green↔garnet) use rotation, and
  * the triangle pair also differs by fill. The World 6 marks avoid echoing their
  * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
@@ -119,6 +119,8 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
   cerulean: { name: 'pinned-ring', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 90, len: 0.3, offset: [0, -0.38] }] },
   graphite: { name: 'slashed-square', parts: [{ p: 'sq', angle: 0, fill: false }, { p: 'bar', angle: 45, len: 0.65 }] },
   sage: { name: 'anchor', parts: [{ p: 'arc', dir: 'up', offset: [0, 0.1] }, { p: 'bar', angle: 90, len: 0.62 }, { p: 'bar', angle: 0, len: 0.28, offset: [0, -0.24] }] },
+  plum: { name: 'pierced-ring', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 90, len: 0.2, offset: [0, -0.42] }, { p: 'bar', angle: 90, len: 0.2, offset: [0, 0.42] }] },
+  rose: { name: 'triangle-down-dot', parts: [{ p: 'tri', dir: 'down', fill: false }, { p: 'dot', scale: 0.3 }] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(

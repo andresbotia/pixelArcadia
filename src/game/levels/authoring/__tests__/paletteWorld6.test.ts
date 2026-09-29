@@ -121,7 +121,7 @@ describe('World 6 palette extension', () => {
 
   // 12
   it('keeps one registry with no duplicate ids, mirrored by every palette list', () => {
-    expect(ORB_COLOR_IDS).toHaveLength(39);
+    expect(ORB_COLOR_IDS).toHaveLength(41);
     expect(new Set(ORB_COLOR_IDS).size).toBe(ORB_COLOR_IDS.length);
     for (const list of [GAMEPLAY_COLORS, ORB_COLORS, [...ORB_COLOR_ORDER], [...VALID_ORB_COLORS]]) {
       expect([...list].sort()).toEqual([...ORB_COLOR_IDS].sort());

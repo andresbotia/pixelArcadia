@@ -1,0 +1,1178 @@
+{
+ "batch": "201-240",
+ "boardCells": 2304,
+ "note": "2295 px (9 empty cells) is the ceiling, reached by 6 boards (229, 230, 237, 238, 239, 240); 228 and 236 are at 2294. On these boards the empty cells are only the chamfered corners, so interior negative space comes from colour, not empty cells.",
+ "worlds": {
+  "21": {
+   "avgPixels": 2265.4,
+   "min": 2236,
+   "max": 2290,
+   "avgOccupancyPct": 98.33,
+   "ge98": 7,
+   "ge99": 2
+  },
+  "22": {
+   "avgPixels": 2272.6,
+   "min": 2244,
+   "max": 2290,
+   "avgOccupancyPct": 98.64,
+   "ge98": 9,
+   "ge99": 4
+  },
+  "23": {
+   "avgPixels": 2280.0,
+   "min": 2252,
+   "max": 2295,
+   "avgOccupancyPct": 98.96,
+   "ge98": 9,
+   "ge99": 5
+  },
+  "24": {
+   "avgPixels": 2285.4,
+   "min": 2260,
+   "max": 2295,
+   "avgOccupancyPct": 99.19,
+   "ge98": 10,
+   "ge99": 7
+  }
+ },
+ "ge98": [
+  203,
+  204,
+  206,
+  207,
+  208,
+  209,
+  210,
+  211,
+  212,
+  213,
+  214,
+  216,
+  217,
+  218,
+  219,
+  220,
+  221,
+  222,
+  223,
+  224,
+  226,
+  227,
+  228,
+  229,
+  230,
+  231,
+  232,
+  233,
+  234,
+  235,
+  236,
+  237,
+  238,
+  239,
+  240
+ ],
+ "ge99": [
+  209,
+  210,
+  217,
+  218,
+  219,
+  220,
+  226,
+  227,
+  228,
+  229,
+  230,
+  233,
+  234,
+  236,
+  237,
+  238,
+  239,
+  240
+ ],
+ "levels": [
+  {
+   "id": 201,
+   "world": 21,
+   "title": "Thunderhead",
+   "pixels": 2250,
+   "occupancyPct": 97.66,
+   "emptyCells": 54,
+   "ge98": false,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 22.7
+    },
+    {
+     "color": "stone",
+     "pct": 21.6
+    },
+    {
+     "color": "slate",
+     "pct": 13.0
+    }
+   ],
+   "colorComponents": 77,
+   "visual": "PASS",
+   "visualNote": "Layered graphite/stone/slate storm clouds, white cloud cap, cerulean rain and a gold lightning fork; clear storm hierarchy. Graphite/slate 81 edges, separable by hue, assist resolves."
+  },
+  {
+   "id": 202,
+   "world": 21,
+   "title": "Tornado Plains",
+   "pixels": 2254,
+   "occupancyPct": 97.83,
+   "emptyCells": 50,
+   "ge98": false,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "slate",
+     "pct": 19.5
+    },
+    {
+     "color": "olive",
+     "pct": 17.8
+    },
+    {
+     "color": "graphite",
+     "pct": 14.2
+    }
+   ],
+   "colorComponents": 88,
+   "visual": "PASS",
+   "visualNote": "Grey funnel over olive/gold plains with barn and signpost; strong silhouette."
+  },
+  {
+   "id": 203,
+   "world": 21,
+   "title": "Lightning Tree",
+   "pixels": 2258,
+   "occupancyPct": 98,
+   "emptyCells": 46,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "indigo",
+     "pct": 38.9
+    },
+    {
+     "color": "purple",
+     "pct": 19.7
+    },
+    {
+     "color": "umber",
+     "pct": 7.8
+    }
+   ],
+   "colorComponents": 88,
+   "visual": "PASS",
+   "visualNote": "Bare umber tree struck by white/gold lightning against purple sky; clear focal."
+  },
+  {
+   "id": 204,
+   "world": 21,
+   "title": "Storm Kraken",
+   "pixels": 2262,
+   "occupancyPct": 98.18,
+   "emptyCells": 42,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 19.2
+    },
+    {
+     "color": "graphite",
+     "pct": 19.0
+    },
+    {
+     "color": "maroon",
+     "pct": 10.8
+    }
+   ],
+   "colorComponents": 110,
+   "visual": "PASS",
+   "visualNote": "Maroon kraken with gold eyes and coral tentacles rising from navy/cerulean waves beside a ship; reads at 1x."
+  },
+  {
+   "id": 205,
+   "world": 21,
+   "title": "Rainbow After Rain",
+   "pixels": 2236,
+   "occupancyPct": 97.05,
+   "emptyCells": 68,
+   "ge98": false,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "cerulean",
+     "pct": 27.6
+    },
+    {
+     "color": "cyan",
+     "pct": 19.6
+    },
+    {
+     "color": "green",
+     "pct": 11.3
+    }
+   ],
+   "colorComponents": 65,
+   "visual": "PASS",
+   "visualNote": "Rainbow over white clouds in cerulean/cyan sky; ideal breather."
+  },
+  {
+   "id": 206,
+   "world": 21,
+   "title": "Thunderbird",
+   "pixels": 2270,
+   "occupancyPct": 98.52,
+   "emptyCells": 34,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "indigo",
+     "pct": 21.6
+    },
+    {
+     "color": "purple",
+     "pct": 15.2
+    },
+    {
+     "color": "navy",
+     "pct": 15.1
+    }
+   ],
+   "colorComponents": 87,
+   "visual": "PASS",
+   "visualNote": "Teal/cyan thunderbird with spread wings over indigo peaks and white lightning; reads as a bird at 1x."
+  },
+  {
+   "id": 207,
+   "world": 21,
+   "title": "Hurricane Eye",
+   "pixels": 2274,
+   "occupancyPct": 98.7,
+   "emptyCells": 30,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 46.6
+    },
+    {
+     "color": "white",
+     "pct": 7.8
+    },
+    {
+     "color": "slate",
+     "pct": 7.7
+    }
+   ],
+   "colorComponents": 111,
+   "visual": "PASS",
+   "visualNote": "Hurricane spiral (white/ice/cerulean/lavender bands on graphite) around a blue eye. Graphite is 47%, but the spiral carries it."
+  },
+  {
+   "id": 208,
+   "world": 21,
+   "title": "Storm Lighthouse",
+   "pixels": 2278,
+   "occupancyPct": 98.87,
+   "emptyCells": 26,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 20.1
+    },
+    {
+     "color": "graphite",
+     "pct": 18.5
+    },
+    {
+     "color": "stone",
+     "pct": 12.6
+    }
+   ],
+   "colorComponents": 89,
+   "visual": "PASS",
+   "visualNote": "Red/white lighthouse on a rock, lightning, ship with sails in a storm; strong."
+  },
+  {
+   "id": 209,
+   "world": 21,
+   "title": "Sky Citadel",
+   "pixels": 2282,
+   "occupancyPct": 99.05,
+   "emptyCells": 22,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "white",
+     "pct": 34.0
+    },
+    {
+     "color": "indigo",
+     "pct": 12.6
+    },
+    {
+     "color": "stone",
+     "pct": 9.5
+    }
+   ],
+   "colorComponents": 100,
+   "visual": "PASS",
+   "visualNote": "White towers with cerulean roofs and a gold door above a stone ledge and white clouds. White is 34%, but the stone band separates castle from cloud."
+  },
+  {
+   "id": 210,
+   "world": 21,
+   "title": "Tempest Titan",
+   "pixels": 2290,
+   "occupancyPct": 99.39,
+   "emptyCells": 14,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "slate",
+     "pct": 27.6
+    },
+    {
+     "color": "graphite",
+     "pct": 19.9
+    },
+    {
+     "color": "stone",
+     "pct": 19.2
+    }
+   ],
+   "colorComponents": 92,
+   "visual": "MINOR",
+   "visualNote": "FINALE: stone titan (cyan eyes, lightning X across the chest, cerulean core) is legible at 10px, but graphite/slate body on graphite/slate storm gives weak silhouette at 1x (99.39% occupancy)."
+  },
+  {
+   "id": 211,
+   "world": 22,
+   "title": "Ringed Giant",
+   "pixels": 2258,
+   "occupancyPct": 98,
+   "emptyCells": 46,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "plum",
+     "pct": 23.5
+    },
+    {
+     "color": "navy",
+     "pct": 22.0
+    },
+    {
+     "color": "bronze",
+     "pct": 10.5
+    }
+   ],
+   "colorComponents": 106,
+   "visual": "PASS",
+   "visualNote": "Ringed orange/bronze planet with ring on plum/indigo nebula; stars; clear."
+  },
+  {
+   "id": 212,
+   "world": 22,
+   "title": "Nebula Nursery",
+   "pixels": 2262,
+   "occupancyPct": 98.18,
+   "emptyCells": 42,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 20.4
+    },
+    {
+     "color": "plum",
+     "pct": 14.4
+    },
+    {
+     "color": "purple",
+     "pct": 10.5
+    }
+   ],
+   "colorComponents": 95,
+   "visual": "PASS",
+   "visualNote": "Nebula clouds (pink/lavender/teal/cyan) with star sparkles; abstract by subject but coherent."
+  },
+  {
+   "id": 213,
+   "world": 22,
+   "title": "Dyson Sphere",
+   "pixels": 2266,
+   "occupancyPct": 98.35,
+   "emptyCells": 38,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 23.6
+    },
+    {
+     "color": "plum",
+     "pct": 22.3
+    },
+    {
+     "color": "slate",
+     "pct": 9.4
+    }
+   ],
+   "colorComponents": 150,
+   "visual": "PASS",
+   "visualNote": "Glowing sun core inside a slate lattice sphere with cyan nodes; strong focal."
+  },
+  {
+   "id": 214,
+   "world": 22,
+   "title": "Alien Jungle Moon",
+   "pixels": 2270,
+   "occupancyPct": 98.52,
+   "emptyCells": 34,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "teal",
+     "pct": 26.8
+    },
+    {
+     "color": "plum",
+     "pct": 18.9
+    },
+    {
+     "color": "magenta",
+     "pct": 11.4
+    }
+   ],
+   "colorComponents": 98,
+   "visual": "PASS",
+   "visualNote": "Pink alien sky, ringed moon, teal jungle with stalk plants and a purple creature; reads."
+  },
+  {
+   "id": 215,
+   "world": 22,
+   "title": "Space Garden",
+   "pixels": 2244,
+   "occupancyPct": 97.4,
+   "emptyCells": 60,
+   "ge98": false,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 32.6
+    },
+    {
+     "color": "plum",
+     "pct": 28.0
+    },
+    {
+     "color": "ice",
+     "pct": 12.7
+    }
+   ],
+   "colorComponents": 62,
+   "visual": "PASS",
+   "visualNote": "Ice dome over green garden on a graphite base against navy/plum; clean breather."
+  },
+  {
+   "id": 216,
+   "world": 22,
+   "title": "Star Dreadnought",
+   "pixels": 2278,
+   "occupancyPct": 98.87,
+   "emptyCells": 26,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "plum",
+     "pct": 21.9
+    },
+    {
+     "color": "navy",
+     "pct": 21.2
+    },
+    {
+     "color": "graphite",
+     "pct": 11.8
+    }
+   ],
+   "colorComponents": 100,
+   "visual": "PASS",
+   "visualNote": "Large graphite/slate dreadnought wedge crossing an indigo nebula; ship silhouette clear."
+  },
+  {
+   "id": 217,
+   "world": 22,
+   "title": "Black Hole Rim",
+   "pixels": 2282,
+   "occupancyPct": 99.05,
+   "emptyCells": 22,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "plum",
+     "pct": 27.3
+    },
+    {
+     "color": "navy",
+     "pct": 25.7
+    },
+    {
+     "color": "amethyst",
+     "pct": 8.5
+    }
+   ],
+   "colorComponents": 111,
+   "visual": "PASS",
+   "visualNote": "Black hole (graphite disc) with orange/gold accretion lobes; strong."
+  },
+  {
+   "id": 218,
+   "world": 22,
+   "title": "Cosmic Jellyfish",
+   "pixels": 2286,
+   "occupancyPct": 99.22,
+   "emptyCells": 18,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 23.2
+    },
+    {
+     "color": "plum",
+     "pct": 14.7
+    },
+    {
+     "color": "amethyst",
+     "pct": 10.5
+    }
+   ],
+   "colorComponents": 122,
+   "visual": "PASS",
+   "visualNote": "Pink jellyfish bell with lavender/cyan tentacles; excellent at 1x."
+  },
+  {
+   "id": 219,
+   "world": 22,
+   "title": "Galactic Core",
+   "pixels": 2290,
+   "occupancyPct": 99.39,
+   "emptyCells": 14,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 41.6
+    },
+    {
+     "color": "ice",
+     "pct": 9.8
+    },
+    {
+     "color": "cerulean",
+     "pct": 9.7
+    }
+   ],
+   "colorComponents": 95,
+   "visual": "PASS",
+   "visualNote": "Spiral galaxy (pink/lavender/ice/cerulean arms, gold core); clear."
+  },
+  {
+   "id": 220,
+   "world": 22,
+   "title": "The Star Forge",
+   "pixels": 2290,
+   "occupancyPct": 99.39,
+   "emptyCells": 14,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "plum",
+     "pct": 24.0
+    },
+    {
+     "color": "navy",
+     "pct": 17.9
+    },
+    {
+     "color": "orange",
+     "pct": 7.4
+    }
+   ],
+   "colorComponents": 80,
+   "visual": "PASS",
+   "visualNote": "FINALE: blazing sun/forge core in a gold ring with cyan-lit brackets, purple nebula and plum void; unmistakable focal and strong colour hierarchy at 99.39%."
+  },
+  {
+   "id": 221,
+   "world": 23,
+   "title": "Rose Window",
+   "pixels": 2266,
+   "occupancyPct": 98.35,
+   "emptyCells": 38,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 42.0
+    },
+    {
+     "color": "stone",
+     "pct": 24.8
+    },
+    {
+     "color": "rose",
+     "pct": 4.9
+    }
+   ],
+   "colorComponents": 95,
+   "visual": "PASS",
+   "visualNote": "Stained-glass rose window in a stone ring; rose/garnet/amethyst/gold panes read clearly."
+  },
+  {
+   "id": 222,
+   "world": 23,
+   "title": "Gargoyle",
+   "pixels": 2270,
+   "occupancyPct": 98.52,
+   "emptyCells": 34,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "stone",
+     "pct": 24.4
+    },
+    {
+     "color": "graphite",
+     "pct": 23.1
+    },
+    {
+     "color": "navy",
+     "pct": 14.8
+    }
+   ],
+   "colorComponents": 74,
+   "visual": "MINOR",
+   "visualNote": "Crouching stone gargoyle is legible at 10px only; at 1x it reads as a grey cloud mass over the purple sky and tower with rose drip lines."
+  },
+  {
+   "id": 223,
+   "world": 23,
+   "title": "Haunted Castle",
+   "pixels": 2274,
+   "occupancyPct": 98.7,
+   "emptyCells": 30,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "slate",
+     "pct": 37.2
+    },
+    {
+     "color": "graphite",
+     "pct": 18.2
+    },
+    {
+     "color": "navy",
+     "pct": 17.0
+    }
+   ],
+   "colorComponents": 89,
+   "visual": "PASS",
+   "visualNote": "Haunted castle silhouette with lit windows and a moon; reads."
+  },
+  {
+   "id": 224,
+   "world": 23,
+   "title": "Knight's Oath",
+   "pixels": 2278,
+   "occupancyPct": 98.87,
+   "emptyCells": 26,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "stone",
+     "pct": 34.4
+    },
+    {
+     "color": "garnet",
+     "pct": 14.8
+    },
+    {
+     "color": "maroon",
+     "pct": 9.9
+    }
+   ],
+   "colorComponents": 90,
+   "visual": "PASS",
+   "visualNote": "Knight helmet, white shield with red cross, sword, lancet windows on garnet; strong."
+  },
+  {
+   "id": 225,
+   "world": 23,
+   "title": "Candlelit Library",
+   "pixels": 2252,
+   "occupancyPct": 97.74,
+   "emptyCells": 52,
+   "ge98": false,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "umber",
+     "pct": 30.7
+    },
+    {
+     "color": "brown",
+     "pct": 25.3
+    },
+    {
+     "color": "gold",
+     "pct": 7.8
+    }
+   ],
+   "colorComponents": 119,
+   "visual": "PASS",
+   "visualNote": "Bookshelf wall with ivory candles; clean breather (the candles are small but visible)."
+  },
+  {
+   "id": 226,
+   "world": 23,
+   "title": "Cathedral Nave",
+   "pixels": 2286,
+   "occupancyPct": 99.22,
+   "emptyCells": 18,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 34.6
+    },
+    {
+     "color": "stone",
+     "pct": 30.9
+    },
+    {
+     "color": "garnet",
+     "pct": 7.0
+    }
+   ],
+   "colorComponents": 105,
+   "visual": "PASS",
+   "visualNote": "Stone nave columns, stained-glass lancet and ivory altar with garnet steps; clear perspective."
+  },
+  {
+   "id": 227,
+   "world": 23,
+   "title": "Raven Tower",
+   "pixels": 2290,
+   "occupancyPct": 99.39,
+   "emptyCells": 14,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 23.9
+    },
+    {
+     "color": "slate",
+     "pct": 19.1
+    },
+    {
+     "color": "stone",
+     "pct": 15.5
+    }
+   ],
+   "colorComponents": 73,
+   "visual": "PASS",
+   "visualNote": "Graphite tower with navy windows, ravens and rose foreground; reads."
+  },
+  {
+   "id": 228,
+   "world": 23,
+   "title": "Moonlit Graveyard",
+   "pixels": 2294,
+   "occupancyPct": 99.57,
+   "emptyCells": 10,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "purple",
+     "pct": 14.3
+    },
+    {
+     "color": "navy",
+     "pct": 12.8
+    },
+    {
+     "color": "lavender",
+     "pct": 11.7
+    }
+   ],
+   "colorComponents": 89,
+   "visual": "PASS",
+   "visualNote": "Moon, lavender mist, headstones and lime crosses over pine grass; strong."
+  },
+  {
+   "id": 229,
+   "world": 23,
+   "title": "Dragon Knight",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "graphite",
+     "pct": 23.7
+    },
+    {
+     "color": "garnet",
+     "pct": 15.0
+    },
+    {
+     "color": "navy",
+     "pct": 14.7
+    }
+   ],
+   "colorComponents": 81,
+   "visual": "MINOR",
+   "visualNote": "Knight (grey block with ice sword) versus navy dragon wing over garnet/red/coral sky and orange fire; busy and the dragon reads only as a wing shape."
+  },
+  {
+   "id": 230,
+   "world": 23,
+   "title": "The Crowned Cathedral",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "stone",
+     "pct": 42.9
+    },
+    {
+     "color": "graphite",
+     "pct": 14.2
+    },
+    {
+     "color": "slate",
+     "pct": 9.1
+    }
+   ],
+   "colorComponents": 88,
+   "visual": "MINOR",
+   "visualNote": "FINALE: stone cathedral facade with a small rose window, lancets and garnet door. Flat stone dominates; there is no visible crown; weaker than 221 Rose Window. Coherent, not a defect."
+  },
+  {
+   "id": 231,
+   "world": 24,
+   "title": "Aries Ram",
+   "pixels": 2274,
+   "occupancyPct": 98.7,
+   "emptyCells": 30,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 19.3
+    },
+    {
+     "color": "indigo",
+     "pct": 18.6
+    },
+    {
+     "color": "ultramarine",
+     "pct": 10.7
+    }
+   ],
+   "colorComponents": 105,
+   "visual": "PASS",
+   "visualNote": "White ram with ivory horns over the zodiac mountain backdrop; reads."
+  },
+  {
+   "id": 232,
+   "world": 24,
+   "title": "Taurus Bull",
+   "pixels": 2278,
+   "occupancyPct": 98.87,
+   "emptyCells": 26,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 17.7
+    },
+    {
+     "color": "maroon",
+     "pct": 16.2
+    },
+    {
+     "color": "indigo",
+     "pct": 16.2
+    }
+   ],
+   "colorComponents": 105,
+   "visual": "PASS",
+   "visualNote": "Maroon bull with ivory horns; strong."
+  },
+  {
+   "id": 233,
+   "world": 24,
+   "title": "Gemini Twins",
+   "pixels": 2282,
+   "occupancyPct": 99.05,
+   "emptyCells": 22,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 20.1
+    },
+    {
+     "color": "indigo",
+     "pct": 17.9
+    },
+    {
+     "color": "ultramarine",
+     "pct": 11.0
+    }
+   ],
+   "colorComponents": 99,
+   "visual": "PASS",
+   "visualNote": "Twins in cerulean and rose holding hands; clear."
+  },
+  {
+   "id": 234,
+   "world": 24,
+   "title": "Leo Lion",
+   "pixels": 2286,
+   "occupancyPct": 99.22,
+   "emptyCells": 18,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "gold",
+     "pct": 27.2
+    },
+    {
+     "color": "navy",
+     "pct": 18.4
+    },
+    {
+     "color": "indigo",
+     "pct": 14.0
+    }
+   ],
+   "colorComponents": 102,
+   "visual": "PASS",
+   "visualNote": "Lion with bronze mane and gold body; clear."
+  },
+  {
+   "id": 235,
+   "world": 24,
+   "title": "Pisces",
+   "pixels": 2260,
+   "occupancyPct": 98.09,
+   "emptyCells": 44,
+   "ge98": true,
+   "ge99": false,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 38.1
+    },
+    {
+     "color": "ultramarine",
+     "pct": 37.5
+    },
+    {
+     "color": "gold",
+     "pct": 8.4
+    }
+   ],
+   "colorComponents": 68,
+   "visual": "PASS",
+   "visualNote": "Two fish (cyan, rose) linked by a gold cord on navy/ultramarine; clean breather."
+  },
+  {
+   "id": 236,
+   "world": 24,
+   "title": "Scorpio",
+   "pixels": 2294,
+   "occupancyPct": 99.57,
+   "emptyCells": 10,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 21.5
+    },
+    {
+     "color": "indigo",
+     "pct": 19.2
+    },
+    {
+     "color": "ultramarine",
+     "pct": 10.5
+    }
+   ],
+   "colorComponents": 106,
+   "visual": "PASS",
+   "visualNote": "Maroon/red scorpion with tail and claws; reads."
+  },
+  {
+   "id": 237,
+   "world": 24,
+   "title": "Sagittarius",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 18.2
+    },
+    {
+     "color": "indigo",
+     "pct": 17.2
+    },
+    {
+     "color": "ultramarine",
+     "pct": 10.7
+    }
+   ],
+   "colorComponents": 108,
+   "visual": "PASS",
+   "visualNote": "Centaur archer (blush torso, bronze horse body, bow); reads."
+  },
+  {
+   "id": 238,
+   "world": 24,
+   "title": "Capricorn",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 20.2
+    },
+    {
+     "color": "indigo",
+     "pct": 15.8
+    },
+    {
+     "color": "sage",
+     "pct": 10.3
+    }
+   ],
+   "colorComponents": 94,
+   "visual": "MINOR",
+   "visualNote": "Sea-goat reads (ivory horns, teal/cerulean fish tail) but the sage goat body is an undifferentiated blob with 1-cell legs at 99.61%."
+  },
+  {
+   "id": 239,
+   "world": 24,
+   "title": "Aquarius",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "navy",
+     "pct": 19.8
+    },
+    {
+     "color": "indigo",
+     "pct": 14.8
+    },
+    {
+     "color": "ultramarine",
+     "pct": 10.9
+    }
+   ],
+   "colorComponents": 107,
+   "visual": "PASS",
+   "visualNote": "Water bearer pouring a cyan/ice stream; clear."
+  },
+  {
+   "id": 240,
+   "world": 24,
+   "title": "The Zodiac Wheel",
+   "pixels": 2295,
+   "occupancyPct": 99.61,
+   "emptyCells": 9,
+   "ge98": true,
+   "ge99": true,
+   "dominantColors": [
+    {
+     "color": "gold",
+     "pct": 23.8
+    },
+    {
+     "color": "navy",
+     "pct": 18.0
+    },
+    {
+     "color": "indigo",
+     "pct": 14.3
+    }
+   ],
+   "colorComponents": 73,
+   "visual": "PASS",
+   "visualNote": "FINALE: zodiac wheel with gold rim and spokes, sun core and twelve coloured sign cells; coherent at 99.61% (2295 px)."
+  }
+ ]
+}

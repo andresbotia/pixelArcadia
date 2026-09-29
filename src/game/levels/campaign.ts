@@ -13,7 +13,7 @@ import { worldSkin } from '@/theme/worldSkins';
 import { LEVEL_DEFINITIONS } from './levels';
 
 /**
- * The Pixel Arcadia campaign manifest: twenty themed worlds of ten levels each.
+ * The Pixel Arcadia campaign manifest: twenty-four themed worlds of ten levels each.
  * Authoring / campaign-organisation data only — it is NOT read by the engine and
  * carries no solver output. Each world's `levelIds` is filtered to the levels
  * that actually exist, so the manifest stays valid while a world is still being
@@ -22,7 +22,7 @@ import { LEVEL_DEFINITIONS } from './levels';
 // `display.accent` is per-world identity colour for the world-select screen,
 // sourced from `theme/worldSkins.ts` so there is exactly one authored accent
 // value per world (not a second, hand-duplicated one here). Content data,
-// like `orbColors`, never reused as chrome and never drawn from the 39
+// like `orbColors`, never reused as chrome and never drawn from the 41
 // gameplay colours (brand <-> gameplay separation).
 const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'first-light', title: 'First Light', themeId: 'first-light', display: { subtitle: 'Learn the light', accent: worldSkin('first-light').accent } },
@@ -45,6 +45,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'crystal-caverns', title: 'Crystal Caverns', themeId: 'crystal-caverns', display: { subtitle: 'Light beneath the stone', accent: worldSkin('crystal-caverns').accent } },
   { id: 'neon-megacity', title: 'Neon Megacity', themeId: 'neon-megacity', display: { subtitle: 'The city never sleeps', accent: worldSkin('neon-megacity').accent } },
   { id: 'dreamscapes', title: 'Dreamscapes', themeId: 'dreamscapes', display: { subtitle: 'Where waking ends', accent: worldSkin('dreamscapes').accent } },
+  { id: 'storm-elementals', title: 'Storm Elementals', themeId: 'storm-elementals', display: { subtitle: 'Ride the lightning', accent: worldSkin('storm-elementals').accent } },
+  { id: 'galactic-odyssey', title: 'Galactic Odyssey', themeId: 'galactic-odyssey', display: { subtitle: 'Across the far stars', accent: worldSkin('galactic-odyssey').accent } },
+  { id: 'gothic-kingdom', title: 'Gothic Kingdom', themeId: 'gothic-kingdom', display: { subtitle: 'Under spires and shadow', accent: worldSkin('gothic-kingdom').accent } },
+  { id: 'celestial-zodiac', title: 'Celestial Zodiac', themeId: 'celestial-zodiac', display: { subtitle: 'Written in the stars', accent: worldSkin('celestial-zodiac').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));
