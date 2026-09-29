@@ -89,6 +89,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'gothic-kingdom': { accent: '#A8323E', secondaryAccent: '#D9C7A3', ambientId: 'galleryDust', intensity: 'medium' },
   'celestial-zodiac': { accent: '#E6C35C', secondaryAccent: '#9FB4F2', ambientId: 'arcaneParticles', intensity: 'medium' },
   'arcadia-ascendant': { accent: '#F0C24B', secondaryAccent: '#B9A6FF', ambientId: 'arcaneParticles', intensity: 'high' },
+  'desert-kingdoms': { accent: '#C08A54', secondaryAccent: '#F3D6A0', ambientId: 'duskAsh', intensity: 'high' },
+  'deep-jungle': { accent: '#49A177', secondaryAccent: '#BBD476', ambientId: 'foliage', intensity: 'high' },
+  'underworld': { accent: '#955068', secondaryAccent: '#DFCEAC', ambientId: 'duskAsh', intensity: 'high' },
+  'ocean-cities': { accent: '#3B92B0', secondaryAccent: '#A7E0D9', ambientId: 'currents', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

@@ -58,7 +58,7 @@ const imported = LEVEL_DEFINITIONS.filter(l => l.id >= 161 && l.id <= 200);
 test('four world modules select the authored definitions exactly, preserving the stable handoff content', () => {
   expect(imported).toHaveLength(40);
   const ids = LEVEL_DEFINITIONS.map(l => l.id);
-  expect(ids).toEqual(Array.from({ length: 250 }, (_, i) => i + 1));
+  expect(ids).toEqual(Array.from({ length: 290 }, (_, i) => i + 1));
   expect(new Set(ids).size).toBe(ids.length);
   for (const world of [17, 18, 19, 20]) {
     const raw = fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8');

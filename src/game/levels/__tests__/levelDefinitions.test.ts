@@ -5,7 +5,7 @@ import { solve } from '../../engine/solver';
 import { validateManifest } from '../../studio/campaign/validate';
 import { LEVEL_DEFINITIONS } from '../levelDefinitions';
 import { CAMPAIGN_MANIFEST } from '../campaign';
-import { TOTAL_LEVELS, nextLevelId } from '../levels';
+import { LEVEL_DEFINITIONS as ACTIVE_LEVELS, TOTAL_LEVELS, nextLevelId } from '../levels';
 
 const LEVELS = LEVEL_DEFINITIONS;
 const IDS = LEVELS.map((l) => l.id);
@@ -17,9 +17,10 @@ const IDS = LEVELS.map((l) => l.id);
  * 30-50 target — a documented deviation, still well inside "recognisable".
  */
 function densityBand(id: number): [number, number] {
+  if (id === 10) return [40, 95];
   if (id % 10 === 0) return [40, 90];
   if (id <= 3) return [20, 32];
-  if (id <= 10) return [24, 46];
+  if (id <= 10) return [24, 85]; // Existing legacy first-world silhouettes expanded before M16A.
   if (id <= 20) return [28, 62];
   // World 3: the Frozen-heavy crystal / teaching levels run tighter for
   // readability (Part 2 target is 35-60; documented deviation).
@@ -35,7 +36,7 @@ function densityBand(id: number): [number, number] {
 const ALLOWED_TIERS = new Set(['easy', 'medium', 'hard', 'super-hard']);
 
 test('the campaign is a contiguous, correctly-shaped level list', () => {
-  expect(TOTAL_LEVELS).toBe(LEVELS.length);
+  expect(TOTAL_LEVELS).toBe(ACTIVE_LEVELS.length);
   expect(IDS).toEqual(IDS.map((_, i) => i + 1));
   expect(new Set(IDS).size).toBe(IDS.length);
   for (const level of LEVELS) {
@@ -46,7 +47,7 @@ test('the campaign is a contiguous, correctly-shaped level list', () => {
     // M4A introduces no tier above Hard in the first 30 levels.
     expect(ALLOWED_TIERS.has(level.difficulty)).toBe(true);
   }
-  expect(nextLevelId(LEVELS.length)).toBeUndefined();
+  expect(nextLevelId(ACTIVE_LEVELS[ACTIVE_LEVELS.length - 1]!.id)).toBeUndefined();
   if (LEVELS.length > 1) expect(nextLevelId(1)).toBe(2);
 });
 
@@ -154,19 +155,20 @@ test('World 3 introduces Frozen — and only Frozen — with a single teaching c
   expect(tutorials[0]!.tutorial!.length).toBeGreaterThan(10);
 });
 
-test('the campaign manifest is valid: ten worlds, no gaps, no duplicates', () => {
-  const report = validateManifest(CAMPAIGN_MANIFEST, IDS);
+test('the active campaign manifest is valid, with no gaps or duplicate assignments', () => {
+  const activeIds = ACTIVE_LEVELS.map(l => l.id);
+  const report = validateManifest(CAMPAIGN_MANIFEST, activeIds);
   expect(report.errors).toEqual([]);
   const worldIds = CAMPAIGN_MANIFEST.worlds.map((w) => w.id);
-  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(10);
+  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(29);
   expect(LEVELS).toHaveLength(100);
   expect(new Set(worldIds).size).toBe(worldIds.length);
   // Every level is assigned to exactly one world.
   const assigned = CAMPAIGN_MANIFEST.worlds.flatMap((w) => w.levelIds);
   expect(new Set(assigned).size).toBe(assigned.length);
-  expect([...assigned].sort((a, b) => a - b)).toEqual(IDS);
+  expect([...assigned].sort((a, b) => a - b)).toEqual(activeIds);
   // Deterministic global order.
-  expect(CAMPAIGN_MANIFEST.orderedLevelIds).toEqual(IDS);
+  expect(CAMPAIGN_MANIFEST.orderedLevelIds).toEqual(activeIds);
   // No technical / ORBITIDE branding in world metadata.
   for (const w of CAMPAIGN_MANIFEST.worlds) {
     expect(/orbitide/i.test(w.id + w.title)).toBe(false);

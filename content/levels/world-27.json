@@ -1,0 +1,5436 @@
+{
+  "world": 27,
+  "worldTitle": "Deep Jungle",
+  "themeId": "deep-jungle",
+  "replacesLegacy": false,
+  "authoringOnly": true,
+  "levels": [
+    {
+      "id": 261,
+      "title": "Strangler Fig",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNggggN.........",
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNggggg.........",
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNggggg.........",
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNggggg.........",
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNgggggg.........",
+        "NgNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNggggggg.........",
+        "NggNNNNNNNNNNNNNNNNNNNNNNNNNNNNgggggggg.........",
+        "NggggNNNNNNNNNNNNNNNNNNNNNNNNgggggggggg.........",
+        "NmmmmmmNNNNNNNNNNNNNNNNNNNNgggggggggggOSSbbbbSSS",
+        "SmmmmmmmmmmmmmmmmNNNNNNggggggggggggggOOOSbbbSSSS",
+        "SmmmmmmmmmmmmmmmmmmmmmmmmmmggggggggggOOSSbbbSSSS",
+        "SSSSgggmmmmmmmmmmmmmmmmmmmmmmmmmmggggOOSSbbbSSSS",
+        "SSSSSggggggggggggmmmmmmmmmmmmmmmmggSSOOSbbbSSSSa",
+        "SSSSSggggggggggggggggggggggmmmmmmWSSOOSSbbbSSSaa",
+        "SSSSSgggNNgggggggggggggggggggggQbWSSOOSSbbbSSaaa",
+        "SSSSNgggNNNNNNSgggggggggggRRRBBQbWSSOOSbbbbaaaaa",
+        "SSSNNNgggNNNNNNSaWbbQbQbRRRRRBBQQbSOOOSbbbaaaaaa",
+        "SSNNNNgggNNNNNNNSWbQbQQQbRRRbBBQQbaOOaabbbNNNNNN",
+        "SNNNNNgggNNNNNNNNbQQQbQQbRRbQQQbQQbOOaNbbbNNNNNN",
+        "SNNNNNgggNNNNNNNNbQQbbQQbRRbQQbbQQbOONbbbNNNNNNN",
+        "SNNNNgggNNNNNNNNbQQQbbQQbXbbQQbbQQOONNbbbNNNNNNN",
+        "SNNNNgggNNNNNNNbbQQbXXbQQbbQQbCbQQOONNbbbNNNNNNN",
+        "SNNNNgggNNNNNNNbQQbCXXbQQbbQQbCbQQOONNbbbbNNNNNN",
+        "SSNNggggNNNNNNbQQQbWRRbQQbQQbbRbQOOONNNbbbNNNNNN",
+        "SSSNgggNNNNNNNNbQQbWRRbQQ...bRRbQQONNNNbbbNNNNNN",
+        "SSSSgggNNNNNNNSbQQbWRRRbb...bRbQQbNNNNNbbbNNNNNN",
+        "SSSSgggNNNNNSSSbQQbWRRRbb...RRbQQbNNNNNNbbbNNNNN",
+        "SSSgggSSSSSSSSSbQ...Raaab...RRbQQbSNNNNNbbbNNNNN",
+        "SSSgggSSSSSSSSSbQ...RaaaQQbbRRbQQbSSNNNNbbbNNNNN",
+        "SSSgggSSSSSSSSSSb...RaaaQQbbRRbQQbSSSNNNbbbNNNNN",
+        "SSggggSSSSSSSSSSb...RaaaQbbbRbQQbWSSSSNNNbbbNNNN",
+        "SSgggSSSSSSSSSSSbQQbRRbQQbQQbbQQbWSSSSSSNbbbNNNN",
+        "NNgggNNNSSSSSSSSbQQbRbQQQbQbRbQQbWSSSSSSSbbbSSSS",
+        "NNgggNNNNNSSSSSSbQQbRRbQQbQbRbQQbWSSSSSSSbbbbSSS",
+        "NgggNNNNNNNSSSS...QQbRbQQQbbbQQQbWSSSSSSSSbbbSSS",
+        "NgggNNNjjjNNSgg...QbRRRbQQbb...QbWSSSSSSSSbbbSSS",
+        "NgggNNjjjjNNNSg...QbRRRbQQbb...QbWSSSSSSSSbbbSSS",
+        "NNNNNNjjjjNNNNS...bWRRRbbQQb...QbbgSSSSSSSSbbbSS",
+        "NNNNNjjjjNNNNNbbQQbWRRRbbQQb...QQbggSSSSSSSbbbSS",
+        "NNNNjjjjNNNNNNbQQbW...bQQbQQbRbQQbgggSSSSSSbbbSS",
+        "NNNjjjjNNNNNNNbQQbW...bQQbQQbRbQQbgggggSSSSbbbSS",
+        "NNjVVjNNNNNNNbQQbWW...bQQbbQQbRbQQbggggggSSSbbbS",
+        "NjjVVNNNNNNNNbQQbWW...bQQbbQQbRbQQbgggggggggbbbg",
+        "jjjVVNNNNNNNbQQbbWWWRbQQQbb...bbQQbgggggggggbbbg",
+        "jjjNNNNNNNNSbQQbSWWWRbQQbRR...bbbQQbggggggggbbbb",
+        "jjjNNNNNNNSbQQQbSWWWRbQQbRR...QbbQQbgggggggggbbb",
+        "jjNNNNNNSSSbQQbSSWWWRbQQbRR...QbbQQbgggggggggbbb",
+        "SSSSSSSSSSbQQQbSSWWWbQQQbRRRbQQQbQQQbggggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 94
+          },
+          {
+            "color": "green",
+            "capacity": 56
+          },
+          {
+            "color": "pine",
+            "capacity": 84
+          },
+          {
+            "color": "umber",
+            "capacity": 44
+          },
+          {
+            "color": "pine",
+            "capacity": 67
+          },
+          {
+            "color": "sage",
+            "capacity": 64
+          },
+          {
+            "color": "forest",
+            "capacity": 25
+          },
+          {
+            "color": "pine",
+            "capacity": 23
+          },
+          {
+            "color": "forest",
+            "capacity": 40
+          },
+          {
+            "color": "pine",
+            "capacity": 28
+          },
+          {
+            "color": "forest",
+            "capacity": 24
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          },
+          {
+            "color": "green",
+            "capacity": 20
+          },
+          {
+            "color": "umber",
+            "capacity": 25
+          },
+          {
+            "color": "green",
+            "capacity": 21
+          },
+          {
+            "color": "umber",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 18
+          },
+          {
+            "color": "umber",
+            "capacity": 22
+          },
+          {
+            "color": "slate",
+            "capacity": 16
+          },
+          {
+            "color": "stone",
+            "capacity": 18
+          },
+          {
+            "color": "lime",
+            "capacity": 22
+          },
+          {
+            "color": "stone",
+            "capacity": 13
+          },
+          {
+            "color": "brown",
+            "capacity": 37
+          },
+          {
+            "color": "stone",
+            "capacity": 12
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "slate",
+            "capacity": 14
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "brown",
+            "capacity": 8
+          },
+          {
+            "color": "slate",
+            "capacity": 9
+          },
+          {
+            "color": "ivory",
+            "capacity": 4
+          },
+          {
+            "color": "yellow",
+            "capacity": 6
+          },
+          {
+            "color": "umber",
+            "capacity": 5
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 101
+          },
+          {
+            "color": "green",
+            "capacity": 60
+          },
+          {
+            "color": "sage",
+            "capacity": 31
+          },
+          {
+            "color": "umber",
+            "capacity": 23
+          },
+          {
+            "color": "brown",
+            "capacity": 40
+          },
+          {
+            "color": "pine",
+            "capacity": 18
+          },
+          {
+            "color": "forest",
+            "capacity": 37
+          },
+          {
+            "color": "umber",
+            "capacity": 36
+          },
+          {
+            "color": "olive",
+            "capacity": 21
+          },
+          {
+            "color": "pine",
+            "capacity": 11
+          },
+          {
+            "color": "brown",
+            "capacity": 8
+          },
+          {
+            "color": "lime",
+            "capacity": 13
+          },
+          {
+            "color": "verdigris",
+            "capacity": 10
+          },
+          {
+            "color": "gold",
+            "capacity": 3
+          },
+          {
+            "color": "sage",
+            "capacity": 1
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 71
+          },
+          {
+            "color": "forest",
+            "capacity": 53
+          },
+          {
+            "color": "green",
+            "capacity": 95
+          },
+          {
+            "color": "forest",
+            "capacity": 35
+          },
+          {
+            "color": "umber",
+            "capacity": 63
+          },
+          {
+            "color": "green",
+            "capacity": 35
+          },
+          {
+            "color": "forest",
+            "capacity": 32
+          },
+          {
+            "color": "pine",
+            "capacity": 81
+          },
+          {
+            "color": "green",
+            "capacity": 25
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "forest",
+            "capacity": 42
+          },
+          {
+            "color": "brown",
+            "capacity": 26
+          },
+          {
+            "color": "verdigris",
+            "capacity": 28
+          },
+          {
+            "color": "brown",
+            "capacity": 18
+          },
+          {
+            "color": "stone",
+            "capacity": 16
+          },
+          {
+            "color": "brown",
+            "capacity": 41
+          },
+          {
+            "color": "umber",
+            "capacity": 23
+          },
+          {
+            "color": "brown",
+            "capacity": 21
+          },
+          {
+            "color": "umber",
+            "capacity": 19
+          },
+          {
+            "color": "umber",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 15
+          },
+          {
+            "color": "brown",
+            "capacity": 13
+          },
+          {
+            "color": "green",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 10
+          },
+          {
+            "color": "stone",
+            "capacity": 15
+          },
+          {
+            "color": "olive",
+            "capacity": 13
+          },
+          {
+            "color": "green",
+            "capacity": 8
+          },
+          {
+            "color": "seafoam",
+            "capacity": 6
+          },
+          {
+            "color": "stone",
+            "capacity": 5
+          },
+          {
+            "color": "ivory",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "Q": "brown",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "X": "ivory",
+        "O": "lime",
+        "a": "olive",
+        "g": "pine",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "B": "yellow"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H1",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T1",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T1",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "H2",
+        "H2",
+        "H2",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T1",
+        "T2",
+        "H2",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T1",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H3",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "H1",
+        "T3",
+        "H1",
+        "T2"
+      ]
+    },
+    {
+      "id": 262,
+      "title": "Three-Strand Falls",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNgggNNNNNNNNSSmmmmmmmmmmmSNNNNNNNNNOOYNNNNNNNNS",
+        "NNgggNNNNNNNNSSmmmmmmmmmmSSNNNNNNNNNOYYYNNNNNNNS",
+        "NNgggNNNNNNNSSSmmmmmmmmmmSSSNNNNNNNOOYYNNNNbbbSS",
+        "NNNgggNNNNNNSSSSmmmmmmmAAASSSNNNNNNOOYYNNNNbbbSS",
+        "NNNgggNNNNNSSSWWAAAAWWWAAAWWWWWWWWNOOYYNNNNbbbSS",
+        "NNNgggNNNNSSSSWWAAAAWWWAAAWWWWWWWWOOOYYNNNbbbSSS",
+        "NNNgggNNNSSSSSWWAAAAWWWAAAWWWWWWWWOOOYYNNSbbbSSS",
+        "NNNNgggSSSSSSSWWAAAAWWWYAA..WAAWWWOOYYSSSSbbbSSS",
+        "NNNNgggSSSSSSSWWYAAAWWWYAA..WAAWWWOOYYSSSbbbbSSS",
+        "SSSSgggSSSSSSSWWYAAAWWWYAA..WAAWWOOOYYSSSbbbSSSS",
+        "SSSSgggSSSSSSSWWYAAAWWWYAA..WAAWWOOOYYSSSbbbSSSS",
+        "SSSSgggjSSSSSSWWYAAAWWWYAA..WYAWWOOOYYSSSbbbSSSS",
+        "SSSSSgjjjSSSSSWWYAAAWWWYAA..WYAWWOOYYYSSbbbSSSSS",
+        "SSSSSggjjSSSSSWWYAAA..WYAA..WYAWWOOOYSSSbbbSSSSS",
+        "SSSSSggjjNNNSSRRRAAA..WYAA..WYAWWWOOOSSSbbbSSSSS",
+        "SSSSNgggjjNNNNRRRAAA..WYAA..WYAWWWOOOSSbbbbSSSSS",
+        "SSSNNNggjjNNNNRRRAAk..WYAk..WYkWWWOOOSSbbbSSSSSS",
+        "SSNNNNggjjNNNNRRRAAk..WYAk..WYkWWWOOOSSbbbNNNNNN",
+        "SNNNNNgggjjNNNRRRAAk..WYAk..WYkWWWSSSSNbbbNNNNNN",
+        "SNNNNNgggjjNNNWWYAAk..WYAk..WYkWWWSSSNbbbNNNNNNN",
+        "SNNNNgggNjjjNNWWYAAk..WYAk..WYkWWWSSNNbbbNNNNNNN",
+        "SNNNNgggNjjNNNWWYAAk..WYAk..WYkWWWSNNNbbbNNNNNNN",
+        "SNNNNgggNjjNNNWWYAAk..WYAk.lllkWWWNNNNbbbbNNNNNN",
+        "SSNNggggjjjNNNWWYAAk..WYAk.lllkWWWNNNNNbbbNNNNNN",
+        "SSSNgggNjjNNNNWWYAAk..WYAk.lllkWWWNNNNNbbbNNNNNN",
+        "SSSSgggNjjNNNNWWYAAk..WYAk.lllkWWWNNNNNbbbNNNNNN",
+        "SSSSgggRRRNNSSWWYAAk..WYAk..WYkWWWNNNNNNbbbNNNNN",
+        "SSSgggSRRRSSSSWWYAAk..WYAk..WYkWWWSNNNNNbbbNNNNN",
+        "SSSgggSRRRSSSSWWYAAk..WYAk..WYkWWWSSNNNNbbbNNNNN",
+        "SSSgggjjjSSSSSWWYAAk..WYAk..WYkWWWSSSNNNbbbNNNNN",
+        "SSggggSjSSSSSSWWYAAk..WYAk..WYkWWWSSSSNNNbbbNNNN",
+        "SSgggSSSSSSSSSWWYAAk..WYAk..WYkWWWSSSSSSNbbbNNNN",
+        "NNgggNNNSSSSSSWWYAAA..WYAA..WYAWWWSSSSSSSbbbSSSS",
+        "NNgggNNNNNSSSSWccccccccYAA..WYAWWWSSSSSSSbbbbSSS",
+        "NgggNNNNNccccccccccccccccccWWYAWWWSSScccSSbbbSSS",
+        "NgggNNNNNccccccccccccccYccccccccWWccccccSSbbbSSS",
+        "NgggNNNNNccYYYYYYYYYYYYYYYYYYYccccccccccSSSSbSSS",
+        "NNNNNNNNNNYYYYYYYYYYYYYYYYYYYYYYYYYYYcSSSSSSbbSS",
+        "NNNNNNNNNNNY..................YYYYYYYYSSSSSSbbSS",
+        "NNNNNNNNNNN.........................YSSSSSSSbbSS",
+        "NNNNNNNNNNNN........................gggSSSSbbbSS",
+        "NNNNNNNNNNNVVVVVVVVVVVVVVVVVVVVVVVVVVggggSSSbbbS",
+        "NNNNNNNNNNNVVVVVVVVVVVVVVVVVVVVVVVVVVgggggggbbbg",
+        "NNNNNNNNNNNVVVVVVVVVVVVVVVVVVVVVVVVVVgggggggbbbg",
+        "NNNNNNNNNNNVVVVVVVVVVVVVVVVVVVVVVVVVVgggggggbbbb",
+        "NNNNNNNNNNSVVLLLLLLLLLLLLLLLLLLLLLLLVggggggggbbb",
+        "NNNNNNNNSSSVLLLLLLLLLLLLLLLLLLLLLLLLLggggggggbbb",
+        "SSSSSSSSSSSVVLLLLLLLLLLLLLLLLLLLLLLLVggggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 128
+          },
+          {
+            "color": "forest",
+            "capacity": 59
+          },
+          {
+            "color": "verdigris",
+            "capacity": 27
+          },
+          {
+            "color": "ice",
+            "capacity": 21
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "pine",
+            "capacity": 18
+          },
+          {
+            "color": "slate",
+            "capacity": 15
+          },
+          {
+            "color": "white",
+            "capacity": 14
+          },
+          {
+            "color": "green",
+            "capacity": 14
+          },
+          {
+            "color": "white",
+            "capacity": 17
+          },
+          {
+            "color": "slate",
+            "capacity": 13
+          },
+          {
+            "color": "sage",
+            "capacity": 13
+          },
+          {
+            "color": "ice",
+            "capacity": 9
+          },
+          {
+            "color": "white",
+            "capacity": 8
+          },
+          {
+            "color": "ice",
+            "capacity": 8
+          },
+          {
+            "color": "white",
+            "capacity": 8
+          },
+          {
+            "color": "graphite",
+            "capacity": 4
+          },
+          {
+            "color": "lime",
+            "capacity": 2
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 101
+          },
+          {
+            "color": "forest",
+            "capacity": 116
+          },
+          {
+            "color": "pine",
+            "capacity": 36
+          },
+          {
+            "color": "umber",
+            "capacity": 75
+          },
+          {
+            "color": "forest",
+            "capacity": 54
+          },
+          {
+            "color": "cyan",
+            "capacity": 24
+          },
+          {
+            "color": "forest",
+            "capacity": 20
+          },
+          {
+            "color": "seafoam",
+            "capacity": 65
+          },
+          {
+            "color": "ice",
+            "capacity": 19
+          },
+          {
+            "color": "lavender",
+            "capacity": 59
+          },
+          {
+            "color": "green",
+            "capacity": 17
+          },
+          {
+            "color": "slate",
+            "capacity": 19
+          },
+          {
+            "color": "green",
+            "capacity": 17
+          },
+          {
+            "color": "slate",
+            "capacity": 18
+          },
+          {
+            "color": "ice",
+            "capacity": 19
+          },
+          {
+            "color": "white",
+            "capacity": 25
+          },
+          {
+            "color": "slate",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "slate",
+            "capacity": 15
+          },
+          {
+            "color": "ice",
+            "capacity": 18
+          },
+          {
+            "color": "slate",
+            "capacity": 14
+          },
+          {
+            "color": "white",
+            "capacity": 16
+          },
+          {
+            "color": "cerulean",
+            "capacity": 12
+          },
+          {
+            "color": "slate",
+            "capacity": 12
+          },
+          {
+            "color": "green",
+            "capacity": 10
+          },
+          {
+            "color": "stone",
+            "capacity": 9
+          },
+          {
+            "color": "slate",
+            "capacity": 11
+          },
+          {
+            "color": "white",
+            "capacity": 10
+          },
+          {
+            "color": "graphite",
+            "capacity": 8
+          },
+          {
+            "color": "white",
+            "capacity": 9
+          },
+          {
+            "color": "lime",
+            "capacity": 8
+          },
+          {
+            "color": "slate",
+            "capacity": 6
+          },
+          {
+            "color": "cerulean",
+            "capacity": 8
+          },
+          {
+            "color": "forest",
+            "capacity": 5
+          },
+          {
+            "color": "pine",
+            "capacity": 3
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 64
+          },
+          {
+            "color": "green",
+            "capacity": 139
+          },
+          {
+            "color": "pine",
+            "capacity": 44
+          },
+          {
+            "color": "umber",
+            "capacity": 37
+          },
+          {
+            "color": "pine",
+            "capacity": 60
+          },
+          {
+            "color": "green",
+            "capacity": 29
+          },
+          {
+            "color": "cyan",
+            "capacity": 47
+          },
+          {
+            "color": "slate",
+            "capacity": 17
+          },
+          {
+            "color": "seafoam",
+            "capacity": 46
+          },
+          {
+            "color": "ice",
+            "capacity": 38
+          },
+          {
+            "color": "slate",
+            "capacity": 24
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "green",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "umber",
+            "capacity": 17
+          },
+          {
+            "color": "white",
+            "capacity": 24
+          },
+          {
+            "color": "lime",
+            "capacity": 17
+          },
+          {
+            "color": "slate",
+            "capacity": 15
+          },
+          {
+            "color": "sage",
+            "capacity": 16
+          },
+          {
+            "color": "cerulean",
+            "capacity": 14
+          },
+          {
+            "color": "slate",
+            "capacity": 18
+          },
+          {
+            "color": "ice",
+            "capacity": 12
+          },
+          {
+            "color": "lime",
+            "capacity": 18
+          },
+          {
+            "color": "stone",
+            "capacity": 12
+          },
+          {
+            "color": "lavender",
+            "capacity": 11
+          },
+          {
+            "color": "white",
+            "capacity": 10
+          },
+          {
+            "color": "forest",
+            "capacity": 9
+          },
+          {
+            "color": "cerulean",
+            "capacity": 9
+          },
+          {
+            "color": "verdigris",
+            "capacity": 9
+          },
+          {
+            "color": "sage",
+            "capacity": 9
+          },
+          {
+            "color": "slate",
+            "capacity": 9
+          },
+          {
+            "color": "green",
+            "capacity": 8
+          },
+          {
+            "color": "ice",
+            "capacity": 8
+          },
+          {
+            "color": "umber",
+            "capacity": 9
+          },
+          {
+            "color": "cerulean",
+            "capacity": 5
+          },
+          {
+            "color": "stone",
+            "capacity": 3
+          },
+          {
+            "color": "slate",
+            "capacity": 3
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "k": "cerulean",
+        "L": "cyan",
+        "S": "forest",
+        "l": "graphite",
+        "N": "green",
+        "Y": "ice",
+        "c": "lavender",
+        "O": "lime",
+        "g": "pine",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "A": "white"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T2",
+        "H2",
+        "H3",
+        "H2",
+        "T3",
+        "T2",
+        "H2",
+        "H1",
+        "T2",
+        "T3",
+        "H1",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "H3",
+        "T1",
+        "H2",
+        "H3",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "H1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H1",
+        "T3",
+        "T1",
+        "H1",
+        "H1"
+      ]
+    },
+    {
+      "id": 263,
+      "title": "Shadow Jaguar",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNgggNNNNNNNNSSmmmmmmmmmmmSNNNNNNNNNNNNNNNNNNNNS",
+        "NNgggNNNNNNNNSSmmmmmmmmmmSSNNNNNNNNNNNNNNNNNNNNS",
+        "NNgggNNNNNNNSSSmmmmmmmmmmSSSNNNNNNNNNNNNNNNbbbSS",
+        "NNNgggNNNNNNSSSSmmmmmmmmmSSSSNNNNNNNNNNNNNNbbbSS",
+        "NNNgggNNN...............mSSSSSNNNNNNNNNNNNNbbbSS",
+        "NNNgggNNNN...............SSSSSSNNNNNNNNNNNbbbSSS",
+        "NNNgggNNNS................SSSSSSSNNNNNNNNSbbbSSS",
+        "NNNNgggSSSS................SSSSSSSSSSSSSSSbbbSSS",
+        "NNNNgggSSSS.................SSSSSSSSSSSSSbbbbSSQ",
+        "SSSSgggSSSS..................SSSSSSSSSSSSbbbSbQQ",
+        "SSSSgggSSSSS.................SSSSSSSSSSSSbbbQQQQ",
+        "SSSSgggSSSSS.........aaaaaaSSSSSSbbbSSSSSbbQQQbb",
+        "SSSSSgggSSSSSSSaaaaaaaaaaaaaSSSbbbbbbbSSbQQQCCCb",
+        "SSSSSgggSSSSSSaaaaaaaaaaaaaaaSbbbbDDDbbbQQQbCCCb",
+        "SSSSSgggNNNNSSaaaaaaaaaaaaaabbbbDDDDDDbbQQbbCCCb",
+        "SSSSNgggNNNNNNSaaaaaaaaaaaabbbbDDDbbbCbQbbbbCCCa",
+        "SSSjjjjggNNNNNNSaaaaaaaaabbbbDDDDDbCbCCbbbbbbCCC",
+        "SSNjjjjggNNNNNNNSaaaaaabbbbDDDbbbDbbbCCCCbbbNCCC",
+        "SNNjjWjggNNNNNNNNSaaaabbbbDDDDbCbDDbbCCCCCbCCCCC",
+        "SNNjWWWggNNNNNNNNSSabbbbDDDDDDbbbDbbbbCCCCCCCCCC",
+        "SNNWWWggNNNNNNNNNSSbbbbDDbbbDDDDDbbbbbbbCCCCCCNN",
+        "SWWWWgggNNNNNNNNNbbbbDDDDbCbDCDbbbbbbbbbbCCCNNNN",
+        "WWWNNgggNNNNNNNNbbbDDDDDDbbbCCCbbbbbbNbbbbNNNNNN",
+        "WWNNggggNNNNNNbbbbDDbbbDDDDDDCCbbbbNNNNbbbNNNNNN",
+        "WSSNgggNNNNNbbbbDDDDbCbDbbbbbCCbbbNNNNNbbbNNNNNN",
+        "SSSSgggNNNNNbbDDDDDDbbbDbCbbbCCbSSNNNNNbbbNNNNNN",
+        "SSSSgggNNNNNbbDDDDDDDDDDbbbbbCCSSSNNNNNNbbbNNNNN",
+        "SSSgggSSSSSbbDDbbbDDDDDbbbbbbCCCSSSNNNNNbbbNNNNN",
+        "SSSgggSSbbbCCCCbCbDDDDbbbbbCCCCSSSSSNNNNbbbNNNNN",
+        "SSSgggSSbbbCCCCbbbbbDbbbbbCCCCSSSSSSSNNNbbbNNNNN",
+        "SSggggSCCOCCCCCCCbCbbbbbbCCCSSSSSSSSSSNNNbbbNNNN",
+        "SSgggSSCCCCCCCCCCCbbbbbSSSCSSSSSSSSSSSSSNbbbNNNN",
+        "NNggXXXXXCCCCCCCCCbbbbSSSSSSSSSSSSSSSSSSSbbbSSSS",
+        "NNgggNNCCCCCCCCCCCbbbSSSSSSSSSSSSSSSSSSSSbbbbSSS",
+        "NgggNNNNCCCCCCCCCCbSSSSSSSSSSSSSSSSSSSSSSSbbbSSS",
+        "NgggNNNbQQCCCCCbCCggggggggggggggggSSSSBBSSbbbSSS",
+        "NgggNbQQQQbbbbbbCCCgggggggggggggggSSSSBBSSbbbSSS",
+        "NNNNbQQQbbbbbbCCCCgggggggggggggggggSSSBBSVSbbbSS",
+        "NNNQQQQbbbbbbCCCggggggggggggggggggggSSSSVVVbbbSS",
+        "NbQQQbbbbbbbNNCSgggggggggggggggggggggSSVVVSbbbSS",
+        "QQQQbbbbbbNNNNSSggggggggggggggggggggggVVVSSbbbSS",
+        "QQbbbbbbbNNNNNSSSggggggggggggggggggggVVVgSSSbbbS",
+        "QbbbbbbNNNNNNSSSSgggggggggggggggggggVVVgggggbbbg",
+        "bbbbbbNNNNNNSSSSSggggggggggggggggggVVVggggggbbbg",
+        "bbbbNNNNNNNSSSSSSgggggggggggggggggVVVgggggggbbbb",
+        "bbRRRNNNNNSSSSSSSggggggggggggggggggVgggggggggbbb",
+        "bNRRRNNNSSSSSSSSSggggggggggggggggggggggggggggbbb",
+        "SSRRRSSSSSSSSSSSSggggggggggggggggggggggggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 58
+          },
+          {
+            "color": "forest",
+            "capacity": 59
+          },
+          {
+            "color": "green",
+            "capacity": 63
+          },
+          {
+            "color": "gold",
+            "capacity": 42
+          },
+          {
+            "color": "umber",
+            "capacity": 20
+          },
+          {
+            "color": "pine",
+            "capacity": 19
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          },
+          {
+            "color": "gold",
+            "capacity": 20
+          },
+          {
+            "color": "seafoam",
+            "capacity": 20
+          },
+          {
+            "color": "orange",
+            "capacity": 17
+          },
+          {
+            "color": "green",
+            "capacity": 16
+          },
+          {
+            "color": "gold",
+            "capacity": 17
+          },
+          {
+            "color": "sage",
+            "capacity": 12
+          },
+          {
+            "color": "verdigris",
+            "capacity": 9
+          },
+          {
+            "color": "forest",
+            "capacity": 9
+          },
+          {
+            "color": "olive",
+            "capacity": 8
+          },
+          {
+            "color": "forest",
+            "capacity": 5
+          },
+          {
+            "color": "brown",
+            "capacity": 3
+          },
+          {
+            "color": "verdigris",
+            "capacity": 3
+          },
+          {
+            "color": "stone",
+            "capacity": 1
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 94
+          },
+          {
+            "color": "pine",
+            "capacity": 49
+          },
+          {
+            "color": "green",
+            "capacity": 116
+          },
+          {
+            "color": "pine",
+            "capacity": 36
+          },
+          {
+            "color": "forest",
+            "capacity": 32
+          },
+          {
+            "color": "umber",
+            "capacity": 43
+          },
+          {
+            "color": "pine",
+            "capacity": 62
+          },
+          {
+            "color": "brown",
+            "capacity": 21
+          },
+          {
+            "color": "gold",
+            "capacity": 21
+          },
+          {
+            "color": "umber",
+            "capacity": 22
+          },
+          {
+            "color": "green",
+            "capacity": 21
+          },
+          {
+            "color": "gold",
+            "capacity": 20
+          },
+          {
+            "color": "pine",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 18
+          },
+          {
+            "color": "sage",
+            "capacity": 18
+          },
+          {
+            "color": "umber",
+            "capacity": 36
+          },
+          {
+            "color": "green",
+            "capacity": 16
+          },
+          {
+            "color": "gold",
+            "capacity": 18
+          },
+          {
+            "color": "orange",
+            "capacity": 22
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "umber",
+            "capacity": 17
+          },
+          {
+            "color": "umber",
+            "capacity": 16
+          },
+          {
+            "color": "olive",
+            "capacity": 13
+          },
+          {
+            "color": "olive",
+            "capacity": 12
+          },
+          {
+            "color": "orange",
+            "capacity": 13
+          },
+          {
+            "color": "slate",
+            "capacity": 11
+          },
+          {
+            "color": "olive",
+            "capacity": 10
+          },
+          {
+            "color": "pine",
+            "capacity": 10
+          },
+          {
+            "color": "orange",
+            "capacity": 8
+          },
+          {
+            "color": "stone",
+            "capacity": 8
+          },
+          {
+            "color": "slate",
+            "capacity": 5
+          },
+          {
+            "color": "ivory",
+            "capacity": 5
+          },
+          {
+            "color": "forest",
+            "capacity": 4
+          },
+          {
+            "color": "pine",
+            "capacity": 4
+          },
+          {
+            "color": "sage",
+            "capacity": 3
+          },
+          {
+            "color": "lime",
+            "capacity": 1
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 136
+          },
+          {
+            "color": "pine",
+            "capacity": 87
+          },
+          {
+            "color": "umber",
+            "capacity": 78
+          },
+          {
+            "color": "pine",
+            "capacity": 65
+          },
+          {
+            "color": "forest",
+            "capacity": 79
+          },
+          {
+            "color": "pine",
+            "capacity": 20
+          },
+          {
+            "color": "umber",
+            "capacity": 20
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "forest",
+            "capacity": 19
+          },
+          {
+            "color": "pine",
+            "capacity": 19
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          },
+          {
+            "color": "forest",
+            "capacity": 27
+          },
+          {
+            "color": "forest",
+            "capacity": 19
+          },
+          {
+            "color": "umber",
+            "capacity": 19
+          },
+          {
+            "color": "forest",
+            "capacity": 18
+          },
+          {
+            "color": "gold",
+            "capacity": 16
+          },
+          {
+            "color": "green",
+            "capacity": 17
+          },
+          {
+            "color": "olive",
+            "capacity": 16
+          },
+          {
+            "color": "umber",
+            "capacity": 52
+          },
+          {
+            "color": "orange",
+            "capacity": 16
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "orange",
+            "capacity": 19
+          },
+          {
+            "color": "olive",
+            "capacity": 11
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "sage",
+            "capacity": 8
+          },
+          {
+            "color": "olive",
+            "capacity": 8
+          },
+          {
+            "color": "gold",
+            "capacity": 10
+          },
+          {
+            "color": "umber",
+            "capacity": 8
+          },
+          {
+            "color": "green",
+            "capacity": 5
+          },
+          {
+            "color": "yellow",
+            "capacity": 6
+          },
+          {
+            "color": "pine",
+            "capacity": 6
+          },
+          {
+            "color": "umber",
+            "capacity": 4
+          },
+          {
+            "color": "olive",
+            "capacity": 3
+          },
+          {
+            "color": "seafoam",
+            "capacity": 3
+          },
+          {
+            "color": "pine",
+            "capacity": 2
+          },
+          {
+            "color": "slate",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "Q": "brown",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "X": "ivory",
+        "O": "lime",
+        "a": "olive",
+        "D": "orange",
+        "g": "pine",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "B": "yellow"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "H1",
+        "H1",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "H2",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T2",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "H1",
+        "H1"
+      ]
+    },
+    {
+      "id": 264,
+      "title": "Orchid Mantis",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNgggNNNNNNNNSSmmmmm...........NNNNNNNNNNNNNNNNS",
+        "NNgggNNNNNNNNSSmm.................NNNNNNNNNNNNNS",
+        "NNgggNNNNNNNSSS.....................NNNNNNNbbbSS",
+        "NNNgggNNNNNNSS.......................NNmmmmbbbSS",
+        "NNNgggNNNNNSS......................lllNmmmmbbbSS",
+        "NNNgggNNNNSlll....................llclNmmmmbbSSS",
+        "NNNgggNNNSSlccll.................lccclNmmmmbbSSS",
+        "NNNNgggSSSSlccccll.............llcclclSSSSbbbSSS",
+        "NNNNgggSSSSSlclcclllllllllllll.lcllclSSSSbbbbSSS",
+        "SSSSgggSSSSSlcllllaOOAAAAAAAOO.llllclSSSSbbbSSSS",
+        "SSSSgggSSSSSSlclaaaOOAAAAAAAOOSSSSlclSSSSbbbSSSS",
+        "SSSSGGGSSSSSSlclaaaaalAAAAAlSSSSSSlclSSSSbbbSSSS",
+        "SSSGGGGGSSSSSllclaaaldlAAAlaSSSSSlclSSSSbbbSSSSa",
+        "SSGGGGGGGSSSSSlccllalddllllaaSSSSlclSSSSbbbSSSaa",
+        "SGGGGGGGGGNNSSllccllldddldlaaaSllcclSSSSbbbSSaaa",
+        "GAAGHHHGGGGNNNSallcclldddddlallcclllSSSbbbbaaaaa",
+        "GAAHHHHHGGGGNNNSaallccllddlllcclllSSSSSbbbaaaaaa",
+        "GAAHHCCHGGGGNNNNSaaallcclllccllaaaaaaaabbbNNNNNN",
+        "GAAHHCCHGGGGNNNNNSaaallclccllaaaaaaaaaNbbbNGGGNN",
+        "GGGGHHHGGGGNNNNNNSSaaallllldlaaaaaaaaNbbbNGGGGGN",
+        "SGGGGGGGGGNNNNNNNSSaaaldddVVVaaaaaaaNNbbbGGGGGGG",
+        "SNGGGGGGGNNNNNNNNSSSSSldddVVVSSSSSSNNNbbGGGGGGGG",
+        "SNNGGGGGNNNNNNNNNSSSSSldddVVVlSSSSNNNNbGAAGHHHGG",
+        "SSNNGGGaNNNNNNNNSSSSSSSlddVVVlSSSSNNNNGGAAHHHHHG",
+        "SSSNgaaaNNNNNNNSSSSSSSSlddVVVlSSSSNNNNGGAAHHCCHG",
+        "SSSSggaaaNNNNNSSSSSSSSSldddddlSSSSNNNNGGAAHHCCHG",
+        "SSSSggaaaaNNSSSSSSSSSSSldddddlSSSSNNNNNGGGGHHHGG",
+        "SSSGGGSaaaSSSSSSSSSSSSldlllddlSSSSSNNNNNGGGGGGGG",
+        "SSGGGGGaaaaSSSSSSSSSSSldlclllSSSSSSGGGGGbGGGGGGG",
+        "SGGGGGGGaaaaSSSSSSSSSSllllccllSSSSGGGGGGGbGGGGGN",
+        "GGGGGGGGGaaaSSSSSSSSSSlcclllcllSSGGGGGGGGGjGGGNN",
+        "AAGHHHGGGGaaSSSSSSSSllcclddllccllGGGGGGGGGGjNNNN",
+        "AAHHHHHGGGGaSSSSSSSllcllddddlllcllGGGGGGGGGGSSSS",
+        "AAHHCCHGGGGSSSSSSSllclldddddlSllccllHHHGGGGGGSSS",
+        "AAHHCCHGGGGSSSSSSlcclldddddlSSGGllclHHHHGGGGGSSS",
+        "GGGHHHGGGGaNSggllcclgldddddlggGGGlclHCCHGGGGGSSS",
+        "GGGGGGGGGaaNNSglcllggldddddlggGGGlclHCCHGGGGGSSS",
+        "NGGGGGGGaaaNNNllclgggldddddlggGGlclGHHHGGGGGGbSS",
+        "NNGGGGGNaaaNNNlclgggggldddlggggGlclGGGGGGGGGbbSS",
+        "NNNGGGNaaaNNNNlclgggggglllgggggglclGGGGGGGGbbbSS",
+        "NNNNNNNaaaNNNlclgggggggggggggggjlclGGGGGGGSbbbSS",
+        "NNNNNNNaaaNNNlclSggggggggggggjjlclGGGGGGGSSSbbbS",
+        "NNNNNNNaaaNNlcllSgggggggggggjjjlclgGGGGGggggbbbg",
+        "NNNNNNNaaaNNlclSSggggggggggjjjjlclggggggggggbbbg",
+        "NRRRRNNaaaNSlllSSgggggggggjjjjglllggggggggggbbbb",
+        "NRRRRNaaaNSSSSSSSggggggggjjjjggggggggggggggggbbb",
+        "NRRRRNaaaSSSSSSSSggggggjjjjjgggggggggggggggggbbb",
+        "SRRRRSaaaSSSSSSSSggggggjjjjggggggggggggggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 52
+          },
+          {
+            "color": "stone",
+            "capacity": 9
+          },
+          {
+            "color": "pine",
+            "capacity": 27
+          },
+          {
+            "color": "umber",
+            "capacity": 36
+          },
+          {
+            "color": "pine",
+            "capacity": 18
+          },
+          {
+            "color": "pink",
+            "capacity": 60
+          },
+          {
+            "color": "verdigris",
+            "capacity": 12
+          },
+          {
+            "color": "pine",
+            "capacity": 15
+          },
+          {
+            "color": "graphite",
+            "capacity": 53
+          },
+          {
+            "color": "magenta",
+            "capacity": 61
+          },
+          {
+            "color": "pink",
+            "capacity": 42
+          },
+          {
+            "color": "green",
+            "capacity": 30
+          },
+          {
+            "color": "umber",
+            "capacity": 19
+          },
+          {
+            "color": "olive",
+            "capacity": 24
+          },
+          {
+            "color": "lavender",
+            "capacity": 19
+          },
+          {
+            "color": "olive",
+            "capacity": 22
+          },
+          {
+            "color": "forest",
+            "capacity": 44
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "pink",
+            "capacity": 11
+          },
+          {
+            "color": "olive",
+            "capacity": 21
+          },
+          {
+            "color": "white",
+            "capacity": 6
+          },
+          {
+            "color": "forest",
+            "capacity": 30
+          },
+          {
+            "color": "graphite",
+            "capacity": 29
+          },
+          {
+            "color": "green",
+            "capacity": 11
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "olive",
+            "capacity": 12
+          },
+          {
+            "color": "forest",
+            "capacity": 24
+          },
+          {
+            "color": "graphite",
+            "capacity": 22
+          },
+          {
+            "color": "forest",
+            "capacity": 12
+          },
+          {
+            "color": "olive",
+            "capacity": 6
+          },
+          {
+            "color": "forest",
+            "capacity": 10
+          },
+          {
+            "color": "blush",
+            "capacity": 24
+          },
+          {
+            "color": "graphite",
+            "capacity": 20
+          },
+          {
+            "color": "magenta",
+            "capacity": 4
+          },
+          {
+            "color": "pine",
+            "capacity": 2
+          },
+          {
+            "color": "stone",
+            "capacity": 1
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 51
+          },
+          {
+            "color": "stone",
+            "capacity": 6
+          },
+          {
+            "color": "pine",
+            "capacity": 71
+          },
+          {
+            "color": "forest",
+            "capacity": 46
+          },
+          {
+            "color": "sage",
+            "capacity": 10
+          },
+          {
+            "color": "pine",
+            "capacity": 42
+          },
+          {
+            "color": "pink",
+            "capacity": 50
+          },
+          {
+            "color": "verdigris",
+            "capacity": 10
+          },
+          {
+            "color": "pink",
+            "capacity": 33
+          },
+          {
+            "color": "pine",
+            "capacity": 22
+          },
+          {
+            "color": "white",
+            "capacity": 12
+          },
+          {
+            "color": "gold",
+            "capacity": 10
+          },
+          {
+            "color": "pink",
+            "capacity": 31
+          },
+          {
+            "color": "olive",
+            "capacity": 34
+          },
+          {
+            "color": "pink",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 23
+          },
+          {
+            "color": "graphite",
+            "capacity": 29
+          },
+          {
+            "color": "pink",
+            "capacity": 14
+          },
+          {
+            "color": "green",
+            "capacity": 28
+          },
+          {
+            "color": "umber",
+            "capacity": 28
+          },
+          {
+            "color": "green",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 44
+          },
+          {
+            "color": "umber",
+            "capacity": 8
+          },
+          {
+            "color": "graphite",
+            "capacity": 36
+          },
+          {
+            "color": "pink",
+            "capacity": 9
+          },
+          {
+            "color": "forest",
+            "capacity": 32
+          },
+          {
+            "color": "olive",
+            "capacity": 12
+          },
+          {
+            "color": "graphite",
+            "capacity": 27
+          },
+          {
+            "color": "forest",
+            "capacity": 15
+          },
+          {
+            "color": "green",
+            "capacity": 6
+          },
+          {
+            "color": "lime",
+            "capacity": 6
+          },
+          {
+            "color": "graphite",
+            "capacity": 33
+          },
+          {
+            "color": "blush",
+            "capacity": 15
+          },
+          {
+            "color": "forest",
+            "capacity": 6
+          },
+          {
+            "color": "blush",
+            "capacity": 17
+          },
+          {
+            "color": "seafoam",
+            "capacity": 5
+          },
+          {
+            "color": "lime",
+            "capacity": 2
+          },
+          {
+            "color": "umber",
+            "capacity": 2
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 70
+          },
+          {
+            "color": "pine",
+            "capacity": 33
+          },
+          {
+            "color": "green",
+            "capacity": 26
+          },
+          {
+            "color": "pink",
+            "capacity": 40
+          },
+          {
+            "color": "forest",
+            "capacity": 55
+          },
+          {
+            "color": "white",
+            "capacity": 19
+          },
+          {
+            "color": "gold",
+            "capacity": 6
+          },
+          {
+            "color": "pink",
+            "capacity": 22
+          },
+          {
+            "color": "white",
+            "capacity": 9
+          },
+          {
+            "color": "verdigris",
+            "capacity": 7
+          },
+          {
+            "color": "green",
+            "capacity": 23
+          },
+          {
+            "color": "sage",
+            "capacity": 9
+          },
+          {
+            "color": "forest",
+            "capacity": 37
+          },
+          {
+            "color": "lavender",
+            "capacity": 31
+          },
+          {
+            "color": "olive",
+            "capacity": 16
+          },
+          {
+            "color": "lavender",
+            "capacity": 14
+          },
+          {
+            "color": "blush",
+            "capacity": 20
+          },
+          {
+            "color": "lavender",
+            "capacity": 14
+          },
+          {
+            "color": "lavender",
+            "capacity": 7
+          },
+          {
+            "color": "seafoam",
+            "capacity": 10
+          },
+          {
+            "color": "sage",
+            "capacity": 4
+          },
+          {
+            "color": "olive",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "d": "blush",
+        "S": "forest",
+        "C": "gold",
+        "l": "graphite",
+        "N": "green",
+        "c": "lavender",
+        "O": "lime",
+        "H": "magenta",
+        "a": "olive",
+        "g": "pine",
+        "G": "pink",
+        "m": "sage",
+        "V": "seafoam",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "A": "white"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "H3",
+        "T2",
+        "T1",
+        "T2",
+        "H1",
+        "H1",
+        "H3",
+        "T1",
+        "H3",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T2",
+        "T3",
+        "H3",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T1",
+        "T2",
+        "T3",
+        "T1"
+      ]
+    },
+    {
+      "id": 265,
+      "title": "Lily Pad Lagoon",
+      "themeId": "deep-jungle",
+      "difficulty": "hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM",
+        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMaaSaaMMMMMMMMM",
+        "MMMM......YMMMMMMMMMMMMMMMMMMMMMaOOOONNaaMMMMMMM",
+        "MM.....YYYYYMMMMMMMMMMMMMMMMMMMaaNNNSNNNaaMMMMMM",
+        "M...YYYYYYY..MMMMMMMMMMMMMMMMMMaNNNNSNNNNaMMMMMM",
+        "...YYYYY......MMMMMMMMMMMMMMMMaNNNNNSNNNNNaMMMMM",
+        "....Y.........MMMMMMMMMMMMMMMMaNNNNNSNNNUUUMMMMM",
+        "..............MMMMMMMMMMMMMMMMSSSSSSSUUUUUUMMMMM",
+        "..............MMMMMMMMMMMMMMMMaNNNNSNNNUUUUMMMMM",
+        "..............MMMMMMMMMMMMMMMMaNNNSNNNNNNUUMMMMM",
+        "M..........aaSaaMMMMMMMMMMMMMMMaNSNNNNNNNaMMMMMM",
+        "MM.......aOOOONNaaMMMMMMMMMMMMMaaNNNNNNNaaMMMMMM",
+        "MMMM....aaNNNSNNNaaMMMMMMMMMMMMMaaNNNNNaaMMMMMMM",
+        "MMMMMMMMaNNNNSNNNNaMMMMMMMMMMMMMMMaaaaaMMMMMMMMM",
+        "MMMMMMMaNNNNNSNNNNNaMMMMaaSaaMMMMMMMMMMMMMMMMMMM",
+        "MMMMMMMaNNNNNSNNNUUUMOOOOOONNaaMMMMMMMMMMMMMMMMM",
+        "MMMMMMMSSSSSSSUUUUUUaaNNNNSNNNNaaMMMMMMMMMmmmmMM",
+        "MMMMMMMaNNNNSNNNUUUUaNNNNNSNNNNNaMMMMMMMMMmmmmMM",
+        "MMMMMMMaNNNSNNNNNNUaNNNNNAAdNNNNNaMMMMMMMMmmmmMM",
+        "MMMMMMMMaNSNNNNNNNaaNNNNdAAddNNNNaMMMMMMMMMMMMMM",
+        "MMMMMMMMaaNNNNNNNaaNNNNddAAdddNNNNaMMMMMMMMMMMMM",
+        "MMMMMMMMMaaNNNNNaaaNNNNAACCAAANUUUUMMMMMMMMMMMMM",
+        "MMMMMMMMMMMaaaaaMMSSSSSAACCAAAUUUUUMMMMMMMMMMMMM",
+        "MMMMMMMMMMMMMMMMMMaNNNNNdAAddUUUUUUMMMMMMMMMMMMM",
+        "UUUUUUUUUUUUUUUUUUaNNNNNSAAdNNNNUUUUUUUUUUUUUUUU",
+        "UUUUUUUUUUUUUUUUUUUaNNNSNNNNNNNNNaUUUUUUUUUUUUUU",
+        "UUUUUaaSaaUUUUUUUUUaNNSNNNNNNNNNNaUUUUUUUUUUUUUU",
+        "UUOOOOOONNaaUUUUUUUUaNNNNNNNNNNNaUUUUUUUUUUUUUUU",
+        "UaaNNNNSNNNNaaUUUUUUaWNNNNNNNNNaaUUUUUUUUUUUUUUU",
+        "UaNNNNNSNNNNNaUUUUUUWWWWWNNNNaaUUUUUUUUaaSaaUUUU",
+        "aNNNNNNSNNNNNNaUUUUUUWWWWWaaaUUUUUUUUUaOOONNaUUU",
+        "aNNNNNNSNNNNNNaUUUUUUWWWWUUUUUUUUUUUUaNNNSNNNaUU",
+        "NNNNNNNSNNNNNNNaUUUUUUWWUUUU.......UaNNNNSNNNNaU",
+        "NNNNNNNSNNNNUUUUUUUUUUWWWU..........aNNNNSNNUUUU",
+        "SSSSSSSSUUUUUUUUUUUUUWWWU...........SSSSSSUUUUUU",
+        "NNNNNNSNNNUUUUUUUUUUUWWU............aNNSSNNUUUUU",
+        "NNNNNSNNNNNNNUUUUUUUWWUU............aNSNNNNNNUUU",
+        "aNNNSNNNNNNNNNaUUUUWWWUU.............aNNNNNNNaUU",
+        "aNNSNNNNNNNNNNaUUUWWWUUU..............aNNNNNaUUU",
+        "UaNNNNNNNNNNNaUUUUUWUUUUU.............UaaaaaUUUU",
+        "UaaNNNNNNNNNaaUUUUUUUUUUUU...........UUUUUUUUUUU",
+        "UUUaaNNNNNaaUUUUUUUUUUUUUUUU.......UUUUUUUUUUUUU",
+        "UUUUUaaaaaUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        "UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        "UUUVVVVVVVVVVVUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU",
+        "UUVVVVVVVVVVVVVUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "navy",
+            "capacity": 174
+          },
+          {
+            "color": "green",
+            "capacity": 65
+          },
+          {
+            "color": "green",
+            "capacity": 32
+          },
+          {
+            "color": "olive",
+            "capacity": 23
+          },
+          {
+            "color": "teal",
+            "capacity": 18
+          },
+          {
+            "color": "navy",
+            "capacity": 45
+          },
+          {
+            "color": "teal",
+            "capacity": 18
+          },
+          {
+            "color": "forest",
+            "capacity": 15
+          },
+          {
+            "color": "green",
+            "capacity": 11
+          },
+          {
+            "color": "seafoam",
+            "capacity": 8
+          },
+          {
+            "color": "slate",
+            "capacity": 6
+          },
+          {
+            "color": "olive",
+            "capacity": 4
+          }
+        ],
+        [
+          {
+            "color": "teal",
+            "capacity": 96
+          },
+          {
+            "color": "navy",
+            "capacity": 61
+          },
+          {
+            "color": "teal",
+            "capacity": 75
+          },
+          {
+            "color": "olive",
+            "capacity": 44
+          },
+          {
+            "color": "navy",
+            "capacity": 64
+          },
+          {
+            "color": "green",
+            "capacity": 35
+          },
+          {
+            "color": "navy",
+            "capacity": 32
+          },
+          {
+            "color": "green",
+            "capacity": 34
+          },
+          {
+            "color": "forest",
+            "capacity": 36
+          },
+          {
+            "color": "teal",
+            "capacity": 82
+          },
+          {
+            "color": "navy",
+            "capacity": 25
+          },
+          {
+            "color": "forest",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 20
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "teal",
+            "capacity": 20
+          },
+          {
+            "color": "slate",
+            "capacity": 18
+          },
+          {
+            "color": "olive",
+            "capacity": 20
+          },
+          {
+            "color": "green",
+            "capacity": 17
+          },
+          {
+            "color": "ice",
+            "capacity": 16
+          },
+          {
+            "color": "navy",
+            "capacity": 17
+          },
+          {
+            "color": "olive",
+            "capacity": 15
+          },
+          {
+            "color": "slate",
+            "capacity": 10
+          },
+          {
+            "color": "white",
+            "capacity": 14
+          },
+          {
+            "color": "navy",
+            "capacity": 8
+          },
+          {
+            "color": "green",
+            "capacity": 7
+          },
+          {
+            "color": "white",
+            "capacity": 6
+          },
+          {
+            "color": "forest",
+            "capacity": 4
+          },
+          {
+            "color": "ice",
+            "capacity": 3
+          }
+        ],
+        [
+          {
+            "color": "teal",
+            "capacity": 107
+          },
+          {
+            "color": "navy",
+            "capacity": 69
+          },
+          {
+            "color": "teal",
+            "capacity": 59
+          },
+          {
+            "color": "navy",
+            "capacity": 50
+          },
+          {
+            "color": "navy",
+            "capacity": 46
+          },
+          {
+            "color": "green",
+            "capacity": 44
+          },
+          {
+            "color": "teal",
+            "capacity": 75
+          },
+          {
+            "color": "olive",
+            "capacity": 29
+          },
+          {
+            "color": "green",
+            "capacity": 44
+          },
+          {
+            "color": "teal",
+            "capacity": 28
+          },
+          {
+            "color": "navy",
+            "capacity": 23
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "teal",
+            "capacity": 23
+          },
+          {
+            "color": "green",
+            "capacity": 23
+          },
+          {
+            "color": "olive",
+            "capacity": 23
+          },
+          {
+            "color": "lime",
+            "capacity": 17
+          },
+          {
+            "color": "green",
+            "capacity": 18
+          },
+          {
+            "color": "navy",
+            "capacity": 19
+          },
+          {
+            "color": "green",
+            "capacity": 28
+          },
+          {
+            "color": "navy",
+            "capacity": 17
+          },
+          {
+            "color": "seafoam",
+            "capacity": 16
+          },
+          {
+            "color": "green",
+            "capacity": 13
+          },
+          {
+            "color": "navy",
+            "capacity": 17
+          },
+          {
+            "color": "blush",
+            "capacity": 9
+          },
+          {
+            "color": "sage",
+            "capacity": 9
+          },
+          {
+            "color": "teal",
+            "capacity": 8
+          },
+          {
+            "color": "lime",
+            "capacity": 6
+          },
+          {
+            "color": "blush",
+            "capacity": 4
+          },
+          {
+            "color": "gold",
+            "capacity": 4
+          },
+          {
+            "color": "sage",
+            "capacity": 3
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "d": "blush",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "Y": "ice",
+        "O": "lime",
+        "U": "navy",
+        "a": "olive",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "M": "teal",
+        "A": "white"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H1"
+      ]
+    },
+    {
+      "id": 266,
+      "title": "Fallen Idol",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNgbbbNNNNNNNSSmmmmmmmmmmmSNNNNNNNNNNNNNNNNNNNNS",
+        "NNgbbbbNNNNNNSSmmmmmmmmmmSSNNNNNNNNNNNNNNNNNNNNS",
+        "NNggbbbNNNNNSSSmmmmmmmmmmSSSNNNNNNNNNNNNNNNbbbSS",
+        "NNNggbbbNNNNSSSSmmmmmmmmmSSSSNNNNNNNNNNNNNNbbbSS",
+        "NNNggbbbbNNSSSSSmmmmmmmmmSSSSSYYYYYYYNNNNNNbbbSS",
+        "NNNgggbbbNSSSSSSmmmmmmmmmSSSSSYYYYYYYNNNNNbbbSSS",
+        "NNNgggbbbbSSSSSSmmmmmmmmmSSSSSYYYYYYYNNNNSbbbSSS",
+        "NNNNgggbbbSSSSSSmmmmmmmmmSSSSSYYYYYYYSSSSSbbbSSS",
+        "NNNNgggbbbbSSSSSmmmmmmmmmmSSSSSSSSSSSSSSSbbbbSSS",
+        "SSSSgggSbbbSSSSSaaaaaaaaaaSSSSSSSSSSSSSSSbbbSSSS",
+        "SSSSg....bbb.................SSSSSSSSSSSSbbbSSSS",
+        "SSSSg....bbbbb...............SSSSSSSSSSSSbbbSSSS",
+        "SSSSS.....bbbbbbbb...........SSSSSSSSSSSbbbSSSSa",
+        "QQQQQ.....bbbbbbbbbbbb.......SSSSSSSSSSSbbbSSSaa",
+        "QQQQQQQQQQQ..bbbbbbbbbbbbaaaaaSSSSSSSSSSbbbSSaaa",
+        "QQQQQQQQQQQQ.....bbbbbbbbaaaaaaaSSSSSSSbOOOaaaaa",
+        "SSSNNQQQQQQQQ.....WWWbbbbWWWaaaaaaSSSSSbOOOaaaaa",
+        "SSNNNNggg.QQQQQWWWRRRRRRjRRRWWWWaaaaaaabOOONNNNN",
+        "SNNNNNCCCCCQQQQQRRRRRRRjjjRRRRRRWWaaaaNbbbNNNNNN",
+        "SNNNNNCCCCCCCQQQQQRRRRRjjRRRRRRRRRWWaNbbbNNNNNNN",
+        "SNNNNgCCeeeCCRQQQQ.RRRRjjRRRRRRRRRRRWWbbbNNNNNNN",
+        "SNNNNgCCeeeCCR.QQQ.RRRRjjRRRRbRRRRRRRWWbbNNNNNNN",
+        "SNNNNgCCeeeCCR.QQQ.RPPPjjRRRbbbRRRmmmmWWbbNNNNNN",
+        "SSNNggCCeeeCCR..QQQRPPPjjPRRRbbRRmmmmmmWbbNNNNNN",
+        "SSSNgWCCeeeCCRR.QQQRPPPjjPPPRbbbRmmWWmmWWbNNNNNN",
+        "SSSSgWCCeeeCCRRRQQQRPPjjjPPPRRbbmmWWWWmmWbNNNNNN",
+        "SSSSWWCCeeeCCRRRQQQRPPPjjPPRRRbbmmWWWWmmWWbNNNNN",
+        "SSSgWWCCeeeCCRRRQQQRPPPPjjRRRRbbmmWWWWmmWWbNNNNN",
+        "SSSgWWCCeeeCCRRRRQQQPPPPjjRRRRbbmmWWWWmmWWbNNNNN",
+        "SSSgWWCCeeeCCRRRRQQQPPPPRjjRRbbbmmWWWWmmWWbNNNNN",
+        "SSggWWCCeeeCCRR..QQQPPRRRjjjRbbRRmmWWmmWWWbbNNNN",
+        "SSgggWCCeeeCCR...QQQRRRRRRjRRbbRRmmmmmmWWbbbNNNN",
+        "NNgggWCCeeeCCR...QQQRRRRRRRRbbbRRRmmmmWWWbbbSSSS",
+        "NNgggNCCeeeCCR....QQQRRaaaaRRbRRRRRRRWWWSbbbbSSS",
+        "NgggNNCCeeeCCRR...QQQRRaaaaRRRRRRRRRWWWWSSbbbSSS",
+        "NgggNNCCeeeCCRRRRRQQQRRaaaaRRRRRRRWWWWWSSSbbbSSS",
+        "NgggNNCCCCCCCWRRRRQQQRRRRRRRRRRRWWWWWWSSSSbbbSSS",
+        "NNNNNNCCCCCCCWWWWWRRRRRRRRRRWWWWWWWWSSSSSSSbbbSS",
+        "NNNNNNNNNNNNWWWWWWWWWWWWWWWWWWWWWWggSSSSSSSbbbSS",
+        "NNNNNNNNNNNNNMMMMMMMWWWWWWWWWWWWgggggSSSSSSbbbSS",
+        "NNNNNMMMMMMMMMMMMMMMMMMMMWWWgggggggggggSSSSbbMMM",
+        "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMgggggggggggSMMMMMM",
+        "MMMMMMMMMMMMMMMMMkMMMMMMMMMMMMMMMMggggMMMMMMMMMM",
+        "kkkkkkkkkkkkkkkkkkkkkkkkMMMMMMMMMMMMMMMMMMMMMMMM",
+        "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkMMMMMMMMMMMMMMMMMM",
+        "kMMMMNNNNNSSSSSSSggggggkkkkkkkkkkkkkMMMMMMMMMMbb",
+        "NNNNNNNNSSSSSSSSSggggggggggggkkkkkkkkMMMMMgggbbb",
+        "SSSSSSSSSSSSSSSSSgggggggggggggggggMkMMMggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "forest",
+            "capacity": 94
+          },
+          {
+            "color": "forest",
+            "capacity": 43
+          },
+          {
+            "color": "pine",
+            "capacity": 52
+          },
+          {
+            "color": "forest",
+            "capacity": 28
+          },
+          {
+            "color": "umber",
+            "capacity": 33
+          },
+          {
+            "color": "teal",
+            "capacity": 32
+          },
+          {
+            "color": "forest",
+            "capacity": 44
+          },
+          {
+            "color": "sage",
+            "capacity": 60
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "gold",
+            "capacity": 41
+          },
+          {
+            "color": "slate",
+            "capacity": 17
+          },
+          {
+            "color": "bronze",
+            "capacity": 16
+          },
+          {
+            "color": "gold",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 26
+          },
+          {
+            "color": "stone",
+            "capacity": 27
+          },
+          {
+            "color": "olive",
+            "capacity": 23
+          },
+          {
+            "color": "umber",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "stone",
+            "capacity": 14
+          },
+          {
+            "color": "sage",
+            "capacity": 19
+          },
+          {
+            "color": "stone",
+            "capacity": 17
+          },
+          {
+            "color": "sage",
+            "capacity": 11
+          },
+          {
+            "color": "olive",
+            "capacity": 11
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "umber",
+            "capacity": 13
+          },
+          {
+            "color": "slate",
+            "capacity": 11
+          },
+          {
+            "color": "stone",
+            "capacity": 9
+          },
+          {
+            "color": "sand",
+            "capacity": 10
+          },
+          {
+            "color": "stone",
+            "capacity": 9
+          },
+          {
+            "color": "stone",
+            "capacity": 11
+          },
+          {
+            "color": "slate",
+            "capacity": 11
+          },
+          {
+            "color": "green",
+            "capacity": 7
+          },
+          {
+            "color": "forest",
+            "capacity": 8
+          },
+          {
+            "color": "brown",
+            "capacity": 12
+          },
+          {
+            "color": "stone",
+            "capacity": 6
+          },
+          {
+            "color": "olive",
+            "capacity": 3
+          },
+          {
+            "color": "ice",
+            "capacity": 4
+          },
+          {
+            "color": "forest",
+            "capacity": 3
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 66
+          },
+          {
+            "color": "pine",
+            "capacity": 46
+          },
+          {
+            "color": "teal",
+            "capacity": 92
+          },
+          {
+            "color": "umber",
+            "capacity": 24
+          },
+          {
+            "color": "slate",
+            "capacity": 21
+          },
+          {
+            "color": "umber",
+            "capacity": 28
+          },
+          {
+            "color": "bronze",
+            "capacity": 16
+          },
+          {
+            "color": "stone",
+            "capacity": 30
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "slate",
+            "capacity": 17
+          },
+          {
+            "color": "pine",
+            "capacity": 17
+          },
+          {
+            "color": "ice",
+            "capacity": 14
+          },
+          {
+            "color": "umber",
+            "capacity": 17
+          },
+          {
+            "color": "stone",
+            "capacity": 12
+          },
+          {
+            "color": "sand",
+            "capacity": 11
+          },
+          {
+            "color": "sand",
+            "capacity": 10
+          },
+          {
+            "color": "ice",
+            "capacity": 10
+          },
+          {
+            "color": "slate",
+            "capacity": 7
+          },
+          {
+            "color": "lime",
+            "capacity": 9
+          },
+          {
+            "color": "gold",
+            "capacity": 7
+          },
+          {
+            "color": "pine",
+            "capacity": 3
+          },
+          {
+            "color": "umber",
+            "capacity": 2
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 196
+          },
+          {
+            "color": "umber",
+            "capacity": 33
+          },
+          {
+            "color": "cerulean",
+            "capacity": 67
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "teal",
+            "capacity": 50
+          },
+          {
+            "color": "umber",
+            "capacity": 29
+          },
+          {
+            "color": "forest",
+            "capacity": 27
+          },
+          {
+            "color": "slate",
+            "capacity": 48
+          },
+          {
+            "color": "sage",
+            "capacity": 26
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "forest",
+            "capacity": 20
+          },
+          {
+            "color": "bronze",
+            "capacity": 16
+          },
+          {
+            "color": "gold",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 45
+          },
+          {
+            "color": "stone",
+            "capacity": 16
+          },
+          {
+            "color": "sage",
+            "capacity": 15
+          },
+          {
+            "color": "stone",
+            "capacity": 13
+          },
+          {
+            "color": "olive",
+            "capacity": 16
+          },
+          {
+            "color": "slate",
+            "capacity": 14
+          },
+          {
+            "color": "brown",
+            "capacity": 20
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "umber",
+            "capacity": 16
+          },
+          {
+            "color": "stone",
+            "capacity": 19
+          },
+          {
+            "color": "stone",
+            "capacity": 11
+          },
+          {
+            "color": "pine",
+            "capacity": 9
+          },
+          {
+            "color": "stone",
+            "capacity": 13
+          },
+          {
+            "color": "verdigris",
+            "capacity": 12
+          },
+          {
+            "color": "verdigris",
+            "capacity": 9
+          },
+          {
+            "color": "umber",
+            "capacity": 9
+          },
+          {
+            "color": "pine",
+            "capacity": 8
+          },
+          {
+            "color": "forest",
+            "capacity": 13
+          },
+          {
+            "color": "olive",
+            "capacity": 9
+          },
+          {
+            "color": "stone",
+            "capacity": 12
+          },
+          {
+            "color": "verdigris",
+            "capacity": 9
+          },
+          {
+            "color": "olive",
+            "capacity": 4
+          },
+          {
+            "color": "cerulean",
+            "capacity": 11
+          },
+          {
+            "color": "sand",
+            "capacity": 6
+          },
+          {
+            "color": "slate",
+            "capacity": 4
+          },
+          {
+            "color": "sage",
+            "capacity": 3
+          },
+          {
+            "color": "olive",
+            "capacity": 2
+          },
+          {
+            "color": "verdigris",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "e": "bronze",
+        "Q": "brown",
+        "k": "cerulean",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "Y": "ice",
+        "O": "lime",
+        "a": "olive",
+        "g": "pine",
+        "m": "sage",
+        "P": "sand",
+        "W": "slate",
+        "R": "stone",
+        "M": "teal",
+        "b": "umber",
+        "j": "verdigris"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "H1",
+        "H1",
+        "T1",
+        "T2",
+        "H1",
+        "T1",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T1",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H3",
+        "H1",
+        "H1",
+        "H1",
+        "H2",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H1",
+        "T3",
+        "H1",
+        "T2",
+        "T3"
+      ]
+    },
+    {
+      "id": 267,
+      "title": "Nightflower",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        ".....................mmmmmSNNNNNNNNNNNNNNNNNNNNS",
+        ".......................mmSSNNNNNNNNNNNNNNNNNNNNS",
+        "...................c..ccmSSSNNNNNNNNNNNNNNNbbbSS",
+        ".c..cc.............ccRccmSSSSNNNNNNNNNNNNNNbbbSS",
+        ".ccRcc............ccccccmSSSSSNNNNNNNNNNNNNbbbSS",
+        "cccccc..................mSSSSSSNNNNNNNNNNNbbbSSS",
+        ".......................mmSSSSSSSSNNNNNNNNSbbbSSS",
+        ".....................mmmmSSSSSSSSSSSSSSSSSbbbHSS",
+        "..........c..ccSmmmmmmmmmmSSSSSSSSSYYSSSSbbbHHHS",
+        "..........ccRccSSSSSSSSSSYYSSSSSSSYYAYSSSbbbHHHS",
+        "SSSSgggSSccccccSSSSSSSSSYYAYSSSSSYYAAAYSSbbbSHSS",
+        "SSSSgggSSSSSSSSSSSSSSSSYYAAAYSSSSYYAAYYSSbbbSSSS",
+        "SSSSSgggSSSSSSSSSSSSSSSSYYAAYYSSSYYAAYSSbbbSSSSS",
+        "SSSSSgggSSSSSSSSSSSSSSSSSYYAAYSSSYYAAYSSbbbSYYSS",
+        "SSSSSgggNNNNSSSSSSSSSSSSSSYALAYSSYALASSSbbbYYAYS",
+        "SSSSNgggNNNNNNSSSSSSSSSSSSSYLLYSSYALYSSbbbYYAAAY",
+        "SSSNNNgggNNNNNNSSSSSSSSSSSSSALASSYLLSSSbbYAAAASS",
+        "SSNNNNgggNNNNNNNSSSSYYSSSSSSSALASYLASSSbALAANNNN",
+        "SNNNNNgggNNNNNNNNSSYYAYSSSSSSSLVVVVVSSALLANNNNNN",
+        "SNNNNNgggNNNNNNNNSYYAAAAAASSSSVVVVVVVALLANNNNNNN",
+        "SNNNNgggNNNNNNNNNSSSSAAAALLLAVVVCCCVVVAbbNNNNNNN",
+        "SNNNNgggNNNNNNNNNSSSSSSSSAALLVVCCCCCVVbbbNNNNNNN",
+        "SNNNNgggNNNNNNNNNSSSSSSSSSSSSVVCCCCCVVbbbbNNNNNN",
+        "SSNNggggNNNNNNNNSSSSSSSSSSSSSVVCCCCCVVLLAANNNYYN",
+        "SSSNgggNNNNNNNNSSSSSSSSSSSSALVVVCCCVVVAALLLAAAAY",
+        "SSSSgllNNNNNNNSSSSSSSSSSSALLLAVVVVVVVNNbbbAAAAAA",
+        "SSSSllllNNNNSSSSSSSSYYSAALLASSSVVVVVANNNbbbNNNAN",
+        "SSSgllllSSSSSSSSSSSYYAAAAASSSSALAjjALYNNbbbNNNNN",
+        "SSSggllSSSSSSSSSSSSSAAAASSSSSYLLjjjYLANNbbbNNNNN",
+        "SSSgggSSSSSSSSSSSSSSSASSSSSSSALAjjjYALYNbbbNNNNN",
+        "SSggggSSSSSSSSUUSSSSSSSSSSSSYALYSjjjYLAYNbbbNNNN",
+        "SSgggSSSSSSSSUUUUSSSSSSSSSSYYAAYSSjjYAAAYbbbNNNN",
+        "NNgggNNNSSSSSUUUUSSSSSSSSSSSAAYYSSjjYjAASYbbSSSS",
+        "NNgggNNNNNSSSUUUUSSSSSSSSSSSAAYYSSSjjjAAAbbbbSSS",
+        "NgggNNNNNNNSSSUUSSSSSSSSSSSAAASSSSSjjjjASSbbbSSS",
+        "NgggNNNNNNNNSgggggggggggggggAgggggSSjjjjjSbbbSSS",
+        "NgggNNNNNNNNNSggggggggggggggggggggSSSjjjjSbbbSSS",
+        "NNNNNNNNNNNNNNSggggggggggggggggggggSSjjjjjSbbbSS",
+        "NNNNNNNNVVVNNNSgggggggggggggggggggggSjjjjSSbbbSS",
+        "NNNNNNNNVVVNNNSSgggggggggggggggggggggjjjjSSbbbSS",
+        "NNNNNNNNVVVNNNSSggggggggggggggggggggjjjjSSSbbbSS",
+        "NNNNNNNNNNNNNNSSSgggggggggggggggggggjjjjgSSSbbbS",
+        "NNNNNNNNNNNNNSSSSggggggggggggggggggOOOjjggggbbbg",
+        "NNNNNNNNNNNNSSSSSggggggggggggggggggOOOjgggggbbbg",
+        "NNNNNNNNNNNSSSSSSggggggggggggggggggOOOjgggggbbbb",
+        "NNNNNNNNNNSSSSSSSgggggggggggggggggjjjjgggggggbbb",
+        "NNNNNNNNSSSSSSSSSgggggggggggggggggjjjjgggggggbbb",
+        "SSSSSSSSSSSSSSSSSggggggggggggggggjjjjjgggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 98
+          },
+          {
+            "color": "pine",
+            "capacity": 42
+          },
+          {
+            "color": "forest",
+            "capacity": 67
+          },
+          {
+            "color": "pine",
+            "capacity": 77
+          },
+          {
+            "color": "umber",
+            "capacity": 32
+          },
+          {
+            "color": "pine",
+            "capacity": 50
+          },
+          {
+            "color": "forest",
+            "capacity": 67
+          },
+          {
+            "color": "ice",
+            "capacity": 21
+          },
+          {
+            "color": "pine",
+            "capacity": 22
+          },
+          {
+            "color": "forest",
+            "capacity": 24
+          },
+          {
+            "color": "pine",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 21
+          },
+          {
+            "color": "white",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "ice",
+            "capacity": 30
+          },
+          {
+            "color": "sage",
+            "capacity": 18
+          },
+          {
+            "color": "cyan",
+            "capacity": 19
+          },
+          {
+            "color": "ice",
+            "capacity": 16
+          },
+          {
+            "color": "verdigris",
+            "capacity": 13
+          },
+          {
+            "color": "forest",
+            "capacity": 17
+          },
+          {
+            "color": "green",
+            "capacity": 13
+          },
+          {
+            "color": "cyan",
+            "capacity": 11
+          },
+          {
+            "color": "ice",
+            "capacity": 13
+          },
+          {
+            "color": "seafoam",
+            "capacity": 14
+          },
+          {
+            "color": "cyan",
+            "capacity": 11
+          },
+          {
+            "color": "forest",
+            "capacity": 10
+          },
+          {
+            "color": "lavender",
+            "capacity": 15
+          },
+          {
+            "color": "seafoam",
+            "capacity": 11
+          },
+          {
+            "color": "graphite",
+            "capacity": 10
+          },
+          {
+            "color": "green",
+            "capacity": 5
+          },
+          {
+            "color": "lime",
+            "capacity": 9
+          },
+          {
+            "color": "magenta",
+            "capacity": 8
+          },
+          {
+            "color": "seafoam",
+            "capacity": 5
+          },
+          {
+            "color": "forest",
+            "capacity": 3
+          },
+          {
+            "color": "sage",
+            "capacity": 3
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 95
+          },
+          {
+            "color": "forest",
+            "capacity": 92
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "verdigris",
+            "capacity": 23
+          },
+          {
+            "color": "forest",
+            "capacity": 42
+          },
+          {
+            "color": "white",
+            "capacity": 19
+          },
+          {
+            "color": "forest",
+            "capacity": 28
+          },
+          {
+            "color": "umber",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 27
+          },
+          {
+            "color": "white",
+            "capacity": 13
+          },
+          {
+            "color": "forest",
+            "capacity": 24
+          },
+          {
+            "color": "navy",
+            "capacity": 4
+          },
+          {
+            "color": "gold",
+            "capacity": 3
+          },
+          {
+            "color": "graphite",
+            "capacity": 2
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 121
+          },
+          {
+            "color": "green",
+            "capacity": 82
+          },
+          {
+            "color": "pine",
+            "capacity": 44
+          },
+          {
+            "color": "green",
+            "capacity": 59
+          },
+          {
+            "color": "umber",
+            "capacity": 36
+          },
+          {
+            "color": "pine",
+            "capacity": 33
+          },
+          {
+            "color": "green",
+            "capacity": 26
+          },
+          {
+            "color": "umber",
+            "capacity": 32
+          },
+          {
+            "color": "pine",
+            "capacity": 22
+          },
+          {
+            "color": "green",
+            "capacity": 36
+          },
+          {
+            "color": "pine",
+            "capacity": 42
+          },
+          {
+            "color": "white",
+            "capacity": 27
+          },
+          {
+            "color": "forest",
+            "capacity": 41
+          },
+          {
+            "color": "lavender",
+            "capacity": 21
+          },
+          {
+            "color": "forest",
+            "capacity": 35
+          },
+          {
+            "color": "verdigris",
+            "capacity": 19
+          },
+          {
+            "color": "white",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 13
+          },
+          {
+            "color": "forest",
+            "capacity": 13
+          },
+          {
+            "color": "white",
+            "capacity": 14
+          },
+          {
+            "color": "seafoam",
+            "capacity": 16
+          },
+          {
+            "color": "forest",
+            "capacity": 16
+          },
+          {
+            "color": "white",
+            "capacity": 13
+          },
+          {
+            "color": "forest",
+            "capacity": 17
+          },
+          {
+            "color": "verdigris",
+            "capacity": 11
+          },
+          {
+            "color": "seafoam",
+            "capacity": 11
+          },
+          {
+            "color": "navy",
+            "capacity": 12
+          },
+          {
+            "color": "gold",
+            "capacity": 18
+          },
+          {
+            "color": "sage",
+            "capacity": 6
+          },
+          {
+            "color": "pine",
+            "capacity": 9
+          },
+          {
+            "color": "umber",
+            "capacity": 7
+          },
+          {
+            "color": "ice",
+            "capacity": 5
+          },
+          {
+            "color": "verdigris",
+            "capacity": 4
+          },
+          {
+            "color": "lavender",
+            "capacity": 3
+          },
+          {
+            "color": "stone",
+            "capacity": 3
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "L": "cyan",
+        "S": "forest",
+        "C": "gold",
+        "l": "graphite",
+        "N": "green",
+        "Y": "ice",
+        "c": "lavender",
+        "O": "lime",
+        "H": "magenta",
+        "U": "navy",
+        "g": "pine",
+        "m": "sage",
+        "V": "seafoam",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "A": "white"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "H1",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T1",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "H1",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "T1",
+        "H1",
+        "T3",
+        "H1",
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "H1",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T1",
+        "T3",
+        "H1",
+        "T2",
+        "H1",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T1",
+        "H2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T1",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T1",
+        "T3",
+        "H2",
+        "T2",
+        "H1"
+      ]
+    },
+    {
+      "id": 268,
+      "title": "Ravine Crossing",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "gjjjjjgggggggSSmmmmmmmmmmmSNNNNNNNSSSSSSSSSSSSSS",
+        "gjjjjjggggggggSmmmmmmmmmmSSNNNNNNNNSSSSSSSSSSSSS",
+        "gjjjjjggggggggSmmmmmmmmmmSSSNNNNNNNSSSSSSSSSSSSS",
+        "gjjjjjggggggggWWWWWWWWWWWWWWWWWWWWNSSSSSSSSSSSSS",
+        "ggggggggggggggWWW..............WWWNSSSSSSSSSaaaa",
+        "ggggggggggggggWWW..............WWWNSSSSSSSSSaaaa",
+        "ggggNNNggggggggWW..............WWWNSSSSSSSSSaaaa",
+        "ggggNNNgggggCggWW..............WWWSCSSSSSSSSaaaa",
+        "ggggNNNNgggCCCgWW..............WWWCCCSSSSSSSSSSS",
+        "gggggNNNgggCCCgWW..............WWWCCCSSSSSSSSSSS",
+        "gggggNNNNggCCCgWW..............WWWCCCSSSSSSSSSSS",
+        "ggggggNNNNgCCCggWWWWWWWWWWWWWWWWWWCCCSSSSSSSSSSS",
+        "gggggggNNNgCCCXgWWWWWWWWWWWWWWWWWXCCCSSSSSSSSSSS",
+        "gggggggNNNNCCCgXWWWWWWWWWWWWWWWWXXCCCSSmmmSSSSSS",
+        "ggggggggNNNCCCggXXWWWWWWWWWWWWWXXWCCCSSmmmSSSSSS",
+        "ggggggggNNNCCCQeWWXXWWWWWWWWWXXWWeCCCSSmmmSSSSSS",
+        "ggggggggNNNCCCQeQWWWXXXWWWXXXWWWQeCCCSmmmmSSSSSS",
+        "gggggggNNNgCCCQeQQeWWWWXXXWWWWeQQeCCCSmmmSSSSSSS",
+        "gggggggNNNggCgQQQQeQWeWWWWWeWQeQQQaCSSmmmSSSSSSS",
+        "gggggggNNNggggggQQeQQeQWWWQeQQeQQWaaSSmmmSSSSSSS",
+        "gggggggNNNgggggggQQQQeQQeQQeQQQQWWaaSmmmSSSSSSSS",
+        "gggggggNNNgggggggWWWQQQQeQQQQWWWWWSNSmmmSSSSSSSS",
+        "ggggggNNNggggggggWWWWWWQeQWWWWWWWWNNSmmmSSSSSSSS",
+        "ggggggNNNggggggggWWWWWWWWWWWWWWWWWNNmmmmSSSSSSSS",
+        "ggggggNNNggggggggWW..........WWWWWNNmmmSSSSSSSSS",
+        "ggggggNNNggggggggWW..........WWWWWNNmmmSSSSSSSSS",
+        "ggggggNNNggggggggWW..........WWWWWNNmmmmSSSSSSSS",
+        "gggggNNNggggggggWWW..........WWWWWSNSmmmmSSSSSSS",
+        "gggggNNNggggggggWWW..........WWWWWSSSSmmmmSSSSSS",
+        "gggggNNNggggggggWWW..........WWWWWSSSSSmmmSSSSSS",
+        "gggggNNNggggggggWWW..........WWWWWSSSSSmmmmSSSSS",
+        "gRRRRRggggggggggWWW..........WWWWWSSSSSSmmmmSSSS",
+        "gRRRRRggggggggggWWW..........WWWWWSSSSSSSmmmmSSS",
+        "gRRRRRggggggggggWWWWWWWWWWWWWYYYYWSSSSSSSSmmmSSS",
+        "gRRRRRgggggggggYYYYYWWWWWYYYYYYYYWSSSSSSSSmmmSSS",
+        "ggggggggOOOggggYYYYYYYYYYYYYYYYYYWSSSSSSSSSSSSSS",
+        "ggggggggOOOggggYYYYYYYYYYYYYYYWWWWSSSSSSSSSSSSSS",
+        "ggggggggOOOggggWWWWWYYYYYYWWWWWWWWgSSSSSSSSSSSSS",
+        "ggggggggOOOggggWWWWWWWWWWWWWWWWWWWSSSSSSSSSSSSSS",
+        "gggggggggggggggWWMMMMMWWWWWWWWWWWWSSSSSSSSSSSSSS",
+        "ggggggggggggMMMMMMMMMMMMMgggggggggSSSSSSbbbbSMMM",
+        "gggggggMMMMMMMMMMMMMMMMMMMMMMgggggSSSSSSbbbbMMMM",
+        "gggMMMMMMMMMMMMMMMMMkMMMMMMMMMMMggSSMMMMbbbbMMMM",
+        "MMMMMMMMMMMkkkkkkkkkkkkkkMMMMMMMMMMMMMMMMMMMMMMM",
+        "MkkkkkkkkkkkkkkkkkkkkkkkkkkkkMMMMMMMMMMMMMMMMMMM",
+        "kkkkkkkkkkkMMgSSSgggggggkkkkkkkkkMMMMMMMMMMMMSSS",
+        "MkMMMMMMggggggSSSgggggggggggkkkkkkMMMMMMMSSSSSSS",
+        "MMMgggggggggggSSSggggggggggggggMkMMMSSSSSSSSSSSS"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "pine",
+            "capacity": 60
+          },
+          {
+            "color": "cerulean",
+            "capacity": 70
+          },
+          {
+            "color": "teal",
+            "capacity": 40
+          },
+          {
+            "color": "sage",
+            "capacity": 39
+          },
+          {
+            "color": "forest",
+            "capacity": 26
+          },
+          {
+            "color": "slate",
+            "capacity": 30
+          },
+          {
+            "color": "pine",
+            "capacity": 20
+          },
+          {
+            "color": "slate",
+            "capacity": 34
+          },
+          {
+            "color": "brown",
+            "capacity": 36
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "pine",
+            "capacity": 9
+          },
+          {
+            "color": "lime",
+            "capacity": 6
+          },
+          {
+            "color": "ice",
+            "capacity": 5
+          },
+          {
+            "color": "bronze",
+            "capacity": 4
+          }
+        ],
+        [
+          {
+            "color": "pine",
+            "capacity": 109
+          },
+          {
+            "color": "forest",
+            "capacity": 49
+          },
+          {
+            "color": "pine",
+            "capacity": 76
+          },
+          {
+            "color": "forest",
+            "capacity": 74
+          },
+          {
+            "color": "pine",
+            "capacity": 34
+          },
+          {
+            "color": "green",
+            "capacity": 55
+          },
+          {
+            "color": "sage",
+            "capacity": 34
+          },
+          {
+            "color": "sage",
+            "capacity": 32
+          },
+          {
+            "color": "slate",
+            "capacity": 37
+          },
+          {
+            "color": "pine",
+            "capacity": 23
+          },
+          {
+            "color": "slate",
+            "capacity": 27
+          },
+          {
+            "color": "gold",
+            "capacity": 21
+          },
+          {
+            "color": "ice",
+            "capacity": 18
+          },
+          {
+            "color": "pine",
+            "capacity": 16
+          },
+          {
+            "color": "gold",
+            "capacity": 19
+          },
+          {
+            "color": "ivory",
+            "capacity": 17
+          },
+          {
+            "color": "pine",
+            "capacity": 17
+          },
+          {
+            "color": "ice",
+            "capacity": 15
+          },
+          {
+            "color": "slate",
+            "capacity": 22
+          },
+          {
+            "color": "gold",
+            "capacity": 16
+          },
+          {
+            "color": "slate",
+            "capacity": 27
+          },
+          {
+            "color": "brown",
+            "capacity": 10
+          },
+          {
+            "color": "green",
+            "capacity": 9
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "stone",
+            "capacity": 6
+          },
+          {
+            "color": "gold",
+            "capacity": 8
+          },
+          {
+            "color": "slate",
+            "capacity": 5
+          },
+          {
+            "color": "ivory",
+            "capacity": 5
+          },
+          {
+            "color": "brown",
+            "capacity": 4
+          },
+          {
+            "color": "stone",
+            "capacity": 4
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 166
+          },
+          {
+            "color": "pine",
+            "capacity": 42
+          },
+          {
+            "color": "teal",
+            "capacity": 40
+          },
+          {
+            "color": "forest",
+            "capacity": 29
+          },
+          {
+            "color": "teal",
+            "capacity": 92
+          },
+          {
+            "color": "green",
+            "capacity": 34
+          },
+          {
+            "color": "forest",
+            "capacity": 28
+          },
+          {
+            "color": "pine",
+            "capacity": 100
+          },
+          {
+            "color": "slate",
+            "capacity": 41
+          },
+          {
+            "color": "forest",
+            "capacity": 60
+          },
+          {
+            "color": "slate",
+            "capacity": 21
+          },
+          {
+            "color": "pine",
+            "capacity": 21
+          },
+          {
+            "color": "ice",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 16
+          },
+          {
+            "color": "forest",
+            "capacity": 18
+          },
+          {
+            "color": "slate",
+            "capacity": 91
+          },
+          {
+            "color": "bronze",
+            "capacity": 17
+          },
+          {
+            "color": "olive",
+            "capacity": 17
+          },
+          {
+            "color": "verdigris",
+            "capacity": 12
+          },
+          {
+            "color": "stone",
+            "capacity": 10
+          },
+          {
+            "color": "slate",
+            "capacity": 9
+          },
+          {
+            "color": "pine",
+            "capacity": 7
+          },
+          {
+            "color": "verdigris",
+            "capacity": 8
+          },
+          {
+            "color": "forest",
+            "capacity": 6
+          },
+          {
+            "color": "lime",
+            "capacity": 6
+          },
+          {
+            "color": "pine",
+            "capacity": 5
+          },
+          {
+            "color": "olive",
+            "capacity": 4
+          },
+          {
+            "color": "green",
+            "capacity": 3
+          },
+          {
+            "color": "cerulean",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "e": "bronze",
+        "Q": "brown",
+        "k": "cerulean",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "Y": "ice",
+        "X": "ivory",
+        "O": "lime",
+        "a": "olive",
+        "g": "pine",
+        "m": "sage",
+        "W": "slate",
+        "R": "stone",
+        "M": "teal",
+        "b": "umber",
+        "j": "verdigris"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T2",
+        "H1",
+        "T1",
+        "H1",
+        "T3",
+        "H1",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "H3",
+        "T1",
+        "T2",
+        "H1",
+        "H2",
+        "H2",
+        "H2",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "H3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H1",
+        "H1",
+        "T3"
+      ]
+    },
+    {
+      "id": 269,
+      "title": "Emerald Constrictor",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNgggNNNNNNNNSSmmmmmmmmbQQQbNNNNNNNNNNNNNbQQQbNS",
+        "NNgggNNNNNNNNSSmmmmmmmmbQQbNNNNNNNNBBBNNNbQQbNNS",
+        "NNgggNNNNNNNSSSmmmmmmmmbQQbSNNNNNNNBBBNNNbQQbbSS",
+        "NNNgggNNNNNNSSSSmmmmmmb....SSNNNNNNBBBNNNbQQbbSS",
+        "NNNgggNNNNNSSSSSmmmmmmb....SSSNNNNNNNNNNNbQQbbSS",
+        "NNNgggNNNNSSSSSSmmmmmbb....SSSSNNNNNNNNNNNQQbSSS",
+        "bNNgggNNNSSSSSSSmmmmmbQ....SSSSSSNNNNNNNNNNNbSSS",
+        "QbbNgggSSSSSSSSSmmmmmbQQbSSSSSSSSSgNNNNNNClNNSSS",
+        "QQQbbggSSSSSSSSSmmmmbQQQbmSSSgggggNNNNNNNCCNNSSS",
+        "QQQQQbbSSSSSSSSSaaaabQQbgggggNNNNNNNNNNNNNNNNSSb",
+        "bbQQQQQbbSSSSSSaaaagggggNNNNSSNNNNNNNNNNNNNNobbQ",
+        "SSbbQQQQQbbSSSSaaggNNNNNNNNSSSSNNQQQNNNNNNNNbooQ",
+        "SSSSbbQQQQQbbSSagNNNNNNNNNNNSSNNNQQQQNNNNNgbQQQo",
+        "SSSSSgbbQQQQQbbagNNNNNNNNNNNNNNNNQQQNNgggQbQQQbb",
+        "SSSSSgggbbQQQQQgNNSSNNNNNNNNNNNNNNNgggbbQQbQbbaa",
+        "SSSSNgggNNb....gNSSSSNNNNNNNNNgggggbbQQbQQbbaaaa",
+        "SSSNNNgggNN...gNNNSSNNNNNggggga....bQQQbQQbaaaaa",
+        "SSNjjjgggNN...gNNNNNQQQggaaaaaa....QQQbbQQbNNNNN",
+        "SNNjjjgggNN..ggNNNNNQQQQQaaaabbbQQQQbbbQQQbNNNNN",
+        "SNNjjjgggNNNNgNNNNNOQQQQQQQQbbQQQQbbaNbQQbNNNNNN",
+        "SNNjjjggNNNNNgNNNNOOOOQQQQQQQQQQbbaaNNbQQbNNNNNN",
+        "SNNNNgggNNNNgNNNNSSOOOOObQQQQQbbSSSNNNbQQbNNNNNN",
+        "SNNNNgggNNNNNgNNSSSSNOOOOOQQQQQbbbNNNNbQQbNNNNNN",
+        "SSNNggggNNNNNgNNNSSNNNNOOOObbQQQQbbbNNbQQbNNNNNN",
+        "SSSNgggNNNNNNNggNNNNNNNNNOOOSbbQQQQbbbQQQbNNNNNN",
+        "SSSSgggNNNNNNNbggNNNNNNNNNOOOSSbbQQQQbQQbbNNNNNN",
+        "SSSSgggNNNNNSSQQQggNNNNNNNNOOggSSbbQQbQQbbbNNNNN",
+        "SSSgggSSSSSSbbQQQbggNNNNNNNNOOggSSSbbbQQbQbbNNNN",
+        "SWWWggSSSSbbQQQQQbbSggNNNSSNOOONgSSSNbQQbQQQbbNN",
+        "SWWWggSSbbQQbQQQbSSSSggNSSSSNOOOgSSSSbQQbQQQQQbb",
+        "SWWWggbbQQQQbQQQSSSSSSSgNSSNNNOOOgSSbQQQbbbQQQQQ",
+        "SSggbbQQQQQbQQQbSSSSSSSSgNNNNNOOgSSSbQQbNbbbbQQQ",
+        "NNbbQQQQQbbbQQQbSSSSSSSSgNNNNOONgSSSbQQbSbbbSbbQ",
+        "bbQQQQQbbNSQQQQSSSSSSSSgNNNNNOOgSSSSbQQbSbbbbSSb",
+        "QQQQQbbNNNNQQQbSSSSgggggNNNNOONgSSSSbQQbSSbbbSSS",
+        "QQQbbNNNNNQQQQgggggNNNNNNNNOOOg.ggSSbQQbSSbbbSSS",
+        "QbbgNNNNNNQQQNNNNNNNNSSNNNNOONggggSbQQQ....bbSSS",
+        "bNNNNNNNNQQQQNNNNNNNSSSSNNOONggggggbQQb....bbbSS",
+        "NNNNNNNggQQQNNNNNNNNNSSNNNOOgggggggbQQb....bbbSS",
+        "NNNNNggNNQQQNNNNNNNNNNNNNOONgggggggbQQb....bbbSS",
+        "NNNggNNNQQQNNNNNNNNOOOOOOOOggggggggbQQbSSSSbbbSS",
+        "NggNNNNSQQQNNOOOOOOOOOOOOOgggggggggbQQbggSSSbbbS",
+        "ggNNNNNQQQQOOOOOOOOOggggggggggggggbQQQbgggggbbbg",
+        "NNNNNNNQQQOOOOgSSggggggggggggggVVVbQQbgggggRRRRg",
+        "NNNNNNNQQQOOgSSSSggggggggggggggVVVbQQbgggggRRRRb",
+        "NNNNNOOOOggSSSSSSggggggggggggggVVVbQQbgggggRRRRb",
+        "NNOOOOOggbSSSSSSSgggggggggggggggggbQQbgggggRRRRb",
+        "OOOOOggQQbSSSSSSSgggggggggggggggggbQQbgggggggbbb"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 50
+          },
+          {
+            "color": "brown",
+            "capacity": 65
+          },
+          {
+            "color": "pine",
+            "capacity": 30
+          },
+          {
+            "color": "brown",
+            "capacity": 26
+          },
+          {
+            "color": "forest",
+            "capacity": 44
+          },
+          {
+            "color": "green",
+            "capacity": 24
+          },
+          {
+            "color": "lime",
+            "capacity": 21
+          },
+          {
+            "color": "pine",
+            "capacity": 50
+          },
+          {
+            "color": "green",
+            "capacity": 26
+          },
+          {
+            "color": "olive",
+            "capacity": 16
+          },
+          {
+            "color": "umber",
+            "capacity": 13
+          },
+          {
+            "color": "lime",
+            "capacity": 12
+          },
+          {
+            "color": "olive",
+            "capacity": 14
+          },
+          {
+            "color": "stone",
+            "capacity": 11
+          },
+          {
+            "color": "brown",
+            "capacity": 7
+          },
+          {
+            "color": "seafoam",
+            "capacity": 7
+          },
+          {
+            "color": "lime",
+            "capacity": 6
+          },
+          {
+            "color": "sage",
+            "capacity": 3
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 86
+          },
+          {
+            "color": "forest",
+            "capacity": 38
+          },
+          {
+            "color": "green",
+            "capacity": 78
+          },
+          {
+            "color": "forest",
+            "capacity": 39
+          },
+          {
+            "color": "pine",
+            "capacity": 34
+          },
+          {
+            "color": "umber",
+            "capacity": 29
+          },
+          {
+            "color": "pine",
+            "capacity": 53
+          },
+          {
+            "color": "brown",
+            "capacity": 75
+          },
+          {
+            "color": "umber",
+            "capacity": 25
+          },
+          {
+            "color": "green",
+            "capacity": 28
+          },
+          {
+            "color": "pine",
+            "capacity": 24
+          },
+          {
+            "color": "brown",
+            "capacity": 32
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "brown",
+            "capacity": 23
+          },
+          {
+            "color": "green",
+            "capacity": 25
+          },
+          {
+            "color": "brown",
+            "capacity": 25
+          },
+          {
+            "color": "sage",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 22
+          },
+          {
+            "color": "pine",
+            "capacity": 18
+          },
+          {
+            "color": "green",
+            "capacity": 18
+          },
+          {
+            "color": "pine",
+            "capacity": 16
+          },
+          {
+            "color": "green",
+            "capacity": 23
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "brown",
+            "capacity": 14
+          },
+          {
+            "color": "green",
+            "capacity": 19
+          },
+          {
+            "color": "forest",
+            "capacity": 14
+          },
+          {
+            "color": "umber",
+            "capacity": 12
+          },
+          {
+            "color": "green",
+            "capacity": 24
+          },
+          {
+            "color": "lime",
+            "capacity": 10
+          },
+          {
+            "color": "slate",
+            "capacity": 8
+          },
+          {
+            "color": "olive",
+            "capacity": 7
+          },
+          {
+            "color": "pine",
+            "capacity": 6
+          },
+          {
+            "color": "forest",
+            "capacity": 6
+          },
+          {
+            "color": "stone",
+            "capacity": 5
+          },
+          {
+            "color": "rose",
+            "capacity": 4
+          },
+          {
+            "color": "verdigris",
+            "capacity": 3
+          },
+          {
+            "color": "graphite",
+            "capacity": 1
+          },
+          {
+            "color": "yellow",
+            "capacity": 1
+          }
+        ],
+        [
+          {
+            "color": "forest",
+            "capacity": 47
+          },
+          {
+            "color": "pine",
+            "capacity": 75
+          },
+          {
+            "color": "umber",
+            "capacity": 37
+          },
+          {
+            "color": "green",
+            "capacity": 38
+          },
+          {
+            "color": "umber",
+            "capacity": 31
+          },
+          {
+            "color": "green",
+            "capacity": 33
+          },
+          {
+            "color": "forest",
+            "capacity": 55
+          },
+          {
+            "color": "green",
+            "capacity": 32
+          },
+          {
+            "color": "umber",
+            "capacity": 45
+          },
+          {
+            "color": "lime",
+            "capacity": 27
+          },
+          {
+            "color": "green",
+            "capacity": 27
+          },
+          {
+            "color": "pine",
+            "capacity": 29
+          },
+          {
+            "color": "green",
+            "capacity": 32
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          },
+          {
+            "color": "green",
+            "capacity": 28
+          },
+          {
+            "color": "forest",
+            "capacity": 24
+          },
+          {
+            "color": "umber",
+            "capacity": 28
+          },
+          {
+            "color": "forest",
+            "capacity": 26
+          },
+          {
+            "color": "green",
+            "capacity": 24
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          },
+          {
+            "color": "forest",
+            "capacity": 43
+          },
+          {
+            "color": "sage",
+            "capacity": 18
+          },
+          {
+            "color": "lime",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 14
+          },
+          {
+            "color": "green",
+            "capacity": 16
+          },
+          {
+            "color": "sage",
+            "capacity": 14
+          },
+          {
+            "color": "green",
+            "capacity": 12
+          },
+          {
+            "color": "pine",
+            "capacity": 14
+          },
+          {
+            "color": "brown",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 12
+          },
+          {
+            "color": "brown",
+            "capacity": 9
+          },
+          {
+            "color": "verdigris",
+            "capacity": 9
+          },
+          {
+            "color": "lime",
+            "capacity": 7
+          },
+          {
+            "color": "yellow",
+            "capacity": 8
+          },
+          {
+            "color": "brown",
+            "capacity": 5
+          },
+          {
+            "color": "umber",
+            "capacity": 7
+          },
+          {
+            "color": "pine",
+            "capacity": 4
+          },
+          {
+            "color": "gold",
+            "capacity": 3
+          },
+          {
+            "color": "lime",
+            "capacity": 3
+          },
+          {
+            "color": "seafoam",
+            "capacity": 2
+          },
+          {
+            "color": "slate",
+            "capacity": 1
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "Q": "brown",
+        "S": "forest",
+        "C": "gold",
+        "l": "graphite",
+        "N": "green",
+        "O": "lime",
+        "a": "olive",
+        "g": "pine",
+        "o": "rose",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "B": "yellow"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T2",
+        "T3",
+        "H1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H3",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H3",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "H1",
+        "H1"
+      ]
+    },
+    {
+      "id": 270,
+      "title": "The Green Deep",
+      "themeId": "deep-jungle",
+      "difficulty": "super-hard",
+      "holdingCapacity": 3,
+      "pixelArt": [
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+        "NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN",
+        "NNNNNNNNNNaNNNNNNNNNNNNNNNNNNNNNaNNNNNNNNNNNNNNN",
+        "NNNNNNNNNNaaNNNNNNNNNNNNNNNNNNNaaNNNNNNNNNNNNNNN",
+        "NNNNNNNNNNaaaaNNNNNNNNNNNNNNNaCaaaaNNNNNNNNNNNaa",
+        "aaNNNNNNNaaaaaaaaNNNNNNNNNaaaaEEEaaaaNNNNNNNaaaa",
+        "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaEEEKKKaaaaaaaaaaaa",
+        "aaaaaaaaaOOamaaaaaaaaaaOOaaaaaEEEKKKaOOaaaaaaaam",
+        "aaaaaaaaaOBOSSSaaaaaaaaOBOaaSSSSSSSaaOBOaaaaaaSS",
+        "SSaaaaaaaOBOSSSSSaaaaaaOBOSSSSSSSSSSSOBOaaaaSSSS",
+        "SSSSSSSSSOBYSSSSSSSSSSSOBYSSSSSSSSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSSSSSSSSSSSOBYSSSSSSSSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSSSSSSSSSSSOBYSSS...SSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSSSSSSSSSSSOBYSSS...SSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSSSSSSSSSSSOBYSSS...SSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSS...bbSSSSOBYSSS...SSSSSOBYSSSSSSSS",
+        "SSSSSSSSSOBYSS...bQSSSSOBYSSS...SSSSSOBYSSSSSSSS",
+        "bbbSSSSSSOBYSS...bQSSSSOBYSSSSSSSSSSSOBYSSSSAAAS",
+        "bbQSSSSSSOBYSS...bbQSSSOBYSSSSSSSSSSSOBYSSSSAAYS",
+        "bbQSSSSSSOBYOS...bbQSSSOBYOSSSSSSSSSSOBYOSSSAAYS",
+        "gbbQgggggOBOYggggbbQQggOBOYgggbbbggggOBOYgggAAYg",
+        "gbbQgggggOBOYgggggbbQWWWWWWWWWbbQggggOBOYgggAAYg",
+        "gbbQQggggOBOYgggggbbQWWWWWWWWWbbQggggOBOYgggAAYg",
+        "ggbbQWWWWWWWWWgggggbbQWWWWWWWWWbbQgggOBOYgggAAYg",
+        "ggbbQWWWWWWWWWgggRRbbQbWWWWWWWWbbQgggOBOYgggAAYg",
+        "gggbbQWWWWWWWWgggRRbbbQQRRRRRRRbbQQggOBOYggAAYYg",
+        "gRRbbQbWWWWWWWRRgRRRRbbQQRRRRRRRbbQWWWWWWWWAAYgg",
+        "gRRbbbQbRRRRRRRRgRRRRgbbQQbRRRRRbbQWWWWWWWWAAYgg",
+        "gRRRbbbQbRRRRRRRgRRRRggbbbQbRRRRRbbQWWWWWWWAAYgg",
+        "gRRRRgbbQQRRRRRRgRRRRgggbbbQbRRRRbbQbWWWWWWAAYgg",
+        "gRRRRggbbQQRRRRRgYYYYYYYYbbbQQYRRbbbQbRRRRRAAYgg",
+        "gRRRRgggbbQQRRRRgRRRRggggRRbbQQRRRbbbQbRRRRAAYgg",
+        "gYYYYYYYYbbQQYYYgRRRRggggRRRbbQRRRRbbbQbRRRAAYgg",
+        "gRRRRggggRbbbQbRgggggggggggggbbRRRRgbbbQbRRAAYgg",
+        "gRRRRggggRRbbbQbggggggggggggggbRRRRggbbbQbRRAYYg",
+        "ggggggggggggbbbQgggggggggggggggYYYYYYYbbbQbYAAYg",
+        "WWWWWWWWWWWWWbbbWWWWWWWWWWWWWWWRRRRggggbbbQbAAYA",
+        "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWRRRRggggRbbbQbAYA",
+        "W.......WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWbbbQAYY",
+        "W.......WWVWWWWWWWWWWWWWVWWWWWWWWWWWVWWWWWbbbWAY",
+        "W.......WVVVWWWWWWWWWWWVVVWWWWWWWWWVVVWWWWWWWWAY",
+        "W.......WVVWWWWWWjWWWWWVVWWWWWWWWWWVVWWWWWWWWWAA",
+        "U.......VVjjjjjjjjjjjjVVUUUUUUUUUUVVUUUUUUUUUUUj",
+        "jjjjjjjVVVjjjjjjjjjjjVVVjjjjUUUUUVVVUUUUjjjjjjjj",
+        "jjjjjjjjVjjjjjjjjjjjjjVjjjjjjjjjjjVjjjjjjjjjjjjj",
+        "jjjjjjjjjLLLLLLLLLLLLLjjjjjjjjjjjjjjjjjjjjjjLLLL",
+        "LLLLLLLLLUUUUUUUUUUUULLLLLLLLLjjjjjjjLLLLLLLjjjj",
+        "jUUUUUUUUUUUUUUUUUUUUUUUUUUUjLLLLLLLLjjjjUUUUUUU"
+      ],
+      "tunnels": [
+        [
+          {
+            "color": "green",
+            "capacity": 48
+          },
+          {
+            "color": "verdigris",
+            "capacity": 67
+          },
+          {
+            "color": "sage",
+            "capacity": 2
+          },
+          {
+            "color": "verdigris",
+            "capacity": 69
+          },
+          {
+            "color": "pine",
+            "capacity": 29
+          },
+          {
+            "color": "white",
+            "capacity": 17
+          },
+          {
+            "color": "blue",
+            "capacity": 6
+          },
+          {
+            "color": "pine",
+            "capacity": 29
+          },
+          {
+            "color": "umber",
+            "capacity": 25
+          },
+          {
+            "color": "slate",
+            "capacity": 49
+          },
+          {
+            "color": "forest",
+            "capacity": 25
+          },
+          {
+            "color": "ice",
+            "capacity": 17
+          },
+          {
+            "color": "forest",
+            "capacity": 18
+          },
+          {
+            "color": "yellow",
+            "capacity": 5
+          },
+          {
+            "color": "pine",
+            "capacity": 24
+          },
+          {
+            "color": "stone",
+            "capacity": 45
+          },
+          {
+            "color": "slate",
+            "capacity": 19
+          },
+          {
+            "color": "ice",
+            "capacity": 9
+          },
+          {
+            "color": "stone",
+            "capacity": 13
+          },
+          {
+            "color": "pine",
+            "capacity": 9
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 130
+          },
+          {
+            "color": "navy",
+            "capacity": 35
+          },
+          {
+            "color": "gold",
+            "capacity": 1
+          },
+          {
+            "color": "pine",
+            "capacity": 32
+          },
+          {
+            "color": "forest",
+            "capacity": 57
+          },
+          {
+            "color": "cyan",
+            "capacity": 11
+          },
+          {
+            "color": "navy",
+            "capacity": 3
+          },
+          {
+            "color": "verdigris",
+            "capacity": 1
+          },
+          {
+            "color": "seafoam",
+            "capacity": 11
+          },
+          {
+            "color": "slate",
+            "capacity": 75
+          },
+          {
+            "color": "olive",
+            "capacity": 16
+          },
+          {
+            "color": "forest",
+            "capacity": 58
+          },
+          {
+            "color": "ice",
+            "capacity": 25
+          },
+          {
+            "color": "forest",
+            "capacity": 27
+          },
+          {
+            "color": "red",
+            "capacity": 3
+          },
+          {
+            "color": "forest",
+            "capacity": 40
+          },
+          {
+            "color": "white",
+            "capacity": 5
+          },
+          {
+            "color": "ice",
+            "capacity": 24
+          },
+          {
+            "color": "pine",
+            "capacity": 39
+          },
+          {
+            "color": "stone",
+            "capacity": 26
+          },
+          {
+            "color": "brown",
+            "capacity": 17
+          },
+          {
+            "color": "lime",
+            "capacity": 35
+          },
+          {
+            "color": "forest",
+            "capacity": 27
+          },
+          {
+            "color": "yellow",
+            "capacity": 10
+          },
+          {
+            "color": "slate",
+            "capacity": 28
+          },
+          {
+            "color": "ice",
+            "capacity": 14
+          },
+          {
+            "color": "forest",
+            "capacity": 6
+          },
+          {
+            "color": "slate",
+            "capacity": 27
+          },
+          {
+            "color": "brown",
+            "capacity": 24
+          },
+          {
+            "color": "umber",
+            "capacity": 19
+          },
+          {
+            "color": "lime",
+            "capacity": 3
+          },
+          {
+            "color": "brown",
+            "capacity": 14
+          },
+          {
+            "color": "stone",
+            "capacity": 26
+          },
+          {
+            "color": "slate",
+            "capacity": 6
+          },
+          {
+            "color": "stone",
+            "capacity": 21
+          },
+          {
+            "color": "brown",
+            "capacity": 10
+          },
+          {
+            "color": "stone",
+            "capacity": 6
+          },
+          {
+            "color": "ice",
+            "capacity": 5
+          }
+        ],
+        [
+          {
+            "color": "green",
+            "capacity": 67
+          },
+          {
+            "color": "cyan",
+            "capacity": 28
+          },
+          {
+            "color": "olive",
+            "capacity": 89
+          },
+          {
+            "color": "cyan",
+            "capacity": 11
+          },
+          {
+            "color": "navy",
+            "capacity": 39
+          },
+          {
+            "color": "seafoam",
+            "capacity": 20
+          },
+          {
+            "color": "slate",
+            "capacity": 36
+          },
+          {
+            "color": "slate",
+            "capacity": 32
+          },
+          {
+            "color": "seafoam",
+            "capacity": 5
+          },
+          {
+            "color": "olive",
+            "capacity": 54
+          },
+          {
+            "color": "forest",
+            "capacity": 32
+          },
+          {
+            "color": "white",
+            "capacity": 26
+          },
+          {
+            "color": "red",
+            "capacity": 6
+          },
+          {
+            "color": "lime",
+            "capacity": 18
+          },
+          {
+            "color": "yellow",
+            "capacity": 15
+          },
+          {
+            "color": "umber",
+            "capacity": 51
+          },
+          {
+            "color": "yellow",
+            "capacity": 16
+          },
+          {
+            "color": "forest",
+            "capacity": 58
+          },
+          {
+            "color": "lime",
+            "capacity": 15
+          },
+          {
+            "color": "pine",
+            "capacity": 27
+          },
+          {
+            "color": "forest",
+            "capacity": 13
+          },
+          {
+            "color": "pine",
+            "capacity": 20
+          },
+          {
+            "color": "umber",
+            "capacity": 41
+          },
+          {
+            "color": "stone",
+            "capacity": 29
+          },
+          {
+            "color": "slate",
+            "capacity": 13
+          },
+          {
+            "color": "pine",
+            "capacity": 15
+          },
+          {
+            "color": "umber",
+            "capacity": 21
+          }
+        ]
+      ],
+      "replacesLegacy": false,
+      "legend": {
+        "K": "blue",
+        "Q": "brown",
+        "L": "cyan",
+        "S": "forest",
+        "C": "gold",
+        "N": "green",
+        "Y": "ice",
+        "O": "lime",
+        "U": "navy",
+        "a": "olive",
+        "g": "pine",
+        "E": "red",
+        "m": "sage",
+        "V": "seafoam",
+        "W": "slate",
+        "R": "stone",
+        "b": "umber",
+        "j": "verdigris",
+        "A": "white",
+        "B": "yellow"
+      },
+      "ruleset": "coreV2",
+      "activeCapacity": 5,
+      "winningWitness": [
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "H2",
+        "T1",
+        "T2",
+        "H2",
+        "T2",
+        "T3",
+        "T1",
+        "H2",
+        "T3",
+        "T2",
+        "H3",
+        "H2",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "H2",
+        "T2",
+        "H3",
+        "H3",
+        "H1",
+        "H3",
+        "H2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "H3",
+        "T1",
+        "H3",
+        "T3",
+        "T2",
+        "H3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "H3",
+        "T1",
+        "T2",
+        "H2",
+        "H3",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "H2",
+        "H1",
+        "T1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "H1",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "H1",
+        "T1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "H1",
+        "T2",
+        "T3",
+        "T1",
+        "T2",
+        "T3",
+        "T2",
+        "H2",
+        "T1",
+        "T2",
+        "H1"
+      ]
+    }
+  ]
+}

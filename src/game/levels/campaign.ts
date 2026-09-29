@@ -13,7 +13,7 @@ import { worldSkin } from '@/theme/worldSkins';
 import { LEVEL_DEFINITIONS } from './levels';
 
 /**
- * The Pixel Arcadia campaign manifest: twenty-five themed worlds of ten levels each.
+ * The Pixel Arcadia campaign manifest: twenty-nine themed worlds of ten levels each.
  * Authoring / campaign-organisation data only — it is NOT read by the engine and
  * carries no solver output. Each world's `levelIds` is filtered to the levels
  * that actually exist, so the manifest stays valid while a world is still being
@@ -50,6 +50,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'gothic-kingdom', title: 'Gothic Kingdom', themeId: 'gothic-kingdom', display: { subtitle: 'Under spires and shadow', accent: worldSkin('gothic-kingdom').accent } },
   { id: 'celestial-zodiac', title: 'Celestial Zodiac', themeId: 'celestial-zodiac', display: { subtitle: 'Written in the stars', accent: worldSkin('celestial-zodiac').accent } },
   { id: 'arcadia-ascendant', title: 'Arcadia Ascendant', themeId: 'arcadia-ascendant', display: { subtitle: 'Beyond every world', accent: worldSkin('arcadia-ascendant').accent } },
+  { id: 'desert-kingdoms', title: 'Desert Kingdoms', themeId: 'desert-kingdoms', display: { subtitle: 'Sun and shadow', accent: worldSkin('desert-kingdoms').accent } },
+  { id: 'deep-jungle', title: 'Deep Jungle', themeId: 'deep-jungle', display: { subtitle: 'Below the canopy', accent: worldSkin('deep-jungle').accent } },
+  { id: 'underworld', title: 'Underworld', themeId: 'underworld', display: { subtitle: 'The kingdom below', accent: worldSkin('underworld').accent } },
+  { id: 'ocean-cities', title: 'Ocean Cities', themeId: 'ocean-cities', display: { subtitle: 'Civilisation beneath', accent: worldSkin('ocean-cities').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));
