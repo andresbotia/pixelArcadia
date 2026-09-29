@@ -28,7 +28,7 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 41 gameplay colors (pixels and charges), in
+ * Primary fill for each of the 42 gameplay colors (pixels and charges), in
  * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
  * give every one of these a unique non-color identifier.
  */
@@ -77,6 +77,7 @@ export const orbColors: Record<OrbColor, string> = {
   // World 22 / World 23 extensions.
   plum: '#5A2248',
   rose: '#E0457B',
+  silver: '#BEBEBA',
 };
 
 /**
@@ -127,6 +128,7 @@ export const orbGlow: Record<OrbColor, string> = {
   sage: '#CED7C9',
   plum: '#B49BAC',
   rose: '#F1ABC3',
+  silver: '#E2E2DE',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -172,4 +174,5 @@ export const orbLabel: Record<OrbColor, string> = {
   sage: 'SAGE',
   plum: 'PLUM',
   rose: 'ROSE',
+  silver: 'SILVER',
 };

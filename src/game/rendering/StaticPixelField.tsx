@@ -3,7 +3,7 @@ import { memo, useMemo, useRef, type ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 
 import type { Pixel } from '@/game/engine/types';
-import { markContrast, markDetail, simplifiedMark, type MarkDetail, type MarkPart } from '@/theme/colorAssist';
+import { assistStrokeWidth, markContrast, markDetail, simplifiedMark, type MarkDetail, type MarkPart } from '@/theme/colorAssist';
 import { pixelMaterial } from '@/theme/arcade';
 import type { BoardGeometry } from './boardGeometry';
 import { buildPixelBuckets, DIM_STEPS, sameMembers } from './pixelField';
@@ -255,7 +255,7 @@ export const StaticPixelField = memo(function StaticPixelField({
       const restOpacity = (bucket.reachable ? 1 : 0.62) * (1 - dim * 0.55);
       const rimOpacity = (0.35 + adaptive.glow * 0.5) * (1 - dim);
       const contrast = markContrast(bucket.color);
-      const markStrokeWidth = Math.max(1, markSize * Math.max(assist?.minStroke ?? 0.09, 0.09));
+      const markStrokeWidth = assistStrokeWidth(bucket.color, markSize, assist?.minStroke ?? 0.09);
 
       const node = (
         <Group key={key} opacity={restOpacity}>

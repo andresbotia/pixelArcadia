@@ -11,60 +11,60 @@ import { CAMPAIGN_VERSION, PUBLISHED_MAX_LEVEL } from '../publishing';
 // Independent production certificate: pixels, colours, Pals, actions, relaunches,
 // strategic bridges, peak Holding, and remaining capacity 1–2 Pals.
 const EXPECTED: Record<number, number[]> = {
-  251: [2151, 14, 81, 101, 20, 11, 3, 4],
-  252: [2121, 15, 75, 94, 19, 11, 3, 6],
-  253: [2161, 14, 77, 100, 23, 13, 3, 3],
-  254: [2112, 13, 75, 95, 20, 9, 3, 2],
-  255: [2102, 14, 90, 107, 17, 8, 2, 4],
-  256: [2170, 14, 76, 102, 26, 11, 3, 1],
-  257: [2159, 16, 100, 132, 32, 19, 3, 0],
-  258: [2208, 16, 89, 121, 32, 15, 3, 2],
-  259: [2156, 17, 75, 100, 25, 13, 3, 4],
-  260: [2241, 19, 96, 125, 29, 19, 3, 2],
-  261: [2160, 15, 77, 98, 21, 16, 3, 2],
-  262: [2147, 16, 90, 110, 20, 11, 3, 1],
-  263: [2181, 16, 94, 116, 22, 14, 3, 4],
-  264: [2158, 17, 96, 114, 18, 8, 3, 5],
-  265: [2093, 13, 70, 81, 11, 4, 2, 0],
-  266: [2200, 17, 101, 119, 18, 10, 3, 3],
-  267: [2126, 17, 84, 109, 25, 20, 3, 1],
-  268: [2116, 17, 73, 95, 22, 14, 3, 1],
-  269: [2251, 16, 97, 113, 16, 12, 3, 4],
-  270: [2239, 20, 85, 120, 35, 13, 3, 3],
-  271: [2167, 14, 81, 103, 22, 13, 3, 7],
-  272: [2160, 13, 60, 79, 19, 13, 3, 5],
-  273: [2204, 14, 61, 88, 27, 14, 3, 2],
-  274: [2181, 14, 80, 103, 23, 14, 3, 0],
-  275: [2126, 12, 76, 94, 18, 5, 2, 0],
-  276: [2150, 14, 67, 92, 25, 13, 3, 3],
-  277: [2179, 15, 89, 110, 21, 14, 3, 2],
-  278: [2184, 15, 63, 91, 28, 15, 3, 4],
-  279: [2196, 16, 78, 103, 25, 14, 3, 0],
-  280: [2254, 17, 106, 129, 23, 12, 3, 4],
-  281: [2149, 16, 89, 114, 25, 13, 3, 3],
-  282: [2142, 17, 98, 129, 31, 16, 3, 2],
-  283: [2162, 17, 118, 135, 17, 13, 3, 9],
-  284: [2087, 17, 81, 107, 26, 14, 3, 2],
-  285: [2098, 13, 66, 81, 15, 6, 2, 0],
-  286: [2175, 15, 76, 95, 19, 12, 3, 1],
-  287: [2193, 17, 120, 134, 14, 9, 3, 3],
-  288: [2183, 17, 88, 114, 26, 14, 3, 3],
-  289: [2169, 18, 79, 102, 23, 15, 3, 3],
-  290: [2252, 18, 92, 123, 31, 12, 3, 3],
+  291: [2146, 14, 83, 105, 22, 4, 3, 4],
+  292: [2180, 15, 69, 102, 33, 11, 3, 0],
+  293: [2134, 16, 89, 109, 20, 5, 3, 8],
+  294: [2228, 13, 57, 85, 28, 13, 3, 1],
+  295: [2087, 12, 67, 79, 12, 1, 2, 6],
+  296: [2220, 15, 68, 94, 26, 10, 3, 0],
+  297: [2184, 15, 86, 117, 31, 10, 3, 0],
+  298: [2202, 15, 82, 105, 23, 8, 3, 0],
+  299: [2220, 16, 68, 96, 28, 12, 3, 1],
+  300: [2245, 20, 97, 132, 35, 14, 3, 3],
+  301: [2215, 14, 79, 100, 21, 11, 3, 1],
+  302: [2133, 14, 65, 89, 24, 10, 3, 0],
+  303: [2206, 15, 77, 107, 30, 10, 3, 2],
+  304: [2227, 15, 89, 121, 32, 13, 3, 0],
+  305: [2141, 13, 75, 87, 12, 3, 2, 7],
+  306: [2238, 14, 65, 90, 25, 11, 3, 2],
+  307: [2176, 15, 62, 86, 24, 11, 3, 1],
+  308: [2232, 14, 90, 114, 24, 8, 3, 2],
+  309: [2201, 15, 58, 81, 23, 12, 3, 3],
+  310: [2285, 17, 77, 106, 29, 9, 3, 0],
+  311: [2112, 15, 54, 84, 30, 11, 3, 1],
+  312: [2088, 16, 52, 80, 28, 13, 3, 2],
+  313: [2244, 17, 73, 98, 25, 13, 3, 6],
+  314: [2149, 15, 71, 89, 18, 10, 3, 2],
+  315: [2094, 14, 53, 64, 11, 2, 2, 2],
+  316: [2184, 16, 71, 93, 22, 11, 3, 0],
+  317: [2202, 17, 72, 93, 21, 6, 3, 4],
+  318: [2214, 18, 85, 108, 23, 9, 3, 1],
+  319: [2178, 17, 77, 108, 31, 11, 3, 1],
+  320: [2277, 21, 84, 123, 39, 14, 3, 2],
+  321: [2112, 14, 65, 96, 31, 11, 3, 2],
+  322: [2196, 14, 61, 89, 28, 10, 3, 1],
+  323: [2208, 14, 71, 95, 24, 7, 3, 1],
+  324: [2131, 15, 49, 80, 31, 11, 3, 1],
+  325: [2064, 12, 56, 68, 12, 3, 2, 0],
+  326: [2180, 16, 66, 92, 26, 12, 3, 1],
+  327: [2172, 16, 52, 72, 20, 10, 3, 1],
+  328: [2196, 16, 60, 87, 27, 9, 3, 0],
+  329: [2188, 15, 49, 76, 27, 14, 3, 1],
+  330: [2240, 18, 86, 108, 22, 14, 3, 6],
 };
-const levels = LEVEL_DEFINITIONS.filter(l => l.id >= 251 && l.id <= 290);
+const levels = LEVEL_DEFINITIONS.filter(l => l.id >= 291 && l.id <= 330);
 
 test('all forty locked titles and packets select exactly one active new definition', () => {
   expect(levels).toHaveLength(40);
   expect(LEVEL_DEFINITIONS.map(l => l.id)).toEqual(Array.from({ length: 330 }, (_, i) => i + 1));
   expect(new Set(LEVEL_DEFINITIONS.map(l => l.id)).size).toBe(330);
-  for (const world of [26, 27, 28, 29]) {
+  for (const world of [30, 31, 32, 33]) {
     const packet = loadAuthoredFile(`content/levels/world-${world}.json`);
     expect(packet.errors).toEqual([]);
     expect(packet.levels).toHaveLength(10);
     for (const def of packet.levels) expect(getLevel(def.id)).toEqual(def);
   }
-  const titles = fs.readFileSync('docs/audits/M16A_LEVELS_251_290_CERTIFICATES.json', 'utf8');
+  const titles = fs.readFileSync('docs/audits/M16B_LEVELS_291_330_CERTIFICATES.json', 'utf8');
   const certificate = JSON.parse(titles) as { levels: { id: number; title: string }[] };
   expect(levels.map(l => [l.id, l.title])).toEqual(certificate.levels.map(l => [l.id, l.title]));
 });
@@ -121,7 +121,7 @@ test.each(levels)('level $id preserves its production geometry and exact constru
     step - p.steps[0]! >= 3 && p.hits[j + 1]! >= 6)).length).toBe(bridges);
 });
 
-test.each([255, 265, 275, 285])('breather %i retains relative route and Holding relief', id => {
+test.each([295, 305, 315, 325])('breather %i retains relative route and Holding relief', id => {
   const peers = levels.filter(l => Math.floor((l.id - 1) / 10) === Math.floor((id - 1) / 10) && l.id !== id);
   const avg = (index: number) => peers.reduce((sum, l) => sum + EXPECTED[l.id]![index]!, 0) / peers.length;
   expect(EXPECTED[id]![6]).toBe(2);
@@ -130,10 +130,10 @@ test.each([255, 265, 275, 285])('breather %i retains relative route and Holding 
   expect(EXPECTED[id]![5]).toBeLessThan(avg(5));
 });
 
-test.each([260, 270, 280, 290])('finale %i retains strategic capacity and authored route metrics', id => {
+test.each([300, 310, 320, 330])('finale %i retains strategic capacity and authored route metrics', id => {
   expect(EXPECTED[id]![6]).toBe(3);
-  expect(EXPECTED[id]![3]).toBeLessThanOrEqual(130);
-  expect(EXPECTED[id]![5]).toBeGreaterThanOrEqual(12);
+  expect(EXPECTED[id]![3]).toBeLessThanOrEqual(135);
+  expect(EXPECTED[id]![5]).toBeGreaterThanOrEqual(9);
 });
 
 test('every source through 330 matches the unique runtime registry', () => {
@@ -151,4 +151,15 @@ test('normal campaign blocks all forty levels while the dev index permits them',
     expect(devLevelIndex().find(l => l.id === def.id)).toMatchObject({ title: def.title, world: Math.ceil(def.id / 10) });
   }
   expect(getLevel(331)).toBeUndefined();
+});
+
+test('300 retains its eclipse, river, seated rim and shrine scale', () => {
+  const def = getLevel(300)!;
+  const state = createGame(def);
+  expect(state.pixels.length).toBeGreaterThanOrEqual(2245);
+  expect(state.pixels.length).toBeLessThanOrEqual(2275);
+  expect(state.pixels.some(p => p.x === 18 && p.y === 12)).toBe(false);
+  for (const [x, y, color] of [[16, 9, 'gold'], [5, 28, 'silver'], [42, 23, 'ice'], [35, 43, 'red']] as const) {
+    expect(state.pixels.find(p => p.x === x && p.y === y)?.color).toBe(color);
+  }
 });

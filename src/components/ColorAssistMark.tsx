@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import type { OrbColor } from '@/game/engine/types';
 import {
+  assistStrokeWidth,
   markContrast,
   markDetail,
   simplifiedMark,
@@ -30,7 +31,7 @@ export const ColorAssistMark = memo(function ColorAssistMark({
   const detail = markDetail(density);
   const { parts, minStroke } = simplifiedMark(color, detail);
   const contrast = markContrast(color);
-  const stroke = Math.max(1, size * Math.max(minStroke, 0.09));
+  const stroke = assistStrokeWidth(color, size, minStroke);
   const baseOpacity = etched ? 0.7 : 1;
   // Drop the halo pass at the densest boards — the heavier minimal stroke keeps
   // it readable and this halves the view count per mark.

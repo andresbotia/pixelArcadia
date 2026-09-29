@@ -8,6 +8,7 @@ const REAL_CAMPAIGN_THEME_IDS = [
   'storm-elementals', 'galactic-odyssey', 'gothic-kingdom', 'celestial-zodiac',
   'arcadia-ascendant',
   'desert-kingdoms', 'deep-jungle', 'underworld', 'ocean-cities',
+  'cosmic-gods', 'ancient-machines', 'festival-worlds', 'alien-ecosystems',
 ];
 
 test('every real campaign world has a skin entry', () => {

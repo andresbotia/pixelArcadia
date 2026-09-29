@@ -2,7 +2,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 41-color Color Assist system: one unique, machine-language mark per
+ * Full 42-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -39,7 +39,7 @@ export interface ColorMark {
 }
 
 /**
- * 41 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * 42 marks. Related within families (ring-, triangle-, bar- and square-based)
  * but each topologically unique. The bar pair (orange↔red) and split-ring pair (green↔garnet) use rotation, and
  * the triangle pair also differs by fill. The World 6 marks avoid echoing their
  * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
@@ -121,6 +121,7 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
   sage: { name: 'anchor', parts: [{ p: 'arc', dir: 'up', offset: [0, 0.1] }, { p: 'bar', angle: 90, len: 0.62 }, { p: 'bar', angle: 0, len: 0.28, offset: [0, -0.24] }] },
   plum: { name: 'pierced-ring', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 90, len: 0.2, offset: [0, -0.42] }, { p: 'bar', angle: 90, len: 0.2, offset: [0, 0.42] }] },
   rose: { name: 'triangle-down-dot', parts: [{ p: 'tri', dir: 'down', fill: false }, { p: 'dot', scale: 0.3 }] },
+  silver: { name: 'orbit', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 0, len: 0.95 }] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(
@@ -197,4 +198,10 @@ export function simplifiedMark(color: OrbColor, detail: MarkDetail): { parts: Ma
  */
 export function recommendColorAssist(distinctColorCount: number): boolean {
   return distinctColorCount >= 6;
+}
+
+/** Keep the orbit ring's two openings visible under its crossing bar at chip size. */
+export function assistStrokeWidth(color: OrbColor, size: number, minStroke: number, minimum = 1): number {
+  const standard = Math.max(minimum, size * Math.max(minStroke, 0.09));
+  return color === 'silver' ? Math.min(standard, size * 0.08) : standard;
 }

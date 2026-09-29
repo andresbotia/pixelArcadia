@@ -1,0 +1,16 @@
+{
+  "world": 30,
+  "title": "Cosmic Gods",
+  "requiresPaletteExtension": true,
+  "introducesColorIds": ["silver"],
+  "globalVocabularyAfterWorld": 42,
+  "colors": [{
+    "id": "silver", "hex": "#BEBEBA", "suggestedGlowRim": "#E2E2DE",
+    "assistGlyph": "orbit", "assistParts": [{"p": "ring", "scale": 0.7}, {"p": "bar", "angle": 0, "len": 0.95}],
+    "studioCharacter": "k", "nearestExisting": "white", "nearestDeltaE00": 14.6,
+    "secondNearest": "stone", "secondDeltaE00": 15.5,
+    "primaryUse": "Divine rims, moonlight threads and precise polished mechanisms",
+    "permanentRecommendation": "yes",
+    "specSource": "PALETTE_VALIDATION_251_350.md"
+  }]
+}

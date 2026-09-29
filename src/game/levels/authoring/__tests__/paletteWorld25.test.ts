@@ -9,9 +9,9 @@ import { validateLevelStructure } from '../validate';
 // World 25 adds no colour: it must run entirely on the 41-colour registry (39 + plum/rose).
 const W25 = Array.from({ length: 10 }, (_, i) => 241 + i);
 
-test('the registry stays at 41 colours after World 25', () => {
-  expect(ORB_COLOR_IDS).toHaveLength(41);
-  expect(ORB_COLOR_IDS.slice(39)).toEqual(['plum', 'rose']);
+test('World 25 preserves its original colors after the silver registry append', () => {
+  expect(ORB_COLOR_IDS).toHaveLength(42);
+  expect(ORB_COLOR_IDS.slice(39, 41)).toEqual(['plum', 'rose']);
 });
 
 test.each(W25)('level %i uses only registered colours, each with a fill, rim, Studio char and assist mark', id => {

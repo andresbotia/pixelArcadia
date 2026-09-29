@@ -56,7 +56,7 @@ type SkinEntry = Omit<WorldSkin, 'themeId'>;
  * One entry per real campaign world (`content/levels/world-0N.json` /
  * `levelDefinitions.ts`'s `themeId`s). Colours are a first pass for the
  * world-select redesign (Milestone 3) to tune against real screens — chosen
- * to be distinct from each other and from the 41 `orbColors` gameplay values
+ * to be distinct from each other and from the 42 `orbColors` gameplay values
  * (`theme/colors.ts`), never reused from that set.
  *
  * `cosmic-frontier` deliberately owns the `starfield` treatment: the old
@@ -93,6 +93,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'deep-jungle': { accent: '#49A177', secondaryAccent: '#BBD476', ambientId: 'foliage', intensity: 'high' },
   'underworld': { accent: '#955068', secondaryAccent: '#DFCEAC', ambientId: 'duskAsh', intensity: 'high' },
   'ocean-cities': { accent: '#3B92B0', secondaryAccent: '#A7E0D9', ambientId: 'currents', intensity: 'high' },
+  'cosmic-gods': { accent: '#B4AEC8', secondaryAccent: '#E7D3A2', ambientId: 'arcaneParticles', intensity: 'high' },
+  'ancient-machines': { accent: '#899DA5', secondaryAccent: '#C6A66A', ambientId: 'galleryDust', intensity: 'high' },
+  'festival-worlds': { accent: '#EC739E', secondaryAccent: '#AFE6D4', ambientId: 'neonSignage', intensity: 'high' },
+  'alien-ecosystems': { accent: '#AAC967', secondaryAccent: '#D6A6CA', ambientId: 'foliage', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;
