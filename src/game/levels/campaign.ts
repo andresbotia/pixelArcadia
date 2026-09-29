@@ -13,7 +13,7 @@ import { worldSkin } from '@/theme/worldSkins';
 import { LEVEL_DEFINITIONS } from './levels';
 
 /**
- * The Pixel Arcadia campaign manifest: twenty-four themed worlds of ten levels each.
+ * The Pixel Arcadia campaign manifest: twenty-five themed worlds of ten levels each.
  * Authoring / campaign-organisation data only — it is NOT read by the engine and
  * carries no solver output. Each world's `levelIds` is filtered to the levels
  * that actually exist, so the manifest stays valid while a world is still being
@@ -49,6 +49,7 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'galactic-odyssey', title: 'Galactic Odyssey', themeId: 'galactic-odyssey', display: { subtitle: 'Across the far stars', accent: worldSkin('galactic-odyssey').accent } },
   { id: 'gothic-kingdom', title: 'Gothic Kingdom', themeId: 'gothic-kingdom', display: { subtitle: 'Under spires and shadow', accent: worldSkin('gothic-kingdom').accent } },
   { id: 'celestial-zodiac', title: 'Celestial Zodiac', themeId: 'celestial-zodiac', display: { subtitle: 'Written in the stars', accent: worldSkin('celestial-zodiac').accent } },
+  { id: 'arcadia-ascendant', title: 'Arcadia Ascendant', themeId: 'arcadia-ascendant', display: { subtitle: 'Beyond every world', accent: worldSkin('arcadia-ascendant').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

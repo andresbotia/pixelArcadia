@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { createGame } from '../../engine/createGame';
 import { applyActionWithArrivals } from '../../engine/holdingArrival';
-import { parseAuthoredJSON } from '../authoring/loader';
+import { loadAuthoredDirectory, parseAuthoredJSON } from '../authoring/loader';
 import { validateLevelPacket, validateLevelStructure } from '../authoring/validate';
 import { devLevelIndex } from '../devLevelIndex';
 import { getLevel, LEVEL_DEFINITIONS } from '../levels';
@@ -12,55 +12,25 @@ import { CAMPAIGN_VERSION, PUBLISHED_MAX_LEVEL } from '../publishing';
 
 // Independent author certificate: pixels, colors, Pals, witness, peak Holding, bridges, cleanup.
 const EXPECTED: Record<number, [number, number, number, number, number, number, number]> = {
-  161: [2218, 21, 92, 117, 3, 8, 2],
-  162: [2222, 20, 92, 109, 3, 8, 3],
-  163: [2226, 21, 80, 98, 3, 7, 3],
-  164: [2230, 20, 86, 103, 3, 8, 3],
-  165: [2204, 17, 72, 88, 2, 6, 2],
-  166: [2238, 21, 101, 112, 3, 7, 3],
-  167: [2242, 18, 89, 106, 3, 8, 3],
-  168: [2246, 21, 89, 104, 3, 7, 3],
-  169: [2250, 19, 78, 94, 3, 8, 3],
-  170: [2262, 21, 99, 119, 3, 9, 6],
-  171: [2226, 19, 77, 96, 3, 7, 3],
-  172: [2230, 19, 82, 103, 3, 7, 3],
-  173: [2234, 20, 106, 118, 3, 8, 2],
-  174: [2238, 19, 81, 100, 3, 7, 3],
-  175: [2212, 16, 78, 94, 2, 5, 2],
-  176: [2246, 20, 90, 106, 3, 7, 3],
-  177: [2250, 19, 77, 94, 3, 7, 3],
-  178: [2254, 18, 70, 88, 3, 8, 1],
-  179: [2258, 20, 97, 112, 3, 9, 3],
-  180: [2270, 20, 97, 112, 3, 8, 3],
-  181: [2234, 18, 85, 106, 3, 8, 3],
-  182: [2238, 20, 85, 105, 3, 9, 3],
-  183: [2242, 21, 99, 117, 3, 7, 3],
-  184: [2246, 18, 81, 95, 3, 7, 3],
-  185: [2220, 17, 91, 98, 2, 5, 2],
-  186: [2254, 16, 70, 89, 3, 8, 3],
-  187: [2258, 20, 79, 98, 3, 9, 3],
-  188: [2262, 17, 71, 88, 3, 9, 3],
-  189: [2266, 15, 57, 83, 3, 10, 3],
-  190: [2278, 18, 93, 109, 3, 9, 3],
-  191: [2242, 20, 92, 113, 3, 8, 2],
-  192: [2246, 19, 73, 91, 3, 8, 3],
-  193: [2250, 21, 95, 110, 3, 6, 3],
-  194: [2254, 21, 88, 105, 3, 9, 3],
-  195: [2228, 17, 78, 89, 2, 6, 2],
-  196: [2262, 19, 79, 97, 3, 7, 3],
-  197: [2266, 20, 85, 99, 3, 7, 3],
-  198: [2270, 21, 107, 128, 3, 8, 5],
-  199: [2274, 21, 110, 128, 3, 10, 2],
-  200: [2280, 20, 95, 114, 3, 9, 3],
+  241: [2282, 21, 101, 122, 3, 9, 3],
+  242: [2286, 21, 99, 119, 3, 9, 3],
+  243: [2290, 21, 98, 121, 3, 8, 4],
+  244: [2294, 22, 95, 115, 3, 7, 2],
+  245: [2268, 18, 100, 110, 2, 5, 2],
+  246: [2300, 22, 96, 114, 3, 9, 3],
+  247: [2300, 22, 109, 122, 3, 9, 3],
+  248: [2300, 21, 83, 112, 3, 10, 3],
+  249: [2300, 21, 95, 117, 3, 9, 3],
+  250: [2300, 21, 104, 133, 3, 9, 3],
 };
-const imported = LEVEL_DEFINITIONS.filter(l => l.id >= 161 && l.id <= 200);
+const imported = LEVEL_DEFINITIONS.filter(l => l.id >= 241 && l.id <= 250);
 
-test('four world modules select the authored definitions exactly, preserving the stable handoff content', () => {
-  expect(imported).toHaveLength(40);
+test('World 25 selects the authored definitions exactly, preserving the stable handoff content', () => {
+  expect(imported).toHaveLength(10);
   const ids = LEVEL_DEFINITIONS.map(l => l.id);
   expect(ids).toEqual(Array.from({ length: 250 }, (_, i) => i + 1));
   expect(new Set(ids).size).toBe(ids.length);
-  for (const world of [17, 18, 19, 20]) {
+  for (const world of [25]) {
     const raw = fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8');
     const packet = parseAuthoredJSON(raw);
     expect(packet.errors).toEqual([]);
@@ -76,7 +46,7 @@ test.each(imported)('level $id preserves all author metrics and wins without ite
   expect(def.holdingCapacity).toBe(3);
   expect(def.tunnels).toHaveLength(3);
   expect(def.replacesLegacy).toBe(false);
-  expect(def.themeId).toBe(['steam-skyways', 'crystal-caverns', 'neon-megacity', 'dreamscapes'][Math.floor((def.id - 161) / 10)]);
+  expect(def.themeId).toBe('arcadia-ascendant');
   expect(def.pixelArt).toHaveLength(48);
   expect(def.pixelArt.every(row => row.length === 48)).toBe(true);
   expect(def.tunnels.flat()).toHaveLength(pals);
@@ -118,16 +88,19 @@ test.each(imported)('level $id preserves all author metrics and wins without ite
   expect(peakPending).toBe(0);
   expect(state.tunnels.every(t => t.queue.length === 0)).toBe(true);
   expect(peakHolding).toBe(peak);
-  if ([165, 175, 185, 195].includes(def.id)) expect(holdingFullStates).toBe(0);
+  if (def.id === 245) expect(holdingFullStates).toBe(0);
   const all = [...launches.values()];
+  const relaunches = all.reduce((sum, pal) => sum + pal.steps.length - 1, 0);
+  if (def.id === 245) expect(relaunches).toBe(10);
+  if (def.id === 250) expect(relaunches).toBe(29);
   expect(all.filter(p => p.hits[0]! >= 6 && p.steps.slice(1).some((step, j) =>
     step - p.steps[0]! >= 3 && p.hits[j + 1]! >= 6)).length).toBe(bridges);
   expect(all.reduce((sum, p) => sum + p.hits.slice(1).filter(h => h <= 5).length, 0)).toBe(cleanup);
 });
 
 // Breathers are relative: peak Holding 2 (asserted above) plus a shorter route and fewer bridges than the
-// world's non-breather average. Do not assert "shorter than both neighbours": 185 (98) is longer than 184/186.
-test.each([165, 175, 185, 195])('breather %i stays lighter than its world average', id => {
+// world's non-breather average. Do not assert a Pal-count rule: 245 has 100 Pals vs a W25 non-breather average of 97.8.
+test.each([245])('breather %i stays lighter than its world average', id => {
   const peers = imported.filter(l => Math.floor((l.id - 1) / 10) === Math.floor((id - 1) / 10) && l.id !== id);
   const avg = (k: number) => peers.reduce((sum, l) => sum + EXPECTED[l.id]![k]!, 0) / peers.length;
   expect(EXPECTED[id]![4]).toBe(2);
@@ -154,23 +127,35 @@ test('all new levels are dev-accessible while normal campaign remains capped at 
 // Checksums of the authoritative stable handoff level arrays; top-level replacement metadata is excluded.
 test('grids, queues, witnesses and level metadata remain byte-equivalent to the source arrays', () => {
   const hashes: Record<number, string> = {
-    17: 'ca765f6620269b9e0bb14d85764140c686a5fb51a6ade5bc07fdc4fae3ce567c',
-    18: '29edabe31c0accf3f90f03a23a08d7a1f1976a9099de412a83b771b5d4973027',
-    19: 'bc5b24c1bdbc8c1a04aed7b9bafbaef0cab1a14e0ea2889d551ab5c1508d1665',
-    20: '0320ea1cefe92425ec4df7ff9f4739935534a8f81527bfeca0a2299b467b0507',
+    25: 'e4ab1cf9eecabf4d6fbe0b0606697475cdb707ade2c8543f4c598f3149cc07ca',
   };
-  for (const world of [17, 18, 19, 20]) {
+  for (const world of [25]) {
     const packet = JSON.parse(fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8'));
     expect(createHash('sha256').update(JSON.stringify(packet.levels)).digest('hex')).toBe(hashes[world]);
   }
 });
 
-test.each([170, 180, 190, 200])('finale %i preserves strong route metrics', id => {
+// Capstone: retain authored metrics; do not assert it exceeds every prior level (220/230 out-score it on composite).
+test.each([250])('finale %i preserves its authored capstone metrics', id => {
   expect(EXPECTED[id]![4]).toBe(3);
-  expect(EXPECTED[id]![5]).toBeGreaterThanOrEqual(8);
-  expect(EXPECTED[id]![3]).toBeGreaterThanOrEqual(109);
+  expect(EXPECTED[id]![5]).toBeGreaterThanOrEqual(9);
+  expect(EXPECTED[id]![3]).toBeGreaterThanOrEqual(114);
+  expect(EXPECTED[id]![3]).toBeLessThanOrEqual(135);
 });
 
-test('all 53 tiny Pals are preserved (no merges applied)', () => {
-  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(53);
+test('all 17 tiny Pals are preserved (no merges applied)', () => {
+  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(17);
+});
+
+test('full 1–250 registry matches all source packets with valid replacement relationships', () => {
+  const source = loadAuthoredDirectory(path.resolve('content/levels'));
+  expect(source.errors).toEqual([]);
+  expect(source.levels).toHaveLength(250);
+  const ids = source.levels.map(def => def.id).sort((a, b) => a - b);
+  expect(ids).toEqual(Array.from({ length: 250 }, (_, i) => i + 1));
+  for (const def of source.levels) {
+    expect(getLevel(def.id)).toEqual(def);
+    expect(validateLevelStructure(def).valid).toBe(true);
+    if (def.id > 100) expect(def.replacesLegacy).toBe(false);
+  }
 });

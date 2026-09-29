@@ -1,0 +1,25 @@
+{
+ "world": 25,
+ "title": "Arcadia Ascendant",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "olive",
+  "umber",
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "mauve",
+  "garnet",
+  "verdigris",
+  "cerulean",
+  "graphite",
+  "sage",
+  "plum",
+  "rose"
+ ],
+ "globalVocabularyAfterWorld": 41,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

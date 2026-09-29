@@ -88,6 +88,7 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'galactic-odyssey': { accent: '#8A5BD6', secondaryAccent: '#FFB3E6', ambientId: 'starfield', intensity: 'high' },
   'gothic-kingdom': { accent: '#A8323E', secondaryAccent: '#D9C7A3', ambientId: 'galleryDust', intensity: 'medium' },
   'celestial-zodiac': { accent: '#E6C35C', secondaryAccent: '#9FB4F2', ambientId: 'arcaneParticles', intensity: 'medium' },
+  'arcadia-ascendant': { accent: '#F0C24B', secondaryAccent: '#B9A6FF', ambientId: 'arcaneParticles', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;
