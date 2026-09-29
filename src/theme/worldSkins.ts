@@ -101,6 +101,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'mythic-asia': { accent: '#DDBE64', secondaryAccent: '#83AAA4', ambientId: 'foliage', intensity: 'high' },
   'giant-insects': { accent: '#B7A466', secondaryAccent: '#829763', ambientId: 'foliage', intensity: 'high' },
   'moon-kingdom': { accent: '#B5B3AD', secondaryAccent: '#8AA7BE', ambientId: 'starfield', intensity: 'medium' },
+  'sacred-mountains': { accent: '#A6AC9D', secondaryAccent: '#D8CFB4', ambientId: 'skylineDrift', intensity: 'medium' },
+  'bio-mechanical-realm': { accent: '#BD8B71', secondaryAccent: '#8CC2AA', ambientId: 'galleryDust', intensity: 'medium' },
+  'parallel-earth': { accent: '#88BBD0', secondaryAccent: '#C6D488', ambientId: 'skylineDrift', intensity: 'medium' },
+  'forgotten-seas': { accent: '#8DA5A0', secondaryAccent: '#BEC6BC', ambientId: 'currents', intensity: 'medium' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

@@ -532,7 +532,7 @@ describe('Gameplay Color Palette Expansion — Blue & Purple', () => {
         difficulty: 'easy',
         holdingCapacity: 3,
         pixelArt: ['WW'],
-        tunnels: [[{ color: 'silver' as any, capacity: 2 }], [], []],
+        tunnels: [[{ color: 'not-a-color' as any, capacity: 2 }], [], []],
       };
 
       const res = validateLevelStructure(badChargeDef);

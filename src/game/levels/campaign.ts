@@ -62,6 +62,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'mythic-asia', title: 'Mythic Asia', themeId: 'mythic-asia', display: { subtitle: 'From heaven to earth', accent: worldSkin('mythic-asia').accent } },
   { id: 'giant-insects', title: 'Giant Insects', themeId: 'giant-insects', display: { subtitle: 'Life as landscape', accent: worldSkin('giant-insects').accent } },
   { id: 'moon-kingdom', title: 'Moon Kingdom', themeId: 'moon-kingdom', display: { subtitle: 'Carved in silence', accent: worldSkin('moon-kingdom').accent } },
+  { id: 'sacred-mountains', title: 'Sacred Mountains', themeId: 'sacred-mountains', display: { subtitle: 'The pilgrim path', accent: worldSkin('sacred-mountains').accent } },
+  { id: 'bio-mechanical-realm', title: 'Bio-Mechanical Realm', themeId: 'bio-mechanical-realm', display: { subtitle: 'Life within the machine', accent: worldSkin('bio-mechanical-realm').accent } },
+  { id: 'parallel-earth', title: 'Parallel Earth', themeId: 'parallel-earth', display: { subtitle: 'One law changed', accent: worldSkin('parallel-earth').accent } },
+  { id: 'forgotten-seas', title: 'Forgotten Seas', themeId: 'forgotten-seas', display: { subtitle: 'Beyond the old maps', accent: worldSkin('forgotten-seas').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));
