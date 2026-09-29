@@ -12,7 +12,7 @@ const REAL_CAMPAIGN_THEME_IDS = [
   'lost-futures', 'mythic-asia', 'giant-insects', 'moon-kingdom',
   'sacred-mountains', 'bio-mechanical-realm', 'parallel-earth', 'forgotten-seas',
   'colossal-machines', 'celestial-gardens', 'arcane-city', 'colossal-architecture',
-  'planetary-wonders', 'legendary-relics', 'infinite-cities', 'arcadia-fractured',
+  'planetary-wonders', 'legendary-relics', 'infinite-cities', 'arcadia-fractured', 'arcadia-nexus',
 ];
 
 test('every real campaign world has a skin entry', () => {

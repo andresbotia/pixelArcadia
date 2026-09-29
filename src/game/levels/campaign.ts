@@ -74,6 +74,7 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'legendary-relics', title: 'Legendary Relics', themeId: 'legendary-relics', display: { subtitle: 'Artifacts made landscape', accent: worldSkin('legendary-relics').accent } },
   { id: 'infinite-cities', title: 'Infinite Cities', themeId: 'infinite-cities', display: { subtitle: 'Streets beyond geometry', accent: worldSkin('infinite-cities').accent } },
   { id: 'arcadia-fractured', title: 'Arcadia Fractured', themeId: 'arcadia-fractured', display: { subtitle: 'The world comes apart', accent: worldSkin('arcadia-fractured').accent } },
+  { id: 'arcadia-nexus', title: 'Arcadia Nexus', themeId: 'arcadia-nexus', display: { subtitle: 'Every world comes home', accent: worldSkin('arcadia-nexus').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

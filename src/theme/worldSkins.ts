@@ -113,6 +113,7 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'legendary-relics': { accent: '#D2A558', secondaryAccent: '#EAD7AE', ambientId: 'galleryDust', intensity: 'high' },
   'infinite-cities': { accent: '#7C9FC4', secondaryAccent: '#D4B7DA', ambientId: 'skylineDrift', intensity: 'high' },
   'arcadia-fractured': { accent: '#C35AB9', secondaryAccent: '#EBC39C', ambientId: 'duskAsh', intensity: 'high' },
+  'arcadia-nexus': { accent: '#DFA94F', secondaryAccent: '#F3DFC0', ambientId: 'skylineDrift', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

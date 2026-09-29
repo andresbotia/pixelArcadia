@@ -1,0 +1,5684 @@
+{
+  "milestone": "M16G",
+  "range": [
+    491,
+    500
+  ],
+  "paletteCount": 44,
+  "solverPolicy": "default bounded node/time caps; no increases",
+  "safeMergeCounts": {
+    "491": {
+      "sameTunnel": 15,
+      "crossTunnel": 2
+    },
+    "492": {
+      "sameTunnel": 14,
+      "crossTunnel": 2
+    },
+    "493": {
+      "sameTunnel": 26,
+      "crossTunnel": 3
+    },
+    "494": {
+      "sameTunnel": 11,
+      "crossTunnel": 2
+    },
+    "495": {
+      "sameTunnel": 7,
+      "crossTunnel": 0
+    },
+    "496": {
+      "sameTunnel": 19,
+      "crossTunnel": 4
+    },
+    "497": {
+      "sameTunnel": 22,
+      "crossTunnel": 5
+    },
+    "498": {
+      "sameTunnel": 24,
+      "crossTunnel": 2
+    },
+    "499": {
+      "sameTunnel": 18,
+      "crossTunnel": 3
+    },
+    "500": {
+      "sameTunnel": 26,
+      "crossTunnel": 3
+    }
+  },
+  "safeMergeTotal": 208,
+  "fullCampaign": {
+    "totalLevels": 500,
+    "registry": true,
+    "sourceCount": 500,
+    "compiledCount": 500,
+    "sourceMatches": 500,
+    "structures": 500,
+    "witnesses": 500,
+    "capacityTotals": 500,
+    "paletteCount": 44,
+    "publishedMaxLevel": 50,
+    "campaignVersion": "v2-50",
+    "failures": []
+  },
+  "capstoneFairness": {
+    "single": {
+      "tested": 553,
+      "recoverable": 527,
+      "fatal": 18,
+      "unknown": 8,
+      "cases": [
+        {
+          "step": 1,
+          "kind": "tunnel",
+          "charge": "L500-t0-c0",
+          "hits": 34,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 1,
+          "kind": "tunnel",
+          "charge": "L500-t2-c0",
+          "hits": 75,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 2,
+          "kind": "tunnel",
+          "charge": "L500-t0-c0",
+          "hits": 34,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 2,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 2,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 75,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 3,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 3,
+          "kind": "tunnel",
+          "charge": "L500-t2-c1",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 3,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 60,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 4,
+          "kind": "tunnel",
+          "charge": "L500-t0-c1",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 4,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 4,
+          "kind": "tunnel",
+          "charge": "L500-t2-c1",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 5,
+          "kind": "tunnel",
+          "charge": "L500-t0-c1",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 5,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 5,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 42,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 6,
+          "kind": "tunnel",
+          "charge": "L500-t0-c1",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 6,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 6,
+          "kind": "tunnel",
+          "charge": "L500-t2-c2",
+          "hits": 32,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 7,
+          "kind": "tunnel",
+          "charge": "L500-t0-c1",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 7,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 7,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 32,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 8,
+          "kind": "tunnel",
+          "charge": "L500-t1-c1",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 8,
+          "kind": "tunnel",
+          "charge": "L500-t2-c3",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 8,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 9,
+          "kind": "tunnel",
+          "charge": "L500-t0-c2",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 9,
+          "kind": "tunnel",
+          "charge": "L500-t2-c3",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 9,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 9,
+          "kind": "holding",
+          "charge": "L500-t0-c1",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 10,
+          "kind": "tunnel",
+          "charge": "L500-t0-c2",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 10,
+          "kind": "tunnel",
+          "charge": "L500-t1-c2",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 10,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 10,
+          "kind": "holding",
+          "charge": "L500-t0-c1",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 11,
+          "kind": "tunnel",
+          "charge": "L500-t0-c2",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 11,
+          "kind": "tunnel",
+          "charge": "L500-t1-c2",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 11,
+          "kind": "tunnel",
+          "charge": "L500-t2-c4",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 11,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 12,
+          "kind": "tunnel",
+          "charge": "L500-t0-c2",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 12,
+          "kind": "tunnel",
+          "charge": "L500-t1-c2",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 12,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 26,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 13,
+          "kind": "tunnel",
+          "charge": "L500-t1-c2",
+          "hits": 26,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 13,
+          "kind": "tunnel",
+          "charge": "L500-t2-c5",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 13,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 13,
+          "kind": "holding",
+          "charge": "L500-t2-c4",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 14,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 14,
+          "kind": "tunnel",
+          "charge": "L500-t2-c5",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 14,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 14,
+          "kind": "holding",
+          "charge": "L500-t2-c4",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 14,
+          "kind": "holding",
+          "charge": "L500-t0-c2",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 15,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 17,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 15,
+          "kind": "tunnel",
+          "charge": "L500-t1-c3",
+          "hits": 8,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 15,
+          "kind": "tunnel",
+          "charge": "L500-t2-c5",
+          "hits": 21,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 15,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 15,
+          "kind": "holding",
+          "charge": "L500-t0-c2",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 16,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 16,
+          "kind": "tunnel",
+          "charge": "L500-t1-c3",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 16,
+          "kind": "tunnel",
+          "charge": "L500-t2-c5",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 16,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 16,
+          "kind": "holding",
+          "charge": "L500-t0-c2",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 17,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 17,
+          "kind": "tunnel",
+          "charge": "L500-t1-c3",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 17,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 17,
+          "kind": "holding",
+          "charge": "L500-t0-c2",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 17,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 18,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 18,
+          "kind": "tunnel",
+          "charge": "L500-t1-c3",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 18,
+          "kind": "tunnel",
+          "charge": "L500-t2-c6",
+          "hits": 24,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 18,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 18,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 19,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 19,
+          "kind": "tunnel",
+          "charge": "L500-t2-c6",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 19,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 19,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 20,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 20,
+          "kind": "tunnel",
+          "charge": "L500-t1-c4",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 20,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 20,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 21,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 21,
+          "kind": "tunnel",
+          "charge": "L500-t1-c4",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 21,
+          "kind": "tunnel",
+          "charge": "L500-t2-c7",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 21,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 21,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 22,
+          "kind": "tunnel",
+          "charge": "L500-t0-c3",
+          "hits": 19,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 22,
+          "kind": "tunnel",
+          "charge": "L500-t1-c4",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 22,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 22,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 23,
+          "kind": "tunnel",
+          "charge": "L500-t1-c4",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 23,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 23,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 23,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 24,
+          "kind": "tunnel",
+          "charge": "L500-t0-c4",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 24,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 24,
+          "kind": "holding",
+          "charge": "L500-t1-c0",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 24,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 25,
+          "kind": "tunnel",
+          "charge": "L500-t0-c4",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 25,
+          "kind": "tunnel",
+          "charge": "L500-t1-c5",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 25,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 25,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 25,
+          "kind": "holding",
+          "charge": "L500-t1-c4",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 26,
+          "kind": "tunnel",
+          "charge": "L500-t0-c4",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 26,
+          "kind": "tunnel",
+          "charge": "L500-t1-c5",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 26,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 26,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 26,
+          "kind": "holding",
+          "charge": "L500-t1-c4",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 27,
+          "kind": "tunnel",
+          "charge": "L500-t0-c4",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 27,
+          "kind": "tunnel",
+          "charge": "L500-t1-c5",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 27,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 27,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 28,
+          "kind": "tunnel",
+          "charge": "L500-t1-c5",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 28,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 28,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 29,
+          "kind": "tunnel",
+          "charge": "L500-t0-c5",
+          "hits": 23,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 29,
+          "kind": "tunnel",
+          "charge": "L500-t2-c8",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 29,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 29,
+          "kind": "holding",
+          "charge": "L500-t0-c4",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 30,
+          "kind": "tunnel",
+          "charge": "L500-t0-c5",
+          "hits": 23,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 30,
+          "kind": "tunnel",
+          "charge": "L500-t1-c6",
+          "hits": 23,
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "step": 30,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 30,
+          "kind": "holding",
+          "charge": "L500-t0-c4",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 31,
+          "kind": "tunnel",
+          "charge": "L500-t0-c5",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 31,
+          "kind": "tunnel",
+          "charge": "L500-t1-c6",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 31,
+          "kind": "tunnel",
+          "charge": "L500-t2-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 31,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 31,
+          "kind": "holding",
+          "charge": "L500-t2-c8",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 32,
+          "kind": "tunnel",
+          "charge": "L500-t0-c5",
+          "hits": 26,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 32,
+          "kind": "tunnel",
+          "charge": "L500-t1-c6",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 32,
+          "kind": "tunnel",
+          "charge": "L500-t2-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 32,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 33,
+          "kind": "tunnel",
+          "charge": "L500-t1-c6",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 33,
+          "kind": "tunnel",
+          "charge": "L500-t2-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 33,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 34,
+          "kind": "tunnel",
+          "charge": "L500-t0-c6",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 34,
+          "kind": "tunnel",
+          "charge": "L500-t2-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 34,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 35,
+          "kind": "tunnel",
+          "charge": "L500-t0-c6",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 35,
+          "kind": "tunnel",
+          "charge": "L500-t1-c7",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 35,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 36,
+          "kind": "tunnel",
+          "charge": "L500-t0-c6",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 36,
+          "kind": "tunnel",
+          "charge": "L500-t2-c10",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 36,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 37,
+          "kind": "tunnel",
+          "charge": "L500-t0-c6",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 37,
+          "kind": "tunnel",
+          "charge": "L500-t1-c8",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 37,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 37,
+          "kind": "holding",
+          "charge": "L500-t1-c7",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 38,
+          "kind": "tunnel",
+          "charge": "L500-t1-c8",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 38,
+          "kind": "tunnel",
+          "charge": "L500-t2-c11",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 38,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 38,
+          "kind": "holding",
+          "charge": "L500-t1-c7",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 39,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 39,
+          "kind": "tunnel",
+          "charge": "L500-t1-c8",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 39,
+          "kind": "tunnel",
+          "charge": "L500-t2-c11",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 39,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 40,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 40,
+          "kind": "tunnel",
+          "charge": "L500-t1-c8",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 40,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 41,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 41,
+          "kind": "tunnel",
+          "charge": "L500-t2-c12",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 41,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 41,
+          "kind": "holding",
+          "charge": "L500-t2-c11",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 42,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 42,
+          "kind": "tunnel",
+          "charge": "L500-t1-c9",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 42,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 42,
+          "kind": "holding",
+          "charge": "L500-t2-c11",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 43,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 43,
+          "kind": "tunnel",
+          "charge": "L500-t1-c9",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 43,
+          "kind": "tunnel",
+          "charge": "L500-t2-c13",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 43,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 43,
+          "kind": "holding",
+          "charge": "L500-t2-c12",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 44,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 44,
+          "kind": "tunnel",
+          "charge": "L500-t2-c13",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 44,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 44,
+          "kind": "holding",
+          "charge": "L500-t2-c12",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 45,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 45,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 45,
+          "kind": "tunnel",
+          "charge": "L500-t2-c13",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 45,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 45,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 46,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 46,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 46,
+          "kind": "tunnel",
+          "charge": "L500-t2-c13",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 46,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 47,
+          "kind": "tunnel",
+          "charge": "L500-t0-c7",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 47,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 47,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 47,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 48,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 48,
+          "kind": "tunnel",
+          "charge": "L500-t2-c14",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 48,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 48,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 49,
+          "kind": "tunnel",
+          "charge": "L500-t0-c8",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 49,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 49,
+          "kind": "tunnel",
+          "charge": "L500-t2-c14",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 49,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 49,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 50,
+          "kind": "tunnel",
+          "charge": "L500-t0-c8",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 50,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 50,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 50,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 51,
+          "kind": "tunnel",
+          "charge": "L500-t0-c8",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 51,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 51,
+          "kind": "tunnel",
+          "charge": "L500-t2-c15",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 51,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 52,
+          "kind": "tunnel",
+          "charge": "L500-t0-c8",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 52,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 52,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 52,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 53,
+          "kind": "tunnel",
+          "charge": "L500-t1-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 53,
+          "kind": "tunnel",
+          "charge": "L500-t2-c16",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 53,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 53,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 54,
+          "kind": "tunnel",
+          "charge": "L500-t0-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 54,
+          "kind": "tunnel",
+          "charge": "L500-t2-c16",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 54,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 54,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 55,
+          "kind": "tunnel",
+          "charge": "L500-t0-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 55,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 55,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 55,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 55,
+          "kind": "holding",
+          "charge": "L500-t1-c10",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 56,
+          "kind": "tunnel",
+          "charge": "L500-t0-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 56,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 56,
+          "kind": "tunnel",
+          "charge": "L500-t2-c17",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 56,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 56,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 57,
+          "kind": "tunnel",
+          "charge": "L500-t0-c9",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 57,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 57,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 57,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 57,
+          "kind": "holding",
+          "charge": "L500-t1-c10",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 58,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 58,
+          "kind": "tunnel",
+          "charge": "L500-t2-c18",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 58,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 58,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 58,
+          "kind": "holding",
+          "charge": "L500-t1-c10",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 59,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 59,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 59,
+          "kind": "tunnel",
+          "charge": "L500-t2-c18",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 59,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 59,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 60,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 60,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 60,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 60,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 60,
+          "kind": "holding",
+          "charge": "L500-t1-c10",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 61,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 61,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 6,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 61,
+          "kind": "tunnel",
+          "charge": "L500-t2-c19",
+          "hits": 16,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 61,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 61,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 62,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 62,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 6,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 62,
+          "kind": "tunnel",
+          "charge": "L500-t2-c19",
+          "hits": 16,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 62,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 62,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 63,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 63,
+          "kind": "tunnel",
+          "charge": "L500-t1-c11",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 63,
+          "kind": "tunnel",
+          "charge": "L500-t2-c19",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 63,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 63,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 64,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 64,
+          "kind": "tunnel",
+          "charge": "L500-t2-c19",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 64,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 64,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 65,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 65,
+          "kind": "tunnel",
+          "charge": "L500-t1-c12",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 65,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 65,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 66,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 66,
+          "kind": "tunnel",
+          "charge": "L500-t2-c20",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 66,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 66,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 67,
+          "kind": "tunnel",
+          "charge": "L500-t0-c10",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 67,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 67,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 67,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 68,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 68,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 68,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 68,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 69,
+          "kind": "tunnel",
+          "charge": "L500-t0-c11",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 69,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 69,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 69,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 69,
+          "kind": "holding",
+          "charge": "L500-t0-c10",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 70,
+          "kind": "tunnel",
+          "charge": "L500-t0-c11",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 70,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 70,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 70,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 70,
+          "kind": "holding",
+          "charge": "L500-t0-c10",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 71,
+          "kind": "tunnel",
+          "charge": "L500-t0-c11",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 71,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 71,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 71,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 71,
+          "kind": "holding",
+          "charge": "L500-t1-c2",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 72,
+          "kind": "tunnel",
+          "charge": "L500-t0-c11",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 72,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 72,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 72,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 73,
+          "kind": "tunnel",
+          "charge": "L500-t1-c13",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 73,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 73,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 74,
+          "kind": "tunnel",
+          "charge": "L500-t0-c12",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 74,
+          "kind": "tunnel",
+          "charge": "L500-t2-c21",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 74,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 75,
+          "kind": "tunnel",
+          "charge": "L500-t0-c12",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 75,
+          "kind": "tunnel",
+          "charge": "L500-t1-c14",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 75,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 76,
+          "kind": "tunnel",
+          "charge": "L500-t0-c12",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 76,
+          "kind": "tunnel",
+          "charge": "L500-t2-c22",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 76,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 76,
+          "kind": "holding",
+          "charge": "L500-t2-c21",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 77,
+          "kind": "tunnel",
+          "charge": "L500-t0-c12",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 77,
+          "kind": "tunnel",
+          "charge": "L500-t1-c15",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 77,
+          "kind": "tunnel",
+          "charge": "L500-t2-c22",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 77,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 77,
+          "kind": "holding",
+          "charge": "L500-t1-c14",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 78,
+          "kind": "tunnel",
+          "charge": "L500-t1-c15",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 78,
+          "kind": "tunnel",
+          "charge": "L500-t2-c22",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 78,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 78,
+          "kind": "holding",
+          "charge": "L500-t1-c14",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 79,
+          "kind": "tunnel",
+          "charge": "L500-t0-c13",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 79,
+          "kind": "tunnel",
+          "charge": "L500-t1-c15",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 79,
+          "kind": "tunnel",
+          "charge": "L500-t2-c22",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 79,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 80,
+          "kind": "tunnel",
+          "charge": "L500-t0-c13",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 80,
+          "kind": "tunnel",
+          "charge": "L500-t1-c15",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 80,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 81,
+          "kind": "tunnel",
+          "charge": "L500-t0-c13",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 81,
+          "kind": "tunnel",
+          "charge": "L500-t2-c23",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 81,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 82,
+          "kind": "tunnel",
+          "charge": "L500-t0-c13",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 82,
+          "kind": "tunnel",
+          "charge": "L500-t1-c16",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 82,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 83,
+          "kind": "tunnel",
+          "charge": "L500-t1-c16",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 83,
+          "kind": "tunnel",
+          "charge": "L500-t2-c24",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 83,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 83,
+          "kind": "holding",
+          "charge": "L500-t2-c23",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 84,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 84,
+          "kind": "tunnel",
+          "charge": "L500-t2-c24",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 84,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 84,
+          "kind": "holding",
+          "charge": "L500-t2-c23",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 84,
+          "kind": "holding",
+          "charge": "L500-t0-c13",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 85,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 85,
+          "kind": "tunnel",
+          "charge": "L500-t1-c17",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 85,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 85,
+          "kind": "holding",
+          "charge": "L500-t2-c23",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 85,
+          "kind": "holding",
+          "charge": "L500-t0-c13",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 86,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 86,
+          "kind": "tunnel",
+          "charge": "L500-t2-c25",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 86,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 86,
+          "kind": "holding",
+          "charge": "L500-t2-c23",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 86,
+          "kind": "holding",
+          "charge": "L500-t0-c13",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 87,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 87,
+          "kind": "tunnel",
+          "charge": "L500-t1-c18",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 87,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 87,
+          "kind": "holding",
+          "charge": "L500-t0-c13",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 88,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 88,
+          "kind": "tunnel",
+          "charge": "L500-t1-c18",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 88,
+          "kind": "tunnel",
+          "charge": "L500-t2-c26",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 88,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 89,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 89,
+          "kind": "tunnel",
+          "charge": "L500-t2-c26",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 89,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 90,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 90,
+          "kind": "tunnel",
+          "charge": "L500-t1-c19",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 90,
+          "kind": "tunnel",
+          "charge": "L500-t2-c26",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 90,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 91,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 91,
+          "kind": "tunnel",
+          "charge": "L500-t2-c26",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 91,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 92,
+          "kind": "tunnel",
+          "charge": "L500-t0-c14",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 92,
+          "kind": "tunnel",
+          "charge": "L500-t1-c20",
+          "hits": 24,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 92,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 93,
+          "kind": "tunnel",
+          "charge": "L500-t1-c20",
+          "hits": 24,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 93,
+          "kind": "tunnel",
+          "charge": "L500-t2-c27",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 93,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 93,
+          "kind": "holding",
+          "charge": "L500-t2-c26",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 94,
+          "kind": "tunnel",
+          "charge": "L500-t0-c15",
+          "hits": 33,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 94,
+          "kind": "tunnel",
+          "charge": "L500-t2-c27",
+          "hits": 24,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 94,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 94,
+          "kind": "holding",
+          "charge": "L500-t2-c26",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 95,
+          "kind": "tunnel",
+          "charge": "L500-t0-c15",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 95,
+          "kind": "tunnel",
+          "charge": "L500-t1-c21",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 95,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 95,
+          "kind": "holding",
+          "charge": "L500-t2-c26",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 96,
+          "kind": "tunnel",
+          "charge": "L500-t0-c15",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 96,
+          "kind": "tunnel",
+          "charge": "L500-t2-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 96,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 96,
+          "kind": "holding",
+          "charge": "L500-t2-c26",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 97,
+          "kind": "tunnel",
+          "charge": "L500-t0-c15",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 97,
+          "kind": "tunnel",
+          "charge": "L500-t1-c22",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 97,
+          "kind": "tunnel",
+          "charge": "L500-t2-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 97,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 98,
+          "kind": "tunnel",
+          "charge": "L500-t1-c22",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 98,
+          "kind": "tunnel",
+          "charge": "L500-t2-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 98,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 99,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 99,
+          "kind": "tunnel",
+          "charge": "L500-t2-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 99,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 99,
+          "kind": "holding",
+          "charge": "L500-t0-c15",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 100,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 100,
+          "kind": "tunnel",
+          "charge": "L500-t1-c23",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 100,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 100,
+          "kind": "holding",
+          "charge": "L500-t0-c15",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 100,
+          "kind": "holding",
+          "charge": "L500-t1-c22",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 101,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 101,
+          "kind": "tunnel",
+          "charge": "L500-t1-c23",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 101,
+          "kind": "tunnel",
+          "charge": "L500-t2-c29",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 101,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 101,
+          "kind": "holding",
+          "charge": "L500-t0-c15",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 102,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 102,
+          "kind": "tunnel",
+          "charge": "L500-t1-c23",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 102,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 102,
+          "kind": "holding",
+          "charge": "L500-t0-c15",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 103,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 103,
+          "kind": "tunnel",
+          "charge": "L500-t1-c23",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 103,
+          "kind": "tunnel",
+          "charge": "L500-t2-c30",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 103,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 104,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 104,
+          "kind": "tunnel",
+          "charge": "L500-t2-c30",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 104,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 105,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 105,
+          "kind": "tunnel",
+          "charge": "L500-t1-c24",
+          "hits": 26,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 105,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 106,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 106,
+          "kind": "tunnel",
+          "charge": "L500-t2-c31",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 106,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 107,
+          "kind": "tunnel",
+          "charge": "L500-t0-c16",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 107,
+          "kind": "tunnel",
+          "charge": "L500-t1-c25",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 107,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 108,
+          "kind": "tunnel",
+          "charge": "L500-t1-c25",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 108,
+          "kind": "tunnel",
+          "charge": "L500-t2-c32",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 108,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 109,
+          "kind": "tunnel",
+          "charge": "L500-t0-c17",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 109,
+          "kind": "tunnel",
+          "charge": "L500-t2-c32",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 109,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 110,
+          "kind": "tunnel",
+          "charge": "L500-t0-c17",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 110,
+          "kind": "tunnel",
+          "charge": "L500-t1-c26",
+          "hits": 10,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 110,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 110,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 111,
+          "kind": "tunnel",
+          "charge": "L500-t0-c17",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 111,
+          "kind": "tunnel",
+          "charge": "L500-t2-c33",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 111,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 111,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 112,
+          "kind": "tunnel",
+          "charge": "L500-t0-c17",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 112,
+          "kind": "tunnel",
+          "charge": "L500-t1-c27",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 112,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 112,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 113,
+          "kind": "tunnel",
+          "charge": "L500-t1-c27",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 113,
+          "kind": "tunnel",
+          "charge": "L500-t2-c34",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 113,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 113,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 114,
+          "kind": "tunnel",
+          "charge": "L500-t0-c18",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 114,
+          "kind": "tunnel",
+          "charge": "L500-t2-c34",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 114,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 114,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 115,
+          "kind": "tunnel",
+          "charge": "L500-t0-c18",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 115,
+          "kind": "tunnel",
+          "charge": "L500-t1-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 115,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 115,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 115,
+          "kind": "holding",
+          "charge": "L500-t1-c27",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 116,
+          "kind": "tunnel",
+          "charge": "L500-t0-c18",
+          "hits": 4,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 116,
+          "kind": "tunnel",
+          "charge": "L500-t1-c28",
+          "hits": 3,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 116,
+          "kind": "tunnel",
+          "charge": "L500-t2-c35",
+          "hits": 8,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 116,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 116,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 117,
+          "kind": "tunnel",
+          "charge": "L500-t0-c18",
+          "hits": 4,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 117,
+          "kind": "tunnel",
+          "charge": "L500-t1-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 117,
+          "kind": "tunnel",
+          "charge": "L500-t2-c35",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 117,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 117,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 118,
+          "kind": "tunnel",
+          "charge": "L500-t1-c28",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 118,
+          "kind": "tunnel",
+          "charge": "L500-t2-c35",
+          "hits": 12,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 118,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 118,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 119,
+          "kind": "tunnel",
+          "charge": "L500-t0-c19",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 119,
+          "kind": "tunnel",
+          "charge": "L500-t2-c35",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 119,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 120,
+          "kind": "tunnel",
+          "charge": "L500-t0-c19",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 120,
+          "kind": "tunnel",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 120,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 121,
+          "kind": "tunnel",
+          "charge": "L500-t0-c19",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 121,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 121,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 122,
+          "kind": "tunnel",
+          "charge": "L500-t0-c19",
+          "hits": 6,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 122,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 23,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 122,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 23,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 122,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 123,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 123,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 23,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 123,
+          "kind": "holding",
+          "charge": "L500-t1-c9",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 123,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 124,
+          "kind": "tunnel",
+          "charge": "L500-t0-c20",
+          "hits": 13,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 124,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 23,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 124,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 23,
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "step": 124,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 125,
+          "kind": "tunnel",
+          "charge": "L500-t0-c20",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 125,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 125,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 125,
+          "kind": "holding",
+          "charge": "L500-t1-c25",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 125,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 126,
+          "kind": "tunnel",
+          "charge": "L500-t0-c20",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 126,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 126,
+          "kind": "tunnel",
+          "charge": "L500-t2-c36",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 126,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 127,
+          "kind": "tunnel",
+          "charge": "L500-t0-c20",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 127,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 25,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 127,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 128,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 17,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 128,
+          "kind": "tunnel",
+          "charge": "L500-t2-c37",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 128,
+          "kind": "holding",
+          "charge": "L500-t1-c29",
+          "hits": 15,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 129,
+          "kind": "tunnel",
+          "charge": "L500-t0-c21",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 129,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 20,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 129,
+          "kind": "tunnel",
+          "charge": "L500-t2-c37",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 130,
+          "kind": "tunnel",
+          "charge": "L500-t0-c21",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 130,
+          "kind": "tunnel",
+          "charge": "L500-t1-c30",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 131,
+          "kind": "tunnel",
+          "charge": "L500-t0-c21",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 131,
+          "kind": "tunnel",
+          "charge": "L500-t2-c38",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 132,
+          "kind": "tunnel",
+          "charge": "L500-t0-c21",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 132,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 132,
+          "kind": "holding",
+          "charge": "L500-t1-c30",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 133,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 133,
+          "kind": "tunnel",
+          "charge": "L500-t2-c39",
+          "hits": 21,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 133,
+          "kind": "holding",
+          "charge": "L500-t1-c30",
+          "hits": 14,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 134,
+          "kind": "tunnel",
+          "charge": "L500-t0-c22",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 134,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 134,
+          "kind": "tunnel",
+          "charge": "L500-t2-c39",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 135,
+          "kind": "tunnel",
+          "charge": "L500-t0-c22",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 135,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 22,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 135,
+          "kind": "holding",
+          "charge": "L500-t1-c30",
+          "hits": 8,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 136,
+          "kind": "tunnel",
+          "charge": "L500-t0-c22",
+          "hits": 3,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 136,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 11,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 136,
+          "kind": "tunnel",
+          "charge": "L500-t2-c40",
+          "hits": 13,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 136,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 137,
+          "kind": "tunnel",
+          "charge": "L500-t0-c22",
+          "hits": 2,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 137,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 16,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 137,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 138,
+          "kind": "tunnel",
+          "charge": "L500-t1-c31",
+          "hits": 19,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 138,
+          "kind": "tunnel",
+          "charge": "L500-t2-c41",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 138,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 139,
+          "kind": "tunnel",
+          "charge": "L500-t0-c23",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 139,
+          "kind": "tunnel",
+          "charge": "L500-t2-c41",
+          "hits": 18,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 139,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 140,
+          "kind": "tunnel",
+          "charge": "L500-t0-c23",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 140,
+          "kind": "tunnel",
+          "charge": "L500-t1-c32",
+          "hits": 9,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 140,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 141,
+          "kind": "tunnel",
+          "charge": "L500-t0-c23",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 141,
+          "kind": "tunnel",
+          "charge": "L500-t2-c42",
+          "hits": 7,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 141,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 142,
+          "kind": "tunnel",
+          "charge": "L500-t0-c23",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 142,
+          "kind": "tunnel",
+          "charge": "L500-t1-c33",
+          "hits": 5,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 142,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 143,
+          "kind": "tunnel",
+          "charge": "L500-t1-c33",
+          "hits": 6,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 143,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        },
+        {
+          "step": 144,
+          "kind": "holding",
+          "charge": "L500-t2-c39",
+          "hits": 1,
+          "result": "RECOVERED"
+        }
+      ]
+    },
+    "double": {
+      "tested": 28,
+      "recoverable": 22,
+      "fatal": 5,
+      "unknown": 1,
+      "cases": [
+        {
+          "firstStep": 1,
+          "firstCharge": "L500-t2-c0",
+          "secondCharge": "L500-t1-c0",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 1,
+          "firstCharge": "L500-t2-c0",
+          "secondCharge": "L500-t0-c0",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 1,
+          "firstCharge": "L500-t0-c0",
+          "secondCharge": "L500-t1-c0",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 1,
+          "firstCharge": "L500-t0-c0",
+          "secondCharge": "L500-t2-c0",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 18,
+          "firstCharge": "L500-t2-c6",
+          "secondCharge": "L500-t0-c3",
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "firstStep": 18,
+          "firstCharge": "L500-t2-c6",
+          "secondCharge": "L500-t0-c2",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 18,
+          "firstCharge": "L500-t0-c3",
+          "secondCharge": "L500-t2-c6",
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "firstStep": 18,
+          "firstCharge": "L500-t0-c3",
+          "secondCharge": "L500-t0-c2",
+          "result": "INCONCLUSIVE"
+        },
+        {
+          "firstStep": 37,
+          "firstCharge": "L500-t0-c6",
+          "secondCharge": "L500-t2-c10",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 37,
+          "firstCharge": "L500-t0-c6",
+          "secondCharge": "L500-t1-c2",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 37,
+          "firstCharge": "L500-t1-c2",
+          "secondCharge": "L500-t2-c10",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 37,
+          "firstCharge": "L500-t1-c2",
+          "secondCharge": "L500-t0-c6",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 58,
+          "firstCharge": "L500-t1-c2",
+          "secondCharge": "L500-t0-c9",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 58,
+          "firstCharge": "L500-t1-c2",
+          "secondCharge": "L500-t2-c18",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 58,
+          "firstCharge": "L500-t2-c18",
+          "secondCharge": "L500-t0-c9",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 58,
+          "firstCharge": "L500-t2-c18",
+          "secondCharge": "L500-t1-c2",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 80,
+          "firstCharge": "L500-t0-c13",
+          "secondCharge": "L500-t1-c15",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 80,
+          "firstCharge": "L500-t0-c13",
+          "secondCharge": "L500-t2-c22",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 80,
+          "firstCharge": "L500-t1-c15",
+          "secondCharge": "L500-t2-c22",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 80,
+          "firstCharge": "L500-t1-c15",
+          "secondCharge": "L500-t0-c13",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 101,
+          "firstCharge": "L500-t0-c16",
+          "secondCharge": "L500-t1-c23",
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "firstStep": 101,
+          "firstCharge": "L500-t0-c16",
+          "secondCharge": "L500-t0-c15",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 101,
+          "firstCharge": "L500-t1-c23",
+          "secondCharge": "L500-t0-c16",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 101,
+          "firstCharge": "L500-t1-c23",
+          "secondCharge": "L500-t2-c29",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 123,
+          "firstCharge": "L500-t1-c30",
+          "secondCharge": "L500-t2-c36",
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "firstStep": 123,
+          "firstCharge": "L500-t1-c30",
+          "secondCharge": "L500-t1-c29",
+          "result": "RECOVERED"
+        },
+        {
+          "firstStep": 123,
+          "firstCharge": "L500-t2-c36",
+          "secondCharge": "L500-t1-c30",
+          "result": "IMMEDIATE_LOSS"
+        },
+        {
+          "firstStep": 123,
+          "firstCharge": "L500-t2-c36",
+          "secondCharge": "L500-t1-c29",
+          "result": "RECOVERED"
+        }
+      ]
+    }
+  },
+  "levels": [
+    {
+      "id": 491,
+      "dimensions": "48\u00d748",
+      "pixels": 2215,
+      "occupancy": 96.13715277777779,
+      "colors": 17,
+      "pals": 93,
+      "witness": 120,
+      "relaunches": 27,
+      "bridges": 12,
+      "peakHolding": 3,
+      "holdingFullStates": 56,
+      "smallPals": 2,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 10
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 20
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 128
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 3,
+          "position": 34,
+          "color": "ice",
+          "capacity": 1,
+          "step": 105,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 37,
+          "color": "white",
+          "capacity": 2,
+          "step": 112,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "Seams of Gold",
+      "solver": {
+        "id": 491,
+        "status": "INCONCLUSIVE",
+        "nodes": 100001,
+        "timeMs": 23906,
+        "nodeCapHit": true,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 492,
+      "dimensions": "48\u00d748",
+      "pixels": 2205,
+      "occupancy": 95.703125,
+      "colors": 18,
+      "pals": 81,
+      "witness": 111,
+      "relaunches": 30,
+      "bridges": 13,
+      "peakHolding": 3,
+      "holdingFullStates": 53,
+      "smallPals": 6,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 8
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 8
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 29
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 59
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 1,
+          "position": 9,
+          "color": "mauve",
+          "capacity": 2,
+          "step": 58,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 15,
+          "color": "graphite",
+          "capacity": 1,
+          "step": 103,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 11,
+          "color": "sand",
+          "capacity": 1,
+          "step": 31,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 24,
+          "color": "silver",
+          "capacity": 1,
+          "step": 79,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 21,
+          "color": "white",
+          "capacity": 2,
+          "step": 72,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 30,
+          "color": "lavender",
+          "capacity": 2,
+          "step": 97,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "The Bridge of Every World",
+      "solver": {
+        "id": 492,
+        "status": "INCONCLUSIVE",
+        "nodes": 100001,
+        "timeMs": 22412,
+        "nodeCapHit": true,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 493,
+      "dimensions": "48\u00d748",
+      "pixels": 2225,
+      "occupancy": 96.57118055555556,
+      "colors": 18,
+      "pals": 96,
+      "witness": 136,
+      "relaunches": 40,
+      "bridges": 15,
+      "peakHolding": 3,
+      "holdingFullStates": 46,
+      "smallPals": 2,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 98
+        },
+        "holding-first": {
+          "outcome": "won",
+          "steps": 243
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 2,
+          "position": 6,
+          "color": "cerulean",
+          "capacity": 2,
+          "step": 21,
+          "classification": "SUSPICIOUS",
+          "exposedFront": 13,
+          "reason": "More than two matching targets are exposed, but capacity is allocated to other Pals. Same-colour merges in all tunnels failed replay or breather constraints; retain as SUSPICIOUS."
+        },
+        {
+          "tunnel": 2,
+          "position": 26,
+          "color": "ivory",
+          "capacity": 1,
+          "step": 81,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "The Tree of Districts",
+      "solver": {
+        "id": 493,
+        "status": "INCONCLUSIVE",
+        "nodes": 100001,
+        "timeMs": 20307,
+        "nodeCapHit": true,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 494,
+      "dimensions": "48\u00d748",
+      "pixels": 2195,
+      "occupancy": 95.26909722222221,
+      "colors": 18,
+      "pals": 94,
+      "witness": 118,
+      "relaunches": 24,
+      "bridges": 7,
+      "peakHolding": 3,
+      "holdingFullStates": 76,
+      "smallPals": 11,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 16
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 21
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 209
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 1,
+          "position": 20,
+          "color": "cerulean",
+          "capacity": 2,
+          "step": 69,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 21,
+          "color": "cerulean",
+          "capacity": 1,
+          "step": 71,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 23,
+          "color": "white",
+          "capacity": 2,
+          "step": 76,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 26,
+          "color": "ivory",
+          "capacity": 2,
+          "step": 84,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 27,
+          "color": "stone",
+          "capacity": 1,
+          "step": 86,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 31,
+          "color": "lavender",
+          "capacity": 2,
+          "step": 96,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 32,
+          "color": "ice",
+          "capacity": 2,
+          "step": 104,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 22,
+          "color": "cerulean",
+          "capacity": 1,
+          "step": 70,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 25,
+          "color": "white",
+          "capacity": 1,
+          "step": 77,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 35,
+          "color": "stone",
+          "capacity": 1,
+          "step": 105,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 16,
+          "color": "graphite",
+          "capacity": 1,
+          "step": 93,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "The Great Realigner",
+      "solver": {
+        "id": 494,
+        "status": "PASS",
+        "nodes": 24640,
+        "timeMs": 5678,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "MINOR"
+    },
+    {
+      "id": 495,
+      "dimensions": "48\u00d748",
+      "pixels": 2125,
+      "occupancy": 92.23090277777779,
+      "colors": 15,
+      "pals": 78,
+      "witness": 90,
+      "relaunches": 12,
+      "bridges": 6,
+      "peakHolding": 2,
+      "holdingFullStates": 0,
+      "smallPals": 5,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 82
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 98
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 2,
+          "position": 30,
+          "color": "ash",
+          "capacity": 1,
+          "step": 86,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 6,
+          "color": "navy",
+          "capacity": 2,
+          "step": 17,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 23,
+          "color": "graphite",
+          "capacity": 2,
+          "step": 62,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 29,
+          "color": "ivory",
+          "capacity": 1,
+          "step": 80,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 33,
+          "color": "cerulean",
+          "capacity": 1,
+          "step": 90,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "Homeward Harbour",
+      "solver": {
+        "id": 495,
+        "status": "PASS",
+        "nodes": 61956,
+        "timeMs": 11355,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 496,
+      "dimensions": "48\u00d748",
+      "pixels": 2205,
+      "occupancy": 95.703125,
+      "colors": 19,
+      "pals": 103,
+      "witness": 137,
+      "relaunches": 34,
+      "bridges": 12,
+      "peakHolding": 3,
+      "holdingFullStates": 79,
+      "smallPals": 4,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 88
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 3,
+          "position": 20,
+          "color": "moss",
+          "capacity": 2,
+          "step": 72,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 27,
+          "color": "rose",
+          "capacity": 1,
+          "step": 90,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 31,
+          "color": "silver",
+          "capacity": 2,
+          "step": 100,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 39,
+          "color": "umber",
+          "capacity": 2,
+          "step": 120,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "The Confluence of Worlds",
+      "solver": {
+        "id": 496,
+        "status": "INCONCLUSIVE",
+        "nodes": 100001,
+        "timeMs": 20864,
+        "nodeCapHit": true,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 497,
+      "dimensions": "48\u00d748",
+      "pixels": 2250,
+      "occupancy": 97.65625,
+      "colors": 19,
+      "pals": 98,
+      "witness": 136,
+      "relaunches": 38,
+      "bridges": 11,
+      "peakHolding": 3,
+      "holdingFullStates": 58,
+      "smallPals": 3,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 52
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 103
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 2,
+          "position": 16,
+          "color": "sand",
+          "capacity": 1,
+          "step": 62,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 33,
+          "color": "silver",
+          "capacity": 1,
+          "step": 115,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 12,
+          "color": "blush",
+          "capacity": 1,
+          "step": 73,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [],
+      "title": "The Terraced Nexus",
+      "solver": {
+        "id": 497,
+        "status": "PASS",
+        "nodes": 16436,
+        "timeMs": 3551,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 498,
+      "dimensions": "48\u00d748",
+      "pixels": 2215,
+      "occupancy": 96.13715277777779,
+      "colors": 19,
+      "pals": 108,
+      "witness": 143,
+      "relaunches": 35,
+      "bridges": 5,
+      "peakHolding": 3,
+      "holdingFullStates": 86,
+      "smallPals": 5,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 7
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 23
+        },
+        "holding-first": {
+          "outcome": "won",
+          "steps": 275
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 1,
+          "position": 22,
+          "color": "forest",
+          "capacity": 2,
+          "step": 84,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 1,
+          "position": 34,
+          "color": "lavender",
+          "capacity": 1,
+          "step": 116,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 24,
+          "color": "rose",
+          "capacity": 2,
+          "step": 92,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 2,
+          "position": 38,
+          "color": "stone",
+          "capacity": 2,
+          "step": 130,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 25,
+          "color": "lavender",
+          "capacity": 1,
+          "step": 128,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L498-t1-c0",
+            "color": "navy",
+            "capacity": 60
+          },
+          "hits": 40,
+          "result": "INCONCLUSIVE",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 1
+        },
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L498-t2-c0",
+            "color": "navy",
+            "capacity": 21
+          },
+          "hits": 21,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 0
+        },
+        {
+          "kind": "premature high-capacity launch",
+          "step": 15,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L498-t1-c3",
+            "color": "forest",
+            "capacity": 25
+          },
+          "hits": 18,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 39,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L498-t1-c7",
+            "color": "graphite",
+            "capacity": 21
+          },
+          "hits": 12,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 39,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L498-t2-c7",
+            "color": "silver",
+            "capacity": 11
+          },
+          "hits": 4,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 61,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L498-t1-c12",
+            "color": "stone",
+            "capacity": 34
+          },
+          "hits": 25,
+          "result": "IMMEDIATE_LOSS",
+          "beforePending": 1,
+          "beforeHolding": 3,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 61,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L498-t0-c14",
+            "color": "rose",
+            "capacity": 30
+          },
+          "hits": 16,
+          "result": "IMMEDIATE_LOSS",
+          "beforePending": 1,
+          "beforeHolding": 3,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 79,
+          "action": {
+            "kind": "holding",
+            "id": "L498-t1-c0"
+          },
+          "charge": {
+            "id": "L498-t1-c0",
+            "color": "navy",
+            "capacity": 21
+          },
+          "hits": 9,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 79,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L498-t1-c18",
+            "color": "forest",
+            "capacity": 13
+          },
+          "hits": 13,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 0,
+          "holding": 3
+        }
+      ],
+      "title": "The Docking of Continents",
+      "solver": {
+        "id": 498,
+        "status": "PASS",
+        "nodes": 4253,
+        "timeMs": 924,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "MINOR"
+    },
+    {
+      "id": 499,
+      "dimensions": "48\u00d748",
+      "pixels": 2260,
+      "occupancy": 98.09027777777779,
+      "colors": 19,
+      "pals": 91,
+      "witness": 123,
+      "relaunches": 32,
+      "bridges": 10,
+      "peakHolding": 3,
+      "holdingFullStates": 40,
+      "smallPals": 2,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 8
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 9
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 18
+        },
+        "holding-first": {
+          "outcome": "won",
+          "steps": 232
+        }
+      },
+      "tinyPals": [
+        {
+          "tunnel": 2,
+          "position": 28,
+          "color": "ice",
+          "capacity": 1,
+          "step": 87,
+          "classification": "NECESSARY",
+          "exposedFront": 1,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        },
+        {
+          "tunnel": 3,
+          "position": 17,
+          "color": "lavender",
+          "capacity": 2,
+          "step": 108,
+          "classification": "NECESSARY",
+          "exposedFront": 2,
+          "reason": "Production probe with the entire remaining colour budget confirms this route window exposes at most two hits. No tested safe same-colour merge survived productive replay and breather relief constraints; necessity is local to this witness window."
+        }
+      ],
+      "deviations": [
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L499-t1-c0",
+            "color": "navy",
+            "capacity": 56
+          },
+          "hits": 32,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 1
+        },
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L499-t2-c0",
+            "color": "navy",
+            "capacity": 24
+          },
+          "hits": 24,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 0
+        },
+        {
+          "kind": "premature high-capacity launch",
+          "step": 13,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L499-t2-c2",
+            "color": "silver",
+            "capacity": 28
+          },
+          "hits": 23,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 31,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L499-t2-c4",
+            "color": "mauve",
+            "capacity": 62
+          },
+          "hits": 37,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 31,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L499-t0-c10",
+            "color": "lavender",
+            "capacity": 33
+          },
+          "hits": 18,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 54,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L499-t2-c8",
+            "color": "mauve",
+            "capacity": 49
+          },
+          "hits": 35,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 54,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L499-t0-c16",
+            "color": "ash",
+            "capacity": 44
+          },
+          "hits": 2,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 68,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L499-t2-c10",
+            "color": "mauve",
+            "capacity": 51
+          },
+          "hits": 37,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 68,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L499-t0-c19",
+            "color": "ivory",
+            "capacity": 13
+          },
+          "hits": 13,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 0,
+          "holding": 3
+        }
+      ],
+      "title": "Threshold of the Nexus",
+      "solver": {
+        "id": 499,
+        "status": "PASS",
+        "nodes": 73131,
+        "timeMs": 16734,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    },
+    {
+      "id": 500,
+      "dimensions": "48\u00d748",
+      "pixels": 2285,
+      "occupancy": 99.17534722222221,
+      "colors": 20,
+      "pals": 101,
+      "witness": 145,
+      "relaunches": 44,
+      "bridges": 15,
+      "peakHolding": 3,
+      "holdingFullStates": 41,
+      "smallPals": 0,
+      "zeroHits": 0,
+      "rejected": 0,
+      "items": 0,
+      "clean": true,
+      "bots": {
+        "round-robin": {
+          "outcome": "lost",
+          "steps": 8
+        },
+        "greedy": {
+          "outcome": "lost",
+          "steps": 13
+        },
+        "drain": {
+          "outcome": "lost",
+          "steps": 6
+        },
+        "noWaste": {
+          "outcome": "lost",
+          "steps": 62
+        },
+        "holding-first": {
+          "outcome": "lost",
+          "steps": 173
+        }
+      },
+      "tinyPals": [],
+      "deviations": [
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L500-t0-c0",
+            "color": "moss",
+            "capacity": 34
+          },
+          "hits": 34,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 0
+        },
+        {
+          "kind": "alternative openings",
+          "step": 1,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L500-t2-c0",
+            "color": "navy",
+            "capacity": 75
+          },
+          "hits": 75,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 0,
+          "pending": 0,
+          "holding": 0
+        },
+        {
+          "kind": "premature high-capacity launch",
+          "step": 18,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L500-t2-c6",
+            "color": "blush",
+            "capacity": 43
+          },
+          "hits": 24,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 39,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L500-t0-c7",
+            "color": "stone",
+            "capacity": 39
+          },
+          "hits": 17,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "skipped productive Holding relaunch",
+          "step": 39,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L500-t2-c11",
+            "color": "white",
+            "capacity": 24
+          },
+          "hits": 15,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 59,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L500-t0-c10",
+            "color": "cyan",
+            "capacity": 20
+          },
+          "hits": 11,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "bridge timing mistake",
+          "step": 59,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L500-t1-c11",
+            "color": "silver",
+            "capacity": 6
+          },
+          "hits": 4,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 3,
+          "pending": 1,
+          "holding": 3
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 80,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L500-t1-c15",
+            "color": "forest",
+            "capacity": 18
+          },
+          "hits": 9,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 1,
+          "pending": 0,
+          "holding": 2
+        },
+        {
+          "kind": "obvious route fork",
+          "step": 80,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L500-t0-c13",
+            "color": "umber",
+            "capacity": 12
+          },
+          "hits": 12,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 1,
+          "pending": 0,
+          "holding": 1
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 51,
+          "action": {
+            "kind": "holding",
+            "id": "L500-t1-c2"
+          },
+          "charge": {
+            "id": "L500-t1-c2",
+            "color": "mauve",
+            "capacity": 21
+          },
+          "hits": 12,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 2
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 51,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-1"
+          },
+          "charge": {
+            "id": "L500-t1-c10",
+            "color": "graphite",
+            "capacity": 27
+          },
+          "hits": 11,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 95,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-0"
+          },
+          "charge": {
+            "id": "L500-t0-c15",
+            "color": "stone",
+            "capacity": 48
+          },
+          "hits": 22,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 3
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 95,
+          "action": {
+            "kind": "holding",
+            "id": "L500-t1-c9"
+          },
+          "charge": {
+            "id": "L500-t1-c9",
+            "color": "navy",
+            "capacity": 13
+          },
+          "hits": 7,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 2,
+          "pending": 0,
+          "holding": 2
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 109,
+          "action": {
+            "kind": "tunnel",
+            "id": "tunnel-2"
+          },
+          "charge": {
+            "id": "L500-t2-c32",
+            "color": "gold",
+            "capacity": 20
+          },
+          "hits": 20,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 1,
+          "pending": 0,
+          "holding": 1
+        },
+        {
+          "kind": "milestone later route fork",
+          "step": 109,
+          "action": {
+            "kind": "holding",
+            "id": "L500-t1-c9"
+          },
+          "charge": {
+            "id": "L500-t1-c9",
+            "color": "navy",
+            "capacity": 13
+          },
+          "hits": 11,
+          "result": "RECOVERED",
+          "beforePending": 0,
+          "beforeHolding": 1,
+          "pending": 0,
+          "holding": 1
+        }
+      ],
+      "title": "The Arcadia Nexus",
+      "solver": {
+        "id": 500,
+        "status": "PASS",
+        "nodes": 14537,
+        "timeMs": 3087,
+        "nodeCapHit": false,
+        "timeCapHit": false
+      },
+      "visual": "PASS"
+    }
+  ]
+}

@@ -56,8 +56,8 @@ const levels = LEVEL_DEFINITIONS.filter(l => l.id >= 251 && l.id <= 290);
 
 test('all forty locked titles and packets select exactly one active new definition', () => {
   expect(levels).toHaveLength(40);
-  expect(LEVEL_DEFINITIONS.map(l => l.id)).toEqual(Array.from({ length: 490 }, (_, i) => i + 1));
-  expect(new Set(LEVEL_DEFINITIONS.map(l => l.id)).size).toBe(490);
+  expect(LEVEL_DEFINITIONS.map(l => l.id)).toEqual(Array.from({ length: 500 }, (_, i) => i + 1));
+  expect(new Set(LEVEL_DEFINITIONS.map(l => l.id)).size).toBe(500);
   for (const world of [26, 27, 28, 29]) {
     const packet = loadAuthoredFile(`content/levels/world-${world}.json`);
     expect(packet.errors).toEqual([]);
@@ -136,10 +136,10 @@ test.each([260, 270, 280, 290])('finale %i retains strategic capacity and author
   expect(EXPECTED[id]![5]).toBeGreaterThanOrEqual(12);
 });
 
-test('every source through 490 matches the unique runtime registry', () => {
+test('every source through 500 matches the unique runtime registry', () => {
   const source = loadAuthoredDirectory('content/levels');
   expect(source.errors).toEqual([]);
-  expect(source.levels).toHaveLength(490);
+  expect(source.levels).toHaveLength(500);
   for (const def of source.levels) expect(getLevel(def.id)).toEqual(def);
 });
 
@@ -150,5 +150,5 @@ test('normal campaign blocks all forty levels while the dev index permits them',
     expect(isPublishedCampaignLevel(def.id)).toBe(false);
     expect(devLevelIndex().find(l => l.id === def.id)).toMatchObject({ title: def.title, world: Math.ceil(def.id / 10) });
   }
-  expect(getLevel(491)).toBeUndefined();
+  expect(getLevel(501)).toBeUndefined();
 });

@@ -19,10 +19,10 @@ const certificate = JSON.parse(fs.readFileSync('docs/audits/M16F_LEVELS_451_490_
 const levels = LEVEL_DEFINITIONS.filter(level => level.id >= 451 && level.id <= 490);
 const expected = new Map(certificate.levels.map(entry => [entry.id, entry]));
 
-test('Worlds 46–49 each have ten authored levels in the unique 1–490 registry', () => {
+test('Worlds 46–49 each have ten authored levels in the unique 1–500 registry', () => {
   expect(levels).toHaveLength(40);
   expect(certificate.paletteCount).toBe(44);
-  expect(LEVEL_DEFINITIONS.map(level => level.id)).toEqual(Array.from({ length: 490 }, (_, i) => i + 1));
+  expect(LEVEL_DEFINITIONS.map(level => level.id)).toEqual(Array.from({ length: 500 }, (_, i) => i + 1));
   for (const world of [46, 47, 48, 49]) {
     const packet = loadAuthoredFile(`content/levels/world-${world}.json`);
     expect(packet.errors).toEqual([]);
@@ -32,7 +32,7 @@ test('Worlds 46–49 each have ten authored levels in the unique 1–490 registr
   expect(levels.map(level => [level.id, level.title])).toEqual(certificate.levels.map(entry => [entry.id, entry.title]));
   const source = loadAuthoredDirectory('content/levels');
   expect(source.errors).toEqual([]);
-  expect(source.levels).toHaveLength(490);
+  expect(source.levels).toHaveLength(500);
   for (const level of source.levels) expect(getLevel(level.id)).toEqual(level);
 });
 
@@ -127,5 +127,5 @@ test('M16F remains unpublished while the developer index includes it', () => {
     expect(isPublishedCampaignLevel(level.id)).toBe(false);
     expect(devLevelIndex().find(entry => entry.id === level.id)).toMatchObject({ title: level.title, world: Math.ceil(level.id / 10) });
   }
-  expect(getLevel(491)).toBeUndefined();
+  expect(getLevel(501)).toBeUndefined();
 });
