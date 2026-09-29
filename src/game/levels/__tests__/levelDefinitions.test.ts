@@ -160,7 +160,7 @@ test('the active campaign manifest is valid, with no gaps or duplicate assignmen
   const report = validateManifest(CAMPAIGN_MANIFEST, activeIds);
   expect(report.errors).toEqual([]);
   const worldIds = CAMPAIGN_MANIFEST.worlds.map((w) => w.id);
-  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(41);
+  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(45);
   expect(LEVELS).toHaveLength(100);
   expect(new Set(worldIds).size).toBe(worldIds.length);
   // Every level is assigned to exactly one world.

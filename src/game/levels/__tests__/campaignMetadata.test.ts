@@ -51,10 +51,14 @@ const EXPECTED_WORLDS = [
   { id: 'bio-mechanical-realm', title: 'Bio-Mechanical Realm', themeId: 'bio-mechanical-realm' },
   { id: 'parallel-earth', title: 'Parallel Earth', themeId: 'parallel-earth' },
   { id: 'forgotten-seas', title: 'Forgotten Seas', themeId: 'forgotten-seas' },
+  { id: 'colossal-machines', title: 'Colossal Machines', themeId: 'colossal-machines' },
+  { id: 'celestial-gardens', title: 'Celestial Gardens', themeId: 'celestial-gardens' },
+  { id: 'arcane-city', title: 'Arcane City', themeId: 'arcane-city' },
+  { id: 'colossal-architecture', title: 'Colossal Architecture', themeId: 'colossal-architecture' },
 ] as const;
 
-test('the campaign manifest exposes exactly the forty-one current world names/ids, in order', () => {
-  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(41);
+test('the campaign manifest exposes exactly the forty-five current world names/ids, in order', () => {
+  expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(45);
   expect(CAMPAIGN_MANIFEST.worlds.map((w) => ({ id: w.id, title: w.title, themeId: w.themeId }))).toEqual(
     EXPECTED_WORLDS.map((w) => ({ ...w })),
   );
@@ -78,9 +82,9 @@ test('every world groups exactly ten levels, and its levels each carry the match
   for (const world of CAMPAIGN_MANIFEST.worlds) {
     expect(world.levelIds).toHaveLength(10);
   }
-  // Levels are globally unique across worlds and cover 1-410 with no gaps.
+  // Levels are globally unique across worlds and cover 1-450 with no gaps.
   const allIds = CAMPAIGN_MANIFEST.worlds.flatMap((w) => w.levelIds).sort((a, b) => a - b);
-  expect(allIds).toEqual(Array.from({ length: 410 }, (_, i) => i + 1));
+  expect(allIds).toEqual(Array.from({ length: 450 }, (_, i) => i + 1));
 });
 
 test('each world has a non-empty subtitle and a real (non-gameplay) accent colour', () => {

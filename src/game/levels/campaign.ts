@@ -66,6 +66,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'bio-mechanical-realm', title: 'Bio-Mechanical Realm', themeId: 'bio-mechanical-realm', display: { subtitle: 'Life within the machine', accent: worldSkin('bio-mechanical-realm').accent } },
   { id: 'parallel-earth', title: 'Parallel Earth', themeId: 'parallel-earth', display: { subtitle: 'One law changed', accent: worldSkin('parallel-earth').accent } },
   { id: 'forgotten-seas', title: 'Forgotten Seas', themeId: 'forgotten-seas', display: { subtitle: 'Beyond the old maps', accent: worldSkin('forgotten-seas').accent } },
+  { id: 'colossal-machines', title: 'Colossal Machines', themeId: 'colossal-machines', display: { subtitle: 'Engines across the land', accent: worldSkin('colossal-machines').accent } },
+  { id: 'celestial-gardens', title: 'Celestial Gardens', themeId: 'celestial-gardens', display: { subtitle: 'Cultivated heavens', accent: worldSkin('celestial-gardens').accent } },
+  { id: 'arcane-city', title: 'Arcane City', themeId: 'arcane-city', display: { subtitle: 'Knowledge made luminous', accent: worldSkin('arcane-city').accent } },
+  { id: 'colossal-architecture', title: 'Colossal Architecture', themeId: 'colossal-architecture', display: { subtitle: 'Beyond the scale of cities', accent: worldSkin('colossal-architecture').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

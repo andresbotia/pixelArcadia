@@ -28,7 +28,7 @@ const imported = LEVEL_DEFINITIONS.filter(l => l.id >= 241 && l.id <= 250);
 test('World 25 selects the authored definitions exactly, preserving the stable handoff content', () => {
   expect(imported).toHaveLength(10);
   const ids = LEVEL_DEFINITIONS.map(l => l.id);
-  expect(ids).toEqual(Array.from({ length: 410 }, (_, i) => i + 1));
+  expect(ids).toEqual(Array.from({ length: 450 }, (_, i) => i + 1));
   expect(new Set(ids).size).toBe(ids.length);
   for (const world of [25]) {
     const raw = fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8');
@@ -150,9 +150,9 @@ test('all 17 tiny Pals are preserved (no merges applied)', () => {
 test('full 1–290 registry matches all source packets with valid replacement relationships', () => {
   const source = loadAuthoredDirectory(path.resolve('content/levels'));
   expect(source.errors).toEqual([]);
-  expect(source.levels).toHaveLength(410);
+  expect(source.levels).toHaveLength(450);
   const ids = source.levels.map(def => def.id).sort((a, b) => a - b);
-  expect(ids).toEqual(Array.from({ length: 410 }, (_, i) => i + 1));
+  expect(ids).toEqual(Array.from({ length: 450 }, (_, i) => i + 1));
   for (const def of source.levels) {
     expect(getLevel(def.id)).toEqual(def);
     expect(validateLevelStructure(def).valid).toBe(true);

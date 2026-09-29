@@ -105,6 +105,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'bio-mechanical-realm': { accent: '#BD8B71', secondaryAccent: '#8CC2AA', ambientId: 'galleryDust', intensity: 'medium' },
   'parallel-earth': { accent: '#88BBD0', secondaryAccent: '#C6D488', ambientId: 'skylineDrift', intensity: 'medium' },
   'forgotten-seas': { accent: '#8DA5A0', secondaryAccent: '#BEC6BC', ambientId: 'currents', intensity: 'medium' },
+  'colossal-machines': { accent: '#B6A175', secondaryAccent: '#A4B7B8', ambientId: 'galleryDust', intensity: 'high' },
+  'celestial-gardens': { accent: '#B8C9A5', secondaryAccent: '#D5B9D7', ambientId: 'starfield', intensity: 'medium' },
+  'arcane-city': { accent: '#C7A96D', secondaryAccent: '#7FB4BD', ambientId: 'skylineDrift', intensity: 'medium' },
+  'colossal-architecture': { accent: '#BDB4A1', secondaryAccent: '#A6BBD0', ambientId: 'galleryDust', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;
