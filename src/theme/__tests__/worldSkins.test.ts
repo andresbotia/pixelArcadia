@@ -9,6 +9,7 @@ const REAL_CAMPAIGN_THEME_IDS = [
   'arcadia-ascendant',
   'desert-kingdoms', 'deep-jungle', 'underworld', 'ocean-cities',
   'cosmic-gods', 'ancient-machines', 'festival-worlds', 'alien-ecosystems',
+  'lost-futures', 'mythic-asia', 'giant-insects', 'moon-kingdom',
 ];
 
 test('every real campaign world has a skin entry', () => {

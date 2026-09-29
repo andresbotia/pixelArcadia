@@ -11,32 +11,32 @@ import {
 import { orbColors, orbGlow, orbLabel } from '@/theme/colors';
 import type { OrbColor } from '@/game/engine/types';
 
-test('the gameplay palette is exactly the 42 approved colours: hue wheel, then the World 6–24 extensions', () => {
+test('the gameplay palette is exactly the 44 approved colours: hue wheel, then the World 6–24 extensions', () => {
   expect(GAMEPLAY_COLORS).toEqual([
     'white', 'yellow', 'gold', 'orange', 'red', 'coral', 'pink', 'magenta',
     'purple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lime',
     'sand', 'brown', 'stone', 'forest', 'maroon',
     'navy', 'seafoam', 'slate', 'ivory', 'ice', 'amethyst',
     'olive', 'umber', 'lavender', 'blush', 'bronze', 'ultramarine', 'pine', 'mauve', 'garnet', 'verdigris',
-    'cerulean', 'graphite', 'sage', 'plum', 'rose', 'silver',
+    'cerulean', 'graphite', 'sage', 'plum', 'rose', 'silver', 'moss', 'ash',
   ]);
-  // Every palette token map covers all 42 with no extras.
+  // Every palette token map covers all 44 with no extras.
   for (const map of [orbColors, orbGlow, orbLabel]) {
     expect(Object.keys(map).sort()).toEqual([...GAMEPLAY_COLORS].sort());
   }
 });
 
-test('42/42 colour coverage: one mark per colour, every mark name unique', () => {
+test('44/44 colour coverage: one mark per colour, every mark name unique', () => {
   expect(Object.keys(COLOR_MARKS).sort()).toEqual([...GAMEPLAY_COLORS].sort());
   const names = GAMEPLAY_COLORS.map((c) => colorMark(c).name);
-  expect(new Set(names).size).toBe(42);
+  expect(new Set(names).size).toBe(44);
 });
 
 test('every mark is topologically unique (not just colour or rotation)', () => {
   const signature = (c: OrbColor) =>
     JSON.stringify(colorMark(c).parts.map((p) => ({ ...p, offset: undefined })));
   const sigs = GAMEPLAY_COLORS.map(signature);
-  expect(new Set(sigs).size).toBe(42);
+  expect(new Set(sigs).size).toBe(44);
 
   // At most one pure single-bar rotation pair in the whole set.
   const singleBars = GAMEPLAY_COLORS.filter((c) => {

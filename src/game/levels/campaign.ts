@@ -58,6 +58,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'ancient-machines', title: 'Ancient Machines', themeId: 'ancient-machines', display: { subtitle: 'Stone remembers', accent: worldSkin('ancient-machines').accent } },
   { id: 'festival-worlds', title: 'Festival Worlds', themeId: 'festival-worlds', display: { subtitle: 'A world in celebration', accent: worldSkin('festival-worlds').accent } },
   { id: 'alien-ecosystems', title: 'Alien Ecosystems', themeId: 'alien-ecosystems', display: { subtitle: 'Unfamiliar life', accent: worldSkin('alien-ecosystems').accent } },
+  { id: 'lost-futures', title: 'Lost Futures', themeId: 'lost-futures', display: { subtitle: 'The promise abandoned', accent: worldSkin('lost-futures').accent } },
+  { id: 'mythic-asia', title: 'Mythic Asia', themeId: 'mythic-asia', display: { subtitle: 'From heaven to earth', accent: worldSkin('mythic-asia').accent } },
+  { id: 'giant-insects', title: 'Giant Insects', themeId: 'giant-insects', display: { subtitle: 'Life as landscape', accent: worldSkin('giant-insects').accent } },
+  { id: 'moon-kingdom', title: 'Moon Kingdom', themeId: 'moon-kingdom', display: { subtitle: 'Carved in silence', accent: worldSkin('moon-kingdom').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

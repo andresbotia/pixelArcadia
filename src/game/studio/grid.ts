@@ -81,6 +81,8 @@ export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
     plum: 'y',
     rose: 'e',
     silver: 'k',
+    moss: 'q',
+    ash: 'd',
   };
 })();
 
@@ -91,5 +93,5 @@ export function isDefaultLegendColor(color: OrbColor): boolean {
 
 export const EMPTY_CELL_CHAR = '.';
 
-/** All 42 gameplay colours, in registry order — the real palette, no invention. */
+/** All 44 gameplay colours, in registry order — the real palette, no invention. */
 export const ORB_COLORS: OrbColor[] = [...ORB_COLOR_IDS];

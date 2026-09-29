@@ -2,7 +2,7 @@ import { ORB_COLOR_IDS, type OrbColor } from '@/game/engine/types';
 import { orbColors } from './colors';
 
 /**
- * Full 42-color Color Assist system: one unique, machine-language mark per
+ * Full 44-color Color Assist system: one unique, machine-language mark per
  * gameplay colour, plus a contrast strategy so the mark stays readable over any
  * base colour. Pure — the RN renderer (components/ColorAssistMark) consumes this.
  *
@@ -39,7 +39,7 @@ export interface ColorMark {
 }
 
 /**
- * 42 marks. Related within families (ring-, triangle-, bar- and square-based)
+ * 44 marks. Related within families (ring-, triangle-, bar- and square-based)
  * but each topologically unique. The bar pair (orange↔red) and split-ring pair (green↔garnet) use rotation, and
  * the triangle pair also differs by fill. The World 6 marks avoid echoing their
  * nearest colours: sand (nearest yellow's ring) is a square, stone (nearest
@@ -122,6 +122,16 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
   plum: { name: 'pierced-ring', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 90, len: 0.2, offset: [0, -0.42] }, { p: 'bar', angle: 90, len: 0.2, offset: [0, 0.42] }] },
   rose: { name: 'triangle-down-dot', parts: [{ p: 'tri', dir: 'down', fill: false }, { p: 'dot', scale: 0.3 }] },
   silver: { name: 'orbit', parts: [{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 0, len: 0.95 }] },
+  moss: { name: 'sprout', parts: [
+    { p: 'bar', angle: 90, len: 0.5, offset: [0, 0.2] },
+    { p: 'bar', angle: 45, len: 0.5, offset: [-0.16, -0.16] },
+    { p: 'bar', angle: -45, len: 0.5, offset: [0.16, -0.16] },
+  ] },
+  ash: { name: 'girder', parts: [
+    { p: 'bar', angle: 0, len: 0.8, offset: [0, -0.3] },
+    { p: 'bar', angle: 0, len: 0.8, offset: [0, 0.3] },
+    { p: 'bar', angle: 90, len: 0.6 },
+  ] },
 };
 
 export const COLOR_MARKS: Record<OrbColor, ColorMark> = Object.fromEntries(

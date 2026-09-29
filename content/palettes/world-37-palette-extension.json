@@ -1,0 +1,24 @@
+{
+  "world": 37,
+  "title": "Moon Kingdom",
+  "firstLevel": 361,
+  "requiresPaletteExtension": true,
+  "introducesColorIds": [
+    "ash"
+  ],
+  "globalVocabularyAfterWorld": 44,
+  "colors": [
+    {
+      "id": "ash",
+      "hex": "#7B786E",
+      "suggestedGlowRim": "#B4B4A8",
+      "label": "ASH",
+      "assistGlyph": "girder",
+      "studioCharacter": "d",
+      "nearestExisting": "graphite",
+      "nearestDeltaE00": 16.9,
+      "permanentRecommendation": "yes",
+      "specSource": "PALETTE_VALIDATION_351_500.md"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ import { validateLevelStructure } from '../validate';
 const W25 = Array.from({ length: 10 }, (_, i) => 241 + i);
 
 test('World 25 preserves its original colors after the silver registry append', () => {
-  expect(ORB_COLOR_IDS).toHaveLength(42);
+  expect(ORB_COLOR_IDS).toHaveLength(44);
   expect(ORB_COLOR_IDS.slice(39, 41)).toEqual(['plum', 'rose']);
 });
 

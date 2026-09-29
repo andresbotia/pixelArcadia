@@ -44,7 +44,7 @@ test.each(COLORS)('%s validates, renders and round-trips through Studio', (color
 });
 
 test('appends exactly plum, rose after the 39-colour baseline', () => {
-  expect(ORB_COLOR_IDS).toHaveLength(42);
+  expect(ORB_COLOR_IDS).toHaveLength(44);
   expect(ORB_COLOR_IDS.slice(0, 39)).toEqual([
     'white',
     'yellow',
@@ -94,8 +94,8 @@ test('appends exactly plum, rose after the 39-colour baseline', () => {
   for (const map of [orbColors, orbGlow, orbLabel, COLOR_TO_CHAR]) {
     expect(Object.keys(map)).toEqual([...ORB_COLOR_IDS]);
   }
-  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(42);
-  expect(new Set(Object.values(orbColors)).size).toBe(42);
+  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(44);
+  expect(new Set(Object.values(orbColors)).size).toBe(44);
 });
 
 test.each(['full', 'compact', 'minimal'] as const)('new marks are exact and distinct from their colour family at %s detail', detail => {

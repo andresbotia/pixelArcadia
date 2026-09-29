@@ -6,7 +6,7 @@ import { colorMark, markContrast, simplifiedMark } from '@/theme/colorAssist';
 import { orbColors, orbGlow } from '@/theme/colors';
 
 test('M16A uses the original 41 colours after the silver append', () => {
-  expect(ORB_COLOR_IDS).toHaveLength(42);
+  expect(ORB_COLOR_IDS).toHaveLength(44);
   expect(ORB_COLOR_IDS.slice(0, 41)).not.toContain('silver');
   expect(ORB_COLOR_IDS).not.toContain('terracotta');
   expect(ORB_COLOR_IDS).not.toContain('petrol');

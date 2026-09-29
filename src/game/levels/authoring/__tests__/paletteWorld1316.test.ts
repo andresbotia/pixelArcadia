@@ -44,22 +44,22 @@ test('preserves all existing fills and positions, appending exactly two approved
   expect(ORB_COLOR_IDS.slice(0, 34)).toEqual(Object.keys(EXISTING));
   expect(ORB_COLOR_IDS.slice(34, 36)).toEqual(Object.keys(APPROVED));
   for (const [color, hex] of Object.entries(EXISTING)) expect(orbColors[color as OrbColor]).toBe(hex);
-  expect(ORB_COLOR_IDS).toHaveLength(42);
-  expect(new Set(ORB_COLOR_IDS).size).toBe(42);
+  expect(ORB_COLOR_IDS).toHaveLength(44);
+  expect(new Set(ORB_COLOR_IDS).size).toBe(44);
   for (const list of [ORB_COLORS, GAMEPLAY_COLORS, [...ORB_COLOR_ORDER], [...VALID_ORB_COLORS]]) {
     expect(list).toEqual([...ORB_COLOR_IDS]);
   }
   for (const map of [orbColors, orbGlow, orbLabel, COLOR_TO_CHAR]) {
     expect(Object.keys(map)).toEqual([...ORB_COLOR_IDS]);
   }
-  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(42);
+  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(44);
 });
 
-test.each(['full', 'compact', 'minimal'] as const)('all 42 assist shapes stay unique at %s detail', detail => {
+test.each(['full', 'compact', 'minimal'] as const)('all 44 assist shapes stay unique at %s detail', detail => {
   const names = ORB_COLOR_IDS.map(c => colorMark(c).name);
   const shapes = ORB_COLOR_IDS.map(c => JSON.stringify(simplifiedMark(c, detail).parts));
-  expect(new Set(names).size).toBe(42);
-  expect(new Set(shapes).size).toBe(42);
+  expect(new Set(names).size).toBe(44);
+  expect(new Set(shapes).size).toBe(44);
   expect(simplifiedMark('navy', detail)).not.toEqual(simplifiedMark('slate', detail));
   const pale = ['seafoam', 'ivory', 'ice', 'sand', 'yellow', 'white'] as const;
   expect(new Set(pale.map(c => JSON.stringify(simplifiedMark(c, detail).parts))).size).toBe(pale.length);
@@ -99,8 +99,8 @@ test('garnet theta and verdigris lid retain their distinct semantics at every de
 
 test('a representative full-palette board uses the entire schema and Studio infrastructure', () => {
   const legend = Object.fromEntries(ORB_COLOR_IDS.map(c => [COLOR_TO_CHAR[c], c]));
-  const pixelArt = Array.from({ length: 7 }, (_, y) => ORB_COLOR_IDS.slice(y * 6, y * 6 + 6).map(c => COLOR_TO_CHAR[c]).join('').padEnd(6, '.'));
-  const def = { id: 9781, title: '41 colors', themeId: 'frozen-north', difficulty: 'easy' as const,
+  const pixelArt = Array.from({ length: Math.ceil(ORB_COLOR_IDS.length / 6) }, (_, y) => ORB_COLOR_IDS.slice(y * 6, y * 6 + 6).map(c => COLOR_TO_CHAR[c]).join('').padEnd(6, '.'));
+  const def = { id: 9781, title: '44 colors', themeId: 'frozen-north', difficulty: 'easy' as const,
     holdingCapacity: 3, ruleset: 'coreV2' as const, legend, pixelArt,
     tunnels: [ORB_COLOR_IDS.map(color => ({ color, capacity: 1 })), [], []] };
   expect(validateLevelStructure(def).valid).toBe(true);

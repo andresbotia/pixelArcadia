@@ -1,0 +1,24 @@
+{
+  "world": 36,
+  "title": "Giant Insects",
+  "firstLevel": 351,
+  "requiresPaletteExtension": true,
+  "introducesColorIds": [
+    "moss"
+  ],
+  "globalVocabularyAfterWorld": 43,
+  "colors": [
+    {
+      "id": "moss",
+      "hex": "#5F6418",
+      "suggestedGlowRim": "#C4B464",
+      "label": "MOSS",
+      "assistGlyph": "sprout",
+      "studioCharacter": "q",
+      "nearestExisting": "bronze",
+      "nearestDeltaE00": 18.1,
+      "permanentRecommendation": "yes",
+      "specSource": "PALETTE_VALIDATION_351_500.md"
+    }
+  ]
+}

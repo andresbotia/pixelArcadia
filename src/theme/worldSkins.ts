@@ -97,6 +97,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'ancient-machines': { accent: '#899DA5', secondaryAccent: '#C6A66A', ambientId: 'galleryDust', intensity: 'high' },
   'festival-worlds': { accent: '#EC739E', secondaryAccent: '#AFE6D4', ambientId: 'neonSignage', intensity: 'high' },
   'alien-ecosystems': { accent: '#AAC967', secondaryAccent: '#D6A6CA', ambientId: 'foliage', intensity: 'high' },
+  'lost-futures': { accent: '#C3B9CC', secondaryAccent: '#8BBEB4', ambientId: 'skylineDrift', intensity: 'high' },
+  'mythic-asia': { accent: '#DDBE64', secondaryAccent: '#83AAA4', ambientId: 'foliage', intensity: 'high' },
+  'giant-insects': { accent: '#B7A466', secondaryAccent: '#829763', ambientId: 'foliage', intensity: 'high' },
+  'moon-kingdom': { accent: '#B5B3AD', secondaryAccent: '#8AA7BE', ambientId: 'starfield', intensity: 'medium' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;

@@ -17,14 +17,14 @@ const SILVER: LevelDefinition = { id: 9830, title: 'Silver round trip', themeId:
   holdingCapacity: 3, activeCapacity: 5, ruleset: 'coreV2', replacesLegacy: false, legend: { k: 'silver' },
   pixelArt: ['kkkk', 'kkkk', 'kkkk', 'kkkk'], tunnels: [[{ color: 'silver', capacity: 16 }], [], []] };
 
-test('silver appends once after the exact previous 41 IDs', () => {
-  expect(ORB_COLOR_IDS).toEqual([...BASELINE, 'silver']);
+test('silver preserves position 42 within the expanded registry', () => {
+  expect(ORB_COLOR_IDS).toEqual([...BASELINE, 'silver', 'moss', 'ash']);
   for (const list of [ORB_COLORS, GAMEPLAY_COLORS, ORB_COLOR_ORDER, [...VALID_ORB_COLORS]]) {
     expect([...list]).toEqual([...ORB_COLOR_IDS]);
   }
   for (const map of [orbColors, orbGlow, orbLabel, COLOR_TO_CHAR]) expect(Object.keys(map)).toEqual([...ORB_COLOR_IDS]);
-  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(42);
-  expect(new Set(Object.values(orbColors)).size).toBe(42);
+  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(44);
+  expect(new Set(Object.values(orbColors)).size).toBe(44);
   expect(ORB_COLOR_IDS).not.toContain('terracotta'); expect(ORB_COLOR_IDS).not.toContain('petrol');
 });
 
@@ -42,8 +42,8 @@ test('locked silver tokens and Studio character round trip', () => {
 test.each(['full', 'compact', 'minimal'] as const)('orbit remains exact and unique at %s detail', detail => {
   expect(colorMark('silver').name).toBe('orbit');
   expect(simplifiedMark('silver', detail).parts).toEqual([{ p: 'ring', scale: 0.7 }, { p: 'bar', angle: 0, len: 0.95 }]);
-  expect(new Set(ORB_COLOR_IDS.map(c => colorMark(c).name)).size).toBe(42);
-  expect(new Set(ORB_COLOR_IDS.map(c => JSON.stringify(simplifiedMark(c, detail).parts))).size).toBe(42);
+  expect(new Set(ORB_COLOR_IDS.map(c => colorMark(c).name)).size).toBe(44);
+  expect(new Set(ORB_COLOR_IDS.map(c => JSON.stringify(simplifiedMark(c, detail).parts))).size).toBe(44);
   for (const near of ['white', 'stone', 'sage', 'sand', 'ice'] as const) {
     expect(orbColors.silver).not.toBe(orbColors[near]);
     expect(simplifiedMark('silver', detail).parts).not.toEqual(simplifiedMark(near, detail).parts);
