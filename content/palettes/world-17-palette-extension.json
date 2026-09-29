@@ -1,0 +1,17 @@
+{
+ "world": 17,
+ "title": "Steam Skyways",
+ "requiresPaletteExtension": false,
+ "introducesColorIds": [],
+ "usesPreviouslyProposedColorIds": [
+  "olive",
+  "umber",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "verdigris"
+ ],
+ "globalVocabularyAfterWorld": 36,
+ "colors": [],
+ "note": "No new colour. Existing and previously proposed vocabulary is sufficient for this theme."
+}

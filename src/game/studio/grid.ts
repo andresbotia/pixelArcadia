@@ -32,7 +32,7 @@ export function parseCellKey(key: string): { x: number; y: number } {
 /**
  * Canonical colour → art-character mapping. The nine colours in the shared
  * default legend keep their historical characters (so Levels 1–10 re-serialise
- * byte-for-byte); the remaining twenty-seven get stable extra characters and force an
+ * byte-for-byte); the remaining thirty get stable extra characters and force an
  * explicit `legend` entry on export.
  */
 export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
@@ -75,6 +75,9 @@ export const COLOR_TO_CHAR: Record<OrbColor, string> = (() => {
     mauve: 'm',
     garnet: 'g',
     verdigris: 'v',
+    cerulean: 'c',
+    graphite: 'r',
+    sage: 's',
   };
 })();
 
@@ -85,5 +88,5 @@ export function isDefaultLegendColor(color: OrbColor): boolean {
 
 export const EMPTY_CELL_CHAR = '.';
 
-/** All 36 gameplay colours, in registry order — the real palette, no invention. */
+/** All 39 gameplay colours, in registry order — the real palette, no invention. */
 export const ORB_COLORS: OrbColor[] = [...ORB_COLOR_IDS];

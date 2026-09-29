@@ -28,7 +28,7 @@ export const palette = {
 } as const;
 
 /**
- * Primary fill for each of the 36 gameplay colors (pixels and charges), in
+ * Primary fill for each of the 39 gameplay colors (pixels and charges), in
  * registry order (`ORB_COLOR_IDS`). Color Assist marks (theme/colorAssist.ts)
  * give every one of these a unique non-color identifier.
  */
@@ -70,6 +70,10 @@ export const orbColors: Record<OrbColor, string> = {
   mauve: '#A5708F',
   garnet: '#8E1B1B',
   verdigris: '#1B8C8C',
+  // World 18 / World 19 / World 20 extensions.
+  cerulean: '#2FA0E0',
+  graphite: '#555A66',
+  sage: '#94A887',
 };
 
 /**
@@ -115,6 +119,9 @@ export const orbGlow: Record<OrbColor, string> = {
   mauve: '#D6BECC',
   garnet: '#CC9898',
   verdigris: '#98CBCB',
+  cerulean: '#A1D4F1',
+  graphite: '#B2B4BA',
+  sage: '#CED7C9',
 };
 
 /** Human-facing color name for the HUD / accessibility labels. */
@@ -155,4 +162,7 @@ export const orbLabel: Record<OrbColor, string> = {
   mauve: 'MAUVE',
   garnet: 'GARNET',
   verdigris: 'VERDIGRIS',
+  cerulean: 'CERULEAN',
+  graphite: 'GRAPHITE',
+  sage: 'SAGE',
 };

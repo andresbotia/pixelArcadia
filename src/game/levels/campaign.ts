@@ -13,7 +13,7 @@ import { worldSkin } from '@/theme/worldSkins';
 import { LEVEL_DEFINITIONS } from './levels';
 
 /**
- * The Pixel Arcadia campaign manifest: sixteen themed worlds of ten levels each.
+ * The Pixel Arcadia campaign manifest: twenty themed worlds of ten levels each.
  * Authoring / campaign-organisation data only — it is NOT read by the engine and
  * carries no solver output. Each world's `levelIds` is filtered to the levels
  * that actually exist, so the manifest stays valid while a world is still being
@@ -22,7 +22,7 @@ import { LEVEL_DEFINITIONS } from './levels';
 // `display.accent` is per-world identity colour for the world-select screen,
 // sourced from `theme/worldSkins.ts` so there is exactly one authored accent
 // value per world (not a second, hand-duplicated one here). Content data,
-// like `orbColors`, never reused as chrome and never drawn from the 36
+// like `orbColors`, never reused as chrome and never drawn from the 39
 // gameplay colours (brand <-> gameplay separation).
 const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'first-light', title: 'First Light', themeId: 'first-light', display: { subtitle: 'Learn the light', accent: worldSkin('first-light').accent } },
@@ -41,6 +41,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'volcanic-forge', title: 'Volcanic Forge', themeId: 'volcanic-forge', display: { subtitle: 'Where fire is shaped', accent: worldSkin('volcanic-forge').accent } },
   { id: 'carnival-of-wonders', title: 'Carnival of Wonders', themeId: 'carnival-of-wonders', display: { subtitle: 'Step right up', accent: worldSkin('carnival-of-wonders').accent } },
   { id: 'lantern-dynasty', title: 'Lantern Dynasty', themeId: 'lantern-dynasty', display: { subtitle: 'A thousand lights rising', accent: worldSkin('lantern-dynasty').accent } },
+  { id: 'steam-skyways', title: 'Steam Skyways', themeId: 'steam-skyways', display: { subtitle: 'Brass above the clouds', accent: worldSkin('steam-skyways').accent } },
+  { id: 'crystal-caverns', title: 'Crystal Caverns', themeId: 'crystal-caverns', display: { subtitle: 'Light beneath the stone', accent: worldSkin('crystal-caverns').accent } },
+  { id: 'neon-megacity', title: 'Neon Megacity', themeId: 'neon-megacity', display: { subtitle: 'The city never sleeps', accent: worldSkin('neon-megacity').accent } },
+  { id: 'dreamscapes', title: 'Dreamscapes', themeId: 'dreamscapes', display: { subtitle: 'Where waking ends', accent: worldSkin('dreamscapes').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

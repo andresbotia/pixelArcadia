@@ -1,0 +1,79 @@
+{
+ "world": 19,
+ "title": "Neon Megacity",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "graphite"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "lavender",
+  "ultramarine",
+  "cerulean"
+ ],
+ "globalVocabularyAfterWorld": 38,
+ "colors": [
+  {
+   "id": "graphite",
+   "hex": "#555A66",
+   "labL": 38.2,
+   "nearestExisting": "slate",
+   "nearestDeltaE00": 12.7,
+   "secondNearest": "navy",
+   "secondDeltaE00": 13.1,
+   "visualDistinction": "Neutral dark grey; darker than stone, less blue than slate",
+   "primaryUse": "Urban metal, storm clouds, mech armour, gothic lead",
+   "contrastConcern": "Weakest proposal after bronze/rose (\u0394E00 12.7 vs slate); pale rim + glyph mandatory",
+   "suggestedGlowRim": "#B2B4BA",
+   "suggestedAssistGlyph": "slashed square: outline square with one 45\u00b0 bar",
+   "worldsUsing": [
+    19,
+    21,
+    22,
+    23,
+    25
+   ],
+   "levelsUsing": [
+    181,
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    213,
+    215,
+    216,
+    217,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    246,
+    248,
+    249
+   ],
+   "levelCount": 38,
+   "permanentRecommendation": "yes, conditional on rim + unique glyph passing minimum-detail review"
+  }
+ ]
+}

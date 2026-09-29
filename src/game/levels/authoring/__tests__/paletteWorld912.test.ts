@@ -60,22 +60,22 @@ test('preserves all existing fills and positions, appending exactly eight approv
   expect(ORB_COLOR_IDS.slice(0, 26)).toEqual(Object.keys(EXISTING));
   expect(ORB_COLOR_IDS.slice(26, 34)).toEqual(Object.keys(APPROVED));
   for (const [color, hex] of Object.entries(EXISTING)) expect(orbColors[color as OrbColor]).toBe(hex);
-  expect(ORB_COLOR_IDS).toHaveLength(36);
-  expect(new Set(ORB_COLOR_IDS).size).toBe(36);
+  expect(ORB_COLOR_IDS).toHaveLength(39);
+  expect(new Set(ORB_COLOR_IDS).size).toBe(39);
   for (const list of [ORB_COLORS, GAMEPLAY_COLORS, [...ORB_COLOR_ORDER], [...VALID_ORB_COLORS]]) {
     expect(list).toEqual([...ORB_COLOR_IDS]);
   }
   for (const map of [orbColors, orbGlow, orbLabel, COLOR_TO_CHAR]) {
     expect(Object.keys(map)).toEqual([...ORB_COLOR_IDS]);
   }
-  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(36);
+  expect(new Set(Object.values(COLOR_TO_CHAR)).size).toBe(39);
 });
 
-test.each(['full', 'compact', 'minimal'] as const)('all 36 assist shapes stay unique at %s detail', detail => {
+test.each(['full', 'compact', 'minimal'] as const)('all 39 assist shapes stay unique at %s detail', detail => {
   const names = ORB_COLOR_IDS.map(c => colorMark(c).name);
   const shapes = ORB_COLOR_IDS.map(c => JSON.stringify(simplifiedMark(c, detail).parts));
-  expect(new Set(names).size).toBe(36);
-  expect(new Set(shapes).size).toBe(36);
+  expect(new Set(names).size).toBe(39);
+  expect(new Set(shapes).size).toBe(39);
   expect(simplifiedMark('navy', detail)).not.toEqual(simplifiedMark('slate', detail));
   const pale = ['seafoam', 'ivory', 'ice', 'sand', 'yellow', 'white'] as const;
   expect(new Set(pale.map(c => JSON.stringify(simplifiedMark(c, detail).parts))).size).toBe(pale.length);

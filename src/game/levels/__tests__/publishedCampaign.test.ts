@@ -101,7 +101,7 @@ describe('published campaign boundary (PUBLISHED_MAX_LEVEL = 50)', () => {
     const summaries = summarizeWorlds(manifest, legacy);
     expect(summaries).toHaveLength(5);
     expect(summaries.every((s) => s.state === 'complete' && s.completedCount === s.totalCount)).toBe(true);
-    expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(16); // full authoring registry, independent of publication
+    expect(CAMPAIGN_MANIFEST.worlds).toHaveLength(20); // full authoring registry, independent of publication
   });
 
   it('9. Game Center never submits past the published max (legacy save of 73 → 50)', async () => {

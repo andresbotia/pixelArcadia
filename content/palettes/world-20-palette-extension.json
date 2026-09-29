@@ -1,0 +1,74 @@
+{
+ "world": 20,
+ "title": "Dreamscapes",
+ "requiresPaletteExtension": true,
+ "introducesColorIds": [
+  "sage"
+ ],
+ "usesPreviouslyProposedColorIds": [
+  "umber",
+  "blush",
+  "lavender",
+  "bronze",
+  "ultramarine",
+  "mauve",
+  "cerulean"
+ ],
+ "globalVocabularyAfterWorld": 39,
+ "colors": [
+  {
+   "id": "sage",
+   "hex": "#94A887",
+   "labL": 66.6,
+   "nearestExisting": "olive",
+   "nearestDeltaE00": 16.4,
+   "secondNearest": "seafoam",
+   "secondDeltaE00": 16.6,
+   "visualDistinction": "Grey-green pastel; greyer than seafoam, lighter than olive",
+   "primaryUse": "Dream meadows, muted foliage, faded fabric",
+   "contrastConcern": "Low chroma; relies on glyph near seafoam/stone",
+   "suggestedGlowRim": "#CED7C9",
+   "suggestedAssistGlyph": "anchor: down-arc over a vertical bar",
+   "worldsUsing": [
+    20,
+    21,
+    24,
+    25
+   ],
+   "levelsUsing": [
+    191,
+    192,
+    193,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    231,
+    233,
+    234,
+    235,
+    238,
+    239,
+    240,
+    244,
+    245,
+    248
+   ],
+   "levelCount": 30,
+   "permanentRecommendation": "yes"
+  }
+ ]
+}
