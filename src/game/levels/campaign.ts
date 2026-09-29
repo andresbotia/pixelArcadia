@@ -70,6 +70,10 @@ const WORLD_BLUEPRINT: Omit<CampaignWorld, 'order' | 'levelIds'>[] = [
   { id: 'celestial-gardens', title: 'Celestial Gardens', themeId: 'celestial-gardens', display: { subtitle: 'Cultivated heavens', accent: worldSkin('celestial-gardens').accent } },
   { id: 'arcane-city', title: 'Arcane City', themeId: 'arcane-city', display: { subtitle: 'Knowledge made luminous', accent: worldSkin('arcane-city').accent } },
   { id: 'colossal-architecture', title: 'Colossal Architecture', themeId: 'colossal-architecture', display: { subtitle: 'Beyond the scale of cities', accent: worldSkin('colossal-architecture').accent } },
+  { id: 'planetary-wonders', title: 'Planetary Wonders', themeId: 'planetary-wonders', display: { subtitle: 'Worlds shaped by nature', accent: worldSkin('planetary-wonders').accent } },
+  { id: 'legendary-relics', title: 'Legendary Relics', themeId: 'legendary-relics', display: { subtitle: 'Artifacts made landscape', accent: worldSkin('legendary-relics').accent } },
+  { id: 'infinite-cities', title: 'Infinite Cities', themeId: 'infinite-cities', display: { subtitle: 'Streets beyond geometry', accent: worldSkin('infinite-cities').accent } },
+  { id: 'arcadia-fractured', title: 'Arcadia Fractured', themeId: 'arcadia-fractured', display: { subtitle: 'The world comes apart', accent: worldSkin('arcadia-fractured').accent } },
 ];
 
 const known = new Set(LEVEL_DEFINITIONS.map((l) => l.id));

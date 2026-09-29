@@ -45,6 +45,10 @@ import { COMPILED_LEVELS as CORE_V2_WORLD_42 } from './compiledWorld42';
 import { COMPILED_LEVELS as CORE_V2_WORLD_43 } from './compiledWorld43';
 import { COMPILED_LEVELS as CORE_V2_WORLD_44 } from './compiledWorld44';
 import { COMPILED_LEVELS as CORE_V2_WORLD_45 } from './compiledWorld45';
+import { COMPILED_LEVELS as CORE_V2_WORLD_46 } from './compiledWorld46';
+import { COMPILED_LEVELS as CORE_V2_WORLD_47 } from './compiledWorld47';
+import { COMPILED_LEVELS as CORE_V2_WORLD_48 } from './compiledWorld48';
+import { COMPILED_LEVELS as CORE_V2_WORLD_49 } from './compiledWorld49';
 import { LEVEL_DEFINITIONS as LEGACY_LEVEL_DEFINITIONS } from './levelDefinitions';
 
 /**
@@ -169,7 +173,11 @@ export const LEVEL_DEFINITIONS: LevelDefinition[] = combineLevelDefinitions(
     ...CORE_V2_WORLD_43,
     ...CORE_V2_WORLD_44,
     ...CORE_V2_WORLD_45,
-    ...COMPILED_LEVELS.filter((l) => l.id > 450),
+    ...CORE_V2_WORLD_46,
+    ...CORE_V2_WORLD_47,
+    ...CORE_V2_WORLD_48,
+    ...CORE_V2_WORLD_49,
+    ...COMPILED_LEVELS.filter((l) => l.id > 490),
   ],
 );
 

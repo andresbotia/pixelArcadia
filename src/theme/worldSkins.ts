@@ -109,6 +109,10 @@ const WORLD_SKINS: Record<string, SkinEntry> = {
   'celestial-gardens': { accent: '#B8C9A5', secondaryAccent: '#D5B9D7', ambientId: 'starfield', intensity: 'medium' },
   'arcane-city': { accent: '#C7A96D', secondaryAccent: '#7FB4BD', ambientId: 'skylineDrift', intensity: 'medium' },
   'colossal-architecture': { accent: '#BDB4A1', secondaryAccent: '#A6BBD0', ambientId: 'galleryDust', intensity: 'high' },
+  'planetary-wonders': { accent: '#5DA7C7', secondaryAccent: '#D7E9F3', ambientId: 'starfield', intensity: 'high' },
+  'legendary-relics': { accent: '#D2A558', secondaryAccent: '#EAD7AE', ambientId: 'galleryDust', intensity: 'high' },
+  'infinite-cities': { accent: '#7C9FC4', secondaryAccent: '#D4B7DA', ambientId: 'skylineDrift', intensity: 'high' },
+  'arcadia-fractured': { accent: '#C35AB9', secondaryAccent: '#EBC39C', ambientId: 'duskAsh', intensity: 'high' },
 };
 
 const FALLBACK_SKIN: SkinEntry = WORLD_SKINS['first-light']!;
