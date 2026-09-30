@@ -9,7 +9,7 @@ type RcStoreProduct = import('react-native-purchases').PurchasesStoreProduct;
  * a try: in Expo Go, on web, or in a binary built before the native module was
  * added, it throws — that means "purchases unavailable", never a crash.
  */
-export function createRevenueCatSdk(opts: { debugLogs: boolean }): PurchasesSdk | null {
+export function createRevenueCatSdk(): PurchasesSdk | null {
   let rc: RcModule;
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -39,7 +39,6 @@ export function createRevenueCatSdk(opts: { debugLogs: boolean }): PurchasesSdk 
 
   return {
     configure(apiKey) {
-      if (opts.debugLogs) void Purchases.setLogLevel(rc.LOG_LEVEL.INFO).catch(() => {});
       // No appUserID → RevenueCat anonymous id. No account system in V1.
       Purchases.configure({ apiKey });
     },
@@ -59,8 +58,8 @@ export function createRevenueCatSdk(opts: { debugLogs: boolean }): PurchasesSdk 
         return {
           status: 'purchased',
           productId: res.transaction?.productIdentifier ?? res.productIdentifier,
-          // Apple's id. CustomerInfo's nonSubscriptionTransactions carry
-          // RevenueCat's id instead, so this is for logs only.
+          // Apple's id is retained only as purchase-result metadata.
+          // The grant ledger uses CustomerInfo's RevenueCat transaction id.
           storeTransactionId: res.transaction?.transactionIdentifier ?? '',
           customer: toSnapshot(res.customerInfo),
         };

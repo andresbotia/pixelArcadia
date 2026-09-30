@@ -21,7 +21,7 @@ export function iapCardView(product: IapStoreProduct, snap: PurchasesSnapshot): 
   }
   if (snap.status === 'initializing') return { priceLabel: null, buttonLabel: '…', disabled: true, state: 'loading' };
   const info = snap.products[id];
-  if (snap.status === 'unavailable' || !info) {
+  if (snap.status === 'unavailable' || !info?.priceString?.trim()) {
     return { priceLabel: null, buttonLabel: 'N/A', disabled: true, state: 'unavailable' };
   }
   if (snap.activeOperation === id) return { priceLabel: info.priceString, buttonLabel: '…', disabled: true, state: 'purchasing' };

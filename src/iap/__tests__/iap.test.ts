@@ -8,7 +8,7 @@ import { _clearEconomyCache, loadEconomy, reconcileIapPurchases } from '@/storag
 import { _flushIapWrites, _resetIapCache, getCachedRemoveAds, loadIapCache, saveRemoveAds } from '@/storage/iap';
 
 import { IAP_CATALOG, IAP_IDS, iapProduct, isConsumableProduct } from '../catalog';
-import { REMOVE_ADS_ENTITLEMENT, resolveRevenueCatKey } from '../config';
+import { REMOVE_ADS_ENTITLEMENT, readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from '../config';
 import { PurchasesController, type PurchasesSnapshot } from '../controller';
 import { iapCardView, rewardLines } from '../storeView';
 import type { AdsPolicy } from '@/ads/types';
@@ -21,6 +21,7 @@ const ALL_PRICES = localizedProducts({
   [ID.coins500]: '$0.99', [ID.coins1500]: '$2.99', [ID.coins3500]: '$4.99', [ID.coins8000]: '$9.99',
   [ID.starterPack]: '$2.99', [ID.boosterPack]: '$2.99', [ID.removeAds]: '$4.99',
 });
+const activeControllers: PurchasesController[] = [];
 
 beforeEach(async () => {
   await AsyncStorage.clear();
@@ -28,8 +29,17 @@ beforeEach(async () => {
   _resetIapCache();
 });
 
+afterEach(async () => {
+  for (const controller of activeControllers.splice(0)) controller.stop();
+  await flush();
+  // Listener grants run in the background; drain the shared mutation queue
+  // before another test clears the in-memory cache and AsyncStorage.
+  await reconcileIapPurchases([{ transactionId: 'test_drain', productId: '__none__', purchasedAt: Date.now() }]);
+  await _flushIapWrites();
+});
+
 /** A started controller wired to the REAL economy store, with ads policy captured. */
-async function setup(opts: { key?: string | null; sdk?: FakePurchases | null; cachedRemoveAds?: boolean } = {}) {
+async function setup(opts: { key?: string | null; sdk?: FakePurchases | null; cachedRemoveAds?: boolean; logs?: string[] } = {}) {
   const sdk = opts.sdk === undefined ? new FakePurchases() : opts.sdk;
   if (sdk) sdk.storeProducts = ALL_PRICES;
   const policies: AdsPolicy[] = [];
@@ -37,9 +47,12 @@ async function setup(opts: { key?: string | null; sdk?: FakePurchases | null; ca
     reconcileConsumables: reconcileIapPurchases,
     persistRemoveAds: saveRemoveAds,
     onRemoveAdsChange: (owned) => policies.push(adsPolicyFor(owned)),
+    log: (message) => opts.logs?.push(message),
   }, opts.cachedRemoveAds ?? false);
+  activeControllers.push(ctl);
   await loadEconomy(); // boot preload: starts the IAP ledger before any purchase
   ctl.start();
+  await ctl.refresh();
   await flush();
   return { sdk: sdk!, ctl, policies };
 }
@@ -72,6 +85,11 @@ async function tx(productId: string, transactionId: string) {
 
 describe('catalog', () => {
   it('1. every configured product id maps to exactly one reward', () => {
+    expect(IAP_IDS).toEqual([
+      'pixel_arcadia_coins_500', 'pixel_arcadia_coins_1500', 'pixel_arcadia_coins_3500',
+      'pixel_arcadia_coins_8000', 'pixel_arcadia_starter_pack',
+      'pixel_arcadia_booster_pack', 'pixel_arcadia_remove_ads',
+    ]);
     expect([...IAP_IDS].sort()).toEqual(Object.values(ID).sort());
     for (const id of IAP_IDS) {
       expect(STORE_CATALOG.filter((p) => p.id === id || (p.price.kind === 'iap' && p.price.productId === id))).toHaveLength(1);
@@ -79,6 +97,9 @@ describe('catalog', () => {
       expect(Boolean(r.coins || r.items || r.entitlement)).toBe(true);
     }
     expect(iapProduct(ID.coins500)!.reward).toEqual({ coins: 500 });
+    expect(iapProduct(ID.coins1500)!.reward).toEqual({ coins: 1500 });
+    expect(iapProduct(ID.coins3500)!.reward).toEqual({ coins: 3500 });
+    expect(iapProduct(ID.coins8000)!.reward).toEqual({ coins: 8000 });
     expect(iapProduct(ID.starterPack)!.reward).toEqual({ coins: 1000, items: { undo: 3, extraSlot: 3, bomb: 3 } });
     expect(iapProduct(ID.boosterPack)!.reward).toEqual({ items: { undo: 5, extraSlot: 5, bomb: 5 } });
   });
@@ -146,6 +167,22 @@ describe('consumable grants (atomic, ledgered)', () => {
     expect(await coins()).toBe(start + 1000);
   });
 
+  it('repeat starter and booster purchases grant once per distinct transaction', async () => {
+    const before = await loadEconomy();
+    const starter = await tx(ID.starterPack, 'rc_starter_repeat_1');
+    const booster = await tx(ID.boosterPack, 'rc_booster_repeat_1');
+    await reconcileIapPurchases([starter, booster, starter, booster]);
+    await reconcileIapPurchases([
+      await tx(ID.starterPack, 'rc_starter_repeat_2'),
+      await tx(ID.boosterPack, 'rc_booster_repeat_2'),
+    ]);
+    const after = await loadEconomy();
+    expect(after.coins).toBe(before.coins + 2000);
+    for (const item of ['undo', 'extraSlot', 'bomb'] as const) {
+      expect(after.inventory[item]).toBe(before.inventory[item] + 16);
+    }
+  });
+
   it('grant + ledger mark are one persisted write that survives a restart', async () => {
     const t = await tx(ID.coins3500, 'rc_persist');
     await reconcileIapPurchases([t]);
@@ -155,6 +192,20 @@ describe('consumable grants (atomic, ledgered)', () => {
     expect(reloaded.iapLedger.processed).toContain('rc_persist');
     expect(reloaded.coins).toBe(granted);
     expect(await reconcileIapPurchases([t])).toEqual([]);
+  });
+
+  it('a failed grant write exposes neither reward nor processed marker and can retry', async () => {
+    const before = await loadEconomy();
+    const transaction = await tx(ID.coins3500, 'rc_write_retry');
+    (AsyncStorage.setItem as jest.Mock).mockRejectedValueOnce(new Error('disk unavailable'));
+    await expect(reconcileIapPurchases([transaction])).rejects.toThrow('disk unavailable');
+    expect(await loadEconomy()).toEqual(before);
+    _clearEconomyCache();
+    expect(await loadEconomy()).toEqual(before);
+    expect(await reconcileIapPurchases([transaction])).toHaveLength(1);
+    const after = await loadEconomy();
+    expect(after.coins).toBe(before.coins + 3500);
+    expect(after.iapLedger.processed).toContain(transaction.transactionId);
   });
 
   it('crash recovery: a confirmed consumable this install never granted is granted once on the next refresh', async () => {
@@ -184,6 +235,22 @@ describe('consumable grants (atomic, ledgered)', () => {
 });
 
 describe('purchase flow (controller)', () => {
+  it('configures once, keeps one customer listener, and omits transaction ids from logs', async () => {
+    const logs: string[] = [];
+    const sdk = new FakePurchases();
+    let configures = 0;
+    sdk.configureImpl = (key) => { configures += 1; sdk.configured = key; };
+    const { ctl } = await setup({ sdk, logs });
+    ctl.start();
+    expect(configures).toBe(1);
+    expect(sdk.listeners.size).toBe(1);
+    const { outcome, rcTx } = await confirmPurchase(sdk, ctl, ID.coins500);
+    expect(outcome).toBe('purchased');
+    expect(logs.join('\n')).not.toContain(rcTx.transactionId);
+    expect(logs.join('\n')).not.toContain('20000000');
+    expect(logs.join('\n')).not.toContain('appl_test');
+  });
+
   it('10. a failed purchase grants nothing and reports failed', async () => {
     const { sdk, ctl } = await setup();
     const before = await loadEconomy();
@@ -334,6 +401,8 @@ describe('Remove Ads + ads policy', () => {
       transactions: [
         { transactionId: 'rc_old_ra', productId: ID.removeAds, purchasedAt: e.iapLedger.startedAt - 10_000 },
         { transactionId: 'rc_old_coins', productId: ID.coins8000, purchasedAt: e.iapLedger.startedAt - 10_000 },
+        { transactionId: 'rc_old_starter', productId: ID.starterPack, purchasedAt: e.iapLedger.startedAt - 10_000 },
+        { transactionId: 'rc_old_booster', productId: ID.boosterPack, purchasedAt: e.iapLedger.startedAt - 10_000 },
       ],
     });
     await expect(ctl.restore()).resolves.toBe('restored');
@@ -341,6 +410,7 @@ describe('Remove Ads + ads policy', () => {
     expect(ctl.getSnapshot().hasRemoveAds).toBe(true);
     expect(policies[policies.length - 1]).toEqual({ interstitialsEnabled: false, rewardedEnabled: true });
     expect((await loadEconomy()).coins).toBe(e.coins);
+    expect((await loadEconomy()).inventory).toEqual(e.inventory);
   });
 
   it('restore with nothing owned reports it', async () => {
@@ -389,14 +459,39 @@ describe('service safety', () => {
     await expect(ctl.purchase(ID.coins8000)).resolves.toBe('unavailable');
   });
 
-  it('key resolution: public keys only, test store in dev only, secret keys refused', () => {
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, keys: { ios: 'appl_abc' } })).toMatchObject({ key: 'appl_abc', mode: 'store' });
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, keys: {} }).mode).toBe('off');
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, keys: { ios: 'goog_x' } }).mode).toBe('off');
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, keys: { ios: 'appl_abc', testStore: 'test_x' } }).key).toBe('appl_abc');
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: true, keys: { ios: 'appl_abc', testStore: 'test_x' } })).toMatchObject({ key: 'test_x', mode: 'testStore' });
-    expect(resolveRevenueCatKey({ platform: 'ios', isDev: true, keys: { ios: 'sk_secret' } }).mode).toBe('off');
-    expect(resolveRevenueCatKey({ platform: 'web', isDev: true, keys: { ios: 'appl_abc' } }).mode).toBe('off');
+  it('key resolution: production public key, debug Test Store only, preview off, secret refused', () => {
+    const keys = { ios: 'app1_public_example', testStore: 'test_example' };
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'store', keys })).toMatchObject({ key: keys.ios, mode: 'store' });
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'store', keys: { ios: 'appl_legacy' } }).mode).toBe('store');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'store', keys: {} }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'store', keys: { ios: 'goog_x' } }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'off', keys }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'test', keys }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, keys }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: true, buildMode: 'test', keys })).toMatchObject({ key: keys.testStore, mode: 'testStore' });
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: true, buildMode: 'test', keys: { ios: keys.ios } }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'ios', isDev: false, buildMode: 'store', keys: { ios: 'sk_secret' } }).mode).toBe('off');
+    expect(resolveRevenueCatKey({ platform: 'web', isDev: false, buildMode: 'store', keys }).mode).toBe('off');
+  });
+
+  it('reads literal Expo public env values and EAS profiles select safe modes', () => {
+    const beforeKey = process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY;
+    const beforeMode = process.env.EXPO_PUBLIC_REVENUECAT_MODE;
+    try {
+      process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY = 'app1_example_public';
+      process.env.EXPO_PUBLIC_REVENUECAT_MODE = 'store';
+      expect(readRevenueCatKeys().ios).toBe('app1_example_public');
+      expect(readRevenueCatBuildMode()).toBe('store');
+    } finally {
+      if (beforeKey === undefined) delete process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY;
+      else process.env.EXPO_PUBLIC_REVENUECAT_IOS_API_KEY = beforeKey;
+      if (beforeMode === undefined) delete process.env.EXPO_PUBLIC_REVENUECAT_MODE;
+      else process.env.EXPO_PUBLIC_REVENUECAT_MODE = beforeMode;
+    }
+    const eas = require('../../../eas.json') as { build: Record<'development' | 'preview' | 'production', { env: Record<string, string> }> };
+    expect(eas.build.development.env.EXPO_PUBLIC_REVENUECAT_MODE).toBe('test');
+    expect(eas.build.preview.env.EXPO_PUBLIC_REVENUECAT_MODE).toBe('off');
+    expect(eas.build.production.env.EXPO_PUBLIC_REVENUECAT_MODE).toBe('store');
   });
 });
 
@@ -414,6 +509,18 @@ describe('store cards', () => {
   it('23. a product the store did not return is disabled with no fabricated price', () => {
     const v = iapCardView(iapProduct(ID.coins8000)!, ready({ products: {} }));
     expect(v).toEqual({ priceLabel: null, buttonLabel: 'N/A', disabled: true, state: 'unavailable' });
+  });
+
+  it('a product with a blank localized price is unavailable in the card and controller', async () => {
+    const sdk = new FakePurchases();
+    const { ctl } = await setup({ sdk });
+    sdk.storeProducts = localizedProducts({ [ID.coins500]: ' ' });
+    await ctl.refresh();
+    expect(iapCardView(iapProduct(ID.coins500)!, ctl.getSnapshot())).toEqual({
+      priceLabel: null, buttonLabel: 'N/A', disabled: true, state: 'unavailable',
+    });
+    await expect(ctl.purchase(ID.coins500)).resolves.toBe('unavailable');
+    expect(sdk.pending).toHaveLength(0);
   });
 
   it('24. owned Remove Ads shows OWNED, disabled', () => {

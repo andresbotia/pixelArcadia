@@ -176,12 +176,23 @@ async function persistEconomy(state: EconomyState): Promise<EconomyState> {
   return state;
 }
 
-function queueMutation<T>(mutator: (current: EconomyState) => { next: EconomyState; result: T }): Promise<T> {
+function queueMutation<T>(
+  mutator: (current: EconomyState) => { next: EconomyState; result: T },
+  options: { requireDurableWrite?: boolean } = {},
+): Promise<T> {
   const op = mutationQueue.then(async () => {
     const current = await loadEconomy();
     const { next, result } = mutator(current);
     if (next !== current) {
-      await persistEconomy(next);
+      if (options.requireDurableWrite) {
+        // Real-money grants and their ledger marker become visible together,
+        // only after the single persisted state write succeeds.
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        cachedState = next;
+        notifyListeners(next);
+      } else {
+        await persistEconomy(next);
+      }
     }
     return result;
   });
@@ -352,7 +363,7 @@ export async function reconcileIapPurchases(
   return queueMutation((current) => {
     const res = reconcileIapTransactions(current, transactions, opts);
     return { next: res.state, result: res.granted };
-  });
+  }, { requireDurableWrite: true });
 }
 
 /** DEV-ONLY tooling: force the coin balance (the Level Browser's save tools). */

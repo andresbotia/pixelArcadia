@@ -103,8 +103,8 @@ export class PurchasesController {
     try {
       this.sdk.configure(this.apiKey);
       this.offCustomer = this.sdk.onCustomerUpdate((c) => this.applyCustomer(c));
-    } catch (e) {
-      this.log(`configure failed: ${String(e)} — purchases unavailable`);
+    } catch {
+      this.log('configure failed — purchases unavailable');
       return;
     }
     this.set({ status: 'initializing' });
@@ -116,17 +116,18 @@ export class PurchasesController {
     if (!this.sdk || !this.apiKey || this.snapshot.status === 'unavailable') return;
     const [customer, products] = await Promise.allSettled([this.sdk.getCustomer(), this.sdk.getProducts(IAP_IDS)]);
     if (customer.status === 'fulfilled') this.applyCustomer(customer.value);
-    else this.log(`customer info unavailable: ${String(customer.reason)}`);
+    else this.log('customer info unavailable');
     if (products.status === 'fulfilled') {
       const known: Record<string, IapProductInfo> = {};
       for (const p of products.value) {
-        if (iapProduct(p.productId)) known[p.productId] = p;
-        else this.log(`ignoring unknown store product ${p.productId}`);
+        if (!iapProduct(p.productId)) this.log(`ignoring unknown store product ${p.productId}`);
+        else if (!p.priceString?.trim()) this.log(`store price unavailable for ${p.productId}`);
+        else known[p.productId] = p;
       }
       for (const id of IAP_IDS) if (!known[id]) this.log(`store did not return ${id} — its card is disabled`);
       this.set({ products: known, status: this.snapshot.activeOperation ? 'purchasing' : 'ready' });
     } else {
-      this.log(`products unavailable: ${String(products.reason)}`);
+      this.log('products unavailable');
       if (!this.snapshot.activeOperation) this.set({ status: 'error' });
     }
   }
@@ -137,7 +138,7 @@ export class PurchasesController {
     if (!this.sdk || !product || status === 'unavailable' || status === 'initializing') return 'unavailable';
     if (activeOperation) return 'busy';
     if (product.reward.entitlement === REMOVE_ADS_ENTITLEMENT && hasRemoveAds) return 'alreadyOwned';
-    if (!products[productId]) return 'unavailable';
+    if (!products[productId]?.priceString?.trim()) return 'unavailable';
 
     this.set({ activeOperation: productId, status: 'purchasing' });
     this.track('iap_started', this.productProps(productId));
@@ -153,7 +154,7 @@ export class PurchasesController {
         return 'cancelled';
       }
       if (attempt.status === 'failed') {
-        this.log(`purchase failed: ${attempt.message}`);
+        this.log('purchase failed');
         this.track('iap_failed', this.productProps(productId));
         return 'failed';
       }
@@ -161,7 +162,7 @@ export class PurchasesController {
       // transaction; granting runs through the one ledger-guarded path.
       const bought = attempt.productId || productId;
       if (bought !== productId) this.log(`purchase result for ${bought}, requested ${productId}`);
-      this.log(`purchased ${bought} (store tx ${attempt.storeTransactionId})`);
+      this.log(`purchased ${bought}`);
       this.applyEntitlements(attempt.customer);
       if (isConsumableProduct(bought)) {
         let granted = await this.grantFrom(attempt.customer, bought);
@@ -196,8 +197,8 @@ export class PurchasesController {
       this.applyCustomer(customer);
       this.track('restore_completed', { remove_ads: this.snapshot.hasRemoveAds });
       return this.snapshot.hasRemoveAds ? 'restored' : 'nothingToRestore';
-    } catch (e) {
-      this.log(`restore failed: ${String(e)}`);
+    } catch {
+      this.log('restore failed');
       return 'failed';
     } finally {
       this.set({ activeOperation: null, status: 'ready' });
@@ -236,12 +237,12 @@ export class PurchasesController {
       // Exactly once per transaction: the ledger only ever returns NEW grants,
       // whichever path (result / listener / refresh) got there first.
       for (const t of granted) {
-        this.log(`granted ${t.productId} (rc tx ${t.transactionId})`);
+        this.log(`granted ${t.productId}`);
         this.track('iap_reward_granted', this.productProps(t.productId));
       }
       return granted;
-    } catch (e) {
-      this.log(`grant failed: ${String(e)}`);
+    } catch {
+      this.log('grant failed');
       return [];
     }
   }

@@ -6,7 +6,7 @@ import { setAdsPolicy } from '@/ads/service';
 import { reconcileIapPurchases } from '@/storage/economy';
 import { getCachedRemoveAds, saveRemoveAds } from '@/storage/iap';
 
-import { readRevenueCatKeys, resolveRevenueCatKey } from './config';
+import { readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from './config';
 import { PurchasesController } from './controller';
 import { createRevenueCatSdk } from './sdk';
 
@@ -21,10 +21,12 @@ let controller: PurchasesController | null = null;
  */
 export function purchases(): PurchasesController {
   if (controller) return controller;
-  const resolved = resolveRevenueCatKey({ platform: Platform.OS, isDev, keys: readRevenueCatKeys() });
+  const resolved = resolveRevenueCatKey({
+    platform: Platform.OS, isDev, keys: readRevenueCatKeys(), buildMode: readRevenueCatBuildMode(),
+  });
   devLog(`[iap] mode=${resolved.mode}${resolved.note ? ` (${resolved.note})` : ''}`);
   controller = new PurchasesController(
-    resolved.key ? createRevenueCatSdk({ debugLogs: isDev }) : null,
+    resolved.key ? createRevenueCatSdk() : null,
     resolved.key,
     {
       reconcileConsumables: reconcileIapPurchases,
@@ -46,7 +48,7 @@ export function purchases(): PurchasesController {
 export function startPurchases(): void {
   try {
     purchases().start();
-  } catch (e) {
-    devLog(`[iap] start failed: ${String(e)}`);
+  } catch {
+    devLog('[iap] start failed');
   }
 }

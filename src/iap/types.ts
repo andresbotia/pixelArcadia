@@ -30,7 +30,8 @@ export interface CustomerSnapshot {
 export type PurchaseAttempt =
   /**
    * `storeTransactionId` is Apple's StoreKit id — a DIFFERENT id space from
-   * `CustomerSnapshot.transactions[].transactionId`; logged only, never a grant key.
+   * `CustomerSnapshot.transactions[].transactionId`; retained as purchase
+   * metadata, never logged or used as a grant key.
    */
   | { status: 'purchased'; productId: string; storeTransactionId: string; customer: CustomerSnapshot }
   | { status: 'cancelled' }
