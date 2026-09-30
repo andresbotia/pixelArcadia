@@ -85,12 +85,16 @@ export function createAnalytics(deps: AnalyticsDeps) {
   const publishedCompleted = (highestUnlocked: number) =>
     Math.min(publishedMax, highestCompletedLevel(highestUnlocked, store.get().highestCompletedSeen));
 
+  function log(message: string): void {
+    try { deps.log?.(message); } catch { /* diagnostics are best-effort too */ }
+  }
+
   function capture(event: AnalyticsEventName, props: AnalyticsProps = {}): void {
     try {
-      deps.log?.(`[analytics] ${event} ${JSON.stringify(props)}`);
+      log(`[analytics] ${event} ${JSON.stringify(props)}`);
       deps.client?.capture(event, props);
-    } catch (e) {
-      deps.log?.(`[analytics] capture failed: ${String(e)}`);
+    } catch {
+      log('[analytics] capture failed');
     }
   }
 

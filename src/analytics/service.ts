@@ -42,8 +42,8 @@ function createPostHogClient(): AnalyticsClient | null {
       register: (properties) => { void posthog.register(properties).catch(() => {}); },
       setPersonProperties: (properties) => posthog.setPersonProperties(properties),
     };
-  } catch (e) {
-    if (isDev) console.log(`[analytics] PostHog unavailable: ${String(e)}`);
+  } catch {
+    if (isDev) console.log('[analytics] PostHog unavailable');
     return null;
   }
 }

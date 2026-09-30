@@ -2,10 +2,10 @@
  * Analytics configuration (M14). Only PostHog PROJECT keys (`phc_…`, public
  * by design) are accepted; a personal API key (`phx_…`) is refused.
  *
- *  - Release builds (TestFlight / App Store): EXPO_PUBLIC_POSTHOG_API_KEY.
- *  - Dev builds: NEVER the production key. Only EXPO_PUBLIC_POSTHOG_DEV_API_KEY
- *    (a separate PostHog project) if set; otherwise analytics is off and events
- *    are only logged to the console.
+ *  - Production/TestFlight builds: the production project key and US host.
+ *  - Development builds: only a separate dev project key, if configured.
+ *  - Preview builds: off. Release builds without an explicit production mode
+ *    are also off, even if the production project key is present.
  */
 export const DEFAULT_POSTHOG_HOST = 'https://us.i.posthog.com';
 
@@ -24,6 +24,7 @@ export interface AnalyticsEnv {
   apiKey?: string;
   devApiKey?: string;
   host?: string;
+  mode?: string;
   /** "0" silences the dev console log of events. */
   debug?: string;
 }
@@ -33,6 +34,7 @@ export function readAnalyticsEnv(): AnalyticsEnv {
     apiKey: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
     devApiKey: process.env.EXPO_PUBLIC_POSTHOG_DEV_API_KEY,
     host: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+    mode: process.env.EXPO_PUBLIC_POSTHOG_MODE,
     debug: process.env.EXPO_PUBLIC_ANALYTICS_DEBUG,
   };
 }
@@ -51,16 +53,22 @@ const isProjectKey = (k: string | undefined): k is string => !!k && /^phc_[A-Za-
 
 export function resolveAnalyticsConfig(input: { isDev: boolean; env: AnalyticsEnv }): ResolvedAnalyticsConfig {
   const { isDev, env } = input;
-  const host = env.host?.trim() || DEFAULT_POSTHOG_HOST;
+  const host = env.host?.trim() ?? '';
   const logEvents = isDev && env.debug !== '0';
+  const off = (note: string): ResolvedAnalyticsConfig => ({ mode: 'off', apiKey: null, host, logEvents, note });
+  if (env.mode === 'off') return off('analytics disabled for this build');
+  if (host !== DEFAULT_POSTHOG_HOST) return off('PostHog US ingestion host missing or invalid');
   if (isDev) {
+    if (env.mode !== 'development') return off('development analytics require a separate development mode');
     const dev = env.devApiKey?.trim();
+    if (dev && dev === env.apiKey?.trim()) return off('development project key must differ from production');
     return isProjectKey(dev)
       ? { mode: 'development', apiKey: dev, host, logEvents }
-      : { mode: 'off', apiKey: null, host, logEvents, note: 'dev build: production analytics disabled (set EXPO_PUBLIC_POSTHOG_DEV_API_KEY for a dev project)' };
+      : off('development project key missing or invalid');
   }
+  if (env.mode !== 'production') return off('release analytics require production mode');
   const key = env.apiKey?.trim();
-  if (!key) return { mode: 'off', apiKey: null, host, logEvents, note: 'no PostHog API key' };
-  if (!isProjectKey(key)) return { mode: 'off', apiKey: null, host, logEvents, note: 'PostHog key must be a project key (phc_…)' };
+  if (!key) return off('no PostHog project key');
+  if (!isProjectKey(key)) return off('PostHog key must be a project key (phc_…)');
   return { mode: 'production', apiKey: key, host, logEvents };
 }

@@ -10,7 +10,8 @@
       "channel": "development",
       "env": {
         "EXPO_PUBLIC_ADS_TEST_MODE": "1",
-        "EXPO_PUBLIC_REVENUECAT_MODE": "test"
+        "EXPO_PUBLIC_REVENUECAT_MODE": "test",
+        "EXPO_PUBLIC_POSTHOG_MODE": "development"
       },
       "ios": {
         "simulator": false
@@ -21,7 +22,8 @@
       "channel": "preview",
       "env": {
         "EXPO_PUBLIC_ADS_TEST_MODE": "1",
-        "EXPO_PUBLIC_REVENUECAT_MODE": "off"
+        "EXPO_PUBLIC_REVENUECAT_MODE": "off",
+        "EXPO_PUBLIC_POSTHOG_MODE": "off"
       }
     },
     "production": {
@@ -33,7 +35,8 @@
         "EXPO_PUBLIC_ADMOB_IOS_INTERSTITIAL_ID": "ca-app-pub-5253670144191495/4538971187",
         "EXPO_PUBLIC_ADMOB_IOS_REWARDED_RETRY_ID": "ca-app-pub-5253670144191495/4978040608",
         "EXPO_PUBLIC_ADMOB_IOS_REWARDED_HEART_ID": "ca-app-pub-5253670144191495/5972481515",
-        "EXPO_PUBLIC_REVENUECAT_MODE": "store"
+        "EXPO_PUBLIC_REVENUECAT_MODE": "store",
+        "EXPO_PUBLIC_POSTHOG_MODE": "production"
       }
     }
   },

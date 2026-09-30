@@ -21,7 +21,7 @@ import {
 import { saveRemoveAds } from '@/storage/iap';
 
 import { createAnalytics, heartLossFigures, type AnalyticsClient, type RunStartInput } from '../api';
-import { resolveAnalyticsConfig } from '../config';
+import { DEFAULT_POSTHOG_HOST, readAnalyticsEnv, resolveAnalyticsConfig } from '../config';
 import type { AnalyticsProps } from '../events';
 import { contentCeilingThreshold, durationSeconds, highestCompletedLevel } from '../progression';
 
@@ -79,19 +79,158 @@ describe('config + fail-safety', () => {
     const { analytics } = setup({ client: angry });
     expect(() => {
       analytics.startRun('campaign', L12).lost({ reason: 'holding_overflow', heartsBefore: 5, heartsAfter: 4, coins: 0, pendingCount: 0 });
+      analytics.startRun('campaign', L12).won({ isFirstClear: true, firstClearReward: 50, heartsAfter: 5, coinsAfter: 350 });
       analytics.progressUpdated(12);
       analytics.trackIap('iap_completed');
     }).not.toThrow();
   });
 
+  it('a throwing diagnostic logger also cannot interrupt a completed run', () => {
+    const analytics = createAnalytics({ client: null, store: createMemoryAnalyticsStore(), now: () => clock,
+      publishedMax: PUBLISHED_MAX_LEVEL, log: () => { throw new Error('logger failed'); } });
+    expect(() => analytics.startRun('campaign', L12).won({ isFirstClear: true, firstClearReward: 50, heartsAfter: 5, coinsAfter: 350 })).not.toThrow();
+  });
+
   it('3. dev builds never send to the production project', () => {
     const prod = 'phc_' + 'a'.repeat(40);
-    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod } })).toMatchObject({ mode: 'off', apiKey: null });
-    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod, devApiKey: 'phc_' + 'b'.repeat(40) } }))
+    const host = DEFAULT_POSTHOG_HOST;
+    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod, host, mode: 'development' } })).toMatchObject({ mode: 'off', apiKey: null });
+    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod, devApiKey: prod, host, mode: 'development' } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod, devApiKey: 'phc_' + 'b'.repeat(40), host, mode: 'development' } }))
       .toMatchObject({ mode: 'development', apiKey: 'phc_' + 'b'.repeat(40) });
-    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: prod } })).toMatchObject({ mode: 'production', apiKey: prod });
-    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: 'phx_personalsecretkey1234567890' } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: true, env: { apiKey: prod, host, mode: 'production' } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: prod, host, mode: 'production' } }))
+      .toMatchObject({ mode: 'production', apiKey: prod, host });
+    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: prod, host, mode: 'off' } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: prod, host, mode: 'development' } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: prod, host } }).mode).toBe('off');
+    expect(resolveAnalyticsConfig({ isDev: false, env: { apiKey: 'phx_personalsecretkey1234567890', host, mode: 'production' } }).mode).toBe('off');
     expect(resolveAnalyticsConfig({ isDev: true, env: { debug: '0' } }).logEvents).toBe(false);
+  });
+
+  it('requires a valid public project key and the exact US ingestion host', () => {
+    const key = 'phc_' + 'a'.repeat(40);
+    const production = (apiKey?: string, host?: string) => resolveAnalyticsConfig({ isDev: false, env: { apiKey, host, mode: 'production' } });
+    expect(production(key, DEFAULT_POSTHOG_HOST).mode).toBe('production');
+    expect(production(undefined, DEFAULT_POSTHOG_HOST).mode).toBe('off');
+    expect(production('phc_short', DEFAULT_POSTHOG_HOST).mode).toBe('off');
+    expect(production('phx_' + 'a'.repeat(40), DEFAULT_POSTHOG_HOST).mode).toBe('off');
+    expect(production(key).mode).toBe('off');
+    expect(production(key, 'https://us.posthog.com').mode).toBe('off');
+    expect(production(key, 'http://us.i.posthog.com').mode).toBe('off');
+  });
+
+  it('reads only the public Expo variables and all EAS modes are explicit', () => {
+    const previous = {
+      key: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
+      host: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+      mode: process.env.EXPO_PUBLIC_POSTHOG_MODE,
+    };
+    try {
+      process.env.EXPO_PUBLIC_POSTHOG_API_KEY = 'phc_' + 'a'.repeat(40);
+      process.env.EXPO_PUBLIC_POSTHOG_HOST = DEFAULT_POSTHOG_HOST;
+      process.env.EXPO_PUBLIC_POSTHOG_MODE = 'production';
+      expect(readAnalyticsEnv()).toMatchObject({ apiKey: 'phc_' + 'a'.repeat(40), host: DEFAULT_POSTHOG_HOST, mode: 'production' });
+    } finally {
+      for (const [name, value] of Object.entries({
+        EXPO_PUBLIC_POSTHOG_API_KEY: previous.key,
+        EXPO_PUBLIC_POSTHOG_HOST: previous.host,
+        EXPO_PUBLIC_POSTHOG_MODE: previous.mode,
+      })) {
+        if (value === undefined) delete process.env[name];
+        else process.env[name] = value;
+      }
+    }
+    const eas = require('../../../eas.json') as { build: Record<'development' | 'preview' | 'production', { env: Record<string, string> }> };
+    expect(eas.build.development.env.EXPO_PUBLIC_POSTHOG_MODE).toBe('development');
+    expect(eas.build.preview.env.EXPO_PUBLIC_POSTHOG_MODE).toBe('off');
+    expect(eas.build.production.env.EXPO_PUBLIC_POSTHOG_MODE).toBe('production');
+  });
+
+  it('initializes once with explicit-event privacy settings and anonymous identity', () => {
+    const previous = {
+      key: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
+      host: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+      mode: process.env.EXPO_PUBLIC_POSTHOG_MODE,
+    };
+    process.env.EXPO_PUBLIC_POSTHOG_API_KEY = 'phc_' + 'a'.repeat(40);
+    process.env.EXPO_PUBLIC_POSTHOG_HOST = DEFAULT_POSTHOG_HOST;
+    process.env.EXPO_PUBLIC_POSTHOG_MODE = 'production';
+    const constructed: { key: string; options: Record<string, unknown> }[] = [];
+    const register = jest.fn((_props: AnalyticsProps) => Promise.resolve());
+    jest.doMock('react-native', () => ({ Platform: { OS: 'ios' } }));
+    jest.doMock('posthog-react-native', () => ({ PostHog: class {
+      constructor(key: string, options: Record<string, unknown>) { constructed.push({ key, options }); }
+      capture() {}
+      register = register;
+      setPersonProperties() {}
+    } }));
+    try {
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const { analytics, startAnalytics } = require('../service') as typeof import('../service');
+        startAnalytics();
+        startAnalytics();
+        analytics.appOpened({ highestUnlocked: 1, coins: 300, hearts: 5, removeAdsOwned: false });
+        expect(register).toHaveBeenCalledTimes(1);
+        expect(register.mock.calls[0]?.[0]).toMatchObject({
+          platform: 'ios', published_max_level: PUBLISHED_MAX_LEVEL,
+          campaign_version: 'v2-50', environment: 'production',
+        });
+      });
+      expect(constructed).toHaveLength(1);
+      expect(constructed[0]!.key).toBe('phc_' + 'a'.repeat(40));
+      expect(constructed[0]!.options).toMatchObject({
+        host: DEFAULT_POSTHOG_HOST,
+        captureAppLifecycleEvents: false,
+        enableSessionReplay: false,
+        disableGeoip: true,
+        errorTracking: { autocapture: { uncaughtExceptions: false, unhandledRejections: false, console: false, nativeCrashes: false } },
+      });
+    } finally {
+      jest.dontMock('react-native');
+      jest.dontMock('posthog-react-native');
+      for (const [name, value] of Object.entries({
+        EXPO_PUBLIC_POSTHOG_API_KEY: previous.key,
+        EXPO_PUBLIC_POSTHOG_HOST: previous.host,
+        EXPO_PUBLIC_POSTHOG_MODE: previous.mode,
+      })) {
+        if (value === undefined) delete process.env[name];
+        else process.env[name] = value;
+      }
+    }
+  });
+
+  it('a PostHog constructor failure leaves analytics as a no-op', () => {
+    const previous = {
+      key: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
+      host: process.env.EXPO_PUBLIC_POSTHOG_HOST,
+      mode: process.env.EXPO_PUBLIC_POSTHOG_MODE,
+    };
+    process.env.EXPO_PUBLIC_POSTHOG_API_KEY = 'phc_' + 'a'.repeat(40);
+    process.env.EXPO_PUBLIC_POSTHOG_HOST = DEFAULT_POSTHOG_HOST;
+    process.env.EXPO_PUBLIC_POSTHOG_MODE = 'production';
+    jest.doMock('react-native', () => ({ Platform: { OS: 'ios' } }));
+    jest.doMock('posthog-react-native', () => ({ PostHog: class { constructor() { throw new Error('init failed'); } } }));
+    try {
+      jest.isolateModules(() => {
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const { analytics, startAnalytics } = require('../service') as typeof import('../service');
+        expect(() => startAnalytics()).not.toThrow();
+        expect(() => analytics.appOpened({ highestUnlocked: 1, coins: 300, hearts: 5, removeAdsOwned: false })).not.toThrow();
+      });
+    } finally {
+      jest.dontMock('react-native');
+      jest.dontMock('posthog-react-native');
+      for (const [name, value] of Object.entries({
+        EXPO_PUBLIC_POSTHOG_API_KEY: previous.key,
+        EXPO_PUBLIC_POSTHOG_HOST: previous.host,
+        EXPO_PUBLIC_POSTHOG_MODE: previous.mode,
+      })) {
+        if (value === undefined) delete process.env[name];
+        else process.env[name] = value;
+      }
+    }
   });
 });
 
@@ -253,8 +392,8 @@ describe('hearts', () => {
 });
 
 describe('ads (M12 boundary)', () => {
-  async function adsSetup() {
-    const { analytics, client } = setup();
+  async function adsSetup(analyticsClient?: AnalyticsClient) {
+    const { analytics, client } = setup({ client: analyticsClient });
     const sdk = new FakeSdk();
     const ctl = new AdsController(sdk, UNITS, { requestOptions: () => ({ nonPersonalized: true }), track: (e, p) => analytics.trackAd(e, p) });
     ctl.start();
@@ -318,11 +457,24 @@ describe('ads (M12 boundary)', () => {
       expect(client.named('heart_rewarded').map((e) => e.props)).toEqual([{ source: 'rewarded_ad', amount: 1 }]);
     } finally { jest.useRealTimers(); }
   });
+
+  it('a PostHog capture error cannot interrupt a rewarded heart', async () => {
+    jest.useFakeTimers();
+    try {
+      const angry: AnalyticsClient = { capture() { throw new Error('offline'); }, register() {}, setPersonProperties() {} };
+      const { sdk, flows } = await adsSetup(angry);
+      await _devSetHearts(0);
+      const reward = flows.watchRewardedHeart('campaign');
+      await watch(sdk, UNITS.REWARDED_HEART, true);
+      await expect(reward).resolves.toBe(true);
+      expect((await refreshHearts()).hearts).toBe(1);
+    } finally { jest.useRealTimers(); }
+  });
 });
 
 describe('purchases (M13 boundary)', () => {
-  async function iapSetup(cachedRemoveAds = false) {
-    const { analytics, client } = setup();
+  async function iapSetup(cachedRemoveAds = false, analyticsClient?: AnalyticsClient) {
+    const { analytics, client } = setup({ client: analyticsClient });
     const sdk = new FakePurchases();
     // An owner's RevenueCat account reports the entitlement from the first read.
     if (cachedRemoveAds) sdk.customer = { activeEntitlements: [REMOVE_ADS_ENTITLEMENT], transactions: [] };
@@ -383,6 +535,20 @@ describe('purchases (M13 boundary)', () => {
     owner.sdk.emitCustomer({ activeEntitlements: [REMOVE_ADS_ENTITLEMENT], transactions: [] });
     await owner.ctl.refresh();
     expect(owner.client.named('remove_ads_activated')).toHaveLength(0);
+  });
+
+  it('a PostHog capture error cannot interrupt a confirmed purchase grant', async () => {
+    const angry: AnalyticsClient = { capture() { throw new Error('offline'); }, register() {}, setPersonProperties() {} };
+    const { sdk, ctl } = await iapSetup(false, angry);
+    const before = (await loadEconomy()).coins;
+    const purchase = ctl.purchase(IAP_PRODUCT_IDS.coins500);
+    await flushIap();
+    sdk.pending.shift()!.resolve({ status: 'purchased', productId: IAP_PRODUCT_IDS.coins500,
+      storeTransactionId: '2000000999', customer: { activeEntitlements: [], transactions: [
+        { transactionId: 'rc_analytics_offline', productId: IAP_PRODUCT_IDS.coins500, purchasedAt: Date.now() },
+      ] } });
+    await expect(purchase).resolves.toBe('purchased');
+    expect((await loadEconomy()).coins).toBe(before + 500);
   });
 });
 
