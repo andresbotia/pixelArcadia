@@ -2865,7 +2865,7 @@
   {
    "id": 216,
    "title": "Star Dreadnought",
-   "difficulty": "extreme",
+   "difficulty": "super-hard",
    "holding": 3,
    "ruleset": "coreV2",
    "legend": {
@@ -4538,7 +4538,7 @@
   {
    "id": 219,
    "title": "Galactic Core",
-   "difficulty": "extreme",
+   "difficulty": "super-hard",
    "holding": 3,
    "ruleset": "coreV2",
    "legend": {

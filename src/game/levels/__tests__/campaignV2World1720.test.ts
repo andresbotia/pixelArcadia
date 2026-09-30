@@ -37,7 +37,7 @@ const EXPECTED: Record<number, [number, number, number, number, number, number, 
   183: [2242, 21, 99, 117, 3, 7, 3],
   184: [2246, 18, 81, 95, 3, 7, 3],
   185: [2220, 17, 91, 98, 2, 5, 2],
-  186: [2254, 16, 70, 89, 3, 8, 3],
+  186: [2254, 16, 75, 85, 3, 8, 0],
   187: [2258, 20, 79, 98, 3, 9, 3],
   188: [2262, 17, 71, 88, 3, 9, 3],
   189: [2266, 15, 57, 83, 3, 10, 3],
@@ -155,8 +155,8 @@ test('all new levels are dev-accessible while normal campaign remains capped at 
 test('grids, queues, witnesses and level metadata remain byte-equivalent to the source arrays', () => {
   const hashes: Record<number, string> = {
     17: 'ca765f6620269b9e0bb14d85764140c686a5fb51a6ade5bc07fdc4fae3ce567c',
-    18: '29edabe31c0accf3f90f03a23a08d7a1f1976a9099de412a83b771b5d4973027',
-    19: 'bc5b24c1bdbc8c1a04aed7b9bafbaef0cab1a14e0ea2889d551ab5c1508d1665',
+    18: 'c87a4d79bb510528a5f591ecd715f26703ad08c4c7ec7ed2608c322918edf25e',
+    19: 'f7742595c4411e374fbbe03bafcf524223365d22a897b4f89f0c84248a2b322a',
     20: '0320ea1cefe92425ec4df7ff9f4739935534a8f81527bfeca0a2299b467b0507',
   };
   for (const world of [17, 18, 19, 20]) {
@@ -171,6 +171,6 @@ test.each([170, 180, 190, 200])('finale %i preserves strong route metrics', id =
   expect(EXPECTED[id]![3]).toBeGreaterThanOrEqual(109);
 });
 
-test('all 53 tiny Pals are preserved (no merges applied)', () => {
-  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(53);
+test('all 58 tiny Pals are preserved', () => {
+  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(58);
 });

@@ -68,6 +68,8 @@ export class AdsController {
   private showing: AdPlacement | null = null;
   private started = false;
   private sdkReady = false;
+  private sdkFailed = false;
+  private interstitialsEnabled = true;
 
   constructor(
     private readonly sdk: AdsSdk | null,
@@ -106,6 +108,23 @@ export class AdsController {
     return this.slot(placement).state;
   }
 
+  /** Remove Ads stops interstitial requests as well as shows; rewarded slots remain active. */
+  setInterstitialsEnabled(enabled: boolean): void {
+    if (this.interstitialsEnabled === enabled) return;
+    this.interstitialsEnabled = enabled;
+    const slot = this.slot('INTERSTITIAL_CAMPAIGN');
+    if (!enabled) {
+      if (slot.session) this.finishShow('INTERSTITIAL_CAMPAIGN', 'failed');
+      this.clearTimer(slot, 'retryTimer');
+      this.clearTimer(slot, 'loadTimer');
+      this.discard(slot);
+      this.setState('INTERSTITIAL_CAMPAIGN', 'unavailable');
+    } else if (this.sdk && slot.unitId && !this.sdkFailed) {
+      this.setState('INTERSTITIAL_CAMPAIGN', 'idle');
+      this.load('INTERSTITIAL_CAMPAIGN');
+    }
+  }
+
   isShowing(): boolean {
     return this.showing !== null;
   }
@@ -123,6 +142,7 @@ export class AdsController {
   /** (Re)load a placement if it isn't already loading/loaded/showing. */
   load(placement: AdPlacement): void {
     const slot = this.slot(placement);
+    if (placement === 'INTERSTITIAL_CAMPAIGN' && !this.interstitialsEnabled) return;
     if (!this.sdk || !this.sdkReady || !slot.unitId) return;
     if (slot.state === 'loading' || slot.state === 'ready' || slot.state === 'showing' || slot.state === 'unavailable') return;
     this.clearTimer(slot, 'retryTimer');
@@ -255,6 +275,7 @@ export class AdsController {
 
   private fail(e: unknown): void {
     this.log(`SDK init failed: ${String(e)} — ads unavailable`);
+    this.sdkFailed = true;
     for (const p of AD_PLACEMENTS) this.setState(p, 'unavailable');
   }
 

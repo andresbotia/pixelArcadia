@@ -4204,7 +4204,7 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "id": 159,
     "title": "Temple Bell",
     "themeId": "lantern-dynasty",
-    "difficulty": "extreme",
+    "difficulty": "super-hard",
     "holdingCapacity": 3,
     "pixelArt": [
       ".....VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.....",

@@ -1,0 +1,5381 @@
+{
+  "level": 500,
+  "recoveryWitnesses": [
+    {
+      "step": 18,
+      "charge": "L500-t0-c3",
+      "secondCharge": "L500-t0-c2",
+      "searchNodes": 64754,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c17"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c18"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c19"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c26"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c26"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c33"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c19"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        }
+      ]
+    },
+    {
+      "step": 18,
+      "charge": "L500-t0-c3",
+      "secondCharge": null,
+      "searchNodes": 62291,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c18"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c28"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c17"
+        }
+      ]
+    },
+    {
+      "step": 19,
+      "charge": "L500-t0-c3",
+      "secondCharge": null,
+      "searchNodes": 57658,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c13"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c13"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c17"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c18"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c35"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c31"
+        }
+      ]
+    },
+    {
+      "step": 20,
+      "charge": "L500-t0-c3",
+      "secondCharge": null,
+      "searchNodes": 49796,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c31"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        }
+      ]
+    },
+    {
+      "step": 21,
+      "charge": "L500-t0-c3",
+      "secondCharge": null,
+      "searchNodes": 52764,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c5"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c40"
+        }
+      ]
+    },
+    {
+      "step": 22,
+      "charge": "L500-t0-c3",
+      "secondCharge": null,
+      "searchNodes": 52658,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c3"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c5"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c31"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c40"
+        }
+      ]
+    },
+    {
+      "step": 29,
+      "charge": "L500-t0-c5",
+      "secondCharge": null,
+      "searchNodes": 48306,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c5"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c26"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c35"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c38"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c28"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c17"
+        }
+      ]
+    },
+    {
+      "step": 30,
+      "charge": "L500-t0-c5",
+      "secondCharge": null,
+      "searchNodes": 48253,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c5"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c23"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c26"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c35"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c36"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c38"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c28"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c17"
+        }
+      ]
+    },
+    {
+      "step": 30,
+      "charge": "L500-t1-c6",
+      "secondCharge": null,
+      "searchNodes": 51534,
+      "actions": [
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c4"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c8"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c9"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c7"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c20"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c11"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c21"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c6"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c24"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c13"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c13"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c14"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t0-c16"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c10"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c14"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c13"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c15"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c20"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c12"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c19"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c34"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c22"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c32"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c27"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c25"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c29"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c25"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c30"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t1-c26"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c39"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-0"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-2"
+        },
+        {
+          "kind": "tunnel",
+          "id": "tunnel-1"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c37"
+        },
+        {
+          "kind": "holding",
+          "id": "L500-t2-c41"
+        }
+      ]
+    }
+  ]
+}

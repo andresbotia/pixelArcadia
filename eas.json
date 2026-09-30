@@ -8,17 +8,30 @@
       "developmentClient": true,
       "distribution": "internal",
       "channel": "development",
+      "env": {
+        "EXPO_PUBLIC_ADS_TEST_MODE": "1"
+      },
       "ios": {
         "simulator": false
       }
     },
     "preview": {
       "distribution": "internal",
-      "channel": "preview"
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_ADS_TEST_MODE": "1"
+      }
     },
     "production": {
       "channel": "production",
-      "autoIncrement": true
+      "autoIncrement": true,
+      "env": {
+        "ADMOB_IOS_APP_ID": "ca-app-pub-5253670144191495~3800690302",
+        "EXPO_PUBLIC_ADS_TEST_MODE": "0",
+        "EXPO_PUBLIC_ADMOB_IOS_INTERSTITIAL_ID": "ca-app-pub-5253670144191495/4538971187",
+        "EXPO_PUBLIC_ADMOB_IOS_REWARDED_RETRY_ID": "ca-app-pub-5253670144191495/4978040608",
+        "EXPO_PUBLIC_ADMOB_IOS_REWARDED_HEART_ID": "ca-app-pub-5253670144191495/5972481515"
+      }
     }
   },
   "submit": {

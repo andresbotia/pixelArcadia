@@ -34,6 +34,7 @@ const resolved = resolveAdUnits({
   appId: configuredAppId(),
 });
 devLog(`[ads] mode=${resolved.mode}${resolved.notes.length ? ` (${resolved.notes.join('; ')})` : ''}`);
+if (!isDev && resolved.notes.length) console.warn(`[ads] configuration unavailable: ${resolved.notes.join('; ')}`);
 
 /** The single ad controller. UI never touches SDK objects — only this, via flows and hooks. */
 export const ads = new AdsController(
@@ -49,7 +50,10 @@ export const ads = new AdsController(
  */
 let policy: AdsPolicy = DEFAULT_ADS_POLICY;
 export function getAdsPolicy(): AdsPolicy { return policy; }
-export function setAdsPolicy(next: AdsPolicy): void { policy = next; }
+export function setAdsPolicy(next: AdsPolicy): void {
+  policy = next;
+  ads.setInterstitialsEnabled(next.interstitialsEnabled);
+}
 
 export const adFlows = createAdFlows({
   ads,

@@ -157,7 +157,7 @@ test('grids, queues, witnesses and level metadata remain byte-equivalent to the 
   "13": "b65a0fa5bf6cac552e51a2c8ab31bf37814f839240c53256de94423938c7c523",
   "14": "6adf62f801029f77a1367ff1c9c3a871f469208690733f8fbe4d4961162769ad",
   "15": "d4338b9b4fe424558be2a9eab5da268e9cebbf6f22df5e076eb152b112fd0f94",
-  "16": "03a2f45da4b814fba64fb1cb97b947ae01187d8c9d969d121296c2fd00d4a6c1"
+  "16": "31bcbfa6bbf86f894e7a71a94fb4c583ea0eb9845e8c74b116cfbaa1a7bb2136"
 };
   for (const world of [13, 14, 15, 16]) {
     const packet = JSON.parse(fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8'));

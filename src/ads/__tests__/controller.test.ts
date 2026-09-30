@@ -32,6 +32,20 @@ describe('initialization', () => {
     expect(ctl.getState('INTERSTITIAL_CAMPAIGN')).toBe('ready');
   });
 
+  it('Remove Ads prevents interstitial requests while both rewarded placements still load', async () => {
+    const { sdk, ctl } = setup();
+    ctl.setInterstitialsEnabled(false);
+    ctl.start();
+    await flush();
+    expect(sdk.handles.map(handle => handle.unitId).sort()).toEqual([UNITS.REWARDED_HEART, UNITS.REWARDED_RETRY].sort());
+    await expect(ctl.show('INTERSTITIAL_CAMPAIGN')).resolves.toMatchObject({ outcome: 'unavailable' });
+    expect(ctl.getState('INTERSTITIAL_CAMPAIGN')).toBe('unavailable');
+    ctl.setInterstitialsEnabled(true);
+    expect(sdk.latest(UNITS.INTERSTITIAL_CAMPAIGN).loadCalls).toBe(1);
+    ctl.setInterstitialsEnabled(false);
+    expect(sdk.latest(UNITS.INTERSTITIAL_CAMPAIGN).destroyed).toBe(true);
+  });
+
   it('25. init failure never throws; every placement becomes unavailable', async () => {
     const { sdk, ctl } = setup();
     sdk.initImpl = () => Promise.reject(new Error('no network'));

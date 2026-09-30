@@ -7,6 +7,7 @@ import {
   markDetail,
   recommendColorAssist,
   simplifiedMark,
+  assistStrokeWidth,
 } from '@/theme/colorAssist';
 import { orbColors, orbGlow, orbLabel } from '@/theme/colors';
 import type { OrbColor } from '@/game/engine/types';
@@ -103,4 +104,16 @@ test('Color Assist is only ever recommended, never forced, on colour-dense level
   expect(recommendColorAssist(6)).toBe(true);
   expect(recommendColorAssist(15)).toBe(true);
   expect(recommendColorAssist(19)).toBe(true);
+});
+
+test('umber keeps an open, unique slashed ring at minimum detail at 2× and 3×', () => {
+  expect(colorMark('umber').name).toBe('slashed-ring');
+  const umber = simplifiedMark('umber', 'minimal');
+  expect(umber.parts).toEqual([{ p: 'ring' }, { p: 'bar', angle: 45, len: 0.68 }]);
+  for (const ratio of [2, 3]) {
+    const stroke = assistStrokeWidth('umber', 6 * ratio, umber.minStroke);
+    expect(stroke).toBeLessThan(6 * ratio * 0.25);
+    const signatures = GAMEPLAY_COLORS.map(color => JSON.stringify(simplifiedMark(color, 'minimal').parts));
+    expect(new Set(signatures).size).toBe(44);
+  }
 });

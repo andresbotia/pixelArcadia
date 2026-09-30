@@ -2752,29 +2752,29 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
       "...OOOOTTTlllWWWAAAGGGZZZKKKOOOTTTlllWWWAAANN...",
       "..NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN..",
       "..NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNK.",
-      ".NNNhhhhhNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNK.",
-      "hlNNhhhhhNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNKh",
-      "hlNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNOh",
-      "hlNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNhhhhhNNOh",
-      "hTNNNNhhhhhNNNNNNNNNNNNNcNNNNNNNNNNNNNNhhhhhNNOh",
-      "hTNNNNhhhhhhhhNNNNNNNcccccccNNNNNNNNNNNNNNNNNNTh",
-      "hTNNNNNNhhhhhhhhhNNNNNNNNNNNccNNNNNNNNNNNNNNNNTh",
-      "hOIIINNNNNNhhhhhhhhhIIINNNNNNccNNNNIIIIIINNNNNTh",
-      "hOIIIINNNNNNNNhhhhhhIIIINNNNNNcNNIIIIIIIIINNNNlh",
-      "hOIIIIINNNNNNIIIIIIIIIIIINNNNNNcIIIIIIIIIIINNNlh",
-      "hKIIIIIIIIIIIIIIIIIIIIIIIIIIIIIcIIIIIIIIIIIIIIlh",
-      "hKIIIIIIIIIIIIIIIhhhhhIIIIIIIIIcIIIIIIIIIIIIIIWh",
-      "hKIIIIIIIIIIIIIIIhhhhhhhhIIIIIIccIIIIIIIIIIIIIWh",
-      "hZIIIIIIIIIIIIIIIcIhhhhhhhhhIIIIIIIIIIIIIIIIIIWh",
-      "hZIIIIIIIIIIIIIIIcIIIIhhhhhhhhhIIIIIIIIIIIIIIIAh",
-      "hZIIIIIIIIIIIIIIIcIIIIIIIhhhhhhIIIIIIIIIIIIIIIAh",
-      "hGIIIIIIIIIIIIIIIIcIIIIIIIIIIccIIIIIIIIIIIIIIIAh",
-      "hGIIIIIIIIIIIIIIIIccIIIIIIIIIccIIIIIIIIIIIIIIIGh",
-      "hGIIIIIIIIIIIIIIIIIccIIIIIIIhhhhhIIIIIIIIIIIIIGh",
-      "hAIIIIIIIIIIIPPPPPPPPccccccchhhhhhhhIIIIIIIIIIGh",
-      "hAPIIIIIIIIIPPPPPPPPPIIIcIIIIIhhhhhhhhhIIIIIIIZh",
-      "hAPPIIIIIIPPPPPPPPPPPPIIIIIIPPPPPhhhhhhhhhIIIIZh",
-      "hWPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPhhhhhhPPPPZh",
+      ".NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNK.",
+      "hlNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNKh",
+      "hlNCCCCNNNNNNNCCCCNNNNNNNNNNNNNNCCCCNNNNNNNCCCCh",
+      "hlNCCCCNNNNNNNCCCCNNNNNNNNNNNNNNCCCCNNNNNNNCCCCh",
+      "hTNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNOh",
+      "hTNNNNNhhhhhhhNNNNNNNNNNNNNNNNNNNNNNhhhhhhhNNNTh",
+      "hTNNNNNhhWWWhhNNNNNNNNNNNNNNNNNNNNNNhhWWWhhNNNTh",
+      "hOIIIOOhhhhhhhOONNNNIIINNNNNNNNNNNOOhhhhhhhOONTh",
+      "hOIIIOOhhhhhhhOOCCCCNIIINNNNNNNCCCOOhhhhhhhOONlh",
+      "hOIIIIINNNNNNINCCCCCNIIIINNNNNNCCCCCNIIIIIINNNlh",
+      "hKIIIIIIIIIIIINNNNNNNIIIIIIIIINNNNNNNIIIIIIIIIlh",
+      "hKIIIIIIIIIIIIINNhhhhhhhhhhhhhhhhhNNIIIIIIIIIIWh",
+      "hKIIIIIIIIIIIIINNhhhhhhhhhhhhhhhhhNNIIIIIIIIIIWh",
+      "hZIIIIIIIIIIIIINNhhhhhhcWWWchhhhhhNNIIIIIIIIIIWh",
+      "hZIIIIIIIIIIIIINhhhNNNhccccchNNNhhhNIIIIIIIIIIAh",
+      "hZIIIIIIIIIIIIIIhhhIOOOhhhhhOOOIhhhIIIIIIIIIIIAh",
+      "hGIIIIIIIIIIIIIIIIIIOOOhhhhhOOOIIIIIIIIIIIIIIIAh",
+      "hGIIIIIIIIIIIIIIIIPPIIIIIIIIIPPIIIIIIIIIIIIIIIGh",
+      "hGIIIIIIIIIIIIIIIIIPPIIIIIIIPPPPPIIIIIIIIIIIIIGh",
+      "hAIIIIIIIIIIIPPPPPPPPPPPPPPPPPPPPPPPIIIIIIIIIIGh",
+      "hAPIIIIIIIIIPPPPPPPPPIIIPIIIIIPPPPPPPPPIIIIIIIZh",
+      "hAPPlllllllllPPPPPPPPPIIIIIIPPPPPPPlllllllllIIZh",
+      "hWPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPZh",
       "hWPPPPPPPPPPPPPPPPPPPPPPNNNNNPPPPPPPPPPPPPPPPPKh",
       "hWPPPPPPPPPPPPPPPPPPPPPPNNNNNPPPPPPPPPPPPPPPPPKh",
       "hlNNNNPPPPPPPPPPPPPPPPPPNNNNNPPPPPPPPPPPPPPPPPKh",
@@ -2800,96 +2800,64 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "tunnels": [
       [
         {
-          "color": "navy",
-          "capacity": 174
-        },
-        {
-          "color": "indigo",
-          "capacity": 39
-        },
-        {
-          "color": "indigo",
-          "capacity": 38
-        },
-        {
-          "color": "indigo",
-          "capacity": 37
-        },
-        {
-          "color": "indigo",
-          "capacity": 72
-        },
-        {
-          "color": "indigo",
-          "capacity": 33
-        },
-        {
-          "color": "navy",
-          "capacity": 51
-        },
-        {
-          "color": "indigo",
-          "capacity": 31
-        },
-        {
-          "color": "indigo",
-          "capacity": 28
-        },
-        {
-          "color": "indigo",
-          "capacity": 22
-        },
-        {
-          "color": "indigo",
-          "capacity": 27
-        },
-        {
-          "color": "indigo",
-          "capacity": 22
-        },
-        {
-          "color": "cerulean",
-          "capacity": 18
-        },
-        {
-          "color": "indigo",
-          "capacity": 27
-        },
-        {
-          "color": "indigo",
-          "capacity": 26
-        },
-        {
-          "color": "indigo",
-          "capacity": 36
-        },
-        {
-          "color": "indigo",
-          "capacity": 14
-        },
-        {
-          "color": "graphite",
-          "capacity": 12
-        },
-        {
-          "color": "indigo",
-          "capacity": 14
-        },
-        {
-          "color": "cerulean",
-          "capacity": 13
-        },
-        {
-          "color": "indigo",
+          "color": "pink",
           "capacity": 21
         },
         {
-          "color": "cerulean",
-          "capacity": 7
+          "color": "navy",
+          "capacity": 92
+        },
+        {
+          "color": "lavender",
+          "capacity": 24
         },
         {
           "color": "indigo",
-          "capacity": 6
+          "capacity": 45
+        },
+        {
+          "color": "indigo",
+          "capacity": 74
+        },
+        {
+          "color": "navy",
+          "capacity": 32
+        },
+        {
+          "color": "yellow",
+          "capacity": 5
+        },
+        {
+          "color": "navy",
+          "capacity": 46
+        },
+        {
+          "color": "indigo",
+          "capacity": 27
+        },
+        {
+          "color": "orange",
+          "capacity": 8
+        },
+        {
+          "color": "white",
+          "capacity": 1
+        },
+        {
+          "color": "indigo",
+          "capacity": 27
+        },
+        {
+          "color": "indigo",
+          "capacity": 20
+        },
+        {
+          "color": "purple",
+          "capacity": 16
+        },
+        {
+          "color": "navy",
+          "capacity": 21
         }
       ],
       [
@@ -2898,190 +2866,242 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
           "capacity": 158
         },
         {
+          "color": "gold",
+          "capacity": 18
+        },
+        {
           "color": "navy",
-          "capacity": 148
+          "capacity": 59
+        },
+        {
+          "color": "navy",
+          "capacity": 54
+        },
+        {
+          "color": "navy",
+          "capacity": 54
+        },
+        {
+          "color": "navy",
+          "capacity": 72
+        },
+        {
+          "color": "indigo",
+          "capacity": 47
+        },
+        {
+          "color": "cyan",
+          "capacity": 45
         },
         {
           "color": "navy",
           "capacity": 41
         },
         {
-          "color": "graphite",
+          "color": "indigo",
           "capacity": 37
         },
         {
-          "color": "navy",
-          "capacity": 70
+          "color": "indigo",
+          "capacity": 31
+        },
+        {
+          "color": "cyan",
+          "capacity": 11
         },
         {
           "color": "graphite",
-          "capacity": 34
+          "capacity": 41
         },
         {
           "color": "graphite",
-          "capacity": 26
-        },
-        {
-          "color": "graphite",
-          "capacity": 25
-        },
-        {
-          "color": "graphite",
-          "capacity": 24
-        },
-        {
-          "color": "graphite",
-          "capacity": 24
-        },
-        {
-          "color": "navy",
           "capacity": 32
+        },
+        {
+          "color": "purple",
+          "capacity": 37
+        },
+        {
+          "color": "graphite",
+          "capacity": 29
+        },
+        {
+          "color": "purple",
+          "capacity": 32
+        },
+        {
+          "color": "cerulean",
+          "capacity": 5
         },
         {
           "color": "graphite",
           "capacity": 27
         },
         {
-          "color": "graphite",
-          "capacity": 28
+          "color": "magenta",
+          "capacity": 5
         },
         {
-          "color": "graphite",
-          "capacity": 19
+          "color": "purple",
+          "capacity": 34
         },
         {
-          "color": "navy",
-          "capacity": 21
-        },
-        {
-          "color": "cyan",
-          "capacity": 19
-        },
-        {
-          "color": "graphite",
-          "capacity": 20
+          "color": "purple",
+          "capacity": 34
         },
         {
           "color": "navy",
-          "capacity": 15
+          "capacity": 23
         },
         {
-          "color": "cyan",
-          "capacity": 8
+          "color": "purple",
+          "capacity": 33
+        },
+        {
+          "color": "indigo",
+          "capacity": 13
+        },
+        {
+          "color": "indigo",
+          "capacity": 2
+        },
+        {
+          "color": "purple",
+          "capacity": 1
         },
         {
           "color": "navy",
-          "capacity": 16
-        },
-        {
-          "color": "navy",
-          "capacity": 11
-        },
-        {
-          "color": "graphite",
-          "capacity": 11
-        },
-        {
-          "color": "navy",
-          "capacity": 6
-        },
-        {
-          "color": "graphite",
-          "capacity": 10
+          "capacity": 13
         }
       ],
       [
         {
-          "color": "orange",
-          "capacity": 25
-        },
-        {
           "color": "teal",
           "capacity": 24
-        },
-        {
-          "color": "lavender",
-          "capacity": 24
-        },
-        {
-          "color": "white",
-          "capacity": 22
-        },
-        {
-          "color": "pink",
-          "capacity": 21
-        },
-        {
-          "color": "indigo",
-          "capacity": 110
-        },
-        {
-          "color": "purple",
-          "capacity": 35
-        },
-        {
-          "color": "purple",
-          "capacity": 30
-        },
-        {
-          "color": "indigo",
-          "capacity": 21
-        },
-        {
-          "color": "purple",
-          "capacity": 55
-        },
-        {
-          "color": "purple",
-          "capacity": 50
-        },
-        {
-          "color": "purple",
-          "capacity": 23
-        },
-        {
-          "color": "purple",
-          "capacity": 23
-        },
-        {
-          "color": "gold",
-          "capacity": 18
-        },
-        {
-          "color": "purple",
-          "capacity": 40
         },
         {
           "color": "ice",
           "capacity": 15
         },
         {
-          "color": "navy",
-          "capacity": 23
-        },
-        {
-          "color": "purple",
-          "capacity": 20
-        },
-        {
-          "color": "purple",
-          "capacity": 30
-        },
-        {
           "color": "green",
           "capacity": 12
         },
         {
-          "color": "yellow",
-          "capacity": 15
+          "color": "white",
+          "capacity": 22
+        },
+        {
+          "color": "navy",
+          "capacity": 81
+        },
+        {
+          "color": "orange",
+          "capacity": 25
+        },
+        {
+          "color": "graphite",
+          "capacity": 74
+        },
+        {
+          "color": "indigo",
+          "capacity": 44
+        },
+        {
+          "color": "cyan",
+          "capacity": 17
+        },
+        {
+          "color": "indigo",
+          "capacity": 43
+        },
+        {
+          "color": "indigo",
+          "capacity": 35
+        },
+        {
+          "color": "indigo",
+          "capacity": 58
+        },
+        {
+          "color": "navy",
+          "capacity": 35
+        },
+        {
+          "color": "cyan",
+          "capacity": 3
         },
         {
           "color": "purple",
+          "capacity": 72
+        },
+        {
+          "color": "yellow",
+          "capacity": 10
+        },
+        {
+          "color": "graphite",
+          "capacity": 39
+        },
+        {
+          "color": "white",
+          "capacity": 8
+        },
+        {
+          "color": "lavender",
+          "capacity": 11
+        },
+        {
+          "color": "purple",
+          "capacity": 38
+        },
+        {
+          "color": "purple",
+          "capacity": 35
+        },
+        {
+          "color": "orange",
           "capacity": 14
         },
         {
+          "color": "cerulean",
+          "capacity": 2
+        },
+        {
+          "color": "lavender",
+          "capacity": 7
+        },
+        {
           "color": "magenta",
-          "capacity": 6
+          "capacity": 1
+        },
+        {
+          "color": "graphite",
+          "capacity": 20
+        },
+        {
+          "color": "orange",
+          "capacity": 4
+        },
+        {
+          "color": "purple",
+          "capacity": 22
+        },
+        {
+          "color": "indigo",
+          "capacity": 5
+        },
+        {
+          "color": "purple",
+          "capacity": 7
+        },
+        {
+          "color": "graphite",
+          "capacity": 16
+        },
+        {
+          "color": "graphite",
+          "capacity": 8
         }
       ]
     ],
@@ -3108,93 +3128,89 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "winningWitness": [
       "T2",
       "T3",
-      "T3",
-      "T2",
-      "T3",
-      "H1",
       "T1",
-      "T3",
-      "H2",
       "T2",
       "T3",
-      "H1",
+      "T2",
+      "T3",
       "T1",
-      "H1",
       "T2",
+      "T3",
+      "H1",
       "T3",
       "T1",
       "T2",
       "H1",
       "T2",
+      "T3",
       "T1",
       "H1",
-      "T1",
-      "H1",
-      "H2",
-      "H1",
-      "T1",
-      "T2",
-      "T1",
-      "T1",
-      "T1",
-      "T3",
-      "T3",
-      "T3",
-      "T3",
-      "H2",
-      "T3",
-      "H2",
-      "T2",
-      "H1",
-      "T3",
-      "T1",
       "T3",
       "T2",
       "T3",
-      "T1",
-      "T3",
-      "T2",
-      "H1",
-      "T1",
-      "T1",
-      "T2",
-      "T3",
-      "T1",
-      "T2",
-      "T3",
-      "T1",
-      "T3",
-      "T2",
-      "T2",
-      "T2",
-      "T1",
-      "T3",
-      "T2",
       "H1",
       "T2",
       "T3",
-      "T1",
-      "T1",
       "T2",
-      "T1",
-      "T1",
-      "T1",
       "T3",
-      "H1",
-      "T2",
-      "T2",
-      "T2",
-      "T2",
-      "H1",
       "T1",
-      "T3",
       "T2",
+      "T3",
       "T2",
       "T3",
       "H2",
+      "H3",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "H3",
+      "T3",
       "T1",
       "H2",
-      "H1"
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "H2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "H1",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3",
+      "T2",
+      "T3",
+      "T1",
+      "T2",
+      "T3"
     ]
   },
   {

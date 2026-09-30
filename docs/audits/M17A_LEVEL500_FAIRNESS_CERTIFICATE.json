@@ -1,0 +1,136 @@
+{
+  "level": 500,
+  "baseline": "M16G 553 single and 28 double alternatives",
+  "singles": {
+    "tested": 553,
+    "recoverable": 535,
+    "fatal": 18,
+    "unknown": 0
+  },
+  "doubles": {
+    "tested": 28,
+    "recoverable": 23,
+    "fatal": 5,
+    "unknown": 0
+  },
+  "recoveredCases": [
+    {
+      "firstStep": 18,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": "L500-t0-c2",
+      "result": "RECOVERABLE",
+      "recoveryActions": 155,
+      "searchNodes": 64754,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 18,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 155,
+      "searchNodes": 62291,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 19,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 157,
+      "searchNodes": 57658,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 20,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 145,
+      "searchNodes": 49796,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 21,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 148,
+      "searchNodes": 52764,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 22,
+      "firstCharge": "L500-t0-c3",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 147,
+      "searchNodes": 52658,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 29,
+      "firstCharge": "L500-t0-c5",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 139,
+      "searchNodes": 48306,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 30,
+      "firstCharge": "L500-t0-c5",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 138,
+      "searchNodes": 48253,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    },
+    {
+      "firstStep": 30,
+      "firstCharge": "L500-t1-c6",
+      "secondCharge": null,
+      "result": "RECOVERABLE",
+      "recoveryActions": 142,
+      "searchNodes": 51534,
+      "pixelsRemaining": 0,
+      "holdingRemaining": 0,
+      "pendingRemaining": 0,
+      "tunnelsRemaining": 0,
+      "rejected": 0
+    }
+  ],
+  "failures": []
+}

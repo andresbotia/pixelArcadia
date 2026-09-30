@@ -4203,7 +4203,7 @@
   {
    "id": 159,
    "title": "Temple Bell",
-   "difficulty": "extreme",
+   "difficulty": "super-hard",
    "holding": 3,
    "ruleset": "coreV2",
    "legend": {

@@ -3715,7 +3715,7 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "id": 178,
     "title": "Stalactite Hall",
     "themeId": "crystal-caverns",
-    "difficulty": "extreme",
+    "difficulty": "super-hard",
     "holdingCapacity": 3,
     "pixelArt": [
       ".....EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEUU.....",

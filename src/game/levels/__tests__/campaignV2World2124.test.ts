@@ -155,7 +155,7 @@ test('all new levels are dev-accessible while normal campaign remains capped at 
 test('grids, queues, witnesses and level metadata remain byte-equivalent to the source arrays', () => {
   const hashes: Record<number, string> = {
     21: '16f0aaa27f336816fa61d990a28996e43305e4a7818d75fa2306d653ea9a2829',
-    22: '882666f3b38a90e95afbedc5ba9a06100831aa5f1d6d763924af5fa3e1fc65fb',
+    22: '5ed4eef836002b5346c72f37ba9fa33d149e769da6d0784e5e584dc3933f9229',
     23: '3f08099f4d8589c850c2a96ab3cfb6de728f8b9b40cab0ab0ff1a835cc9c439f',
     24: '2380808c4d63e0b8a38dfff975a5416c11ddd4b213563153a497328c3d4b038e',
   };

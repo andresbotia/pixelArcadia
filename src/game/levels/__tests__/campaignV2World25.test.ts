@@ -13,7 +13,7 @@ import { CAMPAIGN_VERSION, PUBLISHED_MAX_LEVEL } from '../publishing';
 // Independent author certificate: pixels, colors, Pals, witness, peak Holding, bridges, cleanup.
 const EXPECTED: Record<number, [number, number, number, number, number, number, number]> = {
   241: [2282, 21, 101, 122, 3, 9, 3],
-  242: [2286, 21, 99, 119, 3, 9, 3],
+  242: [2286, 21, 93, 106, 3, 7, 2],
   243: [2290, 21, 98, 121, 3, 8, 4],
   244: [2294, 22, 95, 115, 3, 7, 2],
   245: [2268, 18, 100, 110, 2, 5, 2],
@@ -127,7 +127,7 @@ test('all new levels are dev-accessible while normal campaign remains capped at 
 // Checksums of the authoritative stable handoff level arrays; top-level replacement metadata is excluded.
 test('grids, queues, witnesses and level metadata remain byte-equivalent to the source arrays', () => {
   const hashes: Record<number, string> = {
-    25: 'e4ab1cf9eecabf4d6fbe0b0606697475cdb707ade2c8543f4c598f3149cc07ca',
+    25: '3d41f030063e020dbeb1c9c1b6083225861f4e1efca0c4eea1b98adbfdd60dbf',
   };
   for (const world of [25]) {
     const packet = JSON.parse(fs.readFileSync(path.resolve(`content/levels/world-${String(world).padStart(2, '0')}.json`), 'utf8'));
@@ -143,8 +143,8 @@ test.each([250])('finale %i preserves its authored capstone metrics', id => {
   expect(EXPECTED[id]![3]).toBeLessThanOrEqual(135);
 });
 
-test('all 17 tiny Pals are preserved (no merges applied)', () => {
-  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(17);
+test('all 18 tiny Pals are preserved after the focused Level 242 reauthor', () => {
+  expect(imported.flatMap(l => l.tunnels.flat()).filter(p => p.capacity <= 2)).toHaveLength(18);
 });
 
 test('full 1–290 registry matches all source packets with valid replacement relationships', () => {

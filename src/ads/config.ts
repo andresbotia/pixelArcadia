@@ -5,7 +5,7 @@ import type { AdPlacement } from './types';
  *
  *  - APP ID (`ca-app-pub-XXXX~YYYY`, tilde): identifies the app. Baked into the
  *    native Info.plist / AndroidManifest at PREBUILD by the
- *    `react-native-google-mobile-ads` plugin entry in `app.json`. The native SDK
+ *    `react-native-google-mobile-ads` plugin entry resolved by `app.config.js`. The native SDK
  *    crashes at launch without it. Not read by JS except as a safety check.
  *  - AD UNIT IDs (`ca-app-pub-XXXX/ZZZZ`, slash): one per placement, chosen at
  *    RUNTIME here.
@@ -30,7 +30,7 @@ export const GOOGLE_TEST_UNIT_IDS = {
   },
 } as const;
 
-/** Google's published sample APP ids (what `app.json` carries until the real AdMob app exists). */
+/** Google's published sample APP ids used by development and preview builds. */
 export const GOOGLE_SAMPLE_APP_IDS = {
   ios: 'ca-app-pub-3940256099942544~1458002511',
   android: 'ca-app-pub-3940256099942544~3347511713',
@@ -65,6 +65,7 @@ export function readForceTestMode(): boolean {
 
 const UNIT_ID = /^ca-app-pub-\d{16}\/\d{10}$/;
 const APP_ID = /^ca-app-pub-\d{16}~\d{10}$/;
+const OBSOLETE_PARTNER_BIDDING_SUFFIX = '/6490432820';
 
 export type AdsMode = 'test' | 'live' | 'off';
 
@@ -114,7 +115,12 @@ export function resolveAdUnits(input: {
   const units = { ...NONE };
   for (const placement of Object.keys(NONE) as AdPlacement[]) {
     const id = ids[placement]?.trim();
-    if (id && UNIT_ID.test(id)) units[placement] = id;
+    const publisherMatches = !input.appId || id?.split('/')[0] === input.appId.split('~')[0];
+    const isSampleUnit = id === GOOGLE_TEST_UNIT_IDS[platform].interstitial || id === GOOGLE_TEST_UNIT_IDS[platform].rewarded;
+    const isPlaceholder = id?.includes('0000000000000000') || id?.endsWith('/0000000000');
+    // The old partner-bidding interstitial cannot be used for direct SDK requests.
+    if (id && UNIT_ID.test(id) && publisherMatches && !isSampleUnit && !isPlaceholder
+      && !id.endsWith(OBSOLETE_PARTNER_BIDDING_SUFFIX)) units[placement] = id;
     else notes.push(`${placement}: no valid production unit id — placement off`);
   }
   return { mode: Object.values(units).some(Boolean) ? 'live' : 'off', units, notes };

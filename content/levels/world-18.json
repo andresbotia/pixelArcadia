@@ -3714,7 +3714,7 @@
   {
    "id": 178,
    "title": "Stalactite Hall",
-   "difficulty": "extreme",
+   "difficulty": "super-hard",
    "holding": 3,
    "ruleset": "coreV2",
    "legend": {

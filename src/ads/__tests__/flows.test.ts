@@ -35,10 +35,11 @@ async function setup(policy: AdsPolicy = DEFAULT_ADS_POLICY, opts: { notLoaded?:
     requestOptions: () => ({ nonPersonalized: true }),
     track: (e) => tracked.push(e),
   });
+  ctl.setInterstitialsEnabled(policy.interstitialsEnabled);
   ctl.start();
   await flush();
   const ready = (unit: string) => sdk.latest(unit).emit('loaded');
-  for (const unit of Object.values(UNITS)) if (!opts.notLoaded?.includes(unit)) ready(unit);
+  for (const unit of Object.values(UNITS)) if (sdk.handles.some(h => h.unitId === unit) && !opts.notLoaded?.includes(unit)) ready(unit);
   const flows = createAdFlows({ ads: ctl, store: adsStore, policy: () => policy, grantHearts, now: () => now });
   return { sdk, ctl, flows, tracked, ready };
 }
@@ -175,14 +176,17 @@ describe('interstitial cadence', () => {
     await expect(p).resolves.toBe('shown');
   });
 
-  it('Remove Ads policy: interstitials off, slot consumed silently; rewarded still available', async () => {
+  it('Remove Ads policy: no interstitial request, slot consumed; both rewarded placements stay available', async () => {
     const { flows, sdk } = await setup({ interstitialsEnabled: false, rewardedEnabled: true });
     for (let i = 0; i < 3; i++) flows.recordLevelClear('campaign', true);
     await expect(flows.postWinBreak('campaign')).resolves.toBe('skipped');
-    expect(sdk.latest(UNITS.INTERSTITIAL_CAMPAIGN).showCalls).toBe(0);
+    expect(sdk.handles.some(h => h.unitId === UNITS.INTERSTITIAL_CAMPAIGN)).toBe(false);
     const r = flows.watchRewardedHeart('campaign');
     await watch(sdk, UNITS.REWARDED_HEART, { earned: 1 });
     await expect(r).resolves.toBe(true);
+    const retry = flows.watchRewardedRetry('campaign', 12);
+    await watch(sdk, UNITS.REWARDED_RETRY, { earned: 1 });
+    await expect(retry).resolves.toBe(true);
   });
 
   it('the cadence persists across restarts', async () => {

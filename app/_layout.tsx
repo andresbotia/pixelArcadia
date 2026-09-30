@@ -89,6 +89,9 @@ export default function RootLayout() {
       // entitlement applies to the ads policy at once — even offline — and
       // RevenueCat then reconciles in the background. Nothing waits on it.
       startPurchases();
+      // The cached Remove Ads policy is applied synchronously above, before
+      // the ad controller can request its first interstitial.
+      startAds();
     });
     return () => { alive = false; clearTimeout(cap); };
   }, []);
@@ -99,10 +102,6 @@ export default function RootLayout() {
   // Game Center is additive: sign-in runs in the background (GameKit shows
   // its own sheet if needed) and never gates the app. iOS only; no-op elsewhere.
   useEffect(() => { gameCenter.start(); }, []);
-  // Ads (M12) are additive the same way: the SDK initializes and preloads in
-  // the background; a failure just means no ads. Nothing waits on it.
-  useEffect(() => { startAds(); }, []);
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>

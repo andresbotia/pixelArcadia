@@ -107,7 +107,7 @@ const MARKS: Record<OrbColor, Omit<ColorMark, 'color'>> = {
     { p: 'bar', angle: 0, len: 0.5, offset: [0, -0.43] },
   ] },
   olive: { name: 'leaf-vein', parts: [{ p: 'sq', angle: 45, fill: false }, { p: 'bar', angle: 45, len: 0.86 }] },
-  umber: { name: 'ring-cross', parts: [{ p: 'ring' }, { p: 'bar', angle: 45 }, { p: 'bar', angle: -45 }] },
+  umber: { name: 'slashed-ring', parts: [{ p: 'ring' }, { p: 'bar', angle: 45, len: 0.68 }] },
   lavender: { name: 'triangle-dot', parts: [{ p: 'tri', dir: 'up', fill: false }, { p: 'dot', scale: 0.3 }] },
   blush: { name: 'double-ring', parts: [{ p: 'ring' }, { p: 'ring', scale: 0.5 }] },
   bronze: { name: 'filled-square', parts: [{ p: 'sq', angle: 0, fill: true }] },

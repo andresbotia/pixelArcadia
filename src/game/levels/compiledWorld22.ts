@@ -2860,7 +2860,7 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "id": 216,
     "title": "Star Dreadnought",
     "themeId": "galactic-odyssey",
-    "difficulty": "extreme",
+    "difficulty": "super-hard",
     "holdingCapacity": 3,
     "pixelArt": [
       "...qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq...",
@@ -4539,7 +4539,7 @@ export const COMPILED_LEVELS: LevelDefinition[] = [
     "id": 219,
     "title": "Galactic Core",
     "themeId": "galactic-odyssey",
-    "difficulty": "extreme",
+    "difficulty": "super-hard",
     "holdingCapacity": 3,
     "pixelArt": [
       "..qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq..",
