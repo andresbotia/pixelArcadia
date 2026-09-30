@@ -1,0 +1,59 @@
+# Publishes the static Pixel Arcadia site (privacy policy) in site/ to GitHub Pages.
+# Deploys only site/ — no app build, no dependencies, no secrets.
+# One-time setup: repository Settings → Pages → Source: "GitHub Actions".
+name: Deploy Pixel Arcadia site
+
+on:
+  push:
+    branches: [main, milestone/1-core-prototype]
+    paths:
+      - 'site/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Refuse to publish unfinished or tracking content
+        run: |
+          set -euo pipefail
+          # The policy must name a real privacy contact before it goes public.
+          if grep -rn "PRIVACY_CONTACT_EMAIL_REQUIRED" site; then
+            echo "::error::site/ still contains PRIVACY_CONTACT_EMAIL_REQUIRED — add the real privacy contact email first."
+            exit 1
+          fi
+          # Static, script-free pages only: no JS, iframes, trackers or third-party assets.
+          # (Plain links to provider privacy policies are fine.)
+          if grep -rniE "<script|<iframe|<img[^>]+https?://|<link[^>]+https?://|@import|googletagmanager\.com|google-analytics\.com|gtag\(|i\.posthog\.com|posthog\.init" site; then
+            echo "::error::site/ must not contain scripts, iframes or tracking."
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
