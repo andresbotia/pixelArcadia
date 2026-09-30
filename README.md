@@ -1,4 +1,4 @@
-# ORBITIDE
+# Pixel Arcadia
 
 A one-thumb mobile color puzzle game built around orbital lanes, a changing central core, and limited holding slots.
 
