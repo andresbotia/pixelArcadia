@@ -184,9 +184,13 @@ describe('M17C.1 — real Settings screen', () => {
     expect(screen).toMatch(/accessibilityRole="header">SETTINGS</);
   });
 
-  it('invents no links (no URLs until real Privacy/Terms pages exist)', () => {
+  it('shows only the real Privacy Policy link and required UMP choices', () => {
     expect(screen).not.toMatch(/https?:\/\//);
-    expect(screen).not.toMatch(/Linking/);
+    expect(screen).toMatch(/openPrivacyPolicy\(Linking\.openURL\)/);
+    expect(screen).toMatch(/accessibilityLabel="Privacy Policy"/);
+    expect(screen).toMatch(/privacyOptionsRequired \?/);
+    expect(screen).toMatch(/accessibilityLabel="Ad Privacy Choices"/);
+    expect(screen).not.toMatch(/accessibilityLabel="Terms"|accessibilityLabel="Support"/);
   });
 
   it('restores through the central IAP controller only (no RevenueCat in UI)', () => {

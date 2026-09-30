@@ -1,9 +1,11 @@
 import { LinearGradient } from 'expo-linear-gradient';
-import { memo, type ReactNode } from 'react';
-import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { memo, useSyncExternalStore, type ReactNode } from 'react';
+import { Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useColorAssist } from '@/hooks/useColorAssist';
+import { adConsent } from '@/ads/service';
+import { openPrivacyPolicy } from '@/ads/consent';
 import { useRestorePurchases } from '@/hooks/useRestorePurchases';
 import { PRODUCT_NAME } from '@/theme/appIdentity';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
@@ -33,12 +35,16 @@ const APP_VERSION = appVersionLabel();
  *  - Color Assist — the persisted accessibility preference gameplay already honours.
  *  - Restore Purchases — the central IAP controller (Remove Ads only; never re-grants consumables).
  *  - About — product name and the installed version/build.
- * No links are shown until real Privacy Policy / Terms URLs exist.
+ * Privacy Policy links to the published policy; UMP supplies optional ad choices.
  */
 export const SettingsScreen = memo(function SettingsScreen({ onBack }: SettingsScreenProps) {
   const colorAssist = useColorAssist();
   const restore = useRestorePurchases();
   const restoreDisabled = restore.running || restore.busy;
+  const privacyOptionsRequired = useSyncExternalStore(
+    (listener) => adConsent.subscribe(listener),
+    () => adConsent.isPrivacyOptionsRequired(),
+  );
 
   return (
     <View style={styles.root}>
@@ -101,6 +107,24 @@ export const SettingsScreen = memo(function SettingsScreen({ onBack }: SettingsS
               <Text style={styles.rowTitle}>{PRODUCT_NAME}</Text>
               {APP_VERSION ? <Text style={styles.value}>{APP_VERSION}</Text> : null}
             </View>
+            <Pressable
+              onPress={() => { void openPrivacyPolicy(Linking.openURL); }}
+              accessibilityRole="link"
+              accessibilityLabel="Privacy Policy"
+              style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+            >
+              <Text style={styles.rowTitle}>Privacy Policy</Text>
+            </Pressable>
+            {privacyOptionsRequired ? (
+              <Pressable
+                onPress={() => { void adConsent.showPrivacyOptions(); }}
+                accessibilityRole="button"
+                accessibilityLabel="Ad Privacy Choices"
+                style={({ pressed }) => [styles.row, pressed && styles.pressed]}
+              >
+                <Text style={styles.rowTitle}>Ad Privacy Choices</Text>
+              </Pressable>
+            ) : null}
           </Section>
         </ScrollView>
       </SafeAreaView>

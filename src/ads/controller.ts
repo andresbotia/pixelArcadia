@@ -70,6 +70,7 @@ export class AdsController {
   private sdkReady = false;
   private sdkFailed = false;
   private interstitialsEnabled = true;
+  private consentAllowed = true;
 
   constructor(
     private readonly sdk: AdsSdk | null,
@@ -108,6 +109,31 @@ export class AdsController {
     return this.slot(placement).state;
   }
 
+  /** A changed privacy choice retires cached ads before another request/show. */
+  setConsentAllowed(allowed: boolean): void {
+    if (this.consentAllowed === allowed) return;
+    this.consentAllowed = allowed;
+    if (!allowed) {
+      for (const p of AD_PLACEMENTS) {
+        const slot = this.slot(p);
+        if (slot.session) this.finishShow(p, 'failed');
+        this.clearTimer(slot, 'retryTimer');
+        this.clearTimer(slot, 'loadTimer');
+        this.discard(slot);
+        this.setState(p, 'unavailable');
+      }
+    } else {
+      if (!this.started) this.start();
+      for (const p of AD_PLACEMENTS) {
+        const slot = this.slot(p);
+        if (this.sdk && slot.unitId && !this.sdkFailed && (p !== 'INTERSTITIAL_CAMPAIGN' || this.interstitialsEnabled)) {
+          this.setState(p, 'idle');
+          this.load(p);
+        }
+      }
+    }
+  }
+
   /** Remove Ads stops interstitial requests as well as shows; rewarded slots remain active. */
   setInterstitialsEnabled(enabled: boolean): void {
     if (this.interstitialsEnabled === enabled) return;
@@ -142,7 +168,7 @@ export class AdsController {
   /** (Re)load a placement if it isn't already loading/loaded/showing. */
   load(placement: AdPlacement): void {
     const slot = this.slot(placement);
-    if (placement === 'INTERSTITIAL_CAMPAIGN' && !this.interstitialsEnabled) return;
+    if (!this.consentAllowed || (placement === 'INTERSTITIAL_CAMPAIGN' && !this.interstitialsEnabled)) return;
     if (!this.sdk || !this.sdkReady || !slot.unitId) return;
     if (slot.state === 'loading' || slot.state === 'ready' || slot.state === 'showing' || slot.state === 'unavailable') return;
     this.clearTimer(slot, 'retryTimer');
@@ -211,6 +237,7 @@ export class AdsController {
    */
   show(placement: AdPlacement): Promise<ShowResult> {
     const slot = this.slot(placement);
+    if (!this.consentAllowed) return Promise.resolve({ outcome: 'unavailable', opened: false, rewarded: false });
     if (this.showing !== null) return Promise.resolve({ outcome: 'busy', opened: false, rewarded: false });
     if (slot.state !== 'ready' || !slot.handle) {
       if (slot.state === 'idle' || slot.state === 'error') this.load(placement);

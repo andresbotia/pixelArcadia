@@ -1,65 +1,31 @@
-# App Store Connect — App Privacy questionnaire prep (Pixel Arcadia)
+# App Store Connect App Privacy worksheet — Pixel Arcadia
 
-Prepared for M17C.2 from a code audit of `milestone/1-core-prototype` (HEAD `a8a59f0` + M17C.2 working tree). **Nothing was submitted.** This is an input for whoever fills in App Store Connect → App Privacy. Apple's questionnaire covers data collected by the app **and by third-party SDKs** in it. "Collect" means transmitted off the device and kept longer than needed to service the request in real time.
+Prepared September 30, 2026. No answers have been submitted. Enter the final answers in App Store Connect → App Privacy only after the account checks below. Apple's [App Privacy guidance](https://developer.apple.com/app-store/app-privacy-details/) requires accounting for embedded SDKs as well as app code. A random persistent identifier may be "linked" to a pseudonymous profile even without a name; the table distinguishes what the repository proves from provider behavior that requires confirmation.
 
-Legend:
-- **VERIFIED**: established from this repo's code or config.
-- **NEEDS ACCOUNT-SIDE CONFIRMATION**: depends on provider dashboards or settings, SDK-internal behaviour, or a legal judgement not provable from code.
+| Apple category / type | Collected? | Linked? | Tracking? | Purpose / service / evidence | Confidence |
+| --- | --- | --- | --- | --- | --- |
+| Contact Info (all types) | NO | NO | NO | No account, email, phone or address collection; `src/analytics/api.ts`, `src/iap/sdk.ts` | VERIFIED |
+| Health & Fitness (all) | NO | NO | NO | No health integration; `package.json` | VERIFIED |
+| Financial Info (payment and credit) | NO | NO | NO | StoreKit processes payment; app receives no card data; `src/iap/sdk.ts` | VERIFIED |
+| Location (precise) | NO | NO | NO | No location permission/API; `package.json`, `app.json` | VERIFIED |
+| Location (coarse) | YES | YES per Google manifest | NO per Google manifest | Ad delivery/analytics, Google Mobile Ads bundled `PrivacyInfo.xcprivacy`; IP-derived location possible | VERIFIED for SDK declaration; ACCOUNT-SIDE CONFIRMATION REQUIRED for actual configuration |
+| Sensitive Info | NO | NO | NO | No sensitive fields in explicit analytics; `src/analytics/events.ts` | VERIFIED |
+| Contacts | NO | NO | NO | No contacts permission/API; `package.json` | VERIFIED |
+| User Content (all types) | NO | NO | NO | No UGC, uploads, chat or files sent; `src/`, `app/` | VERIFIED |
+| Browsing History | NO | NO | NO | No browser history collection; `src/`, `app/` | VERIFIED |
+| Search History | NO | NO | NO | No search feature; `src/`, `app/` | VERIFIED |
+| Identifiers → User ID | YES | NO to real-world identity; anonymous profile link exists | NO | PostHog random distinct ID, RevenueCat anonymous customer ID; `src/analytics/service.ts`, `src/iap/sdk.ts` | VERIFIED for app use; ACCOUNT-SIDE CONFIRMATION REQUIRED for provider reuse |
+| Identifiers → Device ID | YES | Google manifest: YES; app/Expo: NO | Google manifest: YES | AdMob SDK and Expo EAS-Client-ID; Google SDK manifest, `expo-updates` generated files, `app.json` | ACCOUNT-SIDE CONFIRMATION REQUIRED before final tracking answer |
+| Purchases → Purchase History | YES | NO in RevenueCat manifest; anonymous profile in PostHog | NO | RevenueCat transaction/entitlement service; PostHog product/category/price/Remove Ads events; `src/iap/service.ts`, `src/analytics/api.ts`, RevenueCat manifest | VERIFIED for app payloads; ACCOUNT-SIDE CONFIRMATION REQUIRED for provider linkage |
+| Usage Data → Product Interaction | YES | Google manifest: YES; PostHog anonymous profile | NO in app manifest | Explicit gameplay/ad/IAP events to PostHog; ad interactions to Google; `src/analytics/api.ts`, `src/ads/sdk.ts`, Google manifest | VERIFIED for payloads; ACCOUNT-SIDE CONFIRMATION REQUIRED for provider linkage |
+| Usage Data → Advertising Data | YES | YES per Google manifest | NO per Google manifest | AdMob ads, measurement; Google SDK manifest | VERIFIED for SDK declaration; ACCOUNT-SIDE CONFIRMATION REQUIRED for actual configuration |
+| Diagnostics → Crash Data | YES | NO | NO | Google SDK manifest; no PostHog crash autocapture; `src/analytics/service.ts` | VERIFIED for SDK declaration |
+| Diagnostics → Performance Data | YES | NO | NO | Google SDK manifest | VERIFIED for SDK declaration |
+| Diagnostics → Other Diagnostic Data | YES | NO | NO | Google SDK manifest | VERIFIED for SDK declaration |
+| Other Data | NO known additional type | NO | NO | Review final Xcode privacy report and network/device test | ACCOUNT-SIDE CONFIRMATION REQUIRED |
 
-## 1. Facts established from code (VERIFIED)
+**Tracking question: unresolved release blocker.** [Apple defines tracking](https://developer.apple.com/app-store/user-privacy-and-data-use/) as linking this app's data with other companies' apps/sites for targeted ads or advertising measurement, or sharing with data brokers. App code requests non-personalized ads, does not request ATT/IDFA, and does not send PostHog IDs to Google. However the bundled Google Mobile Ads manifest declares `NSPrivacyCollectedDataTypeDeviceID` with tracking `true`; a local request flag cannot override what Google's SDK/account actually does. Confirm AdMob app/account settings, data use, mediation, and the final Xcode privacy report with Google and Apple guidance. If cross-app tracking occurs, obtain ATT and revise the manifest, policy, and worksheet before release; otherwise document the evidence for answering NO. Do not submit NO from this worksheet alone.
 
-| Topic | Evidence |
-|---|---|
-| No accounts, login, email, name or phone | No auth code; RevenueCat configured without `appUserID` (`src/iap/sdk.ts`); PostHog has no `identify()` (`src/analytics/service.ts`) |
-| No permission prompts: location, contacts, photos, camera, mic, notifications, ATT | No such modules in `package.json`; generated `Info.plist` has no `NSUserTrackingUsageDescription` |
-| Ads are requested non-personalized | `adRequestOptions()` returns `nonPersonalized: true` → `requestNonPersonalizedAdsOnly` (`src/ads/config.ts`, `src/ads/sdk.ts`) |
-| AdMob measurement init delayed | `delayAppMeasurementInit: true` (`app.json`) → `GADDelayAppMeasurementInit = true` |
-| No UMP / consent flow | No UMP calls. The UMP pod ships inside the Google SDK but is never invoked |
-| PostHog: anonymous distinct ID; replay, lifecycle and error autocapture off; `disableGeoip: true`; US ingestion `https://us.i.posthog.com`; `personProfiles: 'always'` | `src/analytics/service.ts`, `src/analytics/config.ts` |
-| PostHog auto-attached properties | App name/version/build/namespace, OS name/version, device type, screen size, SDK version. Device model, manufacturer, locale and timezone are **not** attached: `expo-device`, `react-native-device-info`, `expo-localization` and `react-native-localize` are not installed |
-| PostHog explicit events carry level numbers, highest level, Remove Ads ownership, item IDs, ad placement outcomes, IAP product ID, category, reward summary and localized price | `src/analytics/events.ts`, `src/analytics/api.ts`, M17B.3 report |
-| No Game Center, advertising or transaction IDs in analytics | Grep of `src/analytics` finds no Game Center / GameKit fields; M17B.3 |
-| Game Center display name, alias and `gamePlayerID` are read **on device only**: shown on the Leaderboard screen, and used as the key of the local submission memo `pixelarcadia/gamecenter/v1` | `modules/game-center/ios/GameCenterModule.swift`, `src/game/gameCenter/service.ts`, `src/storage/gameCenter.ts` |
-| Expo EAS Update checks on every launch, sending header `EAS-Client-ID` (random per-install UUID) plus runtime version, channel and platform | Generated `Expo.plist`: `EXUpdatesCheckOnLaunch = ALWAYS`, URL `u.expo.dev`; `expo-updates` `FileDownloader.swift` |
-| No other network calls from app code | No `fetch`, XHR or websockets in `src/`/`app/` outside the dev-only Level Studio |
-| App-level `PrivacyInfo.xcprivacy` declares **no** collected data types, `NSPrivacyTracking = false` | Generated by prebuild; `app.json` has no `ios.privacyManifests` |
+**Account verification before entry:** In AdMob Privacy & messaging publish the correct EEA/UK/Switzerland message for this app; confirm any ATT message is disabled (this binary has no tracking usage description) and inspect ad personalization/mediation settings. In PostHog Settings → Project settings (Environment) → enable and verify **Discard client IP data** for this existing project; the organization default only applies to new projects. Inspect a new event for absence of retained IP/GeoIP properties and confirm no downstream destination creates a profile from PII. In RevenueCat verify anonymous IDs and product/entitlement mapping. Generate the final Xcode privacy report from the archive and reconcile every SDK declaration. Review App Privacy answers again after any SDK/account change.
 
-## 2. Proposed answers by data type
-
-Throughout: **Linked to identity: No** (no accounts; every identifier is a random, app-scoped or provider-scoped ID).
-
-| Apple data type | Source | Collected? | Purposes | Tracking? | Status |
-|---|---|---|---|---|---|
-| **Identifiers → Device ID** | Google Mobile Ads SDK (app-scoped / vendor identifiers; IDFA unavailable without ATT) | Yes | Third-Party Advertising, Analytics | Answer per Google's current disclosure guidance for **non-personalized, no-ATT** use | NEEDS ACCOUNT-SIDE CONFIRMATION |
-| Identifiers → Device ID | PostHog anonymous distinct ID (random install ID) | Yes | Analytics | No | VERIFIED |
-| Identifiers → Device ID | Expo `EAS-Client-ID` (random install UUID on update checks) | Yes, likely | App Functionality | No | NEEDS CONFIRMATION: whether Expo retains it beyond real-time servicing |
-| Identifiers → User ID | RevenueCat anonymous app user ID | Not required when using anonymous IDs (RevenueCat guidance) | — | — | VERIFIED (anonymous config) |
-| **Purchases → Purchase History** | RevenueCat (StoreKit transactions) | Yes | App Functionality, Analytics | No | VERIFIED: RevenueCat's docs require declaring it |
-| Purchases → Purchase History | PostHog IAP events (product ID, price, outcome) | Yes | Analytics | No | VERIFIED |
-| **Usage Data → Product Interaction** | PostHog gameplay and app events | Yes | Analytics | No | VERIFIED |
-| Usage Data → Product Interaction | Google Mobile Ads SDK (ad taps, views, engagement) | Yes | Third-Party Advertising, Analytics | See Device ID row | NEEDS ACCOUNT-SIDE CONFIRMATION |
-| **Usage Data → Advertising Data** | Google Mobile Ads SDK (ads viewed) | Yes | Third-Party Advertising | See Device ID row | NEEDS ACCOUNT-SIDE CONFIRMATION |
-| **Diagnostics → Performance Data / Crash Data** | Google Mobile Ads SDK (per Google's iOS data disclosure) | Yes | Analytics, App Functionality | No | NEEDS ACCOUNT-SIDE CONFIRMATION against the installed SDK's privacy manifest |
-| Diagnostics | PostHog | **No** (error and crash autocapture disabled) | — | — | VERIFIED |
-| **Location → Coarse Location** | Google (IP-derived approximate location for ads) | Likely yes | Third-Party Advertising | — | NEEDS ACCOUNT-SIDE CONFIRMATION |
-| Location → Coarse Location | PostHog | App requests no GeoIP (`disableGeoip`) | — | — | VERIFIED client-side. PostHog project **IP discard** setting unverified |
-| Location → Precise | — | **No** | — | — | VERIFIED |
-| Contact Info (name, email, phone, address) | — | **No** | — | — | VERIFIED |
-| User Content / Gameplay Content | Game Center score and achievements go to **Apple** via GameKit | Apple-managed; the app sends nothing to us or our providers | — | — | NEEDS CONFIRMATION: Apple's current guidance on declaring Game Center data. Display name and ID stay on device (not "collected") |
-| Health, Financial, Contacts, Browsing/Search History, Sensitive Info, Other | — | **No** | — | — | VERIFIED |
-
-**"Do you or your third-party partners use data for tracking?"** The app is currently **No**: no ATT prompt, no IDFA, NPA requests, and `NSPrivacyTracking` false. Confirm this against the privacy manifest in the installed Google Mobile Ads SDK and the AdMob account's privacy and messaging settings before answering. If UMP later enables personalized ads with ATT, this answer and the policy must change.
-
-## 3. Account-side and release follow-ups
-
-1. **AdMob**
-   - Decide and implement UMP consent (GDPR/UK/CH messages; US state regulations) in AdMob → Privacy & messaging.
-   - Confirm the "non-personalized only" posture.
-   - Consider setting a max ad content rating and child-directed / under-age tags once the App Store age rating is chosen.
-2. **PostHog**: in the US project, enable **discard client IP data**, confirm GeoIP enrichment is off, and check the data retention for the plan.
-3. **Privacy manifest**: add app-level `ios.privacyManifests.NSPrivacyCollectedDataTypes` entries for PostHog (Product Interaction, Device ID, Purchase History; not linked, not tracking, Analytics). Also consider Expo's `EAS-Client-ID`. Google and RevenueCat ship their own SDK manifests; verify them in Xcode's privacy report after an archive build.
-4. **Age rating**: not set anywhere in the repo. Complete Apple's age-rating questionnaire. The policy deliberately says "general audience, not directed to children under 13".
-5. **RevenueCat**: confirm there are no integrations sending purchase data to ad networks (that would change the tracking answer).
-6. **Privacy Policy URL**: `https://andresbotia.github.io/pixelArcadia/privacy/` once Pages is live (see `M17C2_PRIVACY_POLICY_GITHUB_PAGES.md`). Blocked on the privacy contact email.
-
-Sources for provider terminology: [Google Mobile Ads SDK iOS data disclosure](https://developers.google.com/admob/ios/privacy/data-disclosure), [RevenueCat Apple App Privacy](https://www.revenuecat.com/docs/platform-resources/apple-platform-resources/apple-app-privacy), [PostHog privacy docs](https://posthog.com/docs/privacy).
+Sources: [Apple manifest data use](https://developer.apple.com/documentation/BundleResources/describing-data-use-in-privacy-manifests), [Apple tracking definition](https://developer.apple.com/app-store/user-privacy-and-data-use/), [Google iOS data disclosure](https://developers.google.com/admob/ios/privacy/data-disclosure), [PostHog IP control](https://posthog.com/tutorials/web-redact-properties#hiding-customer-ip-address), [RevenueCat Apple privacy](https://www.revenuecat.com/docs/platform-resources/apple-platform-resources/apple-app-privacy).
