@@ -126,9 +126,11 @@ describe('primary CTA + font loading wiring', () => {
     expect(read('src/components/ResultOverlay.tsx')).toMatch(/PrimaryCta/);
   });
 
-  it('loads Space Grotesk 700 at the app root without blocking startup', () => {
+  it('loads the v2 UI fonts at the app root without blocking startup (no Space Grotesk since M17C.1)', () => {
     const layout = read('app/_layout.tsx');
-    expect(layout).toMatch(/SpaceGrotesk_700Bold/);
+    expect(layout).not.toMatch(/SpaceGrotesk_700Bold/);
+    expect(layout).toMatch(/Rubik_900Black/);
+    expect(layout).toMatch(/PixelifySans_600SemiBold/);
     expect(layout).toMatch(/useFonts/);
     expect(layout).toMatch(/hideAsync/);
   });
@@ -165,9 +167,9 @@ describe('app config — display name over untouched technical identifiers', () 
     expect(cfg.expo.updates.url).toContain('07cb395c-b299-49d3-9100-f360874eaea5');
   });
 
-  it('wires the approved icon / adaptive-icon brand colours', () => {
+  it('wires the approved icon / adaptive-icon brand colours (M17C.1 launch blue)', () => {
     expect(cfg.expo.icon).toBe('./assets/icon.png');
-    expect(cfg.expo.android.adaptiveIcon.backgroundColor).toBe('#182055');
+    expect(cfg.expo.android.adaptiveIcon.backgroundColor).toBe('#3B63E8');
   });
 
   it('pins the native splash to the in-app boot loader (M10 seamless hand-off)', () => {
@@ -189,7 +191,7 @@ describe('web metadata + favicon', () => {
 
   it('titles the document "Pixel Arcadia"', () => {
     expect(html).toMatch(/<title>\{PRODUCT_NAME\}<\/title>/);
-    expect(html).toMatch(/name="theme-color" content="#0E1442"/);
+    expect(html).toMatch(/name="theme-color" content="#3B63E8"/);
     expect(html).toMatch(/apple-touch-icon/);
   });
 

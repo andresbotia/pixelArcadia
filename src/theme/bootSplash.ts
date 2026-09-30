@@ -16,8 +16,8 @@
 export const BOOT_SPLASH = {
   /** Native splash + root view + loader midpoint. */
   background: '#3B63E8',
-  /** Loader gradient: bright sky blue → base (behind the logo) → arcade violet. */
-  gradient: ['#5C8CFF', '#3B63E8', '#5236C8'] as const,
+  /** Loader gradient: bright sky blue → base (behind the logo) → deep badge blue (M17C.1: no violet chrome). */
+  gradient: ['#5C8CFF', '#3B63E8', '#2450CC'] as const,
   gradientStops: [0, 0.5, 1] as const,
   /** Soft light behind the logo. */
   glow: '#9FD0FF',

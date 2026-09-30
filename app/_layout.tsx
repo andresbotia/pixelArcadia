@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
-import { useFonts, SpaceGrotesk_700Bold } from '@expo-google-fonts/space-grotesk';
+import { useFonts } from 'expo-font';
 import {
   Rubik_400Regular,
   Rubik_500Medium,
@@ -58,11 +58,11 @@ async function openAnalyticsSession(): Promise<void> {
 }
 
 export default function RootLayout() {
-  // Live wordmark font + the v2 UI faces (Rubik for all UI and numbers,
-  // Pixelify Sans for tiny brand captions). Home mounts underneath the boot
-  // loader immediately; the loader lifts once these AND the saves are ready.
+  // The v2 UI faces (Rubik for all UI and numbers, Pixelify Sans for tiny
+  // brand captions). Space Grotesk is no longer loaded (M17C.1): no rendered
+  // surface uses it. Home mounts underneath the boot loader immediately; the
+  // loader lifts once these AND the saves are ready.
   const [fontsLoaded, fontError] = useFonts({
-    SpaceGrotesk_700Bold,
     Rubik_400Regular,
     Rubik_500Medium,
     Rubik_600SemiBold,

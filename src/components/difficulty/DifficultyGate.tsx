@@ -17,6 +17,7 @@ import {
   gatePrimitives,
   type GateAccent,
 } from '@/game/levels/difficulty';
+import { AV_FONT } from '@/theme/arcadiaV2';
 import { material } from '@/theme/material';
 
 export type GateVariant = 'hud' | 'badge' | 'intro';
@@ -128,5 +129,5 @@ export const DifficultyGate = memo(function DifficultyGate({
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', gap: 6 },
   badgeCol: { alignItems: 'center', gap: 3 },
-  label: { letterSpacing: 2, fontWeight: '800', color: material.textSecondary },
+  label: { fontFamily: AV_FONT.extraBold, letterSpacing: 2, color: material.textSecondary },
 });

@@ -38,7 +38,7 @@ interface BootSplashProps {
  * App-layer launch screen (M10). The NATIVE splash is a static frame — solid
  * `BOOT_SPLASH.background` with the logo centred at `logoWidth`. This view's
  * first frame draws exactly that, so hiding the native splash is invisible;
- * only then does the richer layer fade in: sky-to-violet gradient, a soft
+ * only then does the richer layer fade in: sky-to-deep-blue gradient, a soft
  * glow behind the logo, the Pal and a three-pixel loading beat.
  *
  * It never holds the app: the moment `ready` flips it fades out (240ms) over

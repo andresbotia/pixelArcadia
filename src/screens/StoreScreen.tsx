@@ -13,10 +13,11 @@ import type { GameplayItemId } from '@/game/economy/config';
 import { feedback } from '@/game/feedback';
 import { useEconomy } from '@/hooks/useEconomy';
 import { usePurchases } from '@/hooks/usePurchases';
+import { useRestorePurchases } from '@/hooks/useRestorePurchases';
 import { iapProductsInSection, type IapStoreProduct } from '@/iap/catalog';
 import { purchases } from '@/iap/service';
 import { iapCardView, rewardLines } from '@/iap/storeView';
-import type { PurchaseOutcome, RestoreOutcome } from '@/iap/types';
+import type { PurchaseOutcome } from '@/iap/types';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
 
 interface StoreScreenProps {
@@ -90,7 +91,7 @@ export function StoreScreen({ onHome, onLeaderboard }: StoreScreenProps) {
                   ))}
                 </View>
               ))}
-              <RestoreRow busy={iap.activeOperation !== null} onRestore={iap.restore} />
+              <RestoreRow />
             </>
           )}
         </ScrollView>
@@ -276,32 +277,15 @@ const IapCard = memo(function IapCard({
   );
 });
 
-const RESTORE_TEXT: Record<RestoreOutcome, string> = {
-  restored: 'Purchases restored.',
-  nothingToRestore: 'No purchases found.',
-  failed: 'Restore failed. Please try again.',
-  unavailable: 'Purchases are unavailable right now.',
-};
-
 /** Restore Purchases: brings back Remove Ads (non-consumables only — never coins). */
-function RestoreRow({ busy, onRestore }: { busy: boolean; onRestore: () => Promise<RestoreOutcome> }) {
-  const [text, setText] = useState<string | null>(null);
-  const [running, setRunning] = useState(false);
-  const restore = useCallback(async () => {
-    if (running || busy) return;
-    setRunning(true);
-    setText(null);
-    const outcome = await onRestore();
-    setRunning(false);
-    setText(RESTORE_TEXT[outcome]);
-    if (outcome === 'restored') feedback.emit('reward');
-  }, [running, busy, onRestore]);
+function RestoreRow() {
+  const { restore, running, busy, message } = useRestorePurchases();
   return (
     <View style={styles.restore}>
-      <Pressable onPress={restore} disabled={running || busy} hitSlop={10} accessibilityRole="button" accessibilityLabel="Restore purchases">
+      <Pressable onPress={() => void restore()} disabled={running || busy} hitSlop={10} accessibilityRole="button" accessibilityLabel="Restore purchases">
         <Text style={[styles.restoreText, (running || busy) && styles.restoreBusy]}>{running ? 'RESTORING…' : 'RESTORE PURCHASES'}</Text>
       </Pressable>
-      {text ? <Text style={styles.restoreResult}>{text}</Text> : null}
+      {message ? <Text style={styles.restoreResult}>{message}</Text> : null}
     </View>
   );
 }

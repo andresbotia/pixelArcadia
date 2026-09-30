@@ -6,7 +6,7 @@ import { PRODUCT_NAME } from '@/theme/appIdentity';
 /**
  * Web-only document shell (Expo Router SSG). Carries the Pixel Arcadia web-facing
  * metadata: title, description and theme colour. The browser-tab icon is the
- * simplified core-only favicon (§11) — Expo generates a multi-size `favicon.ico`
+ * simplified Portal Mosaic favicon (M17C.1) — Expo generates a multi-size `favicon.ico`
  * (16 / 32 / 48) from `web.favicon` (`assets/favicon.png`), and `public/`
  * ships the standalone 16 / 32 / 64 PNGs. Technical identifiers (slug `orbitide`,
  * scheme `orbitide`) are unaffected.
@@ -21,11 +21,11 @@ export default function Root({ children }: PropsWithChildren) {
 
         <title>{PRODUCT_NAME}</title>
         <meta name="description" content="Pixel Arcadia — a one-thumb pixel-art puzzle game." />
-        <meta name="theme-color" content="#0E1442" />
+        <meta name="theme-color" content="#3B63E8" />
         <link rel="apple-touch-icon" href="/favicon.png" />
 
         <ScrollViewStyleReset />
-        <style>{`html,body{background-color:#0E1442;}`}</style>
+        <style>{`html,body{background-color:#3B63E8;}`}</style>
       </head>
       <body>{children}</body>
     </html>

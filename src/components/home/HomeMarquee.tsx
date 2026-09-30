@@ -4,9 +4,9 @@ import { Image, Pressable, StyleSheet } from 'react-native';
 import { WORDMARK_LABEL } from '@/theme/brand';
 
 /**
- * Home title: the raster PIXEL ARCADIA lockup. Replaces the text wordmark on
- * Home only — `PixelArcadiaWordmark` is still the live text lockup everywhere
- * else. Because the title is no longer real text it carries the wordmark's
+ * Home title: the raster PIXEL ARCADIA lockup (the same art as the splash).
+ * The legacy text lockup (`PixelArcadiaWordmark`) is no longer rendered
+ * anywhere. Because the title is not real text it carries the wordmark's
  * screen-reader label and header role explicitly.
  */
 

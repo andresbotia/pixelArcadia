@@ -184,11 +184,11 @@ const styles = StyleSheet.create({
     backgroundColor: GP.gold,
   },
   bannerText: {
+    // Rubik 700 via GP_TYPE.label; no fontWeight override (it can drop a custom face to system on Android).
     ...GP_TYPE.label,
     color: GP.gold,
     fontSize: 10,
     letterSpacing: 1.5,
-    fontWeight: '700',
   },
   detonationRing: {
     position: 'absolute',

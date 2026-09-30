@@ -1,28 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Pixel Arcadia">
-  <defs>
-    <radialGradient id="pa-core" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="28%" stop-color="#FFF0B8"/>
-      <stop offset="58%" stop-color="#FFC94D"/>
-      <stop offset="100%" stop-color="#F2662E"/>
-    </radialGradient>
-    <linearGradient id="pa-block" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#8FA8FF"/>
-      <stop offset="100%" stop-color="#4B47C9"/>
-    </linearGradient>
-  </defs>
-  <g fill="url(#pa-block)">
-    <rect x="49" y="12" width="22" height="18" rx="4"/>
-    <rect x="24.5" y="22" width="20" height="18" rx="4" transform="rotate(-32 34.5 31)"/>
-    <rect x="75.5" y="22" width="20" height="18" rx="4" transform="rotate(32 85.5 31)"/>
-    <rect x="14" y="46" width="20" height="58" rx="4"/>
-    <rect x="86" y="46" width="20" height="58" rx="4"/>
-  </g>
-  <g fill="url(#pa-core)">
-    <rect x="46" y="46" width="28" height="28" rx="3"/>
-    <rect x="39" y="53" width="7" height="14"/>
-    <rect x="74" y="53" width="7" height="14"/>
-    <rect x="53" y="39" width="14" height="7"/>
-    <rect x="53" y="74" width="14" height="7"/>
-  </g>
+  <g fill="#AFC5F5"><rect x="46.88" y="18.52" width="26.25" height="11.25" rx="2.11"/><rect x="27.19" y="26.02" width="20.63" height="11.25" rx="2.11"/><rect x="72.19" y="26.02" width="20.63" height="11.25" rx="2.11"/><rect x="19.69" y="37.27" width="15" height="18.75" rx="2.11"/><rect x="85.31" y="37.27" width="15" height="18.75" rx="2.11"/><rect x="17.81" y="56.02" width="15" height="48.75" rx="2.11"/><rect x="87.19" y="56.02" width="15" height="48.75" rx="2.11"/></g>
+  <g fill="#FFFFFF"><rect x="46.88" y="15.94" width="26.25" height="11.25" rx="2.11"/><rect x="27.19" y="23.44" width="20.63" height="11.25" rx="2.11"/><rect x="72.19" y="23.44" width="20.63" height="11.25" rx="2.11"/><rect x="19.69" y="34.69" width="15" height="18.75" rx="2.11"/><rect x="85.31" y="34.69" width="15" height="18.75" rx="2.11"/><rect x="17.81" y="53.44" width="15" height="48.75" rx="2.11"/><rect x="87.19" y="53.44" width="15" height="48.75" rx="2.11"/></g>
+  <rect x="41.25" y="51.33" width="17.81" height="17.81" rx="3.28" fill="#D62D68"/><rect x="41.25" y="49.69" width="17.81" height="17.81" rx="3.28" fill="#FF4F8B"/><rect x="60.94" y="51.33" width="17.81" height="17.81" rx="3.28" fill="#D98500"/><rect x="60.94" y="49.69" width="17.81" height="17.81" rx="3.28" fill="#FFC53D"/><rect x="41.25" y="71.02" width="17.81" height="17.81" rx="3.28" fill="#1FA7C9"/><rect x="41.25" y="69.38" width="17.81" height="17.81" rx="3.28" fill="#4FE3FF"/><rect x="60.94" y="71.02" width="17.81" height="17.81" rx="3.28" fill="#1FAE74"/><rect x="60.94" y="69.38" width="17.81" height="17.81" rx="3.28" fill="#3FD99A"/>
 </svg>

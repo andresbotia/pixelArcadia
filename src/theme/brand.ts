@@ -83,7 +83,8 @@ export interface BrandGradient {
 export const brandGradient = {
   /**
    * Full-screen brand background. Every full-bleed brand surface. Stops match
-   * the app-icon's own `arcade_backdrop` radial (`scripts/generate-brand-assets.py`)
+   * the retired M3.6 app-icon `arcade_backdrop` radial (legacy; the launch icon is
+   * now `scripts/generate-brand-assets.mjs`, on the v2 launch blue)
    * so the icon and the in-app Home/Splash wash read as the same environment.
    */
   background: {

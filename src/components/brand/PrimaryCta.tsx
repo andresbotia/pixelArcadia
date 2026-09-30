@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect } from 'react';
 import { Platform, Pressable, StyleSheet, Text, View, type ViewStyle } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
   cancelAnimation,
   Easing,
@@ -11,8 +12,10 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { brandColor, brandInk } from '@/theme/brand';
-import { BrandGradientView } from './BrandGradientView';
+import { AV, AV_FONT } from '@/theme/arcadiaV2';
+
+/** v2 gold face — the same ramp as Home's PLAY (`HomePlayButton`). */
+const GOLD_FACE = [AV.goldLight, AV.gold, AV.goldDeep] as const;
 
 interface PrimaryCtaProps {
   /** Uppercased automatically. PLAY / NEXT / CONTINUE / RETRY. */
@@ -20,7 +23,7 @@ interface PrimaryCtaProps {
   onPress: () => void;
   onPressIn?: () => void;
   disabled?: boolean;
-  /** `primary` = the one amber CTA per screen. `secondary` = surface + border. */
+  /** `primary` = the one gold CTA per screen. `secondary` = glass + border. */
   variant?: 'primary' | 'secondary';
   fullWidth?: boolean;
   style?: ViewStyle;
@@ -40,10 +43,12 @@ interface PrimaryCtaProps {
  * PLAY / NEXT / RETRY / CONTINUE all share this exact treatment and nothing else
  * does. Token-driven — no bespoke per-screen button styling.
  *
- *  - primary  : grad.cta fill, inset top highlight + bottom lip, warm drop glow,
- *               ink #2A1405, pressed = +2px / lip removed / glow dimmed (90ms),
- *               disabled = surface fill + secondary ink, no glow.
- *  - secondary: grad.surface fill + 1px border, primary-text ink.
+ *  - primary  : v2 gold fill (AV.goldLight → gold → goldDeep, as Home PLAY),
+ *               inset top highlight + goldLip bottom lip, gold drop glow,
+ *               AV.goldInk, pressed = +2px / lip removed / glow dimmed (90ms),
+ *               disabled = deep glass fill + secondary ink, no glow.
+ *  - secondary: glass fill + 1px glass border, white ink.
+ *  Label: Rubik 900 (M17C.1 — previously system bold).
  */
 export const PrimaryCta = memo(function PrimaryCta({
   label,
@@ -121,9 +126,9 @@ export const PrimaryCta = memo(function PrimaryCta({
           {disabled ? (
             <View style={[styles.fill, styles.disabledFill]} />
           ) : isPrimary ? (
-            <BrandGradientView token="cta" style={styles.fill} />
+            <LinearGradient colors={GOLD_FACE} style={styles.fill} />
           ) : (
-            <BrandGradientView token="surface" style={[styles.fill, styles.secondaryFill]} />
+            <View style={[styles.fill, styles.secondaryFill]} />
           )}
 
           {isPrimary && !disabled ? (
@@ -166,7 +171,7 @@ const styles = StyleSheet.create({
   glow: {
     ...Platform.select({
       ios: {
-        shadowColor: '#FF8A1F',
+        shadowColor: AV.goldDeep,
         shadowOffset: { width: 0, height: 8 },
         shadowRadius: 20,
         shadowOpacity: 0.32,
@@ -183,8 +188,8 @@ const styles = StyleSheet.create({
     }),
   },
   fill: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: RADIUS },
-  secondaryFill: { borderWidth: 1, borderColor: brandColor.border },
-  disabledFill: { backgroundColor: brandColor.surface },
+  secondaryFill: { backgroundColor: AV.glass, borderWidth: 1, borderColor: AV.glassBorder },
+  disabledFill: { backgroundColor: AV.glassDeep },
   topHighlight: {
     position: 'absolute',
     top: 0,
@@ -199,10 +204,10 @@ const styles = StyleSheet.create({
     left: RADIUS,
     right: RADIUS,
     height: 3,
-    backgroundColor: 'rgba(150,70,10,0.4)',
+    backgroundColor: AV.goldLip,
   },
-  label: { fontSize: 17, fontWeight: '700', letterSpacing: 17 * 0.16 },
-  inkPrimary: { color: brandInk },
-  inkMuted: { color: brandColor.textSecondary },
-  inkSecondary: { color: brandColor.textPrimary },
+  label: { fontFamily: AV_FONT.black, fontSize: 17, letterSpacing: 17 * 0.16 },
+  inkPrimary: { color: AV.goldInk },
+  inkMuted: { color: AV.textSecondary },
+  inkSecondary: { color: AV.white },
 });
