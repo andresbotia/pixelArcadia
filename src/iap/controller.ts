@@ -154,6 +154,7 @@ export class PurchasesController {
     try {
       this.sdk.configure(this.apiKey);
       this.configured = true;
+      this.log('RevenueCat configured; anonymous app user');
       this.offCustomer = this.sdk.onCustomerUpdate((c) => this.applyCustomer(c));
     } catch {
       this.log('configure failed — purchases unavailable');
@@ -167,6 +168,7 @@ export class PurchasesController {
   async refresh(): Promise<void> {
     if (!this.sdk || !this.apiKey || this.snapshot.status === 'unavailable') return;
     const gen = ++this.fetchGen;
+    this.log(`direct products request: ${IAP_IDS.join(', ')}`);
     // Prices already shown stay up while re-fetching; otherwise the cards show loading.
     if (this.snapshot.productFetch !== 'loaded') this.set({ productFetch: 'loading' });
     const [customer, products] = await Promise.allSettled([this.sdk.getCustomer(), this.sdk.getProducts(IAP_IDS)]);

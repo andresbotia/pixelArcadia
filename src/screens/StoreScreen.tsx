@@ -1,7 +1,7 @@
 import { useFocusEffect } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 import { memo, useCallback, useEffect, useRef, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { AppState, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { BombGlyph, SlotGlyph, UndoGlyph } from '@/components/gameplay/glyphs';
@@ -46,6 +46,12 @@ export function StoreScreen({ onHome, onLeaderboard }: StoreScreenProps) {
   useFocusEffect(useCallback(() => {
     purchases().markViewed();
     void refresh();
+    // A Store left open while the app is backgrounded gets a fresh lookup on
+    // resume. The focus subscription already handles navigating back here.
+    const resume = AppState.addEventListener('change', (state) => {
+      if (state === 'active') void refresh();
+    });
+    return () => resume.remove();
   }, [refresh]));
 
   const iapSections: { title: string; products: IapStoreProduct[] }[] = [

@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  spacer: { flex: 1 },
+  spacer: { flexGrow: 1, flexShrink: 1, minWidth: 0 },
   pill: {
     height: 36,
     borderRadius: 18,
@@ -122,11 +122,11 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 3 },
     elevation: 2,
   },
-  heartPill: { paddingLeft: 4, paddingRight: 12 },
+  heartPill: { paddingLeft: 4, paddingRight: 12, flexShrink: 0 },
   // 4pt around the medallion and the "+", 10pt clear between number and "+".
-  coinPill: { paddingHorizontal: 4, gap: 10 },
+  coinPill: { paddingHorizontal: 4, gap: 10, flexShrink: 0 },
   coinPillBare: { paddingRight: 12 },
-  coinValue: { flexDirection: 'row', alignItems: 'center', gap: 7 },
+  coinValue: { flexDirection: 'row', alignItems: 'center', gap: 7, flexShrink: 0 },
   medallion: {
     width: 28,
     height: 28,
@@ -139,13 +139,14 @@ const styles = StyleSheet.create({
   stack: { justifyContent: 'center' },
   count: { ...AV_TYPE.counter, color: AV.ink, lineHeight: 17 },
   // Floor only, so "0" and "50" don't collapse the pill; wider balances grow it.
-  coinCount: { minWidth: 28, textAlign: 'center' },
+  coinCount: { minWidth: 44, flexShrink: 0, textAlign: 'center' },
   sub: { fontFamily: AV_FONT.bold, fontSize: 9, lineHeight: 10, letterSpacing: 0.5, color: AV.inkMuted },
   // Fixed-width digits so the pill doesn't twitch every second.
   timer: { color: AV.heartLip, fontVariant: ['tabular-nums'], letterSpacing: 0.2, minWidth: 27 },
   plus: {
     width: 26,
     height: 26,
+    flexShrink: 0,
     borderRadius: 13,
     backgroundColor: AV.mint,
     alignItems: 'center',
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
   gear: {
     width: 38,
     height: 38,
+    flexShrink: 0,
     borderRadius: 19,
     backgroundColor: 'rgba(255,255,255,0.18)',
     alignItems: 'center',

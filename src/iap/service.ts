@@ -8,10 +8,17 @@ import { getCachedRemoveAds, saveRemoveAds } from '@/storage/iap';
 
 import { readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from './config';
 import { PurchasesController } from './controller';
+import { recordIapDiagnostic } from './localDiagnostics';
 import { createRevenueCatSdk } from './sdk';
 
 const isDev = typeof __DEV__ !== 'undefined' && __DEV__;
-const devLog = (message: string) => { if (isDev) console.log(message); };
+// Opt-in for local Release simulator diagnostics. Never set in EAS profiles.
+const localDiagnostics = process.env.EXPO_PUBLIC_IAP_DIAGNOSTICS === '1';
+const devLog = (message: string) => {
+  const line = message.startsWith('[iap] ') ? message.slice(6) : message;
+  if (localDiagnostics) recordIapDiagnostic(line);
+  else if (isDev) console.log(`[iap] ${line}`);
+};
 
 let controller: PurchasesController | null = null;
 
@@ -24,7 +31,7 @@ export function purchases(): PurchasesController {
   const resolved = resolveRevenueCatKey({
     platform: Platform.OS, isDev, keys: readRevenueCatKeys(), buildMode: readRevenueCatBuildMode(),
   });
-  devLog(`[iap] mode=${resolved.mode}${resolved.note ? ` (${resolved.note})` : ''}`);
+  devLog(`mode=${resolved.mode}${resolved.note ? ` (${resolved.note})` : ''}; profile=${readRevenueCatBuildMode() ?? 'unset'}; anonymous=true`);
   controller = new PurchasesController(
     resolved.key ? createRevenueCatSdk() : null,
     resolved.key,
@@ -50,6 +57,6 @@ export function startPurchases(): void {
   try {
     purchases().start();
   } catch {
-    devLog('[iap] start failed');
+    devLog('start failed');
   }
 }

@@ -12,6 +12,7 @@ import {
   Rubik_900Black,
 } from '@expo-google-fonts/rubik';
 import { PixelifySans_600SemiBold } from '@expo-google-fonts/pixelify-sans';
+import { Text, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -59,9 +60,8 @@ async function openAnalyticsSession(): Promise<void> {
 
 export default function RootLayout() {
   // The v2 UI faces (Rubik for all UI and numbers, Pixelify Sans for tiny
-  // brand captions). Space Grotesk is no longer loaded (M17C.1): no rendered
-  // surface uses it. Home mounts underneath the boot loader immediately; the
-  // loader lifts once these AND the saves are ready.
+  // brand captions). Home must mount only after registration: native Text
+  // created before loadAsync can retain its fallback face until remounted.
   const [fontsLoaded, fontError] = useFonts({
     Rubik_400Regular,
     Rubik_500Medium,
@@ -119,7 +119,7 @@ export default function RootLayout() {
           deliberately short 280ms — the previous unconfigured `fade` default
           was iOS's own 500ms, over this milestone's target ceiling.
         */}
-        <Stack
+        {fontsLoaded ? <Stack
           screenOptions={{
             headerShown: false,
             // v2 shell blue, so Home ⇄ gameplay fades never flash dark navy.
@@ -135,7 +135,11 @@ export default function RootLayout() {
           <Stack.Screen name="worlds" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="world/[id]" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="game" options={{ animation: 'fade_from_bottom', animationDuration: 280 }} />
-        </Stack>
+        </Stack> : fontError ? (
+          <View style={{ flex: 1, backgroundColor: AV.shellBottom, justifyContent: 'center', alignItems: 'center' }}>
+            <Text style={{ color: AV.white }}>Unable to load app fonts. Please restart the app.</Text>
+          </View>
+        ) : null}
         {bootVisible ? (
           <BootSplash ready={bootReady} onHandoff={hideNativeSplash} onDone={finishBoot} />
         ) : null}

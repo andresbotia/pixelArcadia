@@ -4,10 +4,12 @@ describe('formatCurrency', () => {
   it('shows small balances in full', () => {
     expect(formatCurrency(0)).toBe('0');
     expect(formatCurrency(50)).toBe('50');
+    expect(formatCurrency(300)).toBe('300');
   });
 
   it('15. 999', () => expect(formatCurrency(999)).toBe('999'));
   it('16. 1,300', () => expect(formatCurrency(1300)).toBe('1,300'));
+  it('1,000 uses its full grouped value', () => expect(formatCurrency(1000)).toBe('1,000'));
   it('17. 9,999', () => expect(formatCurrency(9999)).toBe('9,999'));
   it('18. 10,000 → 10K', () => expect(formatCurrency(10_000)).toBe('10K'));
   it('19. 12,500 → 12.5K', () => expect(formatCurrency(12_500)).toBe('12.5K'));

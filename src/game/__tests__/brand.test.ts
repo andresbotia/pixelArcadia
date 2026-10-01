@@ -126,13 +126,33 @@ describe('primary CTA + font loading wiring', () => {
     expect(read('src/components/ResultOverlay.tsx')).toMatch(/PrimaryCta/);
   });
 
-  it('loads the v2 UI fonts at the app root without blocking startup (no Space Grotesk since M17C.1)', () => {
+  it('loads the v2 UI fonts before mounting routes (no Space Grotesk since M17C.1)', () => {
     const layout = read('app/_layout.tsx');
     expect(layout).not.toMatch(/SpaceGrotesk_700Bold/);
     expect(layout).toMatch(/Rubik_900Black/);
     expect(layout).toMatch(/PixelifySans_600SemiBold/);
     expect(layout).toMatch(/useFonts/);
     expect(layout).toMatch(/hideAsync/);
+    expect(layout).toMatch(/\{fontsLoaded \? <Stack/);
+    expect(layout).toMatch(/fontError \? \(/);
+  });
+
+  it('keeps Home font families explicit and the coin balance content-sized', () => {
+    const type = read('src/theme/arcadiaV2.ts');
+    const hud = read('src/components/home/HomeHud.tsx');
+    const level = read('src/components/home/HomeLevelCard.tsx');
+    const play = read('src/components/home/HomePlayButton.tsx');
+    const nav = read('src/components/home/HomeBottomNav.tsx');
+    expect(type).toMatch(/counter: \{ fontFamily: AV_FONT\.extraBold/);
+    expect(type).toMatch(/title: \{ fontFamily: AV_FONT\.extraBold/);
+    expect(type).toMatch(/cta: \{ fontFamily: AV_FONT\.black/);
+    expect(hud).toMatch(/count: \{ \.\.\.AV_TYPE\.counter/);
+    expect(hud).toMatch(/coinCount: \{ minWidth: 44, flexShrink: 0/);
+    expect(level).toMatch(/title: \{ \.\.\.AV_TYPE\.title/);
+    expect(level).toMatch(/diffLabel: \{ flexShrink: 0 \}/);
+    expect(play).toMatch(/\.\.\.AV_TYPE\.cta/);
+    expect(nav).toMatch(/itemLabel: \{ fontFamily: AV_FONT\.bold/);
+    for (const source of [hud, level, play, nav]) expect(source).not.toMatch(/fontWeight:/);
   });
 });
 
