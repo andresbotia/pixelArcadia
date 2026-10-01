@@ -5,8 +5,26 @@ type ConsentSdk = Pick<typeof import('react-native-google-mobile-ads')['AdsConse
 
 export const PRIVACY_POLICY_URL = 'https://andresbotia.github.io/pixelArcadia/privacy/';
 
-export async function openPrivacyPolicy(openURL: (url: string) => Promise<unknown>): Promise<void> {
-  try { await openURL(PRIVACY_POLICY_URL); } catch { /* Settings remains usable offline */ }
+/** The slice of React Native's `Linking` used here. */
+export interface UrlOpener {
+  openURL(url: string): Promise<unknown>;
+}
+
+/**
+ * Opens the policy in the system browser. Takes the Linking OBJECT and calls
+ * `openURL` as a method: RN's `LinkingImpl.openURL` reads `this._validateURL`,
+ * so a detached `Linking.openURL` throws before reaching native (M17D.0 — the
+ * Settings row silently did nothing). Resolves false when opening failed;
+ * never throws.
+ */
+export async function openPrivacyPolicy(linking: UrlOpener, onError?: (error: unknown) => void): Promise<boolean> {
+  try {
+    await linking.openURL(PRIVACY_POLICY_URL);
+    return true;
+  } catch (error) {
+    onError?.(error);
+    return false;
+  }
 }
 
 /** Never configure a debug location or device in a release bundle. */

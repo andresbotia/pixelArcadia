@@ -1,35 +1,34 @@
 /**
- * Pixel Arcadia raster brand assets — M17C.1 "Portal Mosaic" icon.
+ * Pixel Arcadia raster brand assets — M17D.0 final launch icon.
  *
- * A stepped white arcade arch (the portal) framing a 2×2 pixel mosaic —
- * pink, gold, cyan, mint — over a warm gold halo, on the launch-blue field.
- * No text, no mascot. Drawn procedurally with CanvasKit (already installed via
- * @shopify/react-native-skia) and written with pngjs (via @expo/image-utils),
- * so no new dependency and the output is reproducible:
+ * ONE canonical source: `assets/brand/app-icon-source.png`, the approved
+ * 1024×1024 artwork, checked in byte-for-byte. Every app-icon / favicon file
+ * below is DERIVED from it by technical processing only — resampling,
+ * flattening, insetting and (Android 13) a luminance silhouette. The artwork is
+ * never redrawn, recoloured or re-cropped. Resampling uses CanvasKit (already
+ * installed via @shopify/react-native-skia) and PNGs are written with pngjs
+ * (via @expo/image-utils), so there is no new dependency and output is
+ * byte-reproducible:
  *
- *   node scripts/generate-brand-assets.mjs
+ *   node scripts/generate-brand-assets.mjs              # writes into the repo
+ *   node scripts/generate-brand-assets.mjs --out <dir>  # same tree under <dir> (tests)
  *
- * Replaces the retired Python "Pixel Pal mascot" generator (generate-brand-assets.py). Outputs:
+ * Supersedes the M17C.1 "Portal Mosaic" procedural icon (and the retired
+ * Python robot generator before it). Outputs:
  *
- *   assets/icon.png                    1024  RGB opaque  App Store / iOS icon (no alpha channel)
- *   assets/brand/icon-light.png        1024  RGB opaque  marketing copy of icon.png
- *   assets/brand/icon-dark.png         1024  RGB opaque  marketing variant on the deep-blue well
- *   assets/android-icon-foreground.png 1024  RGBA        adaptive foreground, art inside the safe zone
+ *   assets/icon.png                    1024  RGB opaque  App Store / iOS icon: the source pixels, alpha dropped, metadata stripped
+ *   assets/android-icon-foreground.png 1024  RGBA        adaptive foreground: whole artwork inset to the 72/108 viewport, edges bled for parallax
  *   assets/adaptive-icon.png           1024  RGBA        same (legacy filename kept)
- *   assets/android-icon-background.png 1024  RGB opaque  launch-blue field
- *   assets/android-icon-monochrome.png 1024  RGBA        white silhouette (Android 13 themed icon)
- *   assets/splash-icon.png             1024  RGBA        the mark on transparent (not wired to config)
- *   assets/favicon.png, favicon-32.png, favicon-16.png   simplified mark (no halo / lips)
+ *   assets/android-icon-background.png 1024  RGB opaque  launch blue #3B63E8 (hidden behind the opaque foreground)
+ *   assets/android-icon-monochrome.png 1024  RGBA        white silhouette of the head/ears/eyes (Android 13 themed icon)
+ *   assets/favicon.png, favicon-32.png, favicon-16.png   64/32/16 downscales of the artwork
  *   public/favicon.png, favicon-32.png, favicon-16.png   same, for manual <link> use
- *   assets/brand/logo-mark.svg, logo-mark-full.svg, logo-mark-mono-light.svg, logo-mark-mono-dark.svg
- *
- * Colours are the v2 `AV` tokens (src/theme/arcadiaV2.ts) and the launch blue
- * (src/theme/bootSplash.ts). Geometry is in 1024 master units.
+ *   public/apple-touch-icon.png        180   RGB opaque  web home-screen icon
  */
 import { Buffer } from 'node:buffer';
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
@@ -37,193 +36,124 @@ const CanvasKitInit = require('canvaskit-wasm');
 const { PNG } = require('pngjs');
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
-const ASSETS = join(REPO, 'assets');
-const PUBLIC = join(REPO, 'public');
+const outFlag = process.argv.indexOf('--out');
+const OUT = outFlag > 0 ? resolve(process.argv[outFlag + 1]) : REPO;
 
-// ── Palette ──────────────────────────────────────────────────────────────
-const FIELD = ['#5C8CFF', '#3B63E8', '#2450CC']; // badgeTop → launch blue → badgeBottom
-const FIELD_DARK = ['#1B3478', '#10245B', '#0A1A45']; // AV.well family
-const FIELD_GLOW = '#9FD0FF'; // BOOT_SPLASH.glow
-const WHITE = '#FFFFFF';
-const ARCH_LIP = '#AFC5F5'; // AV.plateLip
-const SHADOW = '#10245B'; // AV.well
-const HALO = '#FFF3C4'; // AV.goldGlint — pale gold lifts the field without greying it
-const TILES = [
-  { face: '#FF4F8B', lip: '#D62D68' }, // heartBottom / heartLip
-  { face: '#FFC53D', lip: '#D98500' }, // gold / goldLip
-  { face: '#4FE3FF', lip: '#1FA7C9' }, // cyan
-  { face: '#3FD99A', lip: '#1FAE74' }, // mint / mintLip
-];
+const SOURCE = 'assets/brand/app-icon-source.png';
+const SIZE = 1024;
+/** Launch blue (src/theme/bootSplash.ts) — the existing icon background colour. */
+const LAUNCH_BLUE = '#3B63E8';
+/** Adaptive icons: 108dp layer, 72dp visible viewport → the artwork fills exactly the viewport. */
+const ADAPTIVE_SCALE = 72 / 108;
+/** Monochrome silhouette: sRGB luminance ramp separating the white head + bright eyes from the blue field / navy visor. */
+const MONO_LO = 0.55;
+const MONO_HI = 0.7;
 
-// ── Geometry (1024 master) ──────────────────────────────────────────────
-/** Stepped arch: keystone, shoulders, upper posts, pillars. [x, y, w, h] */
-const ARCH = [
-  [400, 136, 224, 96],
-  [232, 200, 176, 96],
-  [616, 200, 176, 96],
-  [168, 296, 128, 160],
-  [728, 296, 128, 160],
-  [152, 456, 128, 416],
-  [744, 456, 128, 416],
-];
-const ARCH_R = 18;
-const ARCH_LIP_Y = 22;
-const TILE = 152;
-const TILE_GAP = 16;
-const TILE_R = 28;
-const TILE_LIP_Y = 14;
-const MOSAIC_X = 352;
-const MOSAIC_Y = 424;
-const tileRects = TILES.map((_, i) => [
-  MOSAIC_X + (i % 2) * (TILE + TILE_GAP),
-  MOSAIC_Y + Math.floor(i / 2) * (TILE + TILE_GAP),
-  TILE,
-  TILE,
-]);
-/** Bounding box of the drawn mark (arch + lips), for re-centering in the adaptive safe zone. */
-const MARK_BOX = { x: 152, y: 136, w: 720, h: 736 + ARCH_LIP_Y };
+// ── Source ───────────────────────────────────────────────────────────────
+const source = PNG.sync.read(readFileSync(join(REPO, SOURCE)));
+if (source.width !== SIZE || source.height !== SIZE) throw new Error(`${SOURCE} must be ${SIZE}×${SIZE}`);
+for (let i = 3; i < source.data.length; i += 4) {
+  if (source.data[i] !== 255) throw new Error(`${SOURCE} must be fully opaque (App Store icons cannot carry transparency)`);
+}
 
 const CK = await CanvasKitInit();
+const IMAGE_INFO = {
+  width: SIZE,
+  height: SIZE,
+  alphaType: CK.AlphaType.Unpremul,
+  colorType: CK.ColorType.RGBA_8888,
+  colorSpace: CK.ColorSpace.SRGB,
+};
+const art = CK.MakeImage(IMAGE_INFO, source.data, SIZE * 4);
 
-function color(hex, alpha = 1) {
-  const c = CK.parseColorString(hex);
-  c[3] = alpha;
-  return c;
-}
-
-function paint(hex, alpha = 1, blurSigma = 0) {
-  const p = new CK.Paint();
-  p.setAntiAlias(true);
-  p.setColor(color(hex, alpha));
-  if (blurSigma > 0) p.setMaskFilter(CK.MaskFilter.MakeBlur(CK.BlurStyle.Normal, blurSigma, true));
-  return p;
-}
-
-function rrect(canvas, [x, y, w, h], r, p) {
-  canvas.drawRRect(CK.RRectXY(CK.XYWHRect(x, y, w, h), r, r), p);
-}
-
-function drawField(canvas, stops, rounded) {
-  const p = new CK.Paint();
-  p.setAntiAlias(true);
-  p.setShader(CK.Shader.MakeLinearGradient([0, 0], [0, 1024], stops.map((s) => color(s)), [0, 0.55, 1], CK.TileMode.Clamp));
-  if (rounded) rrect(canvas, [0, 0, 1024, 1024], 230, p);
-  else canvas.drawRect(CK.XYWHRect(0, 0, 1024, 1024), p);
-  const glow = new CK.Paint();
-  glow.setAntiAlias(true);
-  glow.setShader(CK.Shader.MakeRadialGradient([512, 470], 540, [color(FIELD_GLOW, 0.45), color(FIELD_GLOW, 0)], [0, 1], CK.TileMode.Clamp));
-  if (rounded) rrect(canvas, [0, 0, 1024, 1024], 230, glow);
-  else canvas.drawRect(CK.XYWHRect(0, 0, 1024, 1024), glow);
-}
-
-/** Full mark: halo, shadowed/lipped arch, recessed well, lipped mosaic tiles. */
-function drawMark(canvas, { detail = true } = {}) {
-  if (detail) {
-    // Halo first so it only lifts the field, never tints the white arch.
-    const halo = new CK.Paint();
-    halo.setAntiAlias(true);
-    halo.setShader(CK.Shader.MakeRadialGradient([512, 584], 340, [color(HALO, 0.55), color(HALO, 0.18), color(HALO, 0)], [0, 0.55, 1], CK.TileMode.Clamp));
-    canvas.drawCircle(512, 584, 340, halo);
-    const shadow = paint(SHADOW, 0.3, 18);
-    for (const b of ARCH) rrect(canvas, [b[0], b[1] + 40, b[2], b[3]], ARCH_R, shadow);
-    const lip = paint(ARCH_LIP);
-    for (const b of ARCH) rrect(canvas, [b[0], b[1] + ARCH_LIP_Y, b[2], b[3]], ARCH_R, lip);
+/** White pixels whose alpha is the artwork's bright (head / ears / eyes) mask. */
+function silhouetteImage() {
+  const mask = Buffer.alloc(source.data.length);
+  for (let i = 0; i < source.data.length; i += 4) {
+    const l = (0.2126 * source.data[i] + 0.7152 * source.data[i + 1] + 0.0722 * source.data[i + 2]) / 255;
+    const t = Math.min(1, Math.max(0, (l - MONO_LO) / (MONO_HI - MONO_LO)));
+    mask[i] = mask[i + 1] = mask[i + 2] = 255;
+    mask[i + 3] = Math.round(255 * t * t * (3 - 2 * t));
   }
-  const face = paint(WHITE);
-  for (const b of ARCH) rrect(canvas, b, ARCH_R, face);
-
-  if (detail) {
-    rrect(canvas, [MOSAIC_X - 4, MOSAIC_Y + 20, 2 * TILE + TILE_GAP + 8, 2 * TILE + TILE_GAP + 8], 40, paint(SHADOW, 0.28, 14));
-  }
-  tileRects.forEach((r, i) => {
-    if (detail) rrect(canvas, [r[0], r[1] + TILE_LIP_Y, r[2], r[3]], TILE_R, paint(TILES[i].lip));
-    rrect(canvas, r, TILE_R, paint(TILES[i].face));
-    if (detail) rrect(canvas, [r[0] + 24, r[1] + 24, 40, 28], 8, paint(WHITE, 0.8));
-  });
+  return CK.MakeImage(IMAGE_INFO, mask, SIZE * 4);
 }
 
-/** Flat single-colour silhouette (monochrome / themed icons). */
-function drawSilhouette(canvas) {
-  const p = paint(WHITE);
-  for (const b of ARCH) rrect(canvas, b, ARCH_R, p);
-  for (const r of tileRects) rrect(canvas, r, TILE_R, p);
-}
-
-/**
- * Render at `size` px. `draw(canvas)` works in 1024 units; `inset` scales the
- * art about the centre (1 = full bleed) for the adaptive-icon safe zone.
- */
-function render(size, draw, { opaque, inset = 1 } = {}) {
-  const surface = CK.MakeSurface(size, size);
-  const canvas = surface.getCanvas();
-  canvas.clear(CK.TRANSPARENT);
-  canvas.scale(size / 1024, size / 1024);
-  if (inset !== 1) {
-    // centre the mark's own bounding box, then scale it into the safe zone
-    const cx = MARK_BOX.x + MARK_BOX.w / 2;
-    const cy = MARK_BOX.y + MARK_BOX.h / 2;
-    canvas.translate(512, 512);
-    canvas.scale(inset, inset);
-    canvas.translate(-cx, -cy);
-  }
-  draw(canvas);
-  surface.flush();
-  const pixels = surface.makeImageSnapshot().readPixels(0, 0, {
-    width: size,
-    height: size,
-    colorType: CK.ColorType.RGBA_8888,
-    alphaType: CK.AlphaType.Unpremul,
-    colorSpace: CK.ColorSpace.SRGB,
-  });
-  surface.delete();
+// ── Rendering ────────────────────────────────────────────────────────────
+function encode(pixels, size, opaque) {
   const png = new PNG({ width: size, height: size, colorType: opaque ? 2 : 6, inputHasAlpha: true });
   png.data = Buffer.from(pixels);
   return PNG.sync.write(png, { colorType: opaque ? 2 : 6, inputHasAlpha: true });
 }
 
-function out(path, buf) {
+/** Render at `size` px; `draw(canvas)` works in 1024 units. */
+function render(size, draw, { opaque }) {
+  const surface = CK.MakeSurface(size, size);
+  const canvas = surface.getCanvas();
+  canvas.clear(CK.TRANSPARENT);
+  canvas.scale(size / SIZE, size / SIZE);
+  draw(canvas);
+  surface.flush();
+  const pixels = surface.makeImageSnapshot().readPixels(0, 0, { ...IMAGE_INFO, width: size, height: size });
+  surface.delete();
+  return encode(pixels, size, opaque);
+}
+
+const fullRect = CK.XYWHRect(0, 0, SIZE, SIZE);
+const filtered = () => {
+  const p = new CK.Paint();
+  p.setAntiAlias(true);
+  return p;
+};
+
+/** The artwork, resampled to fill the canvas (favicons, touch icon). */
+function drawArt(canvas) {
+  canvas.drawImageRectOptions(art, fullRect, fullRect, CK.FilterMode.Linear, CK.MipmapMode.Linear, filtered());
+}
+
+/** `image` scaled about the centre; `bleed` clamps its edge pixels outward to fill the rest. */
+function drawInset(canvas, image, scale, bleed) {
+  const off = (SIZE * (1 - scale)) / 2;
+  if (bleed) {
+    const local = CK.Matrix.multiply(CK.Matrix.translated(off, off), CK.Matrix.scaled(scale, scale));
+    const p = filtered();
+    p.setShader(image.makeShaderOptions(CK.TileMode.Clamp, CK.TileMode.Clamp, CK.FilterMode.Linear, CK.MipmapMode.Linear, local));
+    canvas.drawRect(fullRect, p);
+  } else {
+    const dst = CK.XYWHRect(off, off, SIZE * scale, SIZE * scale);
+    canvas.drawImageRectOptions(image, fullRect, dst, CK.FilterMode.Linear, CK.MipmapMode.Linear, filtered());
+  }
+}
+
+function out(rel, buf) {
+  const path = join(OUT, rel);
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, buf);
-  console.log(`wrote ${path.replace(REPO + '/', '')}`);
+  console.log(`wrote ${rel}`);
 }
 
-// Adaptive icons: 108dp canvas, 66dp safe circle ≈ 61% — keep the mark's box within ~60%.
-const ADAPTIVE_INSET = 0.6;
+// iOS / App Store: the approved pixels exactly, without the (all-opaque) alpha
+// channel or the source's colour-profile chunk. Apple applies the mask.
+out('assets/icon.png', encode(source.data, SIZE, true));
 
-const icon = render(1024, (c) => { drawField(c, FIELD, false); drawMark(c); }, { opaque: true });
-out(join(ASSETS, 'icon.png'), icon);
-out(join(ASSETS, 'brand/icon-light.png'), icon);
-out(join(ASSETS, 'brand/icon-dark.png'), render(1024, (c) => { drawField(c, FIELD_DARK, false); drawMark(c); }, { opaque: true }));
+// Android adaptive. The art cannot be split into layers without repainting it,
+// so the whole artwork is the foreground, sized to the 72dp viewport (every
+// launcher mask sits inside it; the face is well within the 66dp safe circle).
+// Its edge pixels are clamped outward so launcher parallax never reveals a seam.
+const foreground = render(SIZE, (c) => drawInset(c, art, ADAPTIVE_SCALE, true), { opaque: false });
+out('assets/android-icon-foreground.png', foreground);
+out('assets/adaptive-icon.png', foreground);
+out('assets/android-icon-background.png', render(SIZE, (c) => {
+  const p = new CK.Paint();
+  p.setColor(CK.parseColorString(LAUNCH_BLUE));
+  c.drawRect(fullRect, p);
+}, { opaque: true }));
+const silhouette = silhouetteImage();
+out('assets/android-icon-monochrome.png', render(SIZE, (c) => drawInset(c, silhouette, ADAPTIVE_SCALE, false), { opaque: false }));
 
-const foreground = render(1024, (c) => drawMark(c), { opaque: false, inset: ADAPTIVE_INSET });
-out(join(ASSETS, 'android-icon-foreground.png'), foreground);
-out(join(ASSETS, 'adaptive-icon.png'), foreground);
-out(join(ASSETS, 'android-icon-background.png'), render(1024, (c) => drawField(c, FIELD, false), { opaque: true }));
-out(join(ASSETS, 'android-icon-monochrome.png'), render(1024, (c) => drawSilhouette(c), { opaque: false, inset: ADAPTIVE_INSET }));
-out(join(ASSETS, 'splash-icon.png'), render(1024, (c) => drawMark(c), { opaque: false, inset: 0.8 }));
-
-// ── Vector marks (assets/brand/logo-mark*.svg, 120-unit viewBox, no filters/rasters) ──
-const V = 120 / 1024;
-const n = (v) => +(v * V).toFixed(2);
-function svgRect([x, y, w, h], r, fill) {
-  return `<rect x="${n(x)}" y="${n(y)}" width="${n(w)}" height="${n(h)}" rx="${n(r)}"${fill ? ` fill="${fill}"` : ''}/>`;
-}
-function markSvg(body) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Pixel Arcadia">\n${body}\n</svg>\n`;
-}
-const fullMarkSvg = markSvg([
-  `  <g fill="${ARCH_LIP}">${ARCH.map((b) => svgRect([b[0], b[1] + ARCH_LIP_Y, b[2], b[3]], ARCH_R)).join('')}</g>`,
-  `  <g fill="${WHITE}">${ARCH.map((b) => svgRect(b, ARCH_R)).join('')}</g>`,
-  `  ${tileRects.map((r, i) => svgRect([r[0], r[1] + TILE_LIP_Y, r[2], r[3]], TILE_R, TILES[i].lip) + svgRect(r, TILE_R, TILES[i].face)).join('')}`,
-].join('\n'));
-const monoSvg = (ink) => markSvg(`  <g fill="${ink}">${[...ARCH.map((b) => svgRect(b, ARCH_R)), ...tileRects.map((r) => svgRect(r, TILE_R))].join('')}</g>`);
-out(join(ASSETS, 'brand/logo-mark.svg'), fullMarkSvg);
-out(join(ASSETS, 'brand/logo-mark-full.svg'), fullMarkSvg);
-out(join(ASSETS, 'brand/logo-mark-mono-light.svg'), monoSvg('#17306E')); // AV.ink, for light backgrounds
-out(join(ASSETS, 'brand/logo-mark-mono-dark.svg'), monoSvg(WHITE)); // for dark backgrounds
-
+// Web.
 for (const [name, size] of [['favicon.png', 64], ['favicon-32.png', 32], ['favicon-16.png', 16]]) {
-  const buf = render(size, (c) => { drawField(c, FIELD, true); drawMark(c, { detail: false }); }, { opaque: false });
-  out(join(ASSETS, name), buf);
-  out(join(PUBLIC, name), buf);
+  const buf = render(size, drawArt, { opaque: true });
+  out(`assets/${name}`, buf);
+  out(`public/${name}`, buf);
 }
+out('public/apple-touch-icon.png', render(180, drawArt, { opaque: true }));

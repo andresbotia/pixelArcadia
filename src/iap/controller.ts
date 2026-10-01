@@ -28,19 +28,51 @@ export interface PurchasesDeps {
   /** Ads policy hook: interstitials off while owned; rewarded untouched. */
   onRemoveAdsChange(owned: boolean): void;
   log?(message: string): void;
+  /** Resolved build mode ("store", "off (…)") — shown in diagnostics only. */
+  mode?: string;
   track?(event: IapAnalyticsEvent, props?: Record<string, string | number | boolean>): void;
 }
+
+/**
+ * Product lookup progress. `idle`/`loading` before any answer (cards show a
+ * loading state, never "unavailable"); `loaded` once the store answered;
+ * `failed` when the lookup errored and nothing is known.
+ */
+export type ProductFetchState = 'idle' | 'loading' | 'loaded' | 'failed';
 
 export interface PurchasesSnapshot {
   status: IapStatus;
   /** Products the store actually returned, keyed by OUR product id. */
   products: Readonly<Record<string, IapProductInfo>>;
+  productFetch: ProductFetchState;
   hasRemoveAds: boolean;
   /** Product whose purchase is in flight (or '__restore__'); null when idle. */
   activeOperation: string | null;
 }
 
 const RESTORE = '__restore__';
+
+/** Safe, QA-facing store state: counts, our product ids, codes. No keys, transaction or user ids. */
+export interface IapDiagnostics {
+  mode: string;
+  configured: boolean;
+  status: IapStatus;
+  productFetch: ProductFetchState;
+  requested: number;
+  /** Known catalog products the store returned / of those, with a localized price. */
+  returned: number;
+  priced: number;
+  missing: string[];
+  /** SDK error code of the last failed lookup, if any. */
+  error: string | null;
+}
+
+/** `code` / `readableErrorCode` of a RevenueCat error — never its message or payload. */
+function errorCode(e: unknown): string {
+  const err = (e ?? {}) as { code?: unknown; readableErrorCode?: unknown };
+  const parts = [err.code, err.readableErrorCode].filter((v) => typeof v === 'string' || typeof v === 'number');
+  return parts.length ? parts.join(' ') : 'unknown';
+}
 
 /**
  * RevenueCat-backed purchase state machine. Never throws, never blocks
@@ -63,6 +95,10 @@ export class PurchasesController {
   private readonly listeners = new Set<() => void>();
   private started = false;
   private offCustomer: (() => void) | null = null;
+  private configured = false;
+  /** Generation of the latest product lookup; older answers are dropped. */
+  private fetchGen = 0;
+  private lastFetch: { returned: number; priced: number; error: string | null } = { returned: 0, priced: 0, error: null };
 
   constructor(
     private readonly sdk: PurchasesSdk | null,
@@ -70,11 +106,26 @@ export class PurchasesController {
     private readonly deps: PurchasesDeps,
     cachedRemoveAds = false,
   ) {
-    this.snapshot = { status: 'unavailable', products: {}, hasRemoveAds: cachedRemoveAds, activeOperation: null };
+    this.snapshot = { status: 'unavailable', products: {}, productFetch: 'idle', hasRemoveAds: cachedRemoveAds, activeOperation: null };
   }
 
   getSnapshot(): PurchasesSnapshot {
     return this.snapshot;
+  }
+
+  diagnostics(): IapDiagnostics {
+    const { status, productFetch, products } = this.snapshot;
+    return {
+      mode: this.deps.mode ?? 'unknown',
+      configured: this.configured,
+      status,
+      productFetch,
+      requested: IAP_IDS.length,
+      returned: this.lastFetch.returned,
+      priced: this.lastFetch.priced,
+      missing: IAP_IDS.filter((id) => !products[id]),
+      error: this.lastFetch.error,
+    };
   }
 
   subscribe(listener: () => void): () => void {
@@ -102,6 +153,7 @@ export class PurchasesController {
     }
     try {
       this.sdk.configure(this.apiKey);
+      this.configured = true;
       this.offCustomer = this.sdk.onCustomerUpdate((c) => this.applyCustomer(c));
     } catch {
       this.log('configure failed — purchases unavailable');
@@ -114,21 +166,32 @@ export class PurchasesController {
   /** Re-fetch products + customer (Store focus, after going back online). Never throws. */
   async refresh(): Promise<void> {
     if (!this.sdk || !this.apiKey || this.snapshot.status === 'unavailable') return;
+    const gen = ++this.fetchGen;
+    // Prices already shown stay up while re-fetching; otherwise the cards show loading.
+    if (this.snapshot.productFetch !== 'loaded') this.set({ productFetch: 'loading' });
     const [customer, products] = await Promise.allSettled([this.sdk.getCustomer(), this.sdk.getProducts(IAP_IDS)]);
     if (customer.status === 'fulfilled') this.applyCustomer(customer.value);
     else this.log('customer info unavailable');
+    // Overlapping refreshes (launch + Store focus): only the newest answer may set products.
+    if (gen !== this.fetchGen) return;
     if (products.status === 'fulfilled') {
       const known: Record<string, IapProductInfo> = {};
+      let returned = 0;
       for (const p of products.value) {
-        if (!iapProduct(p.productId)) this.log(`ignoring unknown store product ${p.productId}`);
-        else if (!p.priceString?.trim()) this.log(`store price unavailable for ${p.productId}`);
+        if (!iapProduct(p.productId)) { this.log(`ignoring unknown store product ${p.productId}`); continue; }
+        returned++;
+        if (!p.priceString?.trim()) this.log(`store price unavailable for ${p.productId}`);
         else known[p.productId] = p;
       }
       for (const id of IAP_IDS) if (!known[id]) this.log(`store did not return ${id} — its card is disabled`);
-      this.set({ products: known, status: this.snapshot.activeOperation ? 'purchasing' : 'ready' });
+      this.lastFetch = { returned, priced: Object.keys(known).length, error: null };
+      this.log(`products ${this.lastFetch.priced}/${IAP_IDS.length} priced (${returned} returned)`);
+      this.set({ products: known, productFetch: 'loaded', status: this.snapshot.activeOperation ? 'purchasing' : 'ready' });
     } else {
-      this.log('products unavailable');
-      if (!this.snapshot.activeOperation) this.set({ status: 'error' });
+      this.lastFetch = { ...this.lastFetch, error: errorCode(products.reason) };
+      this.log(`products unavailable (${this.lastFetch.error})`);
+      const productFetch = Object.keys(this.snapshot.products).length ? 'loaded' : 'failed';
+      this.set(this.snapshot.activeOperation ? { productFetch } : { productFetch, status: 'error' });
     }
   }
 

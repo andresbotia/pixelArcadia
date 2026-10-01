@@ -1,5 +1,7 @@
+import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { mkdtempSync, readdirSync, readFileSync, rmSync, statSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
 import { CAMPAIGN_VERSION, PUBLISHED_MAX_LEVEL } from '@/game/levels/publishing';
@@ -73,59 +75,116 @@ describe('M17C.1 — product name', () => {
   });
 });
 
-describe('M17C.1 — Portal Mosaic icon replaces the legacy robot', () => {
-  /** SHA-256 of the retired robot / legacy-navy icon files (pre-M17C.1 HEAD). */
-  const LEGACY_ICON_HASHES = new Set([
-    '35cf9c965e24524329ba0c2dc1572eb89da0564dc82f7caf769c011e5786c829', // icon.png, brand/icon-dark.png (robot)
-    'a64d8b9185cd7f001a58b5cf194be397841df4e9582647937b0697c2219143b2', // brand/icon-light.png (robot)
-    '96bea4e0072dbfaa6192eb4b8ae290e4a2d44046b069b6b73d38a3a5a7bc0e3d', // adaptive / android foreground (robot)
-    'f6f69e50a01468bae0837e50f4bd354c232df6aae78bb20c66dbfab1f5ec7164', // android monochrome (robot)
+describe('M17D.0 — final launch icon (supersedes M17C.1 Portal Mosaic)', () => {
+  /** The approved artwork, checked in byte-for-byte. */
+  const SOURCE = 'assets/brand/app-icon-source.png';
+  const SOURCE_SHA256 = 'f4ce33a3d87fa4868d0097fb332aa930ac19ff156ccf04c97fa2fde2821a4225';
+
+  /** SHA-256 of retired icon files: the robot / legacy navy set (pre-M17C.1) and Portal Mosaic (M17C.1). */
+  const RETIRED_ICON_HASHES = new Set([
+    '35cf9c965e24524329ba0c2dc1572eb89da0564dc82f7caf769c011e5786c829', // robot icon.png, brand/icon-dark.png
+    'a64d8b9185cd7f001a58b5cf194be397841df4e9582647937b0697c2219143b2', // robot brand/icon-light.png
+    '96bea4e0072dbfaa6192eb4b8ae290e4a2d44046b069b6b73d38a3a5a7bc0e3d', // robot adaptive / android foreground
+    'f6f69e50a01468bae0837e50f4bd354c232df6aae78bb20c66dbfab1f5ec7164', // robot android monochrome
     'b4af378efb5ce318c1c5cf0ff02d7bb190db6c7ab7340470aa3fabb0f7d9b241', // android background (#182055)
-    '673124caac0a3e43a279dc388dd3281031d74e37ba433114acfcc46980556ea6', // splash-icon.png (robot + wordmark)
-    'ca64f9b806b233e85adc8a371987683f01a60b37dd38b49bbb5d889c76e784c4', // favicon.png
-    '9f239c19c7cef32b0dab38b3713b0da1b5290717f266b179379805e928fcad5e', // favicon-32.png
-    '897c2c124d1095c8993b5a6e9b5af1843956be29260b64812092142570d23cd9', // favicon-16.png
-    'a2bfca048d9599d95797bbd4cadf98216777c66ad39727a243775d0061542ff4', // public/favicon.png
-    'ee8f8c69dccb4a69031c82c6965f1e96573697edb2b674be6f6764f4d82d7f76', // public/favicon-32.png
-    'a894a08e2dd9540133d6456dafdd702cbf8b7795ad2d681eeb9873024f541d4e', // public/favicon-16.png
+    '673124caac0a3e43a279dc388dd3281031d74e37ba433114acfcc46980556ea6', // robot splash-icon.png
+    'ca64f9b806b233e85adc8a371987683f01a60b37dd38b49bbb5d889c76e784c4', // robot favicon.png
+    '9f239c19c7cef32b0dab38b3713b0da1b5290717f266b179379805e928fcad5e', // robot favicon-32.png
+    '897c2c124d1095c8993b5a6e9b5af1843956be29260b64812092142570d23cd9', // robot favicon-16.png
+    'a2bfca048d9599d95797bbd4cadf98216777c66ad39727a243775d0061542ff4', // robot public/favicon.png
+    'ee8f8c69dccb4a69031c82c6965f1e96573697edb2b674be6f6764f4d82d7f76', // robot public/favicon-32.png
+    'a894a08e2dd9540133d6456dafdd702cbf8b7795ad2d681eeb9873024f541d4e', // robot public/favicon-16.png
+    'cb432bf78f49c602b09c507e43837b94d06b26ec1a003fb18ff2df59baa23df6', // Portal Mosaic icon.png, brand/icon-light.png
+    '0b03b51dbab5f0e5f01ad281462890f150f866012e684d3fc4fe012948ef573c', // Portal Mosaic brand/icon-dark.png
+    '6c10c56c120a901b2e2de7026a590f56271f871def5bd9cf768e9b4c038b9930', // Portal Mosaic adaptive / android foreground
+    '8387ce0eb85978bf620cbd10ee9d3afabea936f16702b9d6957e49ad6967f96c', // Portal Mosaic android background
+    '087565a5908502be6cff009467834f370914bb39b7c15317ce029c7cae3fb54e', // Portal Mosaic android monochrome
+    '1bb6ddbf1081b6bf0b1209fd00cc1cd3c36a2ec68223dd317e9abea3ffc5a2e3', // Portal Mosaic splash-icon.png
+    '121ea4e81f340b1fcd0c0d7b75af7063ebbb3c0664d9cfb16b718e1e04107c68', // Portal Mosaic favicon.png (assets + public)
+    '25ed7fa86908b9bae11251030b165129c7769af22f227ce2f9ee9410a74f2b3f', // Portal Mosaic favicon-32.png
+    '9acb357659832414282497a6bc1b5c5a50c1d0be0a28e76c88c2b032140c5402', // Portal Mosaic favicon-16.png
   ]);
-  const ICON_FILES = [
+  /** Everything the generator writes. */
+  const GENERATED = [
     'assets/icon.png',
-    'assets/brand/icon-light.png',
-    'assets/brand/icon-dark.png',
     'assets/adaptive-icon.png',
     'assets/android-icon-foreground.png',
     'assets/android-icon-background.png',
     'assets/android-icon-monochrome.png',
-    'assets/splash-icon.png',
     'assets/favicon.png',
     'assets/favicon-32.png',
     'assets/favicon-16.png',
     'public/favicon.png',
     'public/favicon-32.png',
     'public/favicon-16.png',
+    'public/apple-touch-icon.png',
   ];
 
-  it.each(ICON_FILES)('%s is not a legacy robot/navy asset', (rel) => {
-    expect(LEGACY_ICON_HASHES.has(sha256(rel))).toBe(false);
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const { PNG } = require('pngjs') as { PNG: { sync: { read(buf: Buffer): { width: number; height: number; data: Buffer } } } };
+  const decode = (rel: string) => PNG.sync.read(readFileSync(join(repoRoot, rel)));
+
+  it('keeps one canonical 1024×1024 opaque source: the approved artwork, unaltered', () => {
+    expect(sha256(SOURCE)).toBe(SOURCE_SHA256);
+    const src = decode(SOURCE);
+    expect([src.width, src.height]).toEqual([1024, 1024]);
+    for (let i = 3; i < src.data.length; i += 4) if (src.data[i] !== 255) throw new Error(`transparent source pixel at ${(i - 3) / 4}`);
   });
 
-  it('ships a 1024×1024 RGB App Store icon with no alpha channel', () => {
+  it('ships the source pixels as a 1024×1024 RGB App Store icon with no alpha channel', () => {
     expect(app.icon).toBe('./assets/icon.png');
     expect(pngHeader('assets/icon.png')).toEqual({ width: 1024, height: 1024, colorType: 2 });
+    const icon = decode('assets/icon.png').data;
+    const src = decode(SOURCE).data;
+    expect(icon.equals(src)).toBe(true); // pngjs decodes RGB as opaque RGBA: identical pixels, no recolour/crop
   });
 
-  it('ships 1024×1024 Android adaptive layers (transparent foreground + monochrome)', () => {
-    expect(pngHeader(app.android.adaptiveIcon.foregroundImage.replace('./', ''))).toEqual({ width: 1024, height: 1024, colorType: 6 });
-    expect(pngHeader(app.android.adaptiveIcon.monochromeImage.replace('./', ''))).toEqual({ width: 1024, height: 1024, colorType: 6 });
-    expect(pngHeader(app.android.adaptiveIcon.backgroundImage.replace('./', ''))).toMatchObject({ width: 1024, height: 1024 });
+  it('wires Android adaptive layers and the favicon to the generated files', () => {
+    const a = app.android.adaptiveIcon;
+    expect(a).toEqual({
+      backgroundColor: LAUNCH_BLUE,
+      foregroundImage: './assets/android-icon-foreground.png',
+      backgroundImage: './assets/android-icon-background.png',
+      monochromeImage: './assets/android-icon-monochrome.png',
+    });
+    expect(pngHeader('assets/android-icon-foreground.png')).toEqual({ width: 1024, height: 1024, colorType: 6 });
+    expect(pngHeader('assets/android-icon-monochrome.png')).toEqual({ width: 1024, height: 1024, colorType: 6 });
+    expect(pngHeader('assets/android-icon-background.png')).toMatchObject({ width: 1024, height: 1024 });
+    expect(app.web.favicon).toBe('./assets/favicon.png');
+    expect(read('app/+html.tsx')).toMatch(/rel="apple-touch-icon" href="\/apple-touch-icon\.png"/);
   });
 
-  it('is generated by the Portal Mosaic script, and the robot generator is gone', () => {
+  it('regenerates every icon output byte-for-byte from the source (deterministic, in sync)', () => {
+    const outDir = mkdtempSync(join(tmpdir(), 'pa-brand-'));
+    try {
+      for (let run = 0; run < 2; run++) {
+        const res = spawnSync(process.execPath, ['scripts/generate-brand-assets.mjs', '--out', outDir], { cwd: repoRoot, encoding: 'utf8' });
+        expect(res.status).toBe(0);
+        for (const rel of GENERATED) {
+          expect(`${rel} ${createHash('sha256').update(readFileSync(join(outDir, rel))).digest('hex')}`).toBe(`${rel} ${sha256(rel)}`);
+        }
+      }
+    } finally {
+      rmSync(outDir, { recursive: true, force: true });
+    }
+  }, 60_000);
+
+  it.each(GENERATED)('%s is not a retired robot / Portal Mosaic asset', (rel) => {
+    expect(RETIRED_ICON_HASHES.has(sha256(rel))).toBe(false);
+  });
+
+  it('retires the Portal Mosaic generator and its stale outputs', () => {
     const gen = read('scripts/generate-brand-assets.mjs');
-    expect(gen).toMatch(/Portal Mosaic/);
-    for (const c of ['#FF4F8B', '#FFC53D', '#4FE3FF', '#3FD99A']) expect(gen).toContain(c);
+    expect(gen).toContain(SOURCE);
+    expect(gen).not.toMatch(/function drawMark|const TILES|#FF4F8B|#3FD99A/); // no procedural mosaic left
     expect(() => statSync(join(repoRoot, 'scripts/generate-brand-assets.py'))).toThrow();
+    for (const rel of [
+      'assets/splash-icon.png', 'assets/brand/icon-light.png', 'assets/brand/icon-dark.png',
+      'assets/brand/logo-mark.svg', 'assets/brand/logo-mark-full.svg',
+      'assets/brand/logo-mark-mono-light.svg', 'assets/brand/logo-mark-mono-dark.svg',
+    ]) {
+      expect(() => statSync(join(repoRoot, rel))).toThrow();
+    }
   });
 });
 
@@ -186,7 +245,7 @@ describe('M17C.1 — real Settings screen', () => {
 
   it('shows only the real Privacy Policy link and required UMP choices', () => {
     expect(screen).not.toMatch(/https?:\/\//);
-    expect(screen).toMatch(/openPrivacyPolicy\(Linking\.openURL\)/);
+    expect(screen).toMatch(/openPrivacyPolicy\(Linking,/);
     expect(screen).toMatch(/accessibilityLabel="Privacy Policy"/);
     expect(screen).toMatch(/privacyOptionsRequired \?/);
     expect(screen).toMatch(/accessibilityLabel="Ad Privacy Choices"/);

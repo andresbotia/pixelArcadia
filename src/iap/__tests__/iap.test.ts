@@ -10,6 +10,7 @@ import { _flushIapWrites, _resetIapCache, getCachedRemoveAds, loadIapCache, save
 import { IAP_CATALOG, IAP_IDS, iapProduct, isConsumableProduct } from '../catalog';
 import { REMOVE_ADS_ENTITLEMENT, readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from '../config';
 import { PurchasesController, type PurchasesSnapshot } from '../controller';
+import { formatIapDiagnostics } from '../diagnostics';
 import { iapCardView, rewardLines } from '../storeView';
 import type { AdsPolicy } from '@/ads/types';
 import { FakePurchases, flush, localizedProducts } from './fakePurchases';
@@ -497,7 +498,7 @@ describe('service safety', () => {
 
 describe('store cards', () => {
   const ready = (over: Partial<PurchasesSnapshot> = {}): PurchasesSnapshot => ({
-    status: 'ready', products: Object.fromEntries(ALL_PRICES.map((p) => [p.productId, p])), hasRemoveAds: false, activeOperation: null, ...over,
+    status: 'ready', products: Object.fromEntries(ALL_PRICES.map((p) => [p.productId, p])), productFetch: 'loaded', hasRemoveAds: false, activeOperation: null, ...over,
   });
 
   it('22. the price shown is the store\'s localized string, verbatim', () => {
@@ -531,6 +532,100 @@ describe('store cards', () => {
     const v = iapCardView(iapProduct(ID.coins500)!, ready({ activeOperation: ID.coins1500, status: 'purchasing' }));
     expect(v.disabled).toBe(true);
     expect(iapCardView(iapProduct(ID.coins1500)!, ready({ activeOperation: ID.coins1500 })).state).toBe('purchasing');
+  });
+
+  it('M17D.0: a card still waiting on the store shows loading, never N/A', () => {
+    for (const snap of [
+      ready({ status: 'initializing', products: {}, productFetch: 'idle' }),
+      ready({ products: {}, productFetch: 'loading' }),
+      ready({ status: 'error', products: {}, productFetch: 'loading' }), // retry after a failure
+    ]) {
+      expect(iapCardView(iapProduct(ID.coins500)!, snap)).toEqual({ priceLabel: null, buttonLabel: '…', disabled: true, state: 'loading' });
+    }
+    // Purchases off entirely (no SDK/key) is unavailable, not an endless loading state.
+    expect(iapCardView(iapProduct(ID.coins500)!, ready({ status: 'unavailable', products: {}, productFetch: 'idle' })).state).toBe('unavailable');
+    // A refresh with prices already on screen keeps showing them.
+    expect(iapCardView(iapProduct(ID.coins500)!, ready({ productFetch: 'loaded' })).priceLabel).toBe('$0.99');
+  });
+
+  it('M17D.0: the controller reports loading until the store answers, then the localized prices', async () => {
+    const sdk = new FakePurchases();
+    let answer!: (p: typeof ALL_PRICES) => void;
+    sdk.productsImpl = () => new Promise((resolve) => { answer = resolve; });
+    const ctl = new PurchasesController(sdk, 'appl_test', {
+      reconcileConsumables: reconcileIapPurchases, persistRemoveAds: saveRemoveAds, onRemoveAdsChange: () => {},
+    });
+    activeControllers.push(ctl);
+    await loadEconomy();
+    ctl.start();
+    await flush();
+    expect(ctl.getSnapshot().productFetch).toBe('loading');
+    for (const p of IAP_CATALOG) expect(iapCardView(p, ctl.getSnapshot()).buttonLabel).toBe('…');
+    answer(ALL_PRICES);
+    await flush();
+    expect(ctl.getSnapshot()).toMatchObject({ status: 'ready', productFetch: 'loaded' });
+    for (const p of IAP_CATALOG) {
+      const want = ALL_PRICES.find((x) => x.productId === p.price.productId)!.priceString;
+      expect(iapCardView(p, ctl.getSnapshot())).toMatchObject({ priceLabel: want, disabled: false });
+    }
+  });
+
+  it('M17D.0: requests exactly the 7 App Store product ids', async () => {
+    const { sdk } = await setup();
+    expect(sdk.requestedIds.length).toBeGreaterThan(0);
+    for (const ids of sdk.requestedIds) {
+      expect([...ids].sort()).toEqual([
+        'pixel_arcadia_booster_pack', 'pixel_arcadia_coins_1500', 'pixel_arcadia_coins_3500', 'pixel_arcadia_coins_500',
+        'pixel_arcadia_coins_8000', 'pixel_arcadia_remove_ads', 'pixel_arcadia_starter_pack',
+      ]);
+    }
+  });
+
+  it('M17D.0: a failed lookup is non-fatal, unavailable only after it failed, and recovers on the next refresh', async () => {
+    const sdk = new FakePurchases();
+    sdk.productsImpl = () => Promise.reject(Object.assign(new Error('secret-ish message'), { code: '23', readableErrorCode: 'CONFIGURATION_ERROR' }));
+    const { ctl } = await setup({ sdk });
+    // setup() seeds storeProducts but productsImpl rejects regardless.
+    expect(ctl.getSnapshot()).toMatchObject({ status: 'error', productFetch: 'failed', products: {} });
+    expect(iapCardView(iapProduct(ID.coins500)!, ctl.getSnapshot()).state).toBe('unavailable');
+    await expect(ctl.purchase(ID.coins500)).resolves.toBe('unavailable');
+    const diag = ctl.diagnostics();
+    expect(diag).toMatchObject({ configured: true, requested: 7, priced: 0, error: '23 CONFIGURATION_ERROR' });
+    expect(diag.missing).toHaveLength(7);
+    expect(formatIapDiagnostics(diag)).not.toMatch(/secret-ish|appl_test/);
+
+    sdk.productsImpl = () => Promise.resolve(ALL_PRICES);
+    await ctl.refresh();
+    expect(ctl.getSnapshot()).toMatchObject({ status: 'ready', productFetch: 'loaded' });
+    expect(ctl.diagnostics()).toMatchObject({ priced: 7, returned: 7, missing: [], error: null });
+  });
+
+  it('M17D.0: StoreKit returning 0/7 products is reported precisely (the build-10 symptom)', async () => {
+    const sdk = new FakePurchases();
+    const { ctl } = await setup({ sdk });
+    sdk.storeProducts = [];
+    await ctl.refresh();
+    expect(ctl.getSnapshot()).toMatchObject({ status: 'ready', productFetch: 'loaded', products: {} });
+    expect(iapCardView(iapProduct(ID.removeAds)!, ctl.getSnapshot()).state).toBe('unavailable');
+    const text = formatIapDiagnostics(ctl.diagnostics());
+    expect(text).toMatch(/Products priced: 0\/7 \(returned 0\)/);
+    expect(text).toMatch(/configured/);
+    expect(text).toContain(ID.coins500);
+  });
+
+  it('M17D.0: an older, slower product lookup never overwrites a newer answer', async () => {
+    const sdk = new FakePurchases();
+    const { ctl } = await setup({ sdk });
+    const answers: ((p: typeof ALL_PRICES) => void)[] = [];
+    sdk.productsImpl = () => new Promise((resolve) => { answers.push(resolve); });
+    const first = ctl.refresh();
+    const second = ctl.refresh();
+    await flush();
+    answers[1]!(ALL_PRICES); // newest answers first
+    await second;
+    answers[0]!([]); // stale empty answer arrives late
+    await first;
+    expect(Object.keys(ctl.getSnapshot().products)).toHaveLength(7);
   });
 
   it('bundle cards list their contents', () => {

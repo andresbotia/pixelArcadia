@@ -83,10 +83,49 @@ it('release never receives debug geography or test device IDs', () => {
 });
 
 it('opens the exact live policy URL and contains URL failures', async () => {
-  const open = jest.fn().mockRejectedValue(new Error('offline'));
-  await expect(openPrivacyPolicy(open)).resolves.toBeUndefined();
-  expect(open).toHaveBeenCalledWith(PRIVACY_POLICY_URL);
-  await expect(openPrivacyPolicy(() => { throw new Error('native missing'); })).resolves.toBeUndefined();
+  const ok = { openURL: jest.fn().mockResolvedValue(undefined) };
+  await expect(openPrivacyPolicy(ok)).resolves.toBe(true);
+  expect(ok.openURL).toHaveBeenCalledTimes(1);
+  expect(ok.openURL).toHaveBeenCalledWith(PRIVACY_POLICY_URL);
+
+  const onError = jest.fn();
+  await expect(openPrivacyPolicy({ openURL: jest.fn().mockRejectedValue(new Error('offline')) }, onError)).resolves.toBe(false);
+  expect(onError).toHaveBeenCalledTimes(1);
+  await expect(openPrivacyPolicy({ openURL: () => { throw new Error('native missing'); } })).resolves.toBe(false);
+});
+
+/** Mirrors react-native/Libraries/Linking/Linking.js: `openURL` reads `this`. */
+class LinkingLike {
+  opened: string[] = [];
+  openURL(url: string): Promise<void> {
+    this._validateURL(url);
+    this.opened.push(url);
+    return Promise.resolve();
+  }
+  _validateURL(url: string): void {
+    if (!url.startsWith('https://')) throw new Error('Invalid URL');
+  }
+}
+
+it('REGRESSION M17D.0: calls openURL as a method so RN Linking keeps its `this`', async () => {
+  const rnLinking = readFileSync(join(process.cwd(), 'node_modules/react-native/Libraries/Linking/Linking.js'), 'utf8');
+  expect(rnLinking).toMatch(/openURL\(url: string\): Promise<void> \{\s*this\._validateURL\(url\);/);
+
+  const linking = new LinkingLike();
+  // The TestFlight build 10 bug: a detached method loses `this` and throws before native.
+  const detached = linking.openURL;
+  expect(() => detached('https://example.com')).toThrow(TypeError);
+
+  await expect(openPrivacyPolicy(linking)).resolves.toBe(true);
+  expect(linking.opened).toEqual([PRIVACY_POLICY_URL]);
+});
+
+it('Settings passes the Linking object, never a detached Linking.openURL, and has a visible fallback', () => {
+  const screen = readFileSync(join(process.cwd(), 'src/screens/SettingsScreen.tsx'), 'utf8');
+  expect(screen).not.toMatch(/Linking\.openURL\)/);
+  expect(screen).toMatch(/openPrivacyPolicy\(Linking,/);
+  expect(screen).toMatch(/onPress=\{onPrivacyPolicy\}\s*accessibilityRole="link"\s*accessibilityLabel="Privacy Policy"/);
+  expect(screen).toMatch(/Alert\.alert\('Privacy Policy'/);
 });
 
 it('app privacy metadata covers app-sent analytics and update identifier without claiming app tracking', () => {

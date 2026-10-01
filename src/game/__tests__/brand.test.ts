@@ -210,13 +210,10 @@ describe('brand assets are present', () => {
     'assets/adaptive-icon.png',
     'assets/android-icon-foreground.png',
     'assets/android-icon-background.png',
-    'assets/splash-icon.png',
+    'assets/brand/app-icon-source.png',
     'assets/favicon.png',
     'assets/favicon-16.png',
     'assets/favicon-32.png',
-    'assets/brand/logo-mark.svg',
-    'assets/brand/logo-mark-mono-light.svg',
-    'assets/brand/logo-mark-mono-dark.svg',
     'assets/brand/wordmark.svg',
     'assets/brand/wordmark-stacked.svg',
     'assets/brand/logo-horizontal.svg',
@@ -224,16 +221,11 @@ describe('brand assets are present', () => {
     'public/favicon.png',
     'public/favicon-16.png',
     'public/favicon-32.png',
+    'public/apple-touch-icon.png',
   ];
 
   it.each(files)('%s exists', (rel) => {
     expect(existsSync(join(repoRoot, rel))).toBe(true);
-  });
-
-  it('ships the vector mark without embedded raster or filters', () => {
-    const svg = read('assets/brand/logo-mark.svg');
-    expect(svg).not.toMatch(/<image|xlink:href|filter=/);
-    expect(svg).toMatch(/viewBox="0 0 120 120"/);
   });
 });
 

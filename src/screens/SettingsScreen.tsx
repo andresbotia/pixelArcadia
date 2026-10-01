@@ -1,12 +1,14 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import { memo, useSyncExternalStore, type ReactNode } from 'react';
-import { Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
+import { Alert, Linking, Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useColorAssist } from '@/hooks/useColorAssist';
 import { adConsent } from '@/ads/service';
-import { openPrivacyPolicy } from '@/ads/consent';
+import { openPrivacyPolicy, PRIVACY_POLICY_URL } from '@/ads/consent';
 import { useRestorePurchases } from '@/hooks/useRestorePurchases';
+import { formatIapDiagnostics } from '@/iap/diagnostics';
+import { purchases } from '@/iap/service';
 import { PRODUCT_NAME } from '@/theme/appIdentity';
 import { AV, AV_FONT } from '@/theme/arcadiaV2';
 
@@ -30,12 +32,33 @@ function appVersionLabel(): string | null {
 /** Fixed for the life of the process. */
 const APP_VERSION = appVersionLabel();
 
+const isDev = typeof __DEV__ !== 'undefined' && __DEV__;
+
+/** Opens the published policy in the browser; if iOS refuses, say where it lives. */
+function onPrivacyPolicy(): void {
+  void openPrivacyPolicy(Linking, (error) => {
+    if (isDev) console.warn('[settings] could not open the Privacy Policy', error);
+  }).then((opened) => {
+    if (!opened) Alert.alert('Privacy Policy', `Couldn't open your browser. The policy is at\n${PRIVACY_POLICY_URL}`);
+  });
+}
+
+/**
+ * Store diagnostics for TestFlight QA: long-press the version row. Counts,
+ * product ids, configuration state and SDK error codes only — never keys,
+ * transaction ids or account details.
+ */
+function showStoreDiagnostics(): void {
+  Alert.alert('Store diagnostics', formatIapDiagnostics(purchases().diagnostics()));
+}
+
 /**
  * Settings (M17C.1). Only controls that already work end to end:
  *  - Color Assist — the persisted accessibility preference gameplay already honours.
  *  - Restore Purchases — the central IAP controller (Remove Ads only; never re-grants consumables).
  *  - About — product name and the installed version/build.
  * Privacy Policy links to the published policy; UMP supplies optional ad choices.
+ * Long-pressing the version row shows safe store diagnostics (TestFlight QA).
  */
 export const SettingsScreen = memo(function SettingsScreen({ onBack }: SettingsScreenProps) {
   const colorAssist = useColorAssist();
@@ -103,12 +126,12 @@ export const SettingsScreen = memo(function SettingsScreen({ onBack }: SettingsS
           </Section>
 
           <Section label="ABOUT">
-            <View style={styles.row}>
+            <Pressable onLongPress={showStoreDiagnostics} delayLongPress={800} accessible={false} style={styles.row}>
               <Text style={styles.rowTitle}>{PRODUCT_NAME}</Text>
               {APP_VERSION ? <Text style={styles.value}>{APP_VERSION}</Text> : null}
-            </View>
+            </Pressable>
             <Pressable
-              onPress={() => { void openPrivacyPolicy(Linking.openURL); }}
+              onPress={onPrivacyPolicy}
               accessibilityRole="link"
               accessibilityLabel="Privacy Policy"
               style={({ pressed }) => [styles.row, pressed && styles.pressed]}

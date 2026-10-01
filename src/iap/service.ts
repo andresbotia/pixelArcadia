@@ -36,6 +36,7 @@ export function purchases(): PurchasesController {
         analytics.setRemoveAdsOwned(owned); // person property, sent only when it changes
       },
       log: devLog,
+      mode: resolved.note ? `${resolved.mode} (${resolved.note})` : resolved.mode,
       // Semantic purchase events → analytics (M14).
       track: (event, props) => analytics.trackIap(event, props),
     },

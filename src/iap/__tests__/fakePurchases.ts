@@ -15,7 +15,12 @@ export class FakePurchases implements PurchasesSdk {
 
   configure(apiKey: string): void { this.configureImpl(apiKey); }
   getCustomer(): Promise<CustomerSnapshot> { return this.customerImpl(); }
-  getProducts(): Promise<IapProductInfo[]> { return this.productsImpl(); }
+  /** Every id list the controller asked the store for. */
+  readonly requestedIds: string[][] = [];
+  getProducts(productIds: readonly string[]): Promise<IapProductInfo[]> {
+    this.requestedIds.push([...productIds]);
+    return this.productsImpl();
+  }
   purchase(productId: string): Promise<PurchaseAttempt> {
     return new Promise((resolve, reject) => { this.pending.push({ productId, resolve, reject }); });
   }
