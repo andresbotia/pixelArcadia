@@ -10,7 +10,6 @@ import { _flushIapWrites, _resetIapCache, getCachedRemoveAds, loadIapCache, save
 import { IAP_CATALOG, IAP_IDS, iapProduct, isConsumableProduct } from '../catalog';
 import { REMOVE_ADS_ENTITLEMENT, readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from '../config';
 import { PurchasesController, type PurchasesSnapshot } from '../controller';
-import { formatIapDiagnostics } from '../diagnostics';
 import { iapCardView, rewardLines } from '../storeView';
 import type { AdsPolicy } from '@/ads/types';
 import { FakePurchases, flush, localizedProducts } from './fakePurchases';
@@ -589,28 +588,24 @@ describe('store cards', () => {
     expect(ctl.getSnapshot()).toMatchObject({ status: 'error', productFetch: 'failed', products: {} });
     expect(iapCardView(iapProduct(ID.coins500)!, ctl.getSnapshot()).state).toBe('unavailable');
     await expect(ctl.purchase(ID.coins500)).resolves.toBe('unavailable');
-    const diag = ctl.diagnostics();
-    expect(diag).toMatchObject({ configured: true, requested: 7, priced: 0, error: '23 CONFIGURATION_ERROR' });
-    expect(diag.missing).toHaveLength(7);
-    expect(formatIapDiagnostics(diag)).not.toMatch(/secret-ish|appl_test/);
+    expect(Object.keys(ctl.getSnapshot().products)).toHaveLength(0);
 
     sdk.productsImpl = () => Promise.resolve(ALL_PRICES);
     await ctl.refresh();
     expect(ctl.getSnapshot()).toMatchObject({ status: 'ready', productFetch: 'loaded' });
-    expect(ctl.diagnostics()).toMatchObject({ priced: 7, returned: 7, missing: [], error: null });
+    expect(Object.keys(ctl.getSnapshot().products)).toHaveLength(7);
   });
 
-  it('M17D.0: StoreKit returning 0/7 products is reported precisely (the build-10 symptom)', async () => {
+  it('M17D.0: StoreKit returning 0/7 products leaves purchase cards unavailable', async () => {
     const sdk = new FakePurchases();
     const { ctl } = await setup({ sdk });
     sdk.storeProducts = [];
     await ctl.refresh();
     expect(ctl.getSnapshot()).toMatchObject({ status: 'ready', productFetch: 'loaded', products: {} });
     expect(iapCardView(iapProduct(ID.removeAds)!, ctl.getSnapshot()).state).toBe('unavailable');
-    const text = formatIapDiagnostics(ctl.diagnostics());
-    expect(text).toMatch(/Products priced: 0\/7 \(returned 0\)/);
-    expect(text).toMatch(/configured/);
-    expect(text).toContain(ID.coins500);
+    for (const id of Object.values(ID)) {
+      expect(iapCardView(iapProduct(id)!, ctl.getSnapshot()).state).toBe('unavailable');
+    }
   });
 
   it('M17D.0: an older, slower product lookup never overwrites a newer answer', async () => {

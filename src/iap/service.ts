@@ -8,16 +8,12 @@ import { getCachedRemoveAds, saveRemoveAds } from '@/storage/iap';
 
 import { readRevenueCatBuildMode, readRevenueCatKeys, resolveRevenueCatKey } from './config';
 import { PurchasesController } from './controller';
-import { recordIapDiagnostic } from './localDiagnostics';
 import { createRevenueCatSdk } from './sdk';
 
 const isDev = typeof __DEV__ !== 'undefined' && __DEV__;
-// Opt-in for local Release simulator diagnostics. Never set in EAS profiles.
-const localDiagnostics = process.env.EXPO_PUBLIC_IAP_DIAGNOSTICS === '1';
 const devLog = (message: string) => {
   const line = message.startsWith('[iap] ') ? message.slice(6) : message;
-  if (localDiagnostics) recordIapDiagnostic(line);
-  else if (isDev) console.log(`[iap] ${line}`);
+  if (isDev) console.log(`[iap] ${line}`);
 };
 
 let controller: PurchasesController | null = null;
@@ -43,7 +39,6 @@ export function purchases(): PurchasesController {
         analytics.setRemoveAdsOwned(owned); // person property, sent only when it changes
       },
       log: devLog,
-      mode: resolved.note ? `${resolved.mode} (${resolved.note})` : resolved.mode,
       // Semantic purchase events → analytics (M14).
       track: (event, props) => analytics.trackIap(event, props),
     },

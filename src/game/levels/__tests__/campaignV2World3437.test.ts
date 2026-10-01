@@ -143,11 +143,11 @@ test('every source through 500 matches the unique runtime registry', () => {
   for (const def of source.levels) expect(getLevel(def.id)).toEqual(def);
 });
 
-test('normal campaign blocks all forty levels while the dev index permits them', () => {
-  expect(PUBLISHED_MAX_LEVEL).toBe(50);
-  expect(CAMPAIGN_VERSION).toBe('v2-50');
+test('normal campaign publishes these levels while the dev index retains them', () => {
+  expect(PUBLISHED_MAX_LEVEL).toBe(500);
+  expect(CAMPAIGN_VERSION).toBe('v1-500');
   for (const def of levels) {
-    expect(isPublishedCampaignLevel(def.id)).toBe(false);
+    expect(isPublishedCampaignLevel(def.id)).toBe(true);
     expect(devLevelIndex().find(l => l.id === def.id)).toMatchObject({ title: def.title, world: Math.ceil(def.id / 10) });
   }
   expect(getLevel(501)).toBeUndefined();

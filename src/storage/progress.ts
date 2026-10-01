@@ -7,7 +7,7 @@ const STORAGE_KEY = 'orbitide/progress/v1';
 export interface Progress {
   /**
    * Highest level the player has unlocked. Level 1 is always unlocked; beating
-   * level N unlocks N + 1 (capped at TOTAL_LEVELS for M1).
+   * level N records N + 1, including the completion sentinel after the final level.
    */
   highestUnlockedLevel: number;
 }
@@ -20,7 +20,7 @@ function sanitize(raw: unknown): Progress {
     if (typeof value === 'number' && Number.isFinite(value)) {
       const clamped = Math.min(
         Math.max(Math.floor(value), FIRST_LEVEL),
-        TOTAL_LEVELS,
+        TOTAL_LEVELS + 1,
       );
       return { highestUnlockedLevel: clamped };
     }
@@ -55,7 +55,7 @@ async function writeProgress(progress: Progress): Promise<Progress> {
  */
 export async function unlockNext(completedLevel: number): Promise<Progress> {
   const current = await loadProgress();
-  const target = Math.min(completedLevel + 1, TOTAL_LEVELS);
+  const target = Math.min(completedLevel + 1, TOTAL_LEVELS + 1);
   if (target <= current.highestUnlockedLevel) return current;
   return writeProgress({ highestUnlockedLevel: target });
 }

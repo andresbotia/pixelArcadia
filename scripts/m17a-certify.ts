@@ -51,5 +51,5 @@ fs.mkdirSync('dist/m17a', { recursive: true });
 fs.writeFileSync('dist/m17a/full-certification.json', JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify(result, null, 2));
 if (!result.registry || result.sourceMatches !== 500 || result.structures !== 500 || result.witnesses !== 500
-    || result.capacityTotals !== 500 || result.paletteCount !== 44 || result.publishedMaxLevel !== 50
-    || result.campaignVersion !== 'v2-50') process.exitCode = 1;
+    || result.capacityTotals !== 500 || result.paletteCount !== 44 || result.publishedMaxLevel !== 500
+    || result.campaignVersion !== 'v1-500') process.exitCode = 1;

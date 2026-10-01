@@ -1,6 +1,4 @@
 import type { CustomerSnapshot, IapProductInfo, PurchaseAttempt, PurchasesSdk } from './types';
-import { IAP_IDS } from './catalog';
-import { recordIapDiagnostic } from './localDiagnostics';
 
 type RcModule = typeof import('react-native-purchases');
 type RcCustomerInfo = import('react-native-purchases').CustomerInfo;
@@ -43,23 +41,6 @@ export function createRevenueCatSdk(): PurchasesSdk | null {
     configure(apiKey) {
       // No appUserID → RevenueCat anonymous id. No account system in V1.
       Purchases.configure({ apiKey });
-      if (process.env.EXPO_PUBLIC_IAP_DIAGNOSTICS === '1') {
-        const sdkVersion = (require('react-native-purchases/package.json') as { version: string }).version;
-        recordIapDiagnostic(`RevenueCat JS SDK=${sdkVersion}; StoreKit path=SDK default`);
-        void Purchases.getStorefront().then((storefront) => {
-          recordIapDiagnostic(`storefront country=${storefront?.countryCode ?? 'unknown'}`);
-        }).catch((error: unknown) => {
-          const e = error as { code?: string | number; domain?: string };
-          recordIapDiagnostic(`storefront error domain=${e?.domain ?? 'unknown'} code=${e?.code ?? 'unknown'}`);
-        });
-        void Purchases.getOfferings().then((offerings) => {
-          const ids = [...new Set((offerings.current?.availablePackages ?? []).map((pkg) => pkg.product.identifier))];
-          recordIapDiagnostic(`current offering products=${ids.length}/${IAP_IDS.length}; ids=${ids.join(', ') || 'none'}; missing=${IAP_IDS.filter((id) => !ids.includes(id)).join(', ') || 'none'}`);
-        }).catch((error: unknown) => {
-          const e = error as { code?: string | number; domain?: string };
-          recordIapDiagnostic(`current offering error domain=${e?.domain ?? 'unknown'} code=${e?.code ?? 'unknown'}`);
-        });
-      }
     },
     async getCustomer() {
       return toSnapshot(await Purchases.getCustomerInfo());

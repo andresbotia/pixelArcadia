@@ -114,13 +114,13 @@ test('Colossus retains its 22 colors, eight bridges and accepted 115-action ceil
   expect(getLevel(80)!.title).toBe('Mythic Colossus');
 });
 
-test('all new levels are dev-accessible while normal campaign remains capped at 50', () => {
-  expect(PUBLISHED_MAX_LEVEL).toBe(50);
-  expect(CAMPAIGN_VERSION).toBe('v2-50');
-  expect(nextPublishedLevelId(50)).toBeUndefined();
+test('all authored levels are available in campaign and developer index', () => {
+  expect(PUBLISHED_MAX_LEVEL).toBe(500);
+  expect(CAMPAIGN_VERSION).toBe('v1-500');
+  expect(nextPublishedLevelId(50)).toBe(51);
   const rows = devLevelIndex();
   for (const def of imported) {
-    expect(isPublishedCampaignLevel(def.id)).toBe(false);
+    expect(isPublishedCampaignLevel(def.id)).toBe(true);
     const row = rows.find(r => r.id === def.id)!;
     expect(row.ruleset).toBe('coreV2');
     expect(row.title).toBe(def.title);

@@ -294,12 +294,12 @@ describe('M17C.1 — typography + CTA cleanup', () => {
   });
 });
 
-describe('M17C.1 — publishing unchanged', () => {
-  it('keeps PUBLISHED_MAX_LEVEL at 50', () => {
-    expect(PUBLISHED_MAX_LEVEL).toBe(50);
+describe('v1 launch campaign publishing', () => {
+  it('publishes all 500 levels', () => {
+    expect(PUBLISHED_MAX_LEVEL).toBe(500);
   });
 
-  it("keeps CAMPAIGN_VERSION at 'v2-50'", () => {
-    expect(CAMPAIGN_VERSION).toBe('v2-50');
+  it("identifies the v1 launch campaign", () => {
+    expect(CAMPAIGN_VERSION).toBe('v1-500');
   });
 });

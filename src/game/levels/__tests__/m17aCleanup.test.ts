@@ -17,7 +17,7 @@ test('M17A repaired boards keep exact clean production wins and difficulty metad
   expect(getLevel(196)!.difficulty).toBe('super-hard');
   expect(LEVEL_DEFINITIONS.map(level => level.id)).toEqual(Array.from({ length: 500 }, (_, index) => index + 1));
   expect(ORB_COLOR_IDS).toHaveLength(44);
-  expect([PUBLISHED_MAX_LEVEL, CAMPAIGN_VERSION]).toEqual([50, 'v2-50']);
+  expect([PUBLISHED_MAX_LEVEL, CAMPAIGN_VERSION]).toEqual([500, 'v1-500']);
 });
 
 test('the eight single and one double Level 500 alternatives all recover to clean wins', () => {

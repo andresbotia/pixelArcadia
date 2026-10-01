@@ -28,8 +28,6 @@ export interface PurchasesDeps {
   /** Ads policy hook: interstitials off while owned; rewarded untouched. */
   onRemoveAdsChange(owned: boolean): void;
   log?(message: string): void;
-  /** Resolved build mode ("store", "off (…)") — shown in diagnostics only. */
-  mode?: string;
   track?(event: IapAnalyticsEvent, props?: Record<string, string | number | boolean>): void;
 }
 
@@ -51,21 +49,6 @@ export interface PurchasesSnapshot {
 }
 
 const RESTORE = '__restore__';
-
-/** Safe, QA-facing store state: counts, our product ids, codes. No keys, transaction or user ids. */
-export interface IapDiagnostics {
-  mode: string;
-  configured: boolean;
-  status: IapStatus;
-  productFetch: ProductFetchState;
-  requested: number;
-  /** Known catalog products the store returned / of those, with a localized price. */
-  returned: number;
-  priced: number;
-  missing: string[];
-  /** SDK error code of the last failed lookup, if any. */
-  error: string | null;
-}
 
 /** `code` / `readableErrorCode` of a RevenueCat error — never its message or payload. */
 function errorCode(e: unknown): string {
@@ -95,10 +78,8 @@ export class PurchasesController {
   private readonly listeners = new Set<() => void>();
   private started = false;
   private offCustomer: (() => void) | null = null;
-  private configured = false;
   /** Generation of the latest product lookup; older answers are dropped. */
   private fetchGen = 0;
-  private lastFetch: { returned: number; priced: number; error: string | null } = { returned: 0, priced: 0, error: null };
 
   constructor(
     private readonly sdk: PurchasesSdk | null,
@@ -111,21 +92,6 @@ export class PurchasesController {
 
   getSnapshot(): PurchasesSnapshot {
     return this.snapshot;
-  }
-
-  diagnostics(): IapDiagnostics {
-    const { status, productFetch, products } = this.snapshot;
-    return {
-      mode: this.deps.mode ?? 'unknown',
-      configured: this.configured,
-      status,
-      productFetch,
-      requested: IAP_IDS.length,
-      returned: this.lastFetch.returned,
-      priced: this.lastFetch.priced,
-      missing: IAP_IDS.filter((id) => !products[id]),
-      error: this.lastFetch.error,
-    };
   }
 
   subscribe(listener: () => void): () => void {
@@ -153,7 +119,6 @@ export class PurchasesController {
     }
     try {
       this.sdk.configure(this.apiKey);
-      this.configured = true;
       this.log('RevenueCat configured; anonymous app user');
       this.offCustomer = this.sdk.onCustomerUpdate((c) => this.applyCustomer(c));
     } catch {
@@ -186,12 +151,10 @@ export class PurchasesController {
         else known[p.productId] = p;
       }
       for (const id of IAP_IDS) if (!known[id]) this.log(`store did not return ${id} — its card is disabled`);
-      this.lastFetch = { returned, priced: Object.keys(known).length, error: null };
-      this.log(`products ${this.lastFetch.priced}/${IAP_IDS.length} priced (${returned} returned)`);
+      this.log(`products ${Object.keys(known).length}/${IAP_IDS.length} priced (${returned} returned)`);
       this.set({ products: known, productFetch: 'loaded', status: this.snapshot.activeOperation ? 'purchasing' : 'ready' });
     } else {
-      this.lastFetch = { ...this.lastFetch, error: errorCode(products.reason) };
-      this.log(`products unavailable (${this.lastFetch.error})`);
+      this.log(`products unavailable (${errorCode(products.reason)})`);
       const productFetch = Object.keys(this.snapshot.products).length ? 'loaded' : 'failed';
       this.set(this.snapshot.activeOperation ? { productFetch } : { productFetch, status: 'error' });
     }

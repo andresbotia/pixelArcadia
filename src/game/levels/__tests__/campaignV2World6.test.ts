@@ -189,12 +189,12 @@ test('Level 60 carries the World Wonders finale metadata', () => {
 });
 
 // 19
-test('normal campaign still blocks Level 51 while the published max is 50', () => {
-  expect(PUBLISHED_MAX_LEVEL).toBe(50);
-  expect(CAMPAIGN_VERSION).toBe('v2-50');
+test('normal campaign opens Level 51 under the 500-level ceiling', () => {
+  expect(PUBLISHED_MAX_LEVEL).toBe(500);
+  expect(CAMPAIGN_VERSION).toBe('v1-500');
   expect(isPublishedCampaignLevel(50)).toBe(true);
-  for (const level of WORLD_6) expect(isPublishedCampaignLevel(level.id)).toBe(false);
-  expect(nextPublishedLevelId(50)).toBeUndefined();
+  for (const level of WORLD_6) expect(isPublishedCampaignLevel(level.id)).toBe(true);
+  expect(nextPublishedLevelId(50)).toBe(51);
 });
 
 // 20

@@ -120,11 +120,11 @@ test('World 49 keeps dark fracture cores and a two-palette palace', () => {
   expect(at(42, 40)).toBe('graphite'); // Drained dusk-side masonry.
 });
 
-test('M16F remains unpublished while the developer index includes it', () => {
-  expect(PUBLISHED_MAX_LEVEL).toBe(50);
-  expect(CAMPAIGN_VERSION).toBe('v2-50');
+test('M16F is published and remains in the developer index', () => {
+  expect(PUBLISHED_MAX_LEVEL).toBe(500);
+  expect(CAMPAIGN_VERSION).toBe('v1-500');
   for (const level of levels) {
-    expect(isPublishedCampaignLevel(level.id)).toBe(false);
+    expect(isPublishedCampaignLevel(level.id)).toBe(true);
     expect(devLevelIndex().find(entry => entry.id === level.id)).toMatchObject({ title: level.title, world: Math.ceil(level.id / 10) });
   }
   expect(getLevel(501)).toBeUndefined();

@@ -175,7 +175,7 @@ describe('config + fail-safety', () => {
         expect(register).toHaveBeenCalledTimes(1);
         expect(register.mock.calls[0]?.[0]).toMatchObject({
           platform: 'ios', published_max_level: PUBLISHED_MAX_LEVEL,
-          campaign_version: 'v2-50', environment: 'production',
+          campaign_version: 'v1-500', environment: 'production',
         });
       });
       expect(constructed).toHaveLength(1);
@@ -604,8 +604,8 @@ describe('progression + content ceiling', () => {
     expect(expanded.client.named('content_ceiling_approaching').map((e) => e.props.published_max_level)).toEqual([1500]);
   });
 
-  it('25. with the current 50-level campaign the ceiling alert is disabled', () => {
-    expect(PUBLISHED_MAX_LEVEL).toBe(50);
+  it('25. the 500-level campaign alerts near the published ceiling', () => {
+    expect(PUBLISHED_MAX_LEVEL).toBe(500);
     expect(contentCeilingThreshold(50)).toBeNull();
     const { analytics, client } = setup({ publishedMax: 50 });
     for (const unlocked of [1, 2, 25, 50, 51, 100]) analytics.progressUpdated(unlocked);

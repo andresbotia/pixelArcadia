@@ -30,9 +30,8 @@ export interface WorldSummary {
 /**
  * One summary per world, in campaign order. A world is `locked` until its
  * first level is unlocked, `complete` once every one of its levels has been
- * surpassed, otherwise `active`. (The final campaign level can never show as
- * `complete` this way — `highestUnlockedLevel` caps at `TOTAL_LEVELS` — the
- * same pre-existing limit Home's own "cleared" count already has.)
+ * surpassed, otherwise `active`. Clearing the final level stores one past the
+ * playable ceiling, so the final world can show as complete.
  */
 export function summarizeWorlds(manifest: CampaignManifest, progress: Progress): WorldSummary[] {
   const worlds = [...manifest.worlds].sort((a, b) => a.order - b.order);

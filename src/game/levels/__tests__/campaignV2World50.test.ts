@@ -82,12 +82,12 @@ test('495 keeps relative breather relief and 500 retains the approved capstone g
   expect(capstone.peakHolding).toBe(3);
 });
 
-test('the final world remains development-only under the v2-50 publication ceiling', () => {
+test('the final world is included in the v1-500 publication ceiling', () => {
   expect(ORB_COLOR_IDS).toHaveLength(44);
-  expect(PUBLISHED_MAX_LEVEL).toBe(50);
-  expect(CAMPAIGN_VERSION).toBe('v2-50');
+  expect(PUBLISHED_MAX_LEVEL).toBe(500);
+  expect(CAMPAIGN_VERSION).toBe('v1-500');
   for (const level of levels) {
-    expect(isPublishedCampaignLevel(level.id)).toBe(false);
+    expect(isPublishedCampaignLevel(level.id)).toBe(true);
     expect(devLevelIndex().find(entry => entry.id === level.id)).toMatchObject({ title: level.title, world: 50 });
   }
 });
